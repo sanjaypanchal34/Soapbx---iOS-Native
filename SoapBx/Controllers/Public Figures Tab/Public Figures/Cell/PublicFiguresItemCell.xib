@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -28,16 +29,16 @@
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RgS-MF-8Ch">
-                                <rect key="frame" x="84.999999999999986" y="25" width="188.66666666666663" height="84"/>
+                                <rect key="frame" x="85" y="25" width="175" height="84"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pUl-be-pCN">
-                                        <rect key="frame" x="0.0" y="0.0" width="188.66666666666666" height="20.333333333333332"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="175" height="20.333333333333332"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ej4-42-qyR">
-                                        <rect key="frame" x="0.0" y="25.333333333333339" width="188.66666666666666" height="58.666666666666657"/>
+                                        <rect key="frame" x="0.0" y="25.333333333333339" width="175" height="58.666666666666657"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_location" translatesAutoresizingMaskIntoConstraints="NO" id="RIf-xz-Dnl">
                                                 <rect key="frame" x="0.0" y="0.0" width="15" height="15"/>
@@ -47,7 +48,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label Label Label Label Label Label Label Label Label Label " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KF4-wf-bml">
-                                                <rect key="frame" x="20" y="0.0" width="168.66666666666666" height="58.666666666666664"/>
+                                                <rect key="frame" x="20" y="0.0" width="155" height="58.666666666666664"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -75,20 +76,22 @@
                                     <constraint firstAttribute="bottom" secondItem="ej4-42-qyR" secondAttribute="bottom" id="v1g-ji-ydR"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Fg-Ul-1uT">
-                                <rect key="frame" x="278.66666666666669" y="45" width="76.333333333333314" height="34.333333333333343"/>
-                                <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="am4-Oz-NdM" customClass="OTLTextButton" customModule="OTLContaner">
+                                <rect key="frame" x="265" y="44.666666666666664" width="90" height="34.999999999999993"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="90" id="JfK-0O-GNv"/>
+                                    <constraint firstAttribute="height" constant="35" id="cWh-sa-oVW"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="9Fg-Ul-1uT" firstAttribute="leading" secondItem="RgS-MF-8Ch" secondAttribute="trailing" constant="5" id="KFu-2T-HRY"/>
+                            <constraint firstItem="am4-Oz-NdM" firstAttribute="centerY" secondItem="qjE-bo-uEi" secondAttribute="centerY" id="8dC-sx-Smc"/>
+                            <constraint firstItem="am4-Oz-NdM" firstAttribute="leading" secondItem="RgS-MF-8Ch" secondAttribute="trailing" constant="5" id="M2W-Dj-AXN"/>
                             <constraint firstItem="RgS-MF-8Ch" firstAttribute="leading" secondItem="jOX-Fi-8oz" secondAttribute="trailing" constant="15" id="NHa-8w-rVF"/>
-                            <constraint firstItem="9Fg-Ul-1uT" firstAttribute="centerY" secondItem="qjE-bo-uEi" secondAttribute="centerY" id="NlB-yg-Few"/>
                             <constraint firstItem="jOX-Fi-8oz" firstAttribute="leading" secondItem="qjE-bo-uEi" secondAttribute="leading" constant="15" id="XbH-aM-PYn"/>
-                            <constraint firstAttribute="trailing" secondItem="9Fg-Ul-1uT" secondAttribute="trailing" constant="15" id="hIt-mx-mT3"/>
+                            <constraint firstAttribute="trailing" secondItem="am4-Oz-NdM" secondAttribute="trailing" constant="15" id="Ygs-tU-2iD"/>
                             <constraint firstItem="RgS-MF-8Ch" firstAttribute="top" secondItem="jOX-Fi-8oz" secondAttribute="top" constant="10" id="j3G-7S-gbC"/>
                             <constraint firstAttribute="bottom" secondItem="RgS-MF-8Ch" secondAttribute="bottom" constant="15" id="pe8-ZN-wTs"/>
                             <constraint firstItem="jOX-Fi-8oz" firstAttribute="top" secondItem="qjE-bo-uEi" secondAttribute="top" constant="15" id="rhs-JJ-T0O"/>
@@ -104,7 +107,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="btnAction" destination="9Fg-Ul-1uT" id="8f3-yq-DDA"/>
+                <outlet property="btnAction" destination="am4-Oz-NdM" id="aBw-SL-8yN"/>
                 <outlet property="imgProfile" destination="jOX-Fi-8oz" id="wfn-ZF-O8I"/>
                 <outlet property="lblLocation" destination="KF4-wf-bml" id="xhF-gx-pvC"/>
                 <outlet property="lblProfileName" destination="pUl-be-pCN" id="agY-Tx-3BW"/>

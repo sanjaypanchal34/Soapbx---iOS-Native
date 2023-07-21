@@ -38,8 +38,26 @@ extension OTLTextButton {
         self.font = font.font(size: size)
         self.backgroundColor = background
     }
+
+    func appButton(_ text: String) {
+        self.text = text
+        self.textColor = .white
+        self.font = AppFont.semibold.font(size: 20)
+        self.backgroundColor = .primaryBlue
+        self.layer.cornerRadius = 10
+        
+        for cons in self.constraints {
+            if cons.firstAttribute == .height , cons.relation == .equal {
+                cons.constant = 50
+            }
+        }
+    }
 }
 extension UIButton {
+    
+    func emptyTitle(){
+        self.setTitle("", for: .normal)
+    }
     
     func appButton(_ text: String) {
         self.setTitle(text, for: .normal)
@@ -86,12 +104,31 @@ extension OTLTextField {
         self.borderActiveColor = .primaryBlue
     }
 }
+
+extension OTLPasswordField {
+    
+    func setTheme(_ text: String = "",
+                  placeholder: String,
+                  color: UIColor = .titleBlack,
+                  font: AppFont = .regular,
+                  size: CGFloat = 16,
+                  backgound: OTLColor = OTLColorPrefrance.primary) {
+        self.text = text
+        self.placeholder = placeholder
+        self.color = color
+        self.font = font.font(size: size)
+        self.leftIcon = UIImage(named: "ic_lock")
+        self.rightIcon = UIImage(named: "ic_eye")
+        self.rightSelectedIcon = UIImage(named: "ic_closeEye")
+        self.borderActiveColor = .primaryBlue
+    }
+}
 extension OTLOTPView {
     func setOTPTheme() {
         self.textColor = .titleBlack
         self.font = AppFont.regular.font(size: 16)
         self.borderColor = .primaryBlue
-        self.backgroundColor = .lightBlue
+        self.backgroundColor = .primaryBlue.withAlphaComponent(0.05)
         self.prefill = "-"
     }
 }

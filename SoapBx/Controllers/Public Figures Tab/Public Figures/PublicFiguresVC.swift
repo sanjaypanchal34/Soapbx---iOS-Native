@@ -58,6 +58,7 @@ extension PublicFiguresVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "PublicFiguresItemCell") as? PublicFiguresItemCell {
+            cell.setDataFollowing()
             return cell
         }
         return UITableViewCell()

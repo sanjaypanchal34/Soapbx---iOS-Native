@@ -9,6 +9,7 @@ import UIKit
 import OTLContaner
 
 class SignupVC: UIViewController {
+    @IBOutlet private weak var btnBack: UIButton!
     @IBOutlet private weak var lblTitle: UILabel!
     @IBOutlet private weak var lblSubtitle: UILabel!
     
@@ -16,8 +17,8 @@ class SignupVC: UIViewController {
     @IBOutlet private weak var txtLastName: OTLTextField!
     @IBOutlet private weak var txtPhoneNo: OTLTextField!
     @IBOutlet private weak var txtEmail: OTLTextField!
-    @IBOutlet private weak var txtPassword: OTLTextField!
-    @IBOutlet private weak var txtConfPassword: OTLTextField!
+    @IBOutlet private weak var txtPassword: OTLPasswordField!
+    @IBOutlet private weak var txtConfPassword: OTLPasswordField!
     @IBOutlet private weak var txtLocation: OTLTextField!
     
     @IBOutlet private weak var viewVerifyEmail: UIControl!
@@ -30,7 +31,7 @@ class SignupVC: UIViewController {
     @IBOutlet private weak var imgIAccept: UIImageView!
     @IBOutlet private weak var lblIAccept: UILabel!
     
-    @IBOutlet private weak var btnSignUp: UIButton!
+    @IBOutlet private weak var btnSignUp: OTLTextButton!
     
     @IBOutlet private weak var lblAlreadyAMamber: UILabel!
     @IBOutlet private weak var btnSignIn: UIButton!
@@ -43,6 +44,8 @@ class SignupVC: UIViewController {
     }
     
     private func setupUI() {
+        btnBack.emptyTitle()
+        
         lblTitle.setTheme("Sign up for Soapbx",
                           font: .bold,
                           size: 38)
@@ -57,10 +60,8 @@ class SignupVC: UIViewController {
                           leftIcon: UIImage(named: "ic_phone"))
         txtEmail.setTheme(placeholder: "Email",
                           leftIcon: UIImage(named: "ic_email"))
-        txtPassword.setTheme(placeholder: "Password",
-                             leftIcon: UIImage(named: "ic_lock"))
-        txtConfPassword.setTheme(placeholder: "Confirm Password",
-                             leftIcon: UIImage(named: "ic_lock"))
+        txtPassword.setTheme(placeholder: "Password")
+        txtConfPassword.setTheme(placeholder: "Confirm Password")
         txtLocation.setTheme(placeholder: "Location",
                              leftIcon: UIImage(named: "ic_location_grey"))
         
@@ -95,8 +96,8 @@ class SignupVC: UIViewController {
     }
     
     @IBAction private func click_SignUp() {
-        let vc = HomeVC()
-        self.navigationController?.pushViewController(vc, animated: true)
+        let vc = ProfileCoverVC()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction private func click_IAccept() {

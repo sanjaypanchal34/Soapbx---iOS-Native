@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -10,7 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ForgotPasswrodVC" customModule="SoapBx" customModuleProvider="target">
             <connections>
-                <outlet property="btnNext" destination="zTD-SB-0Rg" id="ndb-gn-U5n"/>
+                <outlet property="btnNext" destination="qmz-qM-4F6" id="xAt-fd-KJS"/>
+                <outlet property="headerView" destination="O4N-3k-zNp" id="hOr-E4-eVK"/>
                 <outlet property="lblSubtitle" destination="6Jm-MZ-6bs" id="sZv-qc-N5c"/>
                 <outlet property="lblTitle" destination="0Tf-Wf-aTV" id="LUj-X1-IIc"/>
                 <outlet property="txtEmail" destination="dac-9c-def" id="STA-BR-of9"/>
@@ -22,7 +24,7 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O4N-3k-zNp" userLabel="Header">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O4N-3k-zNp" userLabel="Header" customClass="OTLHeader" customModule="OTLContaner">
                     <rect key="frame" x="0.0" y="59" width="393" height="45"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4wf-1Z-k9f">
@@ -34,7 +36,7 @@
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" image="backArrow"/>
                             <connections>
-                                <action selector="click_back" destination="-1" eventType="touchUpInside" id="tlS-9w-kH5"/>
+                                <action selector="popViewController_click" destination="O4N-3k-zNp" eventType="touchUpInside" id="GlQ-Mf-wWr"/>
                             </connections>
                         </button>
                     </subviews>
@@ -44,6 +46,9 @@
                         <constraint firstAttribute="height" constant="45" id="r6X-ZI-BHu"/>
                         <constraint firstAttribute="bottom" secondItem="4wf-1Z-k9f" secondAttribute="bottom" id="srf-wy-Ckh"/>
                     </constraints>
+                    <connections>
+                        <outlet property="btnBack" destination="4wf-1Z-k9f" id="Vpd-Vx-cb2"/>
+                    </connections>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fw6-nK-LoW">
                     <rect key="frame" x="0.0" y="104" width="393" height="714"/>
@@ -77,32 +82,28 @@
                                 </view>
                             </subviews>
                         </stackView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zTD-SB-0Rg">
-                            <rect key="frame" x="20" y="634" width="353" height="50"/>
-                            <color key="backgroundColor" systemColor="systemBlueColor"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qmz-qM-4F6" customClass="OTLTextButton" customModule="OTLContaner">
+                            <rect key="frame" x="20" y="644" width="353" height="50"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="50" id="jSN-Ge-qD2"/>
+                                <constraint firstAttribute="height" constant="50" id="3Cc-0o-H5m"/>
                             </constraints>
-                            <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" title="Next">
-                                <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </buttonConfiguration>
                             <connections>
-                                <action selector="click_Next" destination="-1" eventType="touchUpInside" id="cdr-5v-H0k"/>
+                                <action selector="click_Next" destination="-1" eventType="touchUpInside" id="fiL-AM-Nwe"/>
                             </connections>
-                        </button>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
+                        <constraint firstAttribute="bottom" secondItem="qmz-qM-4F6" secondAttribute="bottom" constant="20" id="5p7-bX-DOa"/>
                         <constraint firstItem="yZp-HX-4en" firstAttribute="top" secondItem="Onb-ky-6ka" secondAttribute="bottom" constant="30" id="CF1-mX-Ga4"/>
                         <constraint firstAttribute="trailing" secondItem="Onb-ky-6ka" secondAttribute="trailing" constant="20" id="DJT-Zd-UdZ"/>
                         <constraint firstAttribute="trailing" secondItem="yZp-HX-4en" secondAttribute="trailing" constant="20" id="HAJ-Dm-luT"/>
                         <constraint firstItem="Onb-ky-6ka" firstAttribute="leading" secondItem="Fw6-nK-LoW" secondAttribute="leading" constant="20" id="KXn-zi-re1"/>
-                        <constraint firstItem="zTD-SB-0Rg" firstAttribute="trailing" secondItem="yZp-HX-4en" secondAttribute="trailing" id="ZaZ-ux-zaz"/>
+                        <constraint firstItem="qmz-qM-4F6" firstAttribute="leading" secondItem="yZp-HX-4en" secondAttribute="leading" id="YfH-YJ-XNB"/>
                         <constraint firstItem="Onb-ky-6ka" firstAttribute="top" secondItem="Fw6-nK-LoW" secondAttribute="top" constant="20" id="amD-zy-wnG"/>
+                        <constraint firstItem="qmz-qM-4F6" firstAttribute="trailing" secondItem="yZp-HX-4en" secondAttribute="trailing" id="dUX-Fc-49U"/>
                         <constraint firstItem="yZp-HX-4en" firstAttribute="leading" secondItem="Fw6-nK-LoW" secondAttribute="leading" constant="20" id="qKw-FR-wxR"/>
-                        <constraint firstItem="zTD-SB-0Rg" firstAttribute="leading" secondItem="yZp-HX-4en" secondAttribute="leading" id="ujD-o8-SJW"/>
-                        <constraint firstAttribute="bottom" secondItem="zTD-SB-0Rg" secondAttribute="bottom" constant="30" id="w3W-s1-3Xc"/>
                     </constraints>
                 </view>
             </subviews>
@@ -124,9 +125,6 @@
         <image name="backArrow" width="7.3333334922790527" height="13.333333015441895"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

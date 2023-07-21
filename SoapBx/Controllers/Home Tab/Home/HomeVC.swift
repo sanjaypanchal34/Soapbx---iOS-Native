@@ -10,6 +10,10 @@ import OTLContaner
 
 class HomeVC: UIViewController {
     
+    @IBOutlet private weak var btnMessage:OTLImageButton!
+    @IBOutlet private weak var btnNotification:OTLImageButton!
+    @IBOutlet private weak var btnManu:OTLImageButton!
+    
     @IBOutlet private weak var viewTradPost: TradPostListView!
     @IBOutlet private weak var tblList: UITableView!
     @IBOutlet private weak var bottomTab: OTLBottomTabBar!
@@ -34,9 +38,18 @@ class HomeVC: UIViewController {
     }
 
     private func setupUI() {
+        btnMessage.image = UIImage(named: "ic_sendRed")
+        btnNotification.image = UIImage(named: "ic_bellIcon")
+        
+        btnManu.image = UIImage(named: "ic_drawer")
+        btnManu.padding = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
         bottomTab.setTabTheme()
         bottomTab.delegate = self
         viewTradPost.regiter()
+    }
+    
+    @IBAction private func click_menu() {
+        showSideMenu()
     }
 }
 
@@ -50,6 +63,7 @@ extension HomeVC: OTLBottomTabBarDelegate {
             mackRootView(PublicFiguresVC())
             break
         case .addPost:
+            navigationController?.pushViewController(CreatePostVC(), animated: true)
             break
         case .search:
             mackRootView(SearchVC())

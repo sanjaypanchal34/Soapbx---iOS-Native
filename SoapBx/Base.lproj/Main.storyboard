@@ -1,30 +1,133 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pBO-qu-Tmv">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--SplashVC-->
-        <scene sceneID="tne-QT-ifu">
+        <scene sceneID="VPL-kV-88f">
             <objects>
-                <viewController storyboardIdentifier="SplashVC" id="BYZ-38-t0r" customClass="SplashVC" customModule="SoapBx" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <viewController storyboardIdentifier="SplashVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="pBO-qu-Tmv" customClass="SplashVC" customModule="SoapBx" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ncT-KT-c6E">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vy8-d0-1Gq" userLabel="Background">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" name="AccentColor"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="GreenBalloon" translatesAutoresizingMaskIntoConstraints="NO" id="oJn-r4-RLL" userLabel="Logo0">
+                                <rect key="frame" x="0.0" y="183" width="393" height="240"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="RedBalloon" translatesAutoresizingMaskIntoConstraints="NO" id="mJ3-lt-QdZ" userLabel="Logo1">
+                                <rect key="frame" x="0.0" y="183" width="393" height="240"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="BlueBalloon" translatesAutoresizingMaskIntoConstraints="NO" id="yLq-Ya-MGc" userLabel="Logo2">
+                                <rect key="frame" x="0.0" y="183" width="393" height="240"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="FirstStar" translatesAutoresizingMaskIntoConstraints="NO" id="q09-dt-NkC" userLabel="Logo3">
+                                <rect key="frame" x="0.0" y="183" width="393" height="240"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="SecondStar" translatesAutoresizingMaskIntoConstraints="NO" id="Vpk-gH-Tdd" userLabel="Logo4">
+                                <rect key="frame" x="0.0" y="183" width="393" height="240"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ThirdStar" translatesAutoresizingMaskIntoConstraints="NO" id="tMW-wd-DHA" userLabel="Logo5">
+                                <rect key="frame" x="0.0" y="183" width="393" height="240"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SoapBxText" translatesAutoresizingMaskIntoConstraints="NO" id="Kns-qd-YxX">
+                                <rect key="frame" x="49.666666666666657" y="382" width="294" height="156"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="156" id="VRR-z4-Hvo"/>
+                                    <constraint firstAttribute="width" constant="294" id="lcR-cY-qde"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="subtitle" translatesAutoresizingMaskIntoConstraints="NO" id="GHU-HH-eGv">
+                                <rect key="frame" x="83" y="514" width="227" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="227" id="Tzn-oi-IB5"/>
+                                    <constraint firstAttribute="height" constant="42" id="wdd-Xi-Ybn"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="subtitle2" translatesAutoresizingMaskIntoConstraints="NO" id="TLD-ES-i9o">
+                                <rect key="frame" x="83" y="514" width="227" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="6Do-Tg-LHq"/>
+                                    <constraint firstAttribute="width" constant="227" id="Cfl-25-juW"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="smallBlueBalloon" translatesAutoresizingMaskIntoConstraints="NO" id="XE8-PZ-uc0">
+                                <rect key="frame" x="28" y="736" width="98" height="98"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="smallRedBalloon" translatesAutoresizingMaskIntoConstraints="NO" id="zAj-QD-0U2">
+                                <rect key="frame" x="147" y="736" width="98" height="98"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="smallGreenBalloon" translatesAutoresizingMaskIntoConstraints="NO" id="Sgb-Ky-BDL">
+                                <rect key="frame" x="267" y="736" width="98" height="98"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="iqv-8q-cFw"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="TLD-ES-i9o" firstAttribute="centerY" secondItem="ncT-KT-c6E" secondAttribute="centerY" constant="109" id="YlL-Wt-W80"/>
+                            <constraint firstItem="TLD-ES-i9o" firstAttribute="centerX" secondItem="ncT-KT-c6E" secondAttribute="centerX" id="eNz-UB-SJi"/>
+                            <constraint firstItem="Kns-qd-YxX" firstAttribute="centerX" secondItem="ncT-KT-c6E" secondAttribute="centerX" id="hov-IW-bA2"/>
+                            <constraint firstItem="GHU-HH-eGv" firstAttribute="centerX" secondItem="ncT-KT-c6E" secondAttribute="centerX" id="mCt-m9-fZj"/>
+                            <constraint firstItem="GHU-HH-eGv" firstAttribute="centerY" secondItem="ncT-KT-c6E" secondAttribute="centerY" constant="109" id="t9u-oB-NG3"/>
+                            <constraint firstItem="Kns-qd-YxX" firstAttribute="centerY" secondItem="ncT-KT-c6E" secondAttribute="centerY" constant="34" id="w8r-pH-uFE"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="blueBalloon" destination="yLq-Ya-MGc" id="JFI-3c-4sC"/>
+                        <outlet property="firstStar" destination="q09-dt-NkC" id="IZ7-OR-iap"/>
+                        <outlet property="greenBalloon" destination="oJn-r4-RLL" id="2vO-wz-1Yc"/>
+                        <outlet property="redBalloon" destination="mJ3-lt-QdZ" id="giJ-zn-gkZ"/>
+                        <outlet property="secondStar" destination="Vpk-gH-Tdd" id="4U7-Ti-VyC"/>
+                        <outlet property="smallBlueBalloon" destination="XE8-PZ-uc0" id="m0R-Ye-iqF"/>
+                        <outlet property="smallGreenBalloon" destination="Sgb-Ky-BDL" id="ay7-6g-Esx"/>
+                        <outlet property="smallRedBalloon" destination="zAj-QD-0U2" id="LtF-SW-nlm"/>
+                        <outlet property="soapBxText" destination="Kns-qd-YxX" id="9UO-ve-Djh"/>
+                        <outlet property="subtitle" destination="GHU-HH-eGv" id="oMv-3g-54e"/>
+                        <outlet property="subtitle2" destination="TLD-ES-i9o" id="4Mr-xg-h1q"/>
+                        <outlet property="thirdStar" destination="tMW-wd-DHA" id="tek-w7-uBd"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BdF-wJ-CJJ" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="11" y="-55"/>
+            <point key="canvasLocation" x="708" y="-56"/>
         </scene>
     </scenes>
     <resources>
+        <image name="BlueBalloon" width="1024" height="1024"/>
+        <image name="FirstStar" width="1024" height="1024"/>
+        <image name="GreenBalloon" width="1024" height="1024"/>
+        <image name="RedBalloon" width="1024" height="1024"/>
+        <image name="SecondStar" width="1024" height="1024"/>
+        <image name="SoapBxText" width="1024" height="350"/>
+        <image name="ThirdStar" width="1024" height="1024"/>
+        <image name="smallBlueBalloon" width="256" height="256"/>
+        <image name="smallGreenBalloon" width="256" height="256"/>
+        <image name="smallRedBalloon" width="256" height="256"/>
+        <image name="subtitle" width="1024" height="175"/>
+        <image name="subtitle2" width="1024" height="175"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

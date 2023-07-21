@@ -11,7 +11,8 @@ import OTLContaner
 protocol HomeItemCellDelegate {
     func homeItemCell(_ cell: HomeItemCell, didSelectProfile: Void)
     func homeItemCell(_ cell: HomeItemCell, didSelectComment: Void)
-    
+    func homeItemCell(_ cell: HomeItemCell, willOpenDotMenu: Bool)
+    func homeItemCell(_ cell: HomeItemCell, didSelectDotMenu: ThreeDotItemModel)
 }
 
 class HomeItemCell: AppTableViewCell {
@@ -37,6 +38,8 @@ class HomeItemCell: AppTableViewCell {
     @IBOutlet private weak var btnDislike: OTLPTButton!
     @IBOutlet private weak var btnComment: OTLPTButton!
     
+    //private
+    private var dotMenuView: ThreeDotMenuView?
     private var arrSoapbxTrends = ["Think Talk", "Circular Economy", "Global Affairs"]
     private var arrPolitician = ["Roger Wicker", "Narendra Modi", "Putin"]
     private var delegate:HomeItemCellDelegate?
@@ -47,6 +50,8 @@ class HomeItemCell: AppTableViewCell {
     }
     
     private func setupUI(){
+        viewMain.layer.cornerRadius = 10
+        
         imgProfile.layer.cornerRadius = imgProfile.frame.height/2
         lblProfileName.setTheme("Soapbx Admin", size: 18)
         lblPostLocation.setTheme("San Jose. CA. USA",size: 12)
@@ -77,7 +82,6 @@ class HomeItemCell: AppTableViewCell {
         btnComment.title?.setTheme("0", size: 14)
         btnComment.imageView?.image = UIImage(named: "ic_comments_grey")
                 
-        viewMain.layer.cornerRadius = 5
     }
 
     func setData(delegate:HomeItemCellDelegate){
@@ -94,6 +98,25 @@ class HomeItemCell: AppTableViewCell {
     
     @IBAction private func click_btnComment() {
         delegate?.homeItemCell(self, didSelectComment: Void())
+    }
+    
+    @IBAction private func click_threeDotMenu() {
+        self.delegate?.homeItemCell(self, willOpenDotMenu: true)
+        dotMenuView = viewMain.showThreeDotMenu(array: [
+            ThreeDotItemModel(title: .openProfile, icon: "ic_unfollow"),
+            ThreeDotItemModel(title: .hidePost("Robert Watson"), icon: "ic_hidePost"),
+            ThreeDotItemModel(title: .share, icon: "ic_share"),
+            ThreeDotItemModel(title: .report, icon: "ic_info"),
+            ThreeDotItemModel(title: .edit, icon: "ic_edit"),
+            ThreeDotItemModel(title: .delete, icon: "delete"),
+                                         ])
+        { obj in
+            self.delegate?.homeItemCell(self, didSelectDotMenu: obj)
+        }
+    }
+    
+    public func hideThreeDotMenu(){
+        dotMenuView?.hideSelf()
     }
 }
 

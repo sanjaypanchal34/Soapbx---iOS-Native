@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -10,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VerificationCodeVC" customModule="SoapBx" customModuleProvider="target">
             <connections>
-                <outlet property="btnNext" destination="vnS-Ry-cPV" id="wKi-nu-Rik"/>
+                <outlet property="btnNext" destination="5ju-3a-zLi" id="pcT-Zr-Tmx"/>
                 <outlet property="lblDescription" destination="x4R-z6-TPF" id="g0X-5J-mZu"/>
                 <outlet property="lblTitle" destination="SnR-NI-88D" id="gGf-cw-WpU"/>
                 <outlet property="otpField" destination="idC-iu-FTb" id="gfr-Zr-SqK"/>
@@ -46,27 +47,26 @@ your email test@yopmail.com</string>
                                 <constraint firstAttribute="height" constant="50" id="wTQ-nW-ddD"/>
                             </constraints>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vnS-Ry-cPV">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5ju-3a-zLi" customClass="OTLTextButton" customModule="OTLContaner">
                             <rect key="frame" x="20" y="206.66666666666669" width="353" height="50"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="50" id="813-a8-otk"/>
+                                <constraint firstAttribute="height" constant="50" id="pI6-cK-i65"/>
                             </constraints>
-                            <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" title="Button"/>
                             <connections>
-                                <action selector="click_resend" destination="-1" eventType="touchUpInside" id="K6s-pF-AW9"/>
+                                <action selector="click_resend" destination="-1" eventType="touchDragInside" id="mWs-5p-EZ3"/>
                             </connections>
-                        </button>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstItem="idC-iu-FTb" firstAttribute="trailing" secondItem="x4R-z6-TPF" secondAttribute="trailing" id="4d1-iB-Ntf"/>
                         <constraint firstItem="x4R-z6-TPF" firstAttribute="leading" secondItem="SnR-NI-88D" secondAttribute="leading" id="6o1-VU-Xdx"/>
-                        <constraint firstItem="vnS-Ry-cPV" firstAttribute="top" secondItem="idC-iu-FTb" secondAttribute="bottom" constant="20" id="GqA-Zx-blI"/>
+                        <constraint firstAttribute="trailing" secondItem="5ju-3a-zLi" secondAttribute="trailing" constant="20" id="NYi-ls-tk8"/>
+                        <constraint firstItem="5ju-3a-zLi" firstAttribute="leading" secondItem="SeZ-sX-zho" secondAttribute="leading" constant="20" id="PtM-3c-qhk"/>
                         <constraint firstItem="idC-iu-FTb" firstAttribute="top" secondItem="x4R-z6-TPF" secondAttribute="bottom" constant="20" id="ReX-5z-JOh"/>
-                        <constraint firstItem="vnS-Ry-cPV" firstAttribute="leading" secondItem="idC-iu-FTb" secondAttribute="leading" id="YP2-so-adr"/>
+                        <constraint firstItem="5ju-3a-zLi" firstAttribute="top" secondItem="idC-iu-FTb" secondAttribute="bottom" constant="20" id="X09-Fm-8j5"/>
                         <constraint firstItem="x4R-z6-TPF" firstAttribute="trailing" secondItem="SnR-NI-88D" secondAttribute="trailing" id="Zcc-1F-etW"/>
-                        <constraint firstItem="vnS-Ry-cPV" firstAttribute="trailing" secondItem="idC-iu-FTb" secondAttribute="trailing" id="bRr-YV-I2S"/>
                         <constraint firstItem="x4R-z6-TPF" firstAttribute="top" secondItem="SnR-NI-88D" secondAttribute="bottom" constant="15" id="oEw-TY-Tz5"/>
                         <constraint firstItem="SnR-NI-88D" firstAttribute="leading" secondItem="SeZ-sX-zho" secondAttribute="leading" constant="20" id="tlc-4D-gTu"/>
                         <constraint firstItem="idC-iu-FTb" firstAttribute="leading" secondItem="x4R-z6-TPF" secondAttribute="leading" id="ukA-ZD-8Vw"/>

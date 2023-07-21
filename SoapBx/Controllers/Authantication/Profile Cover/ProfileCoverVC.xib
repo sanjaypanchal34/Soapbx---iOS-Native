@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -10,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileCoverVC" customModule="SoapBx" customModuleProvider="target">
             <connections>
-                <outlet property="btnNext" destination="RPs-p6-Aa3" id="v1d-hU-MGn"/>
+                <outlet property="btnNext" destination="Qvk-IC-9y6" id="Oty-7q-j8n"/>
                 <outlet property="btnProfile" destination="h7a-de-IKg" id="DDE-ux-EkH"/>
                 <outlet property="lblAddCover" destination="jc2-c6-At5" id="I6H-6N-eE4"/>
                 <outlet property="lblDescription" destination="z4C-yb-P82" id="ade-6t-4hA"/>
@@ -107,33 +108,32 @@ can identifv each other</string>
                                 </label>
                             </subviews>
                         </stackView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RPs-p6-Aa3">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qvk-IC-9y6" customClass="OTLTextButton" customModule="OTLContaner">
                             <rect key="frame" x="20" y="458.66666666666663" width="353" height="50"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="50" id="QOe-Xr-Qmr"/>
+                                <constraint firstAttribute="height" constant="50" id="2NL-mx-6EJ"/>
                             </constraints>
-                            <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" title="Button"/>
                             <connections>
-                                <action selector="click_btnNext" destination="-1" eventType="touchUpInside" id="7Ra-Yn-9hF"/>
+                                <action selector="click_btnNext" destination="-1" eventType="touchUpInside" id="sV6-Q5-fEc"/>
                             </connections>
-                        </button>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
+                        <constraint firstItem="Qvk-IC-9y6" firstAttribute="top" secondItem="FcU-Pn-0pM" secondAttribute="bottom" constant="30" id="8IN-4j-rwM"/>
                         <constraint firstItem="FcU-Pn-0pM" firstAttribute="top" secondItem="l0n-Ev-rWK" secondAttribute="bottom" constant="20" id="9fJ-9D-wQb"/>
                         <constraint firstItem="l0n-Ev-rWK" firstAttribute="leading" secondItem="1ql-hx-tYh" secondAttribute="leading" constant="20" id="AHu-Dw-kq9"/>
-                        <constraint firstItem="RPs-p6-Aa3" firstAttribute="leading" secondItem="1ql-hx-tYh" secondAttribute="leading" constant="20" id="Bch-gu-KCK"/>
                         <constraint firstAttribute="trailing" secondItem="l0n-Ev-rWK" secondAttribute="trailing" constant="20" id="O0a-NI-8ES"/>
+                        <constraint firstItem="Qvk-IC-9y6" firstAttribute="leading" secondItem="1ql-hx-tYh" secondAttribute="leading" constant="20" id="QFo-5o-zPC"/>
+                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Qvk-IC-9y6" secondAttribute="bottom" constant="20" id="Ruj-ly-jeA"/>
                         <constraint firstItem="l0n-Ev-rWK" firstAttribute="top" secondItem="iTm-O1-ZWz" secondAttribute="bottom" constant="30" id="Uxq-xw-reZ"/>
                         <constraint firstItem="iTm-O1-ZWz" firstAttribute="top" secondItem="1ql-hx-tYh" secondAttribute="top" constant="20" id="Vh5-3z-JjA"/>
-                        <constraint firstAttribute="trailing" secondItem="RPs-p6-Aa3" secondAttribute="trailing" constant="20" id="WRO-Iz-rJJ"/>
                         <constraint firstItem="iTm-O1-ZWz" firstAttribute="leading" secondItem="1ql-hx-tYh" secondAttribute="leading" constant="20" id="X3q-cr-EAL"/>
                         <constraint firstAttribute="trailing" secondItem="iTm-O1-ZWz" secondAttribute="trailing" constant="20" id="fsZ-fL-VPU"/>
                         <constraint firstItem="FcU-Pn-0pM" firstAttribute="leading" secondItem="1ql-hx-tYh" secondAttribute="leading" constant="20" id="hJy-q8-QVR"/>
-                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="RPs-p6-Aa3" secondAttribute="bottom" constant="20" id="lzL-MG-bc9"/>
-                        <constraint firstItem="RPs-p6-Aa3" firstAttribute="top" secondItem="FcU-Pn-0pM" secondAttribute="bottom" constant="30" id="lzx-fD-uyZ"/>
                         <constraint firstAttribute="trailing" secondItem="FcU-Pn-0pM" secondAttribute="trailing" constant="20" id="sRF-hk-qdH"/>
+                        <constraint firstAttribute="trailing" secondItem="Qvk-IC-9y6" secondAttribute="trailing" constant="20" id="wlR-0o-lLN"/>
                     </constraints>
                 </view>
             </subviews>

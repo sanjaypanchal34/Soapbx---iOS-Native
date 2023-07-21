@@ -15,7 +15,7 @@ class VerificationCodeVC: UIViewController {
     
     @IBOutlet private weak var otpField: OTLOTPView!
     
-    @IBOutlet private weak var btnNext: UIButton!
+    @IBOutlet private weak var btnNext: OTLTextButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()

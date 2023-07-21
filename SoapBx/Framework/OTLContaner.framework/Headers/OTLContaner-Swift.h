@@ -368,6 +368,8 @@ SWIFT_CLASS("_TtC11OTLContaner9OTLHeader")
 SWIFT_CLASS("_TtC11OTLContaner14OTLImageButton")
 @interface OTLImageButton : UIControl
 @property (nonatomic, strong) UIColor * _Null_unspecified tintColor;
+@property (nonatomic) UIViewContentMode contentMode;
+@property (nonatomic, strong) IBInspectable UIImage * _Nullable image;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
@@ -393,6 +395,20 @@ SWIFT_CLASS("_TtC11OTLContaner11OTLPTButton")
 @property (nonatomic, weak) IBOutlet UIImageView * _Nullable imageView;
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC11OTLContaner16OTLPasswordField")
+@interface OTLPasswordField : UIView
+@property (nonatomic, strong) UIColor * _Nullable backgroundColor;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+- (nonnull instancetype)initWithFrame:(CGRect)frame SWIFT_UNAVAILABLE;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
+@end
+
+
+@interface OTLPasswordField (SWIFT_EXTENSION(OTLContaner)) <UITextViewDelegate>
 @end
 
 

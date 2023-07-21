@@ -10,12 +10,14 @@ import OTLContaner
 
 class ForgotPasswrodVC: UIViewController {
     
+    @IBOutlet private weak var headerView: OTLHeader!
+    
     @IBOutlet private weak var lblTitle: UILabel!
     @IBOutlet private weak var lblSubtitle: UILabel!
     
     @IBOutlet private weak var txtEmail: OTLTextField!
     
-    @IBOutlet private weak var btnNext: UIButton!
+    @IBOutlet private weak var btnNext: OTLTextButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,10 +41,7 @@ class ForgotPasswrodVC: UIViewController {
     
     
     //Actions
-    @IBAction private func click_back() {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
+   
     @IBAction private func click_Next() {
         
     }

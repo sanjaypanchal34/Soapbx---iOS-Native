@@ -14,13 +14,13 @@ class LoginVC: UIViewController {
     @IBOutlet private weak var lblSubtitle: UILabel!
     
     @IBOutlet private weak var txtEmail: OTLTextField!
-    @IBOutlet private weak var txtPassword: OTLTextField!
+    @IBOutlet private weak var txtPassword: OTLPasswordField!
     
     @IBOutlet private weak var imgRemamberMe: UIImageView!
     @IBOutlet private weak var lblRemamberMe: UILabel!
     @IBOutlet private weak var btnForgotPasswrod: UIButton!
     
-    @IBOutlet private weak var btnSignin: UIButton!
+    @IBOutlet private weak var btnSignin: OTLTextButton!
     
     @IBOutlet private weak var btnContinueGuest: UIButton!
     @IBOutlet private weak var lblNotAMamber: UILabel!
@@ -43,8 +43,7 @@ class LoginVC: UIViewController {
         txtEmail.setTheme(placeholder: "Email",
                           leftIcon: UIImage(named: "ic_email"))
         
-        txtPassword.setTheme(placeholder: "Password",
-                             leftIcon: UIImage(named: "ic_lock"))
+        txtPassword.setTheme(placeholder: "Password")
         
         lblRemamberMe.setTheme("Remember me")
         
@@ -60,8 +59,8 @@ class LoginVC: UIViewController {
     
     //Actions
     @IBAction private func click_Singin() {
-        let vc = ProfileCoverVC()
-        navigationController?.pushViewController(vc, animated: true)
+        let vc = HomeVC()
+        mackRootView(vc)
     }
     
     @IBAction private func click_ForgotPassword() {
@@ -83,7 +82,7 @@ class LoginVC: UIViewController {
     
     @IBAction private func click_guest() {
         let vc = HomeVC()
-        self.navigationController?.pushViewController(vc, animated: true)
+        mackRootView(vc)
     }
     
     @IBAction private func click_SignUp() {

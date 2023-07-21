@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -11,6 +12,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeVC" customModule="SoapBx" customModuleProvider="target">
             <connections>
                 <outlet property="bottomTab" destination="VYu-wj-ci6" id="vae-FL-sWF"/>
+                <outlet property="btnManu" destination="vSu-SM-RFS" id="FcF-3t-zgX"/>
+                <outlet property="btnMessage" destination="ejy-ee-XkT" id="zvv-np-OFS"/>
+                <outlet property="btnNotification" destination="T7a-yc-9ki" id="4mN-30-70k"/>
                 <outlet property="tblList" destination="diD-OG-HU5" id="mAJ-OS-DTU"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewTradPost" destination="w6o-sK-Lxa" id="coS-Vm-7kV"/>
@@ -34,35 +38,35 @@
                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nNm-ot-epM">
                             <rect key="frame" x="243" y="0.0" width="135" height="45"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WUl-Ju-STS">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ejy-ee-XkT" customClass="OTLImageButton" customModule="OTLContaner">
                                     <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="45" id="8cw-62-hJf"/>
-                                        <constraint firstAttribute="width" secondItem="WUl-Ju-STS" secondAttribute="height" multiplier="1:1" id="ZVO-Zd-8IS"/>
+                                        <constraint firstAttribute="width" secondItem="ejy-ee-XkT" secondAttribute="height" multiplier="1:1" id="lru-r0-DkJ"/>
                                     </constraints>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" image="ic_sendRed"/>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ddo-9H-LNq">
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T7a-yc-9ki" customClass="OTLImageButton" customModule="OTLContaner">
                                     <rect key="frame" x="45" y="0.0" width="45" height="45"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="45" id="pta-HY-6CN"/>
-                                        <constraint firstAttribute="width" secondItem="ddo-9H-LNq" secondAttribute="height" multiplier="1:1" id="q1j-aX-v6g"/>
+                                        <constraint firstAttribute="width" secondItem="T7a-yc-9ki" secondAttribute="height" multiplier="1:1" id="6ej-d1-Cph"/>
                                     </constraints>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" image="ic_bellIcon"/>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f41-mS-rBg">
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vSu-SM-RFS" customClass="OTLImageButton" customModule="OTLContaner">
                                     <rect key="frame" x="90" y="0.0" width="45" height="45"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="45" id="ryy-87-u9F"/>
+                                        <constraint firstAttribute="width" secondItem="vSu-SM-RFS" secondAttribute="height" multiplier="1:1" id="m5M-C8-cgV"/>
                                     </constraints>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" image="ic_drawer"/>
-                                </button>
+                                    <connections>
+                                        <action selector="click_menu" destination="-1" eventType="touchUpInside" id="1RP-JN-I0e"/>
+                                    </connections>
+                                </view>
                             </subviews>
                             <constraints>
-                                <constraint firstItem="f41-mS-rBg" firstAttribute="width" secondItem="f41-mS-rBg" secondAttribute="height" multiplier="1:1" id="JVo-2R-kgT"/>
+                                <constraint firstAttribute="height" constant="45" id="Rxs-AT-XQb"/>
+                                <constraint firstItem="vSu-SM-RFS" firstAttribute="width" secondItem="vSu-SM-RFS" secondAttribute="height" multiplier="1:1" id="f4R-SZ-CeA"/>
+                                <constraint firstItem="T7a-yc-9ki" firstAttribute="width" secondItem="T7a-yc-9ki" secondAttribute="height" multiplier="1:1" id="hPI-36-m5n"/>
                             </constraints>
                         </stackView>
                     </subviews>
@@ -71,7 +75,6 @@
                         <constraint firstAttribute="bottom" secondItem="nNm-ot-epM" secondAttribute="bottom" constant="5" id="2nL-gk-UIG"/>
                         <constraint firstAttribute="bottom" secondItem="QTv-nf-GuV" secondAttribute="bottom" constant="5" id="7SS-C6-0ro"/>
                         <constraint firstAttribute="trailing" secondItem="nNm-ot-epM" secondAttribute="trailing" constant="15" id="Ux6-tT-f6g"/>
-                        <constraint firstAttribute="height" constant="50" id="qbv-d5-Z1P"/>
                         <constraint firstItem="QTv-nf-GuV" firstAttribute="leading" secondItem="oiy-4Q-Hix" secondAttribute="leading" constant="15" id="uHS-Jp-kOF"/>
                     </constraints>
                 </view>
@@ -140,15 +143,13 @@
                 <constraint firstItem="VYu-wj-ci6" firstAttribute="top" secondItem="w6o-sK-Lxa" secondAttribute="bottom" id="WhZ-fs-kyW"/>
                 <constraint firstItem="w6o-sK-Lxa" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="irO-Ya-ErA"/>
                 <constraint firstItem="VYu-wj-ci6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="kMT-i0-Gdj"/>
+                <constraint firstItem="QTv-nf-GuV" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="ukE-g2-M5e"/>
                 <constraint firstAttribute="bottom" secondItem="VYu-wj-ci6" secondAttribute="bottom" id="wCg-Nl-dKg"/>
             </constraints>
             <point key="canvasLocation" x="-13" y="-33"/>
         </view>
     </objects>
     <resources>
-        <image name="ic_bellIcon" width="20" height="23.666666030883789"/>
-        <image name="ic_drawer" width="24.333333969116211" height="17"/>
-        <image name="ic_sendRed" width="19.666666030883789" height="19.666666030883789"/>
         <image name="logoText" width="276" height="72"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

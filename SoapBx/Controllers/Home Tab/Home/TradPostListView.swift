@@ -24,6 +24,7 @@ class TradPostListView: UIView {
         DummyTrends(title: "Global Affairs", colorHax: "#FBBA10"),
     ]
     private var selectedIndex = 0
+    private var dotMenuIndexPath: IndexPath?
     
     var viewType:TradPostListViewType = .fromHome
     
@@ -51,7 +52,6 @@ class TradPostListView: UIView {
         self.viewType = viewType
         backgroundColor = UIColor.lightGrey
         tblList.register(["HomeItemCell"], delegate: self, dataSource: self)
-        tblList.delegate = self
         collectionTrends.register(["TrendsItemCell"], delegate: self, dataSource: self)
     }
 }
@@ -111,6 +111,7 @@ extension TradPostListView: UICollectionViewDelegateFlowLayout {
     
 }
 extension TradPostListView: HomeItemCellDelegate{
+    
     func homeItemCell(_ cell: HomeItemCell, didSelectProfile: Void) {
         let vc = ProfileVC()
         vc.screenType = .fromOtherUserProfile
@@ -121,5 +122,34 @@ extension TradPostListView: HomeItemCellDelegate{
         let vc = CommentVC()
 //        vc.screenType = .fromOtherUserProfile
         rootViewController.pushViewController(vc, animated: true)
+    }
+    
+    func homeItemCell(_ cell: HomeItemCell, willOpenDotMenu: Bool) {
+        if let indexPath = dotMenuIndexPath{
+            if let cell = tblList.cellForRow(at: indexPath) as? HomeItemCell{
+                cell.hideThreeDotMenu()
+            }
+        }
+        self.dotMenuIndexPath = cell.indexPath
+    }
+    
+    func homeItemCell(_ cell: HomeItemCell, didSelectDotMenu: ThreeDotItemModel) {
+        switch didSelectDotMenu.title {
+        case .openProfile:
+            break;
+        case .hidePost(_):
+            break;
+        case .share:
+            break;
+        case .report:
+            break;
+        case .edit:
+            let vc = CreatePostVC()
+            vc.screenType = .editPost
+            rootViewController.pushViewController(vc, animated: true)
+            break;
+        case .delete:
+            break;
+        }
     }
 }

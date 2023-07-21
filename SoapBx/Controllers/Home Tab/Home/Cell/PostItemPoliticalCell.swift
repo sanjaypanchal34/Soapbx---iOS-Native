@@ -34,4 +34,12 @@ class PostItemPoliticalCell: AppCollectionViewCell {
         }
     }
 
+    func setCreatePost(_ title: String) {
+        viewMain.backgroundColor = .primaryBlue
+        lblTitle.font = AppFont.medium.font(size: 14)
+        lblTitle.text = " "+title+" "
+        DispatchQueue.main.async {
+            self.viewMain.layer.cornerRadius =  self.viewMain.frame.height/2
+        }
+    }
 }

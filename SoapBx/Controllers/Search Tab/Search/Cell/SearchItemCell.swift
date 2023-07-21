@@ -19,6 +19,8 @@ class SearchItemCell: AppTableViewCell {
         imgProfile.image = UIImage(named: "Logo")
         imgProfile.layer.cornerRadius = imgProfile.frame.height / 2
         lblProfileName.setTheme("Todd Young", font: .semibold)
+        btnCancel.emptyTitle()
+        btnCancel.tintColor = .titleGrey
     }
 
     func setDataForSearchTab() {

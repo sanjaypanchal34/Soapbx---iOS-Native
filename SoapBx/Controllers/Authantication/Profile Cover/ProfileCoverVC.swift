@@ -17,7 +17,7 @@ class ProfileCoverVC: UIViewController {
     
     @IBOutlet private weak var btnProfile: UIButton!
     
-    @IBOutlet private weak var btnNext: UIButton!
+    @IBOutlet private weak var btnNext: OTLTextButton!
     
     @IBOutlet private weak var lblDescription: UILabel!
     @IBOutlet private weak var lblNotes: UILabel!
@@ -35,6 +35,7 @@ class ProfileCoverVC: UIViewController {
         lblAddCover.setTheme("Add cover phote\n(Optional)", color: .titleGrey, font: .regular, size: 12)
         
         btnProfile.layer.cornerRadius = btnProfile.frame.height/2
+        btnProfile.emptyTitle()
         
         viewAddCover.cornerRadius = 10
         viewAddCover.dashColor = UIColor.titleRed

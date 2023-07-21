@@ -92,6 +92,7 @@ extension SearchVC: OTLBottomTabBarDelegate {
         case .search:
             break
         case .profile:
+            mackRootView(ProfileVC())
             break
         }
     }

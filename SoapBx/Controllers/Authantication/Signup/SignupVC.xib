@@ -232,34 +232,30 @@
                                     </subviews>
                                 </stackView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X9c-pn-Uqc" customClass="UIControl">
-                                    <rect key="frame" x="20" y="668.33333333333337" width="121" height="35"/>
+                                    <rect key="frame" x="20.000000000000007" y="668.33333333333337" width="100.66666666666669" height="35"/>
                                     <subviews>
-                                        <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="gds-uU-wjK">
-                                            <rect key="frame" x="0.0" y="0.0" width="121" height="35"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_unCheckbox" translatesAutoresizingMaskIntoConstraints="NO" id="6e3-N6-Vnd">
-                                                    <rect key="frame" x="0.0" y="7.6666666666666288" width="20" height="20"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="20" id="Dxn-gP-1zv"/>
-                                                        <constraint firstAttribute="width" secondItem="6e3-N6-Vnd" secondAttribute="height" multiplier="1:1" id="Fj1-df-oBF"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I accept" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IuP-Rf-wRr">
-                                                    <rect key="frame" x="25" y="7.3333333333332558" width="96" height="20.333333333333329"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </stackView>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_unCheckbox" translatesAutoresizingMaskIntoConstraints="NO" id="6e3-N6-Vnd">
+                                            <rect key="frame" x="0.0" y="7.6666666666666288" width="20" height="20"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="20" id="Dxn-gP-1zv"/>
+                                                <constraint firstAttribute="width" secondItem="6e3-N6-Vnd" secondAttribute="height" multiplier="1:1" id="Fj1-df-oBF"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I accept" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IuP-Rf-wRr">
+                                            <rect key="frame" x="29.999999999999996" y="7.3333333333332558" width="60.666666666666657" height="20.333333333333329"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
-                                        <constraint firstItem="gds-uU-wjK" firstAttribute="leading" secondItem="X9c-pn-Uqc" secondAttribute="leading" id="4i3-Rn-Ss0"/>
-                                        <constraint firstItem="gds-uU-wjK" firstAttribute="top" secondItem="X9c-pn-Uqc" secondAttribute="top" id="bej-9A-ncX"/>
+                                        <constraint firstItem="IuP-Rf-wRr" firstAttribute="centerY" secondItem="X9c-pn-Uqc" secondAttribute="centerY" id="cRy-qF-DOF"/>
                                         <constraint firstAttribute="height" constant="35" id="hyF-BF-MKG"/>
-                                        <constraint firstAttribute="trailing" secondItem="gds-uU-wjK" secondAttribute="trailing" id="tde-Tt-GI2"/>
-                                        <constraint firstAttribute="bottom" secondItem="gds-uU-wjK" secondAttribute="bottom" id="v1O-sm-b1g"/>
+                                        <constraint firstItem="6e3-N6-Vnd" firstAttribute="centerY" secondItem="X9c-pn-Uqc" secondAttribute="centerY" id="liB-cO-T3X"/>
+                                        <constraint firstItem="6e3-N6-Vnd" firstAttribute="leading" secondItem="X9c-pn-Uqc" secondAttribute="leading" id="p9u-qT-5BP"/>
+                                        <constraint firstAttribute="trailing" secondItem="IuP-Rf-wRr" secondAttribute="trailing" constant="10" id="vMV-wt-G32"/>
+                                        <constraint firstItem="IuP-Rf-wRr" firstAttribute="leading" secondItem="6e3-N6-Vnd" secondAttribute="trailing" constant="10" id="x2f-3C-MKx"/>
                                     </constraints>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="string" keyPath="title" value="Remamber me"/>

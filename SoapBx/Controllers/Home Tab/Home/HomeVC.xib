@@ -26,7 +26,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oiy-4Q-Hix">
-                    <rect key="frame" x="0.0" y="59" width="393" height="50"/>
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="50"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoText" translatesAutoresizingMaskIntoConstraints="NO" id="QTv-nf-GuV">
                             <rect key="frame" x="15" y="0.0" width="135" height="45"/>
@@ -44,6 +44,9 @@
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="ejy-ee-XkT" secondAttribute="height" multiplier="1:1" id="lru-r0-DkJ"/>
                                     </constraints>
+                                    <connections>
+                                        <action selector="click_messageList" destination="-1" eventType="touchUpInside" id="ntw-Uz-Gxs"/>
+                                    </connections>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T7a-yc-9ki" customClass="OTLImageButton" customModule="OTLContaner">
                                     <rect key="frame" x="45" y="0.0" width="45" height="45"/>
@@ -51,6 +54,9 @@
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="T7a-yc-9ki" secondAttribute="height" multiplier="1:1" id="6ej-d1-Cph"/>
                                     </constraints>
+                                    <connections>
+                                        <action selector="click_notification" destination="-1" eventType="touchUpInside" id="eGa-2i-3qw"/>
+                                    </connections>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vSu-SM-RFS" customClass="OTLImageButton" customModule="OTLContaner">
                                     <rect key="frame" x="90" y="0.0" width="45" height="45"/>
@@ -79,7 +85,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w6o-sK-Lxa" customClass="TradPostListView" customModule="SoapBx" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="109" width="393" height="678"/>
+                    <rect key="frame" x="0.0" y="50" width="393" height="737"/>
                     <subviews>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="EH2-dL-8H2">
                             <rect key="frame" x="0.0" y="0.0" width="393" height="65"/>
@@ -99,7 +105,7 @@
                             </connections>
                         </collectionView>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="diD-OG-HU5">
-                            <rect key="frame" x="0.0" y="65" width="393" height="608"/>
+                            <rect key="frame" x="0.0" y="65" width="393" height="667"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>

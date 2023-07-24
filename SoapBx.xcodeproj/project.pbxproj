@@ -14,6 +14,8 @@
 		042A6A9C2A5F1C9500BB1D71 /* FollowFolloingVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 042A6A9A2A5F1C9500BB1D71 /* FollowFolloingVC.xib */; };
 		0439B7412A60612100B74568 /* CommentItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0439B73F2A60612100B74568 /* CommentItemCell.swift */; };
 		0439B7422A60612100B74568 /* CommentItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0439B7402A60612100B74568 /* CommentItemCell.xib */; };
+		0439FE742A6E472000E52053 /* OTLContaner.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0439FE722A6E471400E52053 /* OTLContaner.xcframework */; };
+		0439FE752A6E472000E52053 /* OTLContaner.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0439FE722A6E471400E52053 /* OTLContaner.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		043E26632A5C5EDE00695C2D /* PublicFiguresVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E26612A5C5EDE00695C2D /* PublicFiguresVC.swift */; };
 		043E26642A5C5EDE00695C2D /* PublicFiguresVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 043E26622A5C5EDE00695C2D /* PublicFiguresVC.xib */; };
 		043E266A2A5C64E300695C2D /* PublicFiguresItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E26682A5C64E300695C2D /* PublicFiguresItemCell.swift */; };
@@ -28,8 +30,12 @@
 		043E268A2A5D553800695C2D /* TradPostListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E26892A5D553800695C2D /* TradPostListView.swift */; };
 		0442A55C2A57191500661988 /* ProfileCoverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0442A55A2A57191500661988 /* ProfileCoverVC.swift */; };
 		0442A55D2A57191500661988 /* ProfileCoverVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0442A55B2A57191500661988 /* ProfileCoverVC.xib */; };
-		044FA7742A6A8477001E0B93 /* OTLContaner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 044FA7722A6A8472001E0B93 /* OTLContaner.framework */; };
-		044FA7752A6A8477001E0B93 /* OTLContaner.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 044FA7722A6A8472001E0B93 /* OTLContaner.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		044C01C42A6BF42C00E79AD2 /* PollsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044C01C22A6BF42C00E79AD2 /* PollsListVC.swift */; };
+		044C01C52A6BF42C00E79AD2 /* PollsListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 044C01C32A6BF42C00E79AD2 /* PollsListVC.xib */; };
+		044C01C92A6BF45600E79AD2 /* PostPollsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044C01C72A6BF45600E79AD2 /* PostPollsVC.swift */; };
+		044C01CA2A6BF45600E79AD2 /* PostPollsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 044C01C82A6BF45600E79AD2 /* PostPollsVC.xib */; };
+		044C01D22A6C029200E79AD2 /* PostPollsItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044C01D02A6C029200E79AD2 /* PostPollsItemCell.swift */; };
+		044C01D32A6C029200E79AD2 /* PostPollsItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 044C01D12A6C029200E79AD2 /* PostPollsItemCell.xib */; };
 		0459B58B2A680CC10096802C /* NotificationSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0459B5892A680CC10096802C /* NotificationSettingVC.swift */; };
 		0459B58C2A680CC10096802C /* NotificationSettingVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0459B58A2A680CC10096802C /* NotificationSettingVC.xib */; };
 		0459B5902A680CF60096802C /* NotificationSettingItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0459B58E2A680CF60096802C /* NotificationSettingItemCell.swift */; };
@@ -46,6 +52,7 @@
 		04749C0F2A6935DB00A67A96 /* CMSPageVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04749C0D2A6935DB00A67A96 /* CMSPageVC.xib */; };
 		04749C2E2A6989DD00A67A96 /* ConnectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04749C2C2A6989DD00A67A96 /* ConnectionVC.swift */; };
 		04749C2F2A6989DD00A67A96 /* ConnectionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04749C2D2A6989DD00A67A96 /* ConnectionVC.xib */; };
+		047604FC2A6BD36C00ED9AA6 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047604FB2A6BD36C00ED9AA6 /* Toast.swift */; };
 		047CACC42A56843900A64779 /* ForgotPasswrodVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047CACC22A56843900A64779 /* ForgotPasswrodVC.swift */; };
 		047CACC52A56843900A64779 /* ForgotPasswrodVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047CACC32A56843900A64779 /* ForgotPasswrodVC.xib */; };
 		047DB0772A5950D3003DFE41 /* VerificationCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047DB0752A5950D3003DFE41 /* VerificationCodeVC.swift */; };
@@ -78,6 +85,12 @@
 		049618DC2A54123E0037001B /* Configration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049618DB2A54123E0037001B /* Configration.swift */; };
 		049A0A3B2A5C53CA008A4CAF /* TrendsItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A0A392A5C53CA008A4CAF /* TrendsItemCell.swift */; };
 		049A0A3C2A5C53CA008A4CAF /* TrendsItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 049A0A3A2A5C53CA008A4CAF /* TrendsItemCell.xib */; };
+		049AE19B2A6C22A8001FAA65 /* NotificationListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049AE1992A6C22A8001FAA65 /* NotificationListVC.swift */; };
+		049AE19C2A6C22A8001FAA65 /* NotificationListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 049AE19A2A6C22A8001FAA65 /* NotificationListVC.xib */; };
+		049AE1A02A6C24E7001FAA65 /* MessageListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049AE19E2A6C24E7001FAA65 /* MessageListVC.swift */; };
+		049AE1A12A6C24E7001FAA65 /* MessageListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 049AE19F2A6C24E7001FAA65 /* MessageListVC.xib */; };
+		049AE1A52A6C28A8001FAA65 /* NotificationListItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049AE1A32A6C28A8001FAA65 /* NotificationListItemCell.swift */; };
+		049AE1A62A6C28A8001FAA65 /* NotificationListItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 049AE1A42A6C28A8001FAA65 /* NotificationListItemCell.xib */; };
 		049D887F2A52D5D600876D27 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049D887E2A52D5D600876D27 /* AppDelegate.swift */; };
 		049D88812A52D5D600876D27 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049D88802A52D5D600876D27 /* SceneDelegate.swift */; };
 		049D88862A52D5D600876D27 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 049D88842A52D5D600876D27 /* Main.storyboard */; };
@@ -91,6 +104,8 @@
 		049D88A72A52D9A800876D27 /* SFProDisplay-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 049D88A32A52D9A800876D27 /* SFProDisplay-Medium.ttf */; };
 		049D88A82A52D9A800876D27 /* SFProDisplay-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 049D88A42A52D9A800876D27 /* SFProDisplay-Bold.ttf */; };
 		049D88AC2A52DA4B00876D27 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 049D88AE2A52DA4B00876D27 /* Localizable.strings */; };
+		04A169102A6D41360024EA7F /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A1690E2A6D41360024EA7F /* ChatVC.swift */; };
+		04A169112A6D41360024EA7F /* ChatVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04A1690F2A6D41360024EA7F /* ChatVC.xib */; };
 		04C17CB42A5478220034450A /* Extantion_UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C17CB32A5478220034450A /* Extantion_UILabel.swift */; };
 		04CA0DFE2A6403B20043C530 /* ThreeDotItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CA0DFC2A6403B20043C530 /* ThreeDotItemCell.swift */; };
 		04CA0DFF2A6403B20043C530 /* ThreeDotItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04CA0DFD2A6403B20043C530 /* ThreeDotItemCell.xib */; };
@@ -122,7 +137,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				044FA7752A6A8477001E0B93 /* OTLContaner.framework in Embed Frameworks */,
+				0439FE752A6E472000E52053 /* OTLContaner.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,6 +152,7 @@
 		042A6A9A2A5F1C9500BB1D71 /* FollowFolloingVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FollowFolloingVC.xib; sourceTree = "<group>"; };
 		0439B73F2A60612100B74568 /* CommentItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentItemCell.swift; sourceTree = "<group>"; };
 		0439B7402A60612100B74568 /* CommentItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentItemCell.xib; sourceTree = "<group>"; };
+		0439FE722A6E471400E52053 /* OTLContaner.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = OTLContaner.xcframework; sourceTree = "<group>"; };
 		043E26612A5C5EDE00695C2D /* PublicFiguresVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicFiguresVC.swift; sourceTree = "<group>"; };
 		043E26622A5C5EDE00695C2D /* PublicFiguresVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PublicFiguresVC.xib; sourceTree = "<group>"; };
 		043E26682A5C64E300695C2D /* PublicFiguresItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicFiguresItemCell.swift; sourceTree = "<group>"; };
@@ -151,7 +167,12 @@
 		043E26892A5D553800695C2D /* TradPostListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradPostListView.swift; sourceTree = "<group>"; };
 		0442A55A2A57191500661988 /* ProfileCoverVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoverVC.swift; sourceTree = "<group>"; };
 		0442A55B2A57191500661988 /* ProfileCoverVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileCoverVC.xib; sourceTree = "<group>"; };
-		044FA7722A6A8472001E0B93 /* OTLContaner.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OTLContaner.framework; sourceTree = "<group>"; };
+		044C01C22A6BF42C00E79AD2 /* PollsListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollsListVC.swift; sourceTree = "<group>"; };
+		044C01C32A6BF42C00E79AD2 /* PollsListVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PollsListVC.xib; sourceTree = "<group>"; };
+		044C01C72A6BF45600E79AD2 /* PostPollsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPollsVC.swift; sourceTree = "<group>"; };
+		044C01C82A6BF45600E79AD2 /* PostPollsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostPollsVC.xib; sourceTree = "<group>"; };
+		044C01D02A6C029200E79AD2 /* PostPollsItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPollsItemCell.swift; sourceTree = "<group>"; };
+		044C01D12A6C029200E79AD2 /* PostPollsItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostPollsItemCell.xib; sourceTree = "<group>"; };
 		0459B5892A680CC10096802C /* NotificationSettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingVC.swift; sourceTree = "<group>"; };
 		0459B58A2A680CC10096802C /* NotificationSettingVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationSettingVC.xib; sourceTree = "<group>"; };
 		0459B58E2A680CF60096802C /* NotificationSettingItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingItemCell.swift; sourceTree = "<group>"; };
@@ -168,6 +189,7 @@
 		04749C0D2A6935DB00A67A96 /* CMSPageVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CMSPageVC.xib; sourceTree = "<group>"; };
 		04749C2C2A6989DD00A67A96 /* ConnectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionVC.swift; sourceTree = "<group>"; };
 		04749C2D2A6989DD00A67A96 /* ConnectionVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConnectionVC.xib; sourceTree = "<group>"; };
+		047604FB2A6BD36C00ED9AA6 /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		047CACC22A56843900A64779 /* ForgotPasswrodVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswrodVC.swift; sourceTree = "<group>"; };
 		047CACC32A56843900A64779 /* ForgotPasswrodVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForgotPasswrodVC.xib; sourceTree = "<group>"; };
 		047DB0752A5950D3003DFE41 /* VerificationCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeVC.swift; sourceTree = "<group>"; };
@@ -200,6 +222,12 @@
 		049618DB2A54123E0037001B /* Configration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configration.swift; sourceTree = "<group>"; };
 		049A0A392A5C53CA008A4CAF /* TrendsItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendsItemCell.swift; sourceTree = "<group>"; };
 		049A0A3A2A5C53CA008A4CAF /* TrendsItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrendsItemCell.xib; sourceTree = "<group>"; };
+		049AE1992A6C22A8001FAA65 /* NotificationListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationListVC.swift; sourceTree = "<group>"; };
+		049AE19A2A6C22A8001FAA65 /* NotificationListVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationListVC.xib; sourceTree = "<group>"; };
+		049AE19E2A6C24E7001FAA65 /* MessageListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListVC.swift; sourceTree = "<group>"; };
+		049AE19F2A6C24E7001FAA65 /* MessageListVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageListVC.xib; sourceTree = "<group>"; };
+		049AE1A32A6C28A8001FAA65 /* NotificationListItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationListItemCell.swift; sourceTree = "<group>"; };
+		049AE1A42A6C28A8001FAA65 /* NotificationListItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationListItemCell.xib; sourceTree = "<group>"; };
 		049D887B2A52D5D500876D27 /* SoapBx.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoapBx.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		049D887E2A52D5D600876D27 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		049D88802A52D5D600876D27 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -215,6 +243,8 @@
 		049D88A32A52D9A800876D27 /* SFProDisplay-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Medium.ttf"; sourceTree = "<group>"; };
 		049D88A42A52D9A800876D27 /* SFProDisplay-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Bold.ttf"; sourceTree = "<group>"; };
 		049D88AD2A52DA4B00876D27 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		04A1690E2A6D41360024EA7F /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
+		04A1690F2A6D41360024EA7F /* ChatVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatVC.xib; sourceTree = "<group>"; };
 		04C17CB32A5478220034450A /* Extantion_UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extantion_UILabel.swift; sourceTree = "<group>"; };
 		04CA0DFC2A6403B20043C530 /* ThreeDotItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeDotItemCell.swift; sourceTree = "<group>"; };
 		04CA0DFD2A6403B20043C530 /* ThreeDotItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThreeDotItemCell.xib; sourceTree = "<group>"; };
@@ -246,8 +276,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				044FA7742A6A8477001E0B93 /* OTLContaner.framework in Frameworks */,
 				4CAB4DFF1102FD5FE5E8B7F5 /* libPods-SoapBx.a in Frameworks */,
+				0439FE742A6E472000E52053 /* OTLContaner.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,6 +392,34 @@
 				0442A55B2A57191500661988 /* ProfileCoverVC.xib */,
 			);
 			path = "Profile Cover";
+			sourceTree = "<group>";
+		};
+		044C01BE2A6BF3F400E79AD2 /* Polls List */ = {
+			isa = PBXGroup;
+			children = (
+				044C01C22A6BF42C00E79AD2 /* PollsListVC.swift */,
+				044C01C32A6BF42C00E79AD2 /* PollsListVC.xib */,
+			);
+			path = "Polls List";
+			sourceTree = "<group>";
+		};
+		044C01C62A6BF43E00E79AD2 /* Post Polls */ = {
+			isa = PBXGroup;
+			children = (
+				044C01CF2A6C027200E79AD2 /* Cells */,
+				044C01C72A6BF45600E79AD2 /* PostPollsVC.swift */,
+				044C01C82A6BF45600E79AD2 /* PostPollsVC.xib */,
+			);
+			path = "Post Polls";
+			sourceTree = "<group>";
+		};
+		044C01CF2A6C027200E79AD2 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				044C01D02A6C029200E79AD2 /* PostPollsItemCell.swift */,
+				044C01D12A6C029200E79AD2 /* PostPollsItemCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		0459B5852A680CA00096802C /* Notification */ = {
@@ -487,6 +545,8 @@
 		047DB0832A596D2D003DFE41 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				044C01C62A6BF43E00E79AD2 /* Post Polls */,
+				044C01BE2A6BF3F400E79AD2 /* Polls List */,
 				04749C282A69881600A67A96 /* Connection */,
 				04749C082A6935AC00A67A96 /* CMS */,
 				0459B5852A680CA00096802C /* Notification */,
@@ -546,6 +606,9 @@
 		047E119E2A59C7E200B7CC05 /* Home Tab */ = {
 			isa = PBXGroup;
 			children = (
+				04A1690A2A6D40E60024EA7F /* Chat  */,
+				049AE19D2A6C248D001FAA65 /* Message List */,
+				049AE1952A6C227F001FAA65 /* Notification List */,
 				0481DFA12A602CC700486AD1 /* Comment */,
 				047E119F2A59C7E900B7CC05 /* Home */,
 			);
@@ -605,6 +668,34 @@
 				049618DB2A54123E0037001B /* Configration.swift */,
 			);
 			path = Configration;
+			sourceTree = "<group>";
+		};
+		049AE1952A6C227F001FAA65 /* Notification List */ = {
+			isa = PBXGroup;
+			children = (
+				049AE1A22A6C288E001FAA65 /* Cell */,
+				049AE1992A6C22A8001FAA65 /* NotificationListVC.swift */,
+				049AE19A2A6C22A8001FAA65 /* NotificationListVC.xib */,
+			);
+			path = "Notification List";
+			sourceTree = "<group>";
+		};
+		049AE19D2A6C248D001FAA65 /* Message List */ = {
+			isa = PBXGroup;
+			children = (
+				049AE19E2A6C24E7001FAA65 /* MessageListVC.swift */,
+				049AE19F2A6C24E7001FAA65 /* MessageListVC.xib */,
+			);
+			path = "Message List";
+			sourceTree = "<group>";
+		};
+		049AE1A22A6C288E001FAA65 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				049AE1A32A6C28A8001FAA65 /* NotificationListItemCell.swift */,
+				049AE1A42A6C28A8001FAA65 /* NotificationListItemCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		049D88722A52D5D500876D27 = {
@@ -726,7 +817,7 @@
 		049D88AF2A52DD2800876D27 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
-				044FA7722A6A8472001E0B93 /* OTLContaner.framework */,
+				0439FE722A6E471400E52053 /* OTLContaner.xcframework */,
 			);
 			path = Framework;
 			sourceTree = "<group>";
@@ -739,10 +830,20 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		04A1690A2A6D40E60024EA7F /* Chat  */ = {
+			isa = PBXGroup;
+			children = (
+				04A1690E2A6D41360024EA7F /* ChatVC.swift */,
+				04A1690F2A6D41360024EA7F /* ChatVC.xib */,
+			);
+			path = "Chat ";
+			sourceTree = "<group>";
+		};
 		04C17CAF2A5477FF0034450A /* Global */ = {
 			isa = PBXGroup;
 			children = (
 				04C17CB32A5478220034450A /* Extantion_UILabel.swift */,
+				047604FB2A6BD36C00ED9AA6 /* Toast.swift */,
 				042925972A55DF8E00EE3B8D /* global.swift */,
 			);
 			path = Global;
@@ -919,6 +1020,7 @@
 			files = (
 				049D88A82A52D9A800876D27 /* SFProDisplay-Bold.ttf in Resources */,
 				043E26642A5C5EDE00695C2D /* PublicFiguresVC.xib in Resources */,
+				049AE1A12A6C24E7001FAA65 /* MessageListVC.xib in Resources */,
 				047DB0912A597183003DFE41 /* SubscriptionNotesHeaderCell.xib in Resources */,
 				049D889E2A52D95900876D27 /* LoginVC.xib in Resources */,
 				043E267D2A5C7AB200695C2D /* ProfileVC.xib in Resources */,
@@ -932,6 +1034,7 @@
 				04CA0E092A6407430043C530 /* ThreeDotMenuView.xib in Resources */,
 				04DA4A4D2A67C7DA00AF540B /* SuggestFeatureVC.xib in Resources */,
 				043E26772A5C70CC00695C2D /* SearchItemCell.xib in Resources */,
+				044C01CA2A6BF45600E79AD2 /* PostPollsVC.xib in Resources */,
 				049D888B2A52D5D900876D27 /* LaunchScreen.storyboard in Resources */,
 				04DA4A292A67AF8100AF540B /* SettingVC.xib in Resources */,
 				040759C12A55D35F00318462 /* SignupVC.xib in Resources */,
@@ -950,20 +1053,25 @@
 				04749C2F2A6989DD00A67A96 /* ConnectionVC.xib in Resources */,
 				042A6A9C2A5F1C9500BB1D71 /* FollowFolloingVC.xib in Resources */,
 				04DA4A5B2A67E15B00AF540B /* ChangePasswordVC.xib in Resources */,
+				044C01C52A6BF42C00E79AD2 /* PollsListVC.xib in Resources */,
 				049A0A3C2A5C53CA008A4CAF /* TrendsItemCell.xib in Resources */,
 				04CA0DFF2A6403B20043C530 /* ThreeDotItemCell.xib in Resources */,
 				04DA4A482A67C55F00AF540B /* SavedPostVC.xib in Resources */,
 				0459B58C2A680CC10096802C /* NotificationSettingVC.xib in Resources */,
 				047E11952A59808800B7CC05 /* SubscriptionItemCell.xib in Resources */,
+				049AE19C2A6C22A8001FAA65 /* NotificationListVC.xib in Resources */,
 				0442A55D2A57191500661988 /* ProfileCoverVC.xib in Resources */,
 				047E11B42A5AC47700B7CC05 /* PostItemPoliticalCell.xib in Resources */,
+				04A169112A6D41360024EA7F /* ChatVC.xib in Resources */,
 				047E119D2A59C2A300B7CC05 /* EnableLocationVC.xib in Resources */,
 				047DB0882A596D4E003DFE41 /* SubscribeVC.xib in Resources */,
 				049D88A52A52D9A800876D27 /* SFProDisplay-Regular.ttf in Resources */,
 				049D88882A52D5D900876D27 /* Assets.xcassets in Resources */,
 				04CA0E102A6435290043C530 /* CreatePostVC.xib in Resources */,
+				049AE1A62A6C28A8001FAA65 /* NotificationListItemCell.xib in Resources */,
 				047DB0782A5950D3003DFE41 /* VerificationCodeVC.xib in Resources */,
 				047E11B02A5AB16000B7CC05 /* PostImageItemCell.xib in Resources */,
+				044C01D32A6C029200E79AD2 /* PostPollsItemCell.xib in Resources */,
 				049D88862A52D5D600876D27 /* Main.storyboard in Resources */,
 				0459B5912A680CF60096802C /* NotificationSettingItemCell.xib in Resources */,
 			);
@@ -1002,8 +1110,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				0442A55C2A57191500661988 /* ProfileCoverVC.swift in Sources */,
+				049AE19B2A6C22A8001FAA65 /* NotificationListVC.swift in Sources */,
 				043E268A2A5D553800695C2D /* TradPostListView.swift in Sources */,
 				047DB08C2A596F6F003DFE41 /* SubscriptionNotesItemCell.swift in Sources */,
+				049AE1A02A6C24E7001FAA65 /* MessageListVC.swift in Sources */,
+				044C01C42A6BF42C00E79AD2 /* PollsListVC.swift in Sources */,
 				046D86AD2A65B50800D0312B /* SideMenu.swift in Sources */,
 				046D86B32A65BFE300D0312B /* EditProfileVC.swift in Sources */,
 				042925982A55DF8E00EE3B8D /* global.swift in Sources */,
@@ -1023,6 +1134,7 @@
 				0459B58B2A680CC10096802C /* NotificationSettingVC.swift in Sources */,
 				047DB0872A596D4E003DFE41 /* SubscribeVC.swift in Sources */,
 				04CA0DFE2A6403B20043C530 /* ThreeDotItemCell.swift in Sources */,
+				049AE1A52A6C28A8001FAA65 /* NotificationListItemCell.swift in Sources */,
 				047DB0812A5960FB003DFE41 /* YouInterestedItemCell.swift in Sources */,
 				0459B5942A680DFA0096802C /* NotificationSettingModel.swift in Sources */,
 				046D86AB2A65ADF400D0312B /* MenuModel.swift in Sources */,
@@ -1034,6 +1146,7 @@
 				043E26632A5C5EDE00695C2D /* PublicFiguresVC.swift in Sources */,
 				047DB0902A597183003DFE41 /* SubscriptionNotesHeaderCell.swift in Sources */,
 				04749C2E2A6989DD00A67A96 /* ConnectionVC.swift in Sources */,
+				044C01C92A6BF45600E79AD2 /* PostPollsVC.swift in Sources */,
 				04DA4A5A2A67E15B00AF540B /* ChangePasswordVC.swift in Sources */,
 				049A0A3B2A5C53CA008A4CAF /* TrendsItemCell.swift in Sources */,
 				047E11B32A5AC47700B7CC05 /* PostItemPoliticalCell.swift in Sources */,
@@ -1046,13 +1159,16 @@
 				047DB07C2A595FED003DFE41 /* YouInterestedVC.swift in Sources */,
 				04DA4A312A67B1E100AF540B /* SettingModel.swift in Sources */,
 				043E266A2A5C64E300695C2D /* PublicFiguresItemCell.swift in Sources */,
+				04A169102A6D41360024EA7F /* ChatVC.swift in Sources */,
 				046D86A72A65AC4700D0312B /* MenuItemCell.swift in Sources */,
 				04DA4A2D2A67B0B400AF540B /* SettingItemCell.swift in Sources */,
 				047E11AF2A5AB16000B7CC05 /* PostImageItemCell.swift in Sources */,
 				047E11AB2A5A8F9A00B7CC05 /* HomeItemCell.swift in Sources */,
+				044C01D22A6C029200E79AD2 /* PostPollsItemCell.swift in Sources */,
 				043E26852A5D218000695C2D /* ProfileUserInfoView.swift in Sources */,
 				049D88972A52D6B100876D27 /* SplashVC.swift in Sources */,
 				04CA0E0F2A6435290043C530 /* CreatePostVC.swift in Sources */,
+				047604FC2A6BD36C00ED9AA6 /* Toast.swift in Sources */,
 				047DB0772A5950D3003DFE41 /* VerificationCodeVC.swift in Sources */,
 				04DA4A422A67BF5C00AF540B /* InviteFriendsVC.swift in Sources */,
 			);

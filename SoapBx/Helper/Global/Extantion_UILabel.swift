@@ -26,6 +26,11 @@ extension UILabel {
         self.font = font.font(size: size)
         self.numberOfLines = lines
     }
+    
+    func noDataTitle(_ text: String) {
+        setTheme(text,color: .titleGrey, font: .bold, size: 22)
+        textAlignment = .center
+    }
 }
 extension OTLTextButton {
     func setTheme(_ text: String,

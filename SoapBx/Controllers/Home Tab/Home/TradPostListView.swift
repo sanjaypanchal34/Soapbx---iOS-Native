@@ -150,6 +150,7 @@ extension TradPostListView: HomeItemCellDelegate{
             break;
         case .delete:
             break;
+        default: break;
         }
     }
 }

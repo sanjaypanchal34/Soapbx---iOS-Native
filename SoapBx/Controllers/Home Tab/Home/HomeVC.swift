@@ -39,10 +39,12 @@ class HomeVC: UIViewController {
 
     private func setupUI() {
         btnMessage.image = UIImage(named: "ic_sendRed")
+        btnMessage.height = 20
         btnNotification.image = UIImage(named: "ic_bellIcon")
+        btnNotification.height = 20
         
         btnManu.image = UIImage(named: "ic_drawer")
-        btnManu.padding = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
+        btnManu.height = 20
         bottomTab.setTabTheme()
         bottomTab.delegate = self
         viewTradPost.regiter()
@@ -50,6 +52,15 @@ class HomeVC: UIViewController {
     
     @IBAction private func click_menu() {
         showSideMenu()
+    }
+    
+    @IBAction private func click_notification() {
+        let vc = NotificationListVC()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    @IBAction private func click_messageList() {
+        let vc = MessageListVC()
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 

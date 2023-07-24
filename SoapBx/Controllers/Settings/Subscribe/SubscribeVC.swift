@@ -81,6 +81,7 @@ class SubscribeVC: UIViewController {
         btnSupport.title?.setTheme("Support Soapbx", color: .white)
         btnSupport.imageView?.image = UIImage(named: "ic_crown")
         btnSupport.layer.cornerRadius = 10
+        btnSupport.isHidden = screenType == .fromRegister ? true : false
         
         btnNext.appButton(screenType.buttonTitle)
         

@@ -34,13 +34,18 @@ class InviteFriendsVC: UIViewController {
         viewRefreCode.layer.borderColor = UIColor.lightGrey.cgColor
         viewRefreCode.layer.borderWidth = 1
         lblReferCode.setTheme(strReferCode)
+        btnCopy.image = UIImage(named: "ic_copy")
+        btnCopy.height = 20
+        btnCopy.addTarget(self, action: #selector(click_btnCopy), for: .touchUpInside)
         
         btnInvite.appButton("Invite")
+        btnInvite.addTarget(self, action: #selector(click_btnInvite), for: .touchUpInside)
     }
     
     
     @IBAction private func click_btnCopy() {
         UIPasteboard.general.string = strReferCode
+        showToast(message: "\(strReferCode) code is copied.")
     }
     
     @IBAction private func click_btnInvite() {

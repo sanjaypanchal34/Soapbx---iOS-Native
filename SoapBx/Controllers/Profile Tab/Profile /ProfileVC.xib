@@ -127,11 +127,17 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="75" height="34.333333333333336"/>
                                                                     <state key="normal" title="Button"/>
                                                                     <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                                                    <connections>
+                                                                        <action selector="click_editProfile" destination="hrD-90-dub" eventType="touchUpInside" id="ZRi-wf-fa6"/>
+                                                                    </connections>
                                                                 </button>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oWu-v6-cb3">
                                                                     <rect key="frame" x="0.0" y="34.333333333333314" width="75" height="34.333333333333343"/>
                                                                     <state key="normal" title="Button"/>
                                                                     <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                                                    <connections>
+                                                                        <action selector="click_deleteAccount" destination="hrD-90-dub" eventType="touchUpInside" id="i9q-32-rJR"/>
+                                                                    </connections>
                                                                 </button>
                                                             </subviews>
                                                         </stackView>
@@ -184,18 +190,27 @@
                                                                             <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
                                                                             <state key="normal" title="Button"/>
                                                                             <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                                                            <connections>
+                                                                                <action selector="click_btnMessage" destination="hrD-90-dub" eventType="touchUpInside" id="sGw-j3-RFi"/>
+                                                                            </connections>
                                                                         </button>
                                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ySd-zr-i7b">
                                                                             <rect key="frame" x="90" y="0.0" width="75" height="35"/>
                                                                             <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
                                                                             <state key="normal" title="Button"/>
                                                                             <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                                                            <connections>
+                                                                                <action selector="click_btnFollow" destination="hrD-90-dub" eventType="touchUpInside" id="q2E-gE-c3f"/>
+                                                                            </connections>
                                                                         </button>
                                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jit-1M-G1d">
                                                                             <rect key="frame" x="180" y="0.0" width="75" height="35"/>
                                                                             <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
                                                                             <state key="normal" title="Button"/>
                                                                             <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                                                            <connections>
+                                                                                <action selector="click_btnBlock" destination="hrD-90-dub" eventType="touchUpInside" id="Ss8-Se-LSL"/>
+                                                                            </connections>
                                                                         </button>
                                                                     </subviews>
                                                                 </stackView>
@@ -359,7 +374,7 @@
                                                 <constraint firstItem="p2b-Th-AFP" firstAttribute="leading" secondItem="hrD-90-dub" secondAttribute="leading" id="wgL-wC-Cf8"/>
                                             </constraints>
                                             <connections>
-                                                <outlet property="btnBack" destination="jit-1M-G1d" id="daD-gY-mFg"/>
+                                                <outlet property="btnBlock" destination="jit-1M-G1d" id="daD-gY-mFg"/>
                                                 <outlet property="btnDeleteAccunt" destination="oWu-v6-cb3" id="weE-cX-2aF"/>
                                                 <outlet property="btnEditProfile" destination="bhq-A6-l1q" id="mBB-Wj-dxJ"/>
                                                 <outlet property="btnFollow" destination="ySd-zr-i7b" id="3a7-r9-aCx"/>

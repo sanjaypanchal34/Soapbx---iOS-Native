@@ -97,7 +97,7 @@ class CreatePostVC: UIViewController {
         imgProfile.image = UIImage(named: "profile_Three")
         imgProfile.contentMode = .scaleAspectFill
         lblProfileName.setTheme("Robert Watson")
-        lblLocation.setTheme("Ahmedabad, Gujarat, India",size: 12)
+        lblLocation.setTheme("Ahmedabad, Gujarat, India",size: 10)
         lblTime.setTheme("Jul 16 2023 @ 09:02 PM",size: 12)
         
         lblTitle.setTheme("Add Title", color: .primaryBlue, font: .bold)

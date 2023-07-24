@@ -327,6 +327,14 @@ SWIFT_CLASS("_TtC11OTLContaner13OTLDashedView")
 @end
 
 
+SWIFT_CLASS("_TtC11OTLContaner13OTLDatePicker")
+@interface OTLDatePicker : UITextField
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithFrame:(CGRect)frame SWIFT_UNAVAILABLE;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
+@end
+
+
 SWIFT_CLASS("_TtC11OTLContaner12OTLTextField")
 @interface OTLTextField : UIView
 @property (nonatomic, strong) UIColor * _Nullable backgroundColor;

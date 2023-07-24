@@ -50,7 +50,9 @@ class ProfileVC: UIViewController {
         bottomTab.delegate = self
         
         btnNotification.image = UIImage(named: "ic_bellIcon")
+        btnNotification.height = 20
         btnManu.image = UIImage(named: "ic_drawer")
+        btnManu.height = 20
         
         viewProfile.setupUIWithData(screenType: screenType)
         viewTradPost.regiter(viewType: .fromProfile)
@@ -72,6 +74,7 @@ class ProfileVC: UIViewController {
     @IBAction private func click_menu() {
         showSideMenu()
     }
+    
 }
 extension ProfileVC: OTLBottomTabBarDelegate {
     

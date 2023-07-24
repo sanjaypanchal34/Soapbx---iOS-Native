@@ -39,7 +39,6 @@ class LoginVC: UIViewController {
                           size: 38)
         lblSubtitle.setTheme("Enter our details below",
                              color: .titleGrey)
-        
         txtEmail.setTheme(placeholder: "Email",
                           leftIcon: UIImage(named: "ic_email"))
         
@@ -59,8 +58,9 @@ class LoginVC: UIViewController {
     
     //Actions
     @IBAction private func click_Singin() {
-        let vc = HomeVC()
-        mackRootView(vc)
+        showToast(message: "Please enter vallied details")
+//        let vc = HomeVC()
+//        mackRootView(vc)
     }
     
     @IBAction private func click_ForgotPassword() {

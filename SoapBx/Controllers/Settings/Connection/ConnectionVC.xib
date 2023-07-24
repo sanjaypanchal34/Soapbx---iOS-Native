@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="btnBlock" destination="kvB-Zn-JYM" id="EDP-XZ-lQj"/>
                 <outlet property="btnUnfollow" destination="cve-rv-bFX" id="ke6-mb-0xU"/>
+                <outlet property="lblNoData" destination="BJd-n7-RGI" id="r32-P2-mkh"/>
                 <outlet property="tblList" destination="J5g-jM-uQc" id="spU-U4-2sI"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewBody" destination="seM-qi-5Cl" id="kKl-aS-P01"/>
@@ -101,6 +102,12 @@
                             <rect key="frame" x="0.0" y="85" width="393" height="629"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         </tableView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BJd-n7-RGI">
+                            <rect key="frame" x="176" y="389" width="41.333333333333343" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
@@ -108,6 +115,9 @@
                         <constraint firstAttribute="trailing" secondItem="J5g-jM-uQc" secondAttribute="trailing" id="5PD-I2-yNL"/>
                         <constraint firstAttribute="bottom" secondItem="J5g-jM-uQc" secondAttribute="bottom" id="97W-Ar-AAp"/>
                         <constraint firstItem="J5g-jM-uQc" firstAttribute="leading" secondItem="seM-qi-5Cl" secondAttribute="leading" id="F8G-25-a5P"/>
+                        <constraint firstItem="BJd-n7-RGI" firstAttribute="centerY" secondItem="J5g-jM-uQc" secondAttribute="centerY" id="etE-NM-rfc"/>
+                        <constraint firstItem="BJd-n7-RGI" firstAttribute="centerX" secondItem="J5g-jM-uQc" secondAttribute="centerX" id="feX-FE-y2S"/>
+                        <constraint firstItem="BJd-n7-RGI" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="J5g-jM-uQc" secondAttribute="leading" id="gFe-nO-0pt"/>
                         <constraint firstItem="c5p-BR-upn" firstAttribute="leading" secondItem="seM-qi-5Cl" secondAttribute="leading" constant="20" id="j4e-1I-sl3"/>
                         <constraint firstAttribute="trailing" secondItem="c5p-BR-upn" secondAttribute="trailing" constant="20" id="r9y-bi-qJP"/>
                         <constraint firstItem="J5g-jM-uQc" firstAttribute="top" secondItem="c5p-BR-upn" secondAttribute="bottom" constant="20" id="w3T-9q-oBd"/>

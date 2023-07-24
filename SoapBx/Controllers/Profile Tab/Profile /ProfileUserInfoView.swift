@@ -22,7 +22,7 @@ class ProfileUserInfoView: UIView {
     @IBOutlet private weak var viewMessageFollowBackButtons:UIView!
     @IBOutlet private weak var btnMessage:UIButton!
     @IBOutlet private weak var btnFollow:UIButton!
-    @IBOutlet private weak var btnBack:UIButton!
+    @IBOutlet private weak var btnBlock:UIButton!
     
     @IBOutlet private weak var btnFollowers:OTLActionTitle!
     @IBOutlet private weak var btnFollowing:OTLActionTitle!
@@ -53,8 +53,8 @@ class ProfileUserInfoView: UIView {
         btnMessage.layer.cornerRadius = 5
         btnFollow.setTheme("Follow", color: .white, font: .bold, size: 14,backgound: .titleRed)
         btnFollow.layer.cornerRadius = 5
-        btnBack.setTheme("Back", color: .white, font: .bold, size: 14,backgound: .primaryBlue)
-        btnBack.layer.cornerRadius = 5
+        btnBlock.setTheme("Block", color: .white, font: .bold, size: 14,backgound: .primaryBlue)
+        btnBlock.layer.cornerRadius = 5
         
         
         btnFollowers.lblTitle.setTheme("0", color: .primaryBlue, font: .bold, size: 18)
@@ -88,6 +88,22 @@ class ProfileUserInfoView: UIView {
         
     }
     
+    @IBAction private func click_editProfile() {
+        rootViewController.pushViewController(EditProfileVC(), animated: true)
+    }
+    
+    @IBAction private func click_deleteAccount() {
+        showAlert(message: "Are you sure you want to delete this account?",
+                  buttons: [
+                    OTLAlertModel(title: "Cancel", id: 0),
+                    OTLAlertModel(title: "Delete", id: 1, style: .destructive),
+                  ]) { alert in
+                      if alert.id == 1 {
+                          mackRootView(LoginVC())
+                      }
+                  }
+    }
+    
     @IBAction private func click_btnFollowers(){
         let vc = FollowFolloingVC()
         rootViewController.pushViewController(vc, animated: true)
@@ -99,5 +115,20 @@ class ProfileUserInfoView: UIView {
     @IBAction private func click_btnPoliticians(){
         let vc = FollowFolloingVC()
         rootViewController.pushViewController(vc, animated: true)
+    }
+    
+    @IBAction private func click_btnMessage() {
+        let vc = ChatVC()
+        rootViewController.pushViewController(vc, animated: true)
+    }
+    
+    @IBAction private func click_btnFollow() {
+//        let vc = ChatVC()
+//        rootViewController?.pushViewController(vc, animated: true)
+    }
+    
+    @IBAction private func click_btnBlock() {
+//        let vc = ChatVC()
+//        rootViewController?.pushViewController(vc, animated: true)
     }
 }

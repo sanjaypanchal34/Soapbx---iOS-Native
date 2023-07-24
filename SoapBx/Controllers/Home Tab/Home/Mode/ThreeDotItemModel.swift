@@ -14,7 +14,7 @@ struct ThreeDotItemModel {
 }
 
 enum ThreeDotItem {
-    case openProfile, hidePost(String), share, report, edit, delete
+    case openProfile, hidePost(String), share, report, edit, delete, clearChat, starredMessage, block
     
     var title: String {
         switch self {
@@ -24,6 +24,9 @@ enum ThreeDotItem {
         case .report:   return "Report"
         case .edit: return "Edit Post"
         case .delete:   return "Delete Post"
+        case .clearChat: return "Clear Chat"
+        case .starredMessage: return "Starred Messages"
+        case .block:  return "Block"
         }
     }
 }

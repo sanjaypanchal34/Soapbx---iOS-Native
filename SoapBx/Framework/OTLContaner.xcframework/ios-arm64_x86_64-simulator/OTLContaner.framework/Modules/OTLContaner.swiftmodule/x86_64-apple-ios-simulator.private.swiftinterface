@@ -1,0 +1,685 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)
+// swift-module-flags: -target x86_64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -module-name OTLContaner
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import Foundation
+@_exported import OTLContaner
+import Swift
+import UIKit
+import _Concurrency
+import _StringProcessing
+public enum OTLAppearance {
+  case dark, light
+  public static func == (a: OTLContaner.OTLAppearance, b: OTLContaner.OTLAppearance) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct OTLColor {
+  public var color: UIKit.UIColor {
+    get
+  }
+  public init(dark: UIKit.UIColor? = nil, light: UIKit.UIColor)
+  public init(dark: Swift.String? = nil, light: Swift.String)
+}
+@_hasMissingDesignatedInitializers public class OTLColorPrefrance {
+  public static var primary: OTLContaner.OTLColor
+  public static var secondry: OTLContaner.OTLColor
+  public static var header: OTLContaner.OTLColor
+  public static var body: OTLContaner.OTLColor
+  public static var title1: OTLContaner.OTLColor
+  public static var title2: OTLContaner.OTLColor
+  public static var title3: OTLContaner.OTLColor
+  public static var title4: OTLContaner.OTLColor
+  public static var title5: OTLContaner.OTLColor
+  public static var disciption1: OTLContaner.OTLColor
+  public static var disciption2: OTLContaner.OTLColor
+  public static var disciption3: OTLContaner.OTLColor
+  public static var disciption4: OTLContaner.OTLColor
+  public static var disciption5: OTLContaner.OTLColor
+  public static var text1: OTLContaner.OTLColor
+  public static var text2: OTLContaner.OTLColor
+  public static var text3: OTLContaner.OTLColor
+  public static var button1: OTLContaner.OTLColor
+  public static var button2: OTLContaner.OTLColor
+  public static var button3: OTLContaner.OTLColor
+  public static var headerTitle1: OTLContaner.OTLColor
+  public static var headerTitle2: OTLContaner.OTLColor
+  public static var clear: OTLContaner.OTLColor
+  @objc deinit
+}
+public protocol OTLBottomSheetPresentable {
+  var cornerRadius: CoreFoundation.CGFloat { get set }
+  var animationTransitionDuration: Foundation.TimeInterval { get set }
+  var backgroundColor: UIKit.UIColor { get set }
+}
+public struct OTLBottomSheetViewModel : OTLContaner.OTLBottomSheetPresentable {
+  public var cornerRadius: CoreFoundation.CGFloat
+  public var animationTransitionDuration: Foundation.TimeInterval
+  public var backgroundColor: UIKit.UIColor
+  public init()
+  public init(cornerRadius: CoreFoundation.CGFloat, animationTransitionDuration: Foundation.TimeInterval, backgroundColor: UIKit.UIColor)
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class OTLPasswordField : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) public var delegate: OTLContaner.OTLPasswordFieldDelegate?
+  @_Concurrency.MainActor(unsafe) public var placeholder: Swift.String {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var text: Swift.String {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var backgroundColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) public var bgColor: UIKit.UIColor? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var isShowTitle: Swift.Bool {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var isShowError: Swift.Bool {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var leftIcon: UIKit.UIImage? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var leftSelectedIcon: UIKit.UIImage?
+  @_Concurrency.MainActor(unsafe) public var rightIcon: UIKit.UIImage? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var rightSelectedIcon: UIKit.UIImage?
+  @_Concurrency.MainActor(unsafe) public var style: OTLContaner.OTLTextFieldStyle {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var font: UIKit.UIFont {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var color: UIKit.UIColor {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var borderColor: UIKit.UIColor {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var borderActiveColor: UIKit.UIColor?
+  @_Concurrency.MainActor(unsafe) public var borderErrorColor: UIKit.UIColor?
+  @_Concurrency.MainActor(unsafe) public var maxLength: Swift.Int?
+  @objc deinit
+}
+extension OTLContaner.OTLPasswordField : UIKit.UITextViewDelegate {
+}
+public struct OTLFont {
+  public var family: OTLContaner.OTLFontFamilyType
+  public var size: OTLContaner.OTLFontSize
+  public init(family: OTLContaner.OTLFontFamilyType, size: OTLContaner.OTLFontSize)
+  public var font: UIKit.UIFont {
+    get
+  }
+}
+public enum OTLFontFamilyType {
+  case extralight, light, regular, medium, semibold, bold, extrabold, other1, other2, other3, other4
+  public static func == (a: OTLContaner.OTLFontFamilyType, b: OTLContaner.OTLFontFamilyType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct OTLFontFamily {
+  public static var extralight: Swift.String
+  public static var light: Swift.String
+  public static var regular: Swift.String
+  public static var medium: Swift.String
+  public static var semibold: Swift.String
+  public static var bold: Swift.String
+  public static var extrabold: Swift.String
+  public static var other1: Swift.String
+  public static var other2: Swift.String
+  public static var other3: Swift.String
+  public static var other4: Swift.String
+}
+public enum OTLFontSize {
+  case extraLargeTitle, largeTitle, title, title2, title3, headline, subheadline, body, callout, caption, caption2, caption3
+  public static func == (a: OTLContaner.OTLFontSize, b: OTLContaner.OTLFontSize) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class OTLDatePicker : UIKit.UITextField {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public init()
+  @_Concurrency.MainActor(unsafe) public var datetimeDelegate: OTLContaner.OTLDatePickerDelegate?
+  @_Concurrency.MainActor(unsafe) public var datePickerMode: UIKit.UIDatePicker.Mode {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var minDate: Foundation.Date {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var selectedItem: Foundation.Date? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var formate: OTLContaner.DateTimeFormate?
+  @objc deinit
+}
+public struct OTLData {
+  public var title: Swift.String
+  public var data: Any?
+  public init(title: Swift.String, data: Any? = nil)
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) final public class OTLDropDown : OTLContaner.OTLTextField {
+  @_Concurrency.MainActor(unsafe) override final public var delegate: OTLContaner.OTLTextFieldDelegate? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var delegateDropdown: OTLContaner.OTLDropDownDelegate?
+  @_Concurrency.MainActor(unsafe) final public var array: [OTLContaner.OTLData]
+  @objc deinit
+}
+extension OTLContaner.OTLDropDown : OTLContaner.OTLTextFieldDelegate {
+  @_Concurrency.MainActor(unsafe) final public func otlTextField(_ textField: OTLContaner.OTLTextField, willStartEditing: Swift.Bool)
+}
+public enum OTLTextFieldStyle {
+  case roundPi, corner(Swift.Double), squere, bottom
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class OTLTextField : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) public var delegate: OTLContaner.OTLTextFieldDelegate?
+  @_Concurrency.MainActor(unsafe) public var placeholder: Swift.String {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var text: Swift.String {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var backgroundColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) public var bgColor: UIKit.UIColor? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var titleStyle: OTLContaner.OTLTextPresentable {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var isShowTitle: Swift.Bool {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var isShowError: Swift.Bool {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var leftIcon: UIKit.UIImage? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var leftSelectedIcon: UIKit.UIImage?
+  @_Concurrency.MainActor(unsafe) public var rightIcon: UIKit.UIImage? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var rightSelectedIcon: UIKit.UIImage?
+  @_Concurrency.MainActor(unsafe) public var style: OTLContaner.OTLTextFieldStyle {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var font: UIKit.UIFont {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var color: UIKit.UIColor {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var borderColor: UIKit.UIColor {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var borderActiveColor: UIKit.UIColor?
+  @_Concurrency.MainActor(unsafe) public var borderErrorColor: UIKit.UIColor?
+  @_Concurrency.MainActor(unsafe) public var maxLength: Swift.Int?
+  @objc deinit
+}
+extension OTLContaner.OTLTextField : UIKit.UITextViewDelegate {
+}
+public struct OTLButtonPresentable {
+  public var font: UIKit.UIFont
+  public var color: UIKit.UIColor
+  public var title: Swift.String
+  public var bgColor: UIKit.UIColor
+  public var index: OTLContaner.OTLIndex
+  public var selectedFont: UIKit.UIFont
+  public var selectedColor: UIKit.UIColor
+  public var selectedTitle: Swift.String
+}
+public struct OTLTextPresentable {
+  public var font: UIKit.UIFont
+  public var color: UIKit.UIColor
+  public var title: Swift.String
+  public var bgColor: UIKit.UIColor
+  public var index: OTLContaner.OTLIndex
+  public init(font: UIKit.UIFont, color: UIKit.UIColor, title: Swift.String, bgColor: UIKit.UIColor = .clear, index: OTLContaner.OTLIndex = OTLIndex())
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class OTLHeader : UIKit.UIView {
+  @objc @IBOutlet @_Concurrency.MainActor(unsafe) weak public var btnBack: UIKit.UIButton! {
+    @objc get
+    @objc set
+  }
+  @objc @IBOutlet @_Concurrency.MainActor(unsafe) weak public var lblTitle: UIKit.UILabel!
+  @objc @IBAction @_Concurrency.MainActor(unsafe) public func popViewController_click()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+public enum OTLImageButtonType {
+  case independent, equalAll
+  public static func == (a: OTLContaner.OTLImageButtonType, b: OTLContaner.OTLImageButtonType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class OTLImageButton : UIKit.UIControl {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var tintColor: UIKit.UIColor! {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var contentMode: UIKit.UIView.ContentMode {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var image: UIKit.UIImage? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) public var padding: UIKit.UIEdgeInsets {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var type: OTLContaner.OTLImageButtonType {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var height: CoreFoundation.CGFloat {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var width: CoreFoundation.CGFloat {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var addTarget: (() -> ())? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) final public class OTLDropDownBottomSheet : UIKit.UIViewController {
+  @_Concurrency.MainActor(unsafe) @objc override final public var title: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) final public var leftButtonTitle: Swift.String? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var rightButtonTitle: Swift.String? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var searchPlaceholder: Swift.String? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override final public func loadView()
+  @_Concurrency.MainActor(unsafe) @objc override final public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+public protocol OTLDatePickerDelegate {
+  func dateTime(onCancel dateTime: OTLContaner.OTLDatePicker)
+  func dateTime(_ dateTime: OTLContaner.OTLDatePicker, onSelected date: Foundation.Date)
+}
+extension OTLContaner.OTLDatePickerDelegate {
+  public func dateTime(onCancel dateTime: OTLContaner.OTLDatePicker)
+}
+public enum DateTimeFormate {
+  case MMMddyyyy, ddMMyyyy, yyyyMMdd, ddMMMyy
+  case hhmma, hhmm, HHmm
+  case ddMMyyyy_hhmma, yyyyMMdd_hhmma
+  case other(Swift.String)
+}
+public struct OTLIndex {
+  public var section: Swift.Int
+  public var row: Swift.Int
+  public var item: Swift.Int
+  public var subitem: Swift.Int
+  public init(section: Swift.Int = 0, row: Swift.Int = 0, item: Swift.Int = 0, subitem: Swift.Int = 0)
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class OTLDashedView : UIKit.UIControl {
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var cornerRadius: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var dashWidth: CoreFoundation.CGFloat
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var dashColor: UIKit.UIColor
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var dashLength: CoreFoundation.CGFloat
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var betweenDashesSpace: CoreFoundation.CGFloat
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class OTLActionTitle : UIKit.UIControl {
+  @objc @IBOutlet @_Concurrency.MainActor(unsafe) weak public var lblTitle: UIKit.UILabel!
+  @objc @IBOutlet @_Concurrency.MainActor(unsafe) weak public var lblDescription: UIKit.UILabel!
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class OTLTextButton : UIKit.UIControl {
+  @_Concurrency.MainActor(unsafe) public var textColor: UIKit.UIColor! {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var text: Swift.String? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var font: UIKit.UIFont? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var padding: UIKit.UIEdgeInsets {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var textAlignment: UIKit.NSTextAlignment {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var addTarget: (() -> ())? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class OTLBottomSheet : UIKit.UIViewController {
+  @_Concurrency.MainActor(unsafe) public init(viewModel: OTLContaner.OTLBottomSheetPresentable, childViewController: UIKit.UIViewController)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLayoutSubviews()
+  @objc deinit
+}
+extension OTLContaner.OTLBottomSheet {
+  @_Concurrency.MainActor(unsafe) public func dismissViewController()
+}
+extension OTLContaner.OTLBottomSheet : UIKit.UIGestureRecognizerDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func gestureRecognizer(_ gestureRecognizer: UIKit.UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIKit.UIGestureRecognizer) -> Swift.Bool
+}
+public enum OTLBottomTabBarItem {
+  case home, publicFigures, addPost, search, profile
+  public static func == (a: OTLContaner.OTLBottomTabBarItem, b: OTLContaner.OTLBottomTabBarItem) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public protocol OTLBottomTabBarDelegate {
+  func didChangeTab(old: OTLContaner.OTLBottomTabBarItem, new: OTLContaner.OTLBottomTabBarItem)
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class OTLBottomTabBar : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) public var imageHome: UIKit.UIImage {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var imageSelectedHome: UIKit.UIImage?
+  @_Concurrency.MainActor(unsafe) public var imagePublicFigures: UIKit.UIImage {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var imageSelectedPublicFigures: UIKit.UIImage?
+  @_Concurrency.MainActor(unsafe) public var imageAddPost: UIKit.UIImage {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var imageSearch: UIKit.UIImage {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var imageSelectedSearch: UIKit.UIImage?
+  @_Concurrency.MainActor(unsafe) public var imageProfile: UIKit.UIImage {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var imageSelectedProfile: UIKit.UIImage?
+  @_Concurrency.MainActor(unsafe) public var selectedTab: OTLContaner.OTLBottomTabBarItem {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var tintColor: UIKit.UIColor! {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) public var tintSelectedColor: UIKit.UIColor {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var backgroundColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) public var height: CoreFoundation.CGFloat {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var delegate: OTLContaner.OTLBottomTabBarDelegate?
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var isHidden: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc dynamic public init()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+public protocol OTLDropDownDelegate {
+  func dropDrown(_ dropDrown: OTLContaner.OTLDropDown, didSelect: Swift.Int, item data: [OTLContaner.OTLData])
+  func dropDrown(onCancel dropDrown: OTLContaner.OTLDropDown)
+  func dropDrown(_ dropDrown: OTLContaner.OTLDropDown, onDoneItem data: [OTLContaner.OTLData])
+}
+extension OTLContaner.OTLDropDownDelegate {
+  public func dropDrown(_ dropDrown: OTLContaner.OTLDropDown, onDoneItem data: [OTLContaner.OTLData])
+  public func dropDrown(onCancel dropDrown: OTLContaner.OTLDropDown)
+}
+public protocol OTLTextFieldDelegate {
+  func otlTextField(_ textField: OTLContaner.OTLTextField, willStartEditing: Swift.Bool)
+  func otlTextField(_ textField: OTLContaner.OTLTextField, didEndEditing: Swift.Bool)
+}
+extension OTLContaner.OTLTextFieldDelegate {
+  public func otlTextField(_ textField: OTLContaner.OTLTextField, willStartEditing: Swift.Bool)
+  public func otlTextField(_ textField: OTLContaner.OTLTextField, didEndEditing: Swift.Bool)
+}
+public protocol OTLPasswordFieldDelegate {
+  func otlTextField(_ textField: OTLContaner.OTLPasswordField, willStartEditing: Swift.Bool)
+  func otlTextField(_ textField: OTLContaner.OTLPasswordField, didEndEditing: Swift.Bool)
+}
+extension OTLContaner.OTLPasswordFieldDelegate {
+  public func otlTextField(_ textField: OTLContaner.OTLPasswordField, willStartEditing: Swift.Bool)
+  public func otlTextField(_ textField: OTLContaner.OTLPasswordField, didEndEditing: Swift.Bool)
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class OTLOTPView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) public var otpCount: Swift.Int {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var borderColor: UIKit.UIColor {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var borderWidth: CoreFoundation.CGFloat {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var cornerRadius: CoreFoundation.CGFloat {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var textColor: UIKit.UIColor {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var font: UIKit.UIFont {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var text: Swift.String {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var prefill: Swift.String {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var backgroundColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func canPerformAction(_ action: ObjectiveC.Selector, withSender sender: Any?) -> Swift.Bool
+  @objc deinit
+}
+public enum OTLButtonStyle {
+  case roundPi, corner(Swift.Double), squere
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class OTLPTButton : UIKit.UIControl {
+  @objc @IBOutlet @_Concurrency.MainActor(unsafe) weak public var title: UIKit.UILabel?
+  @objc @IBOutlet @_Concurrency.MainActor(unsafe) weak public var imageView: UIKit.UIImageView?
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class OTLButton : UIKit.UIControl {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var isSelected: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var title: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) public var color: OTLContaner.OTLColor? {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public var font: OTLContaner.OTLFont? {
+    get
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var imageLeft: UIKit.UIImage? {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var imageRight: UIKit.UIImage? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) public var backgoundColor: OTLContaner.OTLColor? {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public var style: OTLContaner.OTLButtonStyle {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var padding: UIKit.UIEdgeInsets {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var paddingTitle: UIKit.UIEdgeInsets {
+    get
+    set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var leftImageHeight: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var rightImageHeight: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var textAlignment: UIKit.NSTextAlignment {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) public func setTitle(_ title: Swift.String, isSelected: Swift.Bool = false)
+  @_Concurrency.MainActor(unsafe) public func setColor(_ color: OTLContaner.OTLColor, isSelected: Swift.Bool = false)
+  @_Concurrency.MainActor(unsafe) public func setFont(_ font: OTLContaner.OTLFont, isSelected: Swift.Bool = false)
+  @_Concurrency.MainActor(unsafe) public func setLeftImage(_ image: UIKit.UIImage, isSelected: Swift.Bool = false)
+  @_Concurrency.MainActor(unsafe) public func setRightImage(_ image: UIKit.UIImage, isSelected: Swift.Bool = false)
+  @_Concurrency.MainActor(unsafe) public func setBackgoundColor(_ color: OTLContaner.OTLColor, isSelected: Swift.Bool = false)
+  @objc deinit
+}
+extension UIKit.UIColor {
+  public static func hex(toUIColor hex: Swift.String) -> UIKit.UIColor
+}
+extension UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) public func roundCorners(_ corners: UIKit.UIRectCorner, radius: CoreFoundation.CGFloat)
+  @_Concurrency.MainActor(unsafe) public func fadeTo(_ alpha: CoreFoundation.CGFloat, duration: Foundation.TimeInterval = 0.3, delay: Foundation.TimeInterval = 0, completion: (() -> Swift.Void)? = nil)
+  @_Concurrency.MainActor(unsafe) public func fadeIn(duration: Foundation.TimeInterval = 0.3, delay: Foundation.TimeInterval = 0, completion: (() -> Swift.Void)? = nil)
+  @_Concurrency.MainActor(unsafe) public func fadeOut(duration: Foundation.TimeInterval = 0.3, delay: Foundation.TimeInterval = 0, completion: (() -> Swift.Void)? = nil)
+}
+extension UIKit.UIViewController {
+  @_Concurrency.MainActor(unsafe) public func presentBottomSheet(_ bottomSheet: OTLContaner.OTLBottomSheet, completion: (() -> Swift.Void)?)
+}
+extension Swift.String {
+  public func size(OfFont font: UIKit.UIFont) -> CoreFoundation.CGSize
+}
+public struct OTLAlertModel {
+  public let title: Swift.String
+  public let id: Swift.Int
+  public let style: UIKit.UIAlertAction.Style
+  public let data: Any?
+  public init(title: Swift.String, id: Swift.Int, style: UIKit.UIAlertAction.Style = .default, data: Any? = nil)
+}
+public func showAlert(title: Swift.String, message: Swift.String, buttons: [OTLContaner.OTLAlertModel], style: UIKit.UIAlertController.Style = .alert, complition: ((OTLContaner.OTLAlertModel) -> ())? = nil)
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) final public class OTLSearchView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) final public var placeholder: Swift.String? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var leftSearchIcon: UIKit.UIImage? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var rightSearchIcon: UIKit.UIImage? {
+    get
+    set
+  }
+  @objc deinit
+}
+extension OTLContaner.OTLAppearance : Swift.Equatable {}
+extension OTLContaner.OTLAppearance : Swift.Hashable {}
+extension OTLContaner.OTLFontFamilyType : Swift.Equatable {}
+extension OTLContaner.OTLFontFamilyType : Swift.Hashable {}
+extension OTLContaner.OTLFontSize : Swift.Equatable {}
+extension OTLContaner.OTLFontSize : Swift.Hashable {}
+extension OTLContaner.OTLImageButtonType : Swift.Equatable {}
+extension OTLContaner.OTLImageButtonType : Swift.Hashable {}
+extension OTLContaner.OTLBottomTabBarItem : Swift.Equatable {}
+extension OTLContaner.OTLBottomTabBarItem : Swift.Hashable {}

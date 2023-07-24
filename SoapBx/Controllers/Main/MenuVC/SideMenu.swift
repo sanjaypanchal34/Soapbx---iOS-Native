@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import OTLContaner
 
 class SideMenu: UIControl {
     
@@ -58,7 +59,7 @@ class SideMenu: UIControl {
         self.translatesAutoresizingMaskIntoConstraints = true
         self.frame.origin.x = frame.width
         self.backgroundColor = .clear
-        UIView.animate(withDuration: 0.8) {
+        UIView.animate(withDuration: 0.5) {
             self.frame.origin.x = 0
             self.backgroundColor = .black.withAlphaComponent(0.3)
         } completion: { status in
@@ -72,7 +73,7 @@ class SideMenu: UIControl {
         self.translatesAutoresizingMaskIntoConstraints = true
         self.frame.origin.x = 0
         self.backgroundColor = .black.withAlphaComponent(0.3)
-        UIView.animate(withDuration: 0.8) {
+        UIView.animate(withDuration: 0.5) {
             self.frame.origin.x = self.frame.width
             self.backgroundColor = .clear
         } completion: { status in
@@ -124,8 +125,13 @@ extension SideMenu: UITableViewDelegate {
         case "Home":
             break
         case "Polls":
+            let vc = PollsListVC()
+            rootViewController.pushViewController(vc, animated: true)
             break
         case "Friends":
+            let vc = ConnectionVC()
+            vc.screenType = .fromFriends
+            rootViewController.pushViewController(vc, animated: true)
             break
         case "Connections":
             let vc = ConnectionVC()
@@ -163,7 +169,13 @@ extension SideMenu: UITableViewDelegate {
             
             break
         case "Logout":
-            mackRootView(LoginVC())
+            let cancel = OTLAlertModel(title: "Cancel", id: 0)
+            let okay = OTLAlertModel(title: "Okay", id: 1, style: .destructive)
+            showAlert(message: "Are you sure you want to logout?",  buttons: [cancel,okay]) { alert in
+                if alert.id == 1 {
+                    mackRootView(LoginVC())
+                }
+            }
             break
         default:
             break

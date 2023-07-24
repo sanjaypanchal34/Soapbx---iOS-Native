@@ -84,6 +84,7 @@ extension SavedPostVC: HomeItemCellDelegate{
             break;
         case .delete:
             break;
+        default: break;
         }
     }
 }

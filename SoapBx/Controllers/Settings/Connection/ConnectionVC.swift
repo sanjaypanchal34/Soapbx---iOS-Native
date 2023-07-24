@@ -8,6 +8,10 @@
 import UIKit
 import OTLContaner
 
+enum ConnectionScreenType {
+    case fromConnection, fromFriends
+}
+
 class ConnectionVC: UIViewController {
     
     @IBOutlet private weak var viewHeader: OTLHeader!
@@ -17,6 +21,9 @@ class ConnectionVC: UIViewController {
     @IBOutlet private weak var btnBlock: OTLTextButton!
     @IBOutlet private weak var btnUnfollow: OTLTextButton!
     @IBOutlet private weak var tblList: UITableView!
+    @IBOutlet private weak var lblNoData: UILabel!
+    
+    var screenType = ConnectionScreenType.fromConnection
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,16 +32,22 @@ class ConnectionVC: UIViewController {
     }
 
     private func setupUI() {
-        viewHeader.lblTitle.setHeader("Connections")
+        viewHeader.lblTitle.setHeader(screenType == .fromConnection ? "Connections" : "Friends")
         
         viewTabaction.layer.cornerRadius = 10
         viewTabaction.clipsToBounds = true
         
-        btnBlock.setTheme("Blocked account", color: .white)
-        btnUnfollow.setTheme("Unfollowed account", color: .white)
+        btnBlock.setTheme(screenType == .fromConnection ? "Blocked account" : "Request",
+                          color: .white,
+                          font: .semibold)
+        
+        btnUnfollow.setTheme(screenType == .fromConnection ? "Unfollowed account" : "My Friends",
+                             color: .white,
+                             font: .semibold)
         click_TabBar(btnBlock)
         
         tblList.register(["PublicFiguresItemCell"], delegate: self, dataSource: self)
+        lblNoData.noDataTitle("No Data Found")
     }
     
     
@@ -43,10 +56,10 @@ class ConnectionVC: UIViewController {
             btnBlock.backgroundColor = .primaryBlue
             btnBlock.textColor = .white
             btnUnfollow.backgroundColor = .lightGrey
-            btnUnfollow.textColor = .black
+            btnUnfollow.textColor = .titleGrey
         } else {
             btnBlock.backgroundColor = .lightGrey
-            btnBlock.textColor = .black
+            btnBlock.textColor = .titleGrey
             btnUnfollow.backgroundColor = .primaryBlue
             btnUnfollow.textColor = .white
         }
@@ -54,7 +67,10 @@ class ConnectionVC: UIViewController {
 }
 extension ConnectionVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        if screenType == .fromConnection{
+            return 3
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

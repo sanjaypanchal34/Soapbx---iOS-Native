@@ -51,8 +51,9 @@ class ProfileCoverVC: UIViewController {
     
     //Actions
     @IBAction private func click_btnNext() {
-        let vc = VerificationCodeVC()
-        self.navigationController?.pushViewController(vc, animated: true)
+        
+        let vc = ProfileCoverVC()
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 

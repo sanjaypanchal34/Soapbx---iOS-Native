@@ -1,20 +1,16 @@
 //
 //  Configration.swift
-//  SoapBx
+//  Operators Techno Lab, Ahmedabad
 //
-//  Created by Mac on 04/07/23.
+//  Developed by Harsh Kadiya
+//  Created by OTL-HK on 26/02/2019.
+//  Copyright © 2023 OTL-HK. All rights reserved.
 //
 
 import Foundation
 import OTLContaner
 import UIKit
 
-func setupFonts() {
-    OTLFontFamily.regular = "SFProDisplay-Regular.ttf"
-    OTLFontFamily.semibold = "SFProDisplay-Medium.ttf"
-    OTLFontFamily.semibold = "SFProDisplay-Semibold.ttf"
-    OTLFontFamily.semibold = "SFProDisplay-Bold.ttf"
-}
 
 enum AppFont {
     case regular, medium, semibold, bold

@@ -36,6 +36,8 @@ class SignupVC: UIViewController {
     @IBOutlet private weak var lblAlreadyAMamber: UILabel!
     @IBOutlet private weak var btnSignIn: UIButton!
     
+    private var intVerifyType = 0
+    private var vmObject = SignupViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,6 +66,7 @@ class SignupVC: UIViewController {
         txtConfPassword.setTheme(placeholder: "Confirm Password")
         txtLocation.setTheme(placeholder: "Location",
                              leftIcon: UIImage(named: "ic_location_grey"))
+        txtLocation.delegate = self
         
         lblVerifyEmail.setTheme("Verify via Email")
         lblVerifyPhone.setTheme("Verify via Number")
@@ -78,6 +81,8 @@ class SignupVC: UIViewController {
         
         lblAlreadyAMamber.setTheme("Already a member?")
         btnSignIn.setTheme("Sign in now", color: .primaryBlue)
+        
+        click_verifyVia(viewVerifyEmail)
     }
 
     //Action
@@ -89,15 +94,44 @@ class SignupVC: UIViewController {
         if sender == viewVerifyEmail {
             imgVerifyEmail.image = UIImage(named: "ic_radioSelected")
             imgVerifyPhone.image = UIImage(named: "ic_radio")
+            intVerifyType = 0
         } else { // selected
             imgVerifyEmail.image = UIImage(named: "ic_radio")
             imgVerifyPhone.image = UIImage(named: "ic_radioSelected")
+            intVerifyType = 1
         }
     }
     
     @IBAction private func click_SignUp() {
-        let vc = ProfileCoverVC()
-        navigationController?.pushViewController(vc, animated: true)
+        let validateFirst = txtFirstName.text.validateFirst()
+        let validateLast = txtLastName.text.validateLast()
+        let validateEmail = txtEmail.text.validateEmail()
+        let validatePhone = txtPhoneNo.text.validatePhone()
+        let validatePass = txtPassword.text.validatePassword()
+        let validateConfPass = txtConfPassword.text.validateConfirmPassword(with: txtPassword.text)
+        
+        if validateFirst.status == false {
+            showToast(message: validateFirst.message)
+        }
+        else if validateLast.status == false {
+            showToast(message: validateLast.message)
+        }
+        else if validatePhone.status == false, intVerifyType == 1 {
+            showToast(message: validatePhone.message)
+        }
+        else if validateEmail.status == false {
+            showToast(message: validateEmail.message)
+        }
+        else if validatePass.status == false {
+            showToast(message: validatePass.message)
+        }
+        else if validateConfPass.status == false {
+            showToast(message: validateConfPass.message)
+        } else {
+            register()
+        }
+        
+        
     }
     
     @IBAction private func click_IAccept() {
@@ -115,4 +149,53 @@ class SignupVC: UIViewController {
     @IBAction private func click_SignIn() {
         self.navigationController?.popToRootViewController(animated: true)
     }
+    
+    // API calls
+    private func register() {
+        showLoader()
+        vmObject.register(phone: txtPhoneNo.text,
+                          email: txtEmail.text,
+                          verified: intVerifyType,
+                          complition: { result in
+            hideLoader()
+            if result.status {
+                let vc = VerificationCodeVC()
+                vc.navigate(SignupRequestModel(
+                    first_name: self.txtFirstName.text,
+                    last_name: self.txtLastName.text,
+                    email: self.txtEmail.text,
+                    phone_number: self.txtPhoneNo.text,
+                    password: self.txtPassword.text,
+                    confirm_password: self.txtConfPassword.text,
+                    country_code: "+1",
+                    location: self.vmObject.selectedSearch?.formattedAddress ?? "",
+                    longitude: self.vmObject.selectedSearch?.geometry?.location?.lng ?? 0,
+                    latitude: self.vmObject.selectedSearch?.geometry?.location?.lat ?? 0,
+                    verified_by: self.intVerifyType
+                ))
+                self.navigationController?.pushViewController(vc, animated: true)
+            } else {
+                showToast(message: result.message)
+            }
+        })
+    }
+}
+extension SignupVC: OTLTextFieldDelegate {
+    
+    func otlTextField(_ textField: OTLTextField, willStartEditing: Bool) {
+        self.view.endEditing(true)
+        let vc = LocationSearchVC()
+        vc.delegate = self
+        vc.modalPresentationStyle = .overFullScreen
+        self.present(vc, animated: true)
+    }
+
+}
+extension SignupVC: LocationSearchDelegate {
+    func locationSearch(_ controller: LocationSearchVC, didSelect: GMapResult) {
+        vmObject.selectedSearch = didSelect
+        txtLocation.text = didSelect.formattedAddress
+    }
+    
+    
 }

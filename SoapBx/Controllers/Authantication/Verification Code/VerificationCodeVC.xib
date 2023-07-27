@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VerificationCodeVC" customModule="SoapBx" customModuleProvider="target">
             <connections>
                 <outlet property="btnNext" destination="5ju-3a-zLi" id="pcT-Zr-Tmx"/>
+                <outlet property="btnResend" destination="mZh-GE-pwf" id="26T-l5-dSN"/>
                 <outlet property="lblDescription" destination="x4R-z6-TPF" id="g0X-5J-mZu"/>
                 <outlet property="lblTitle" destination="SnR-NI-88D" id="gGf-cw-WpU"/>
                 <outlet property="otpField" destination="idC-iu-FTb" id="gfr-Zr-SqK"/>
@@ -47,29 +48,42 @@ your email test@yopmail.com</string>
                                 <constraint firstAttribute="height" constant="50" id="wTQ-nW-ddD"/>
                             </constraints>
                         </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mZh-GE-pwf" customClass="OTLTextButton" customModule="OTLContaner">
+                            <rect key="frame" x="151.66666666666666" y="216.66666666666669" width="90" height="35"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="35" id="N9w-7v-NE8"/>
+                                <constraint firstAttribute="width" constant="90" id="Tzd-K5-cqK"/>
+                            </constraints>
+                            <connections>
+                                <action selector="click_resend" destination="-1" eventType="touchUpInside" id="Zad-YH-jcJ"/>
+                            </connections>
+                        </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5ju-3a-zLi" customClass="OTLTextButton" customModule="OTLContaner">
-                            <rect key="frame" x="20" y="206.66666666666669" width="353" height="50"/>
+                            <rect key="frame" x="20" y="689" width="353" height="50"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="pI6-cK-i65"/>
                             </constraints>
                             <connections>
-                                <action selector="click_resend" destination="-1" eventType="touchDragInside" id="mWs-5p-EZ3"/>
+                                <action selector="click_Next" destination="-1" eventType="touchUpInside" id="jQe-Jf-4wz"/>
                             </connections>
                         </view>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
+                        <constraint firstItem="mZh-GE-pwf" firstAttribute="top" secondItem="idC-iu-FTb" secondAttribute="bottom" constant="30" id="1Mq-60-jAn"/>
                         <constraint firstItem="idC-iu-FTb" firstAttribute="trailing" secondItem="x4R-z6-TPF" secondAttribute="trailing" id="4d1-iB-Ntf"/>
                         <constraint firstItem="x4R-z6-TPF" firstAttribute="leading" secondItem="SnR-NI-88D" secondAttribute="leading" id="6o1-VU-Xdx"/>
                         <constraint firstAttribute="trailing" secondItem="5ju-3a-zLi" secondAttribute="trailing" constant="20" id="NYi-ls-tk8"/>
                         <constraint firstItem="5ju-3a-zLi" firstAttribute="leading" secondItem="SeZ-sX-zho" secondAttribute="leading" constant="20" id="PtM-3c-qhk"/>
                         <constraint firstItem="idC-iu-FTb" firstAttribute="top" secondItem="x4R-z6-TPF" secondAttribute="bottom" constant="20" id="ReX-5z-JOh"/>
-                        <constraint firstItem="5ju-3a-zLi" firstAttribute="top" secondItem="idC-iu-FTb" secondAttribute="bottom" constant="20" id="X09-Fm-8j5"/>
                         <constraint firstItem="x4R-z6-TPF" firstAttribute="trailing" secondItem="SnR-NI-88D" secondAttribute="trailing" id="Zcc-1F-etW"/>
                         <constraint firstItem="x4R-z6-TPF" firstAttribute="top" secondItem="SnR-NI-88D" secondAttribute="bottom" constant="15" id="oEw-TY-Tz5"/>
                         <constraint firstItem="SnR-NI-88D" firstAttribute="leading" secondItem="SeZ-sX-zho" secondAttribute="leading" constant="20" id="tlc-4D-gTu"/>
                         <constraint firstItem="idC-iu-FTb" firstAttribute="leading" secondItem="x4R-z6-TPF" secondAttribute="leading" id="ukA-ZD-8Vw"/>
+                        <constraint firstItem="mZh-GE-pwf" firstAttribute="centerX" secondItem="SeZ-sX-zho" secondAttribute="centerX" id="wBI-Tl-BVP"/>
+                        <constraint firstAttribute="bottom" secondItem="5ju-3a-zLi" secondAttribute="bottom" constant="20" id="xNl-vg-aq4"/>
                         <constraint firstItem="SnR-NI-88D" firstAttribute="top" secondItem="SeZ-sX-zho" secondAttribute="top" constant="20" id="xO1-rS-DkC"/>
                         <constraint firstAttribute="trailing" secondItem="SnR-NI-88D" secondAttribute="trailing" constant="20" id="yOn-e2-Q9L"/>
                     </constraints>

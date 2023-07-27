@@ -1,54 +1,14 @@
 // swift-interface-format-version: 1.0
 // swift-compiler-version: Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)
-// swift-module-flags: -target x86_64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -module-name OTLContaner
+// swift-module-flags: -target x86_64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -module-name OTLContaner
 // swift-module-flags-ignorable: -enable-bare-slash-regex
 import Foundation
 @_exported import OTLContaner
 import Swift
+import SystemConfiguration
 import UIKit
 import _Concurrency
 import _StringProcessing
-public enum OTLAppearance {
-  case dark, light
-  public static func == (a: OTLContaner.OTLAppearance, b: OTLContaner.OTLAppearance) -> Swift.Bool
-  public func hash(into hasher: inout Swift.Hasher)
-  public var hashValue: Swift.Int {
-    get
-  }
-}
-public struct OTLColor {
-  public var color: UIKit.UIColor {
-    get
-  }
-  public init(dark: UIKit.UIColor? = nil, light: UIKit.UIColor)
-  public init(dark: Swift.String? = nil, light: Swift.String)
-}
-@_hasMissingDesignatedInitializers public class OTLColorPrefrance {
-  public static var primary: OTLContaner.OTLColor
-  public static var secondry: OTLContaner.OTLColor
-  public static var header: OTLContaner.OTLColor
-  public static var body: OTLContaner.OTLColor
-  public static var title1: OTLContaner.OTLColor
-  public static var title2: OTLContaner.OTLColor
-  public static var title3: OTLContaner.OTLColor
-  public static var title4: OTLContaner.OTLColor
-  public static var title5: OTLContaner.OTLColor
-  public static var disciption1: OTLContaner.OTLColor
-  public static var disciption2: OTLContaner.OTLColor
-  public static var disciption3: OTLContaner.OTLColor
-  public static var disciption4: OTLContaner.OTLColor
-  public static var disciption5: OTLContaner.OTLColor
-  public static var text1: OTLContaner.OTLColor
-  public static var text2: OTLContaner.OTLColor
-  public static var text3: OTLContaner.OTLColor
-  public static var button1: OTLContaner.OTLColor
-  public static var button2: OTLContaner.OTLColor
-  public static var button3: OTLContaner.OTLColor
-  public static var headerTitle1: OTLContaner.OTLColor
-  public static var headerTitle2: OTLContaner.OTLColor
-  public static var clear: OTLContaner.OTLColor
-  @objc deinit
-}
 public protocol OTLBottomSheetPresentable {
   var cornerRadius: CoreFoundation.CGFloat { get set }
   var animationTransitionDuration: Foundation.TimeInterval { get set }
@@ -119,43 +79,6 @@ public struct OTLBottomSheetViewModel : OTLContaner.OTLBottomSheetPresentable {
   @objc deinit
 }
 extension OTLContaner.OTLPasswordField : UIKit.UITextViewDelegate {
-}
-public struct OTLFont {
-  public var family: OTLContaner.OTLFontFamilyType
-  public var size: OTLContaner.OTLFontSize
-  public init(family: OTLContaner.OTLFontFamilyType, size: OTLContaner.OTLFontSize)
-  public var font: UIKit.UIFont {
-    get
-  }
-}
-public enum OTLFontFamilyType {
-  case extralight, light, regular, medium, semibold, bold, extrabold, other1, other2, other3, other4
-  public static func == (a: OTLContaner.OTLFontFamilyType, b: OTLContaner.OTLFontFamilyType) -> Swift.Bool
-  public func hash(into hasher: inout Swift.Hasher)
-  public var hashValue: Swift.Int {
-    get
-  }
-}
-public struct OTLFontFamily {
-  public static var extralight: Swift.String
-  public static var light: Swift.String
-  public static var regular: Swift.String
-  public static var medium: Swift.String
-  public static var semibold: Swift.String
-  public static var bold: Swift.String
-  public static var extrabold: Swift.String
-  public static var other1: Swift.String
-  public static var other2: Swift.String
-  public static var other3: Swift.String
-  public static var other4: Swift.String
-}
-public enum OTLFontSize {
-  case extraLargeTitle, largeTitle, title, title2, title3, headline, subheadline, body, callout, caption, caption2, caption3
-  public static func == (a: OTLContaner.OTLFontSize, b: OTLContaner.OTLFontSize) -> Swift.Bool
-  public func hash(into hasher: inout Swift.Hasher)
-  public var hashValue: Swift.Int {
-    get
-  }
 }
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class OTLDatePicker : UIKit.UITextField {
   @_Concurrency.MainActor(unsafe) @objc dynamic public init()
@@ -258,6 +181,8 @@ public enum OTLTextFieldStyle {
 }
 extension OTLContaner.OTLTextField : UIKit.UITextViewDelegate {
 }
+public func otlStartActivityIndicator(color: UIKit.UIColor = .white)
+public func otlStopActivityIndicator()
 public struct OTLButtonPresentable {
   public var font: UIKit.UIFont
   public var color: UIKit.UIColor
@@ -514,10 +439,12 @@ extension OTLContaner.OTLDropDownDelegate {
 public protocol OTLTextFieldDelegate {
   func otlTextField(_ textField: OTLContaner.OTLTextField, willStartEditing: Swift.Bool)
   func otlTextField(_ textField: OTLContaner.OTLTextField, didEndEditing: Swift.Bool)
+  func otlTextField(_ textField: OTLContaner.OTLTextField, editingChanged: Swift.String)
 }
 extension OTLContaner.OTLTextFieldDelegate {
   public func otlTextField(_ textField: OTLContaner.OTLTextField, willStartEditing: Swift.Bool)
   public func otlTextField(_ textField: OTLContaner.OTLTextField, didEndEditing: Swift.Bool)
+  public func otlTextField(_ textField: OTLContaner.OTLTextField, editingChanged: Swift.String)
 }
 public protocol OTLPasswordFieldDelegate {
   func otlTextField(_ textField: OTLContaner.OTLPasswordField, willStartEditing: Swift.Bool)
@@ -586,10 +513,10 @@ public enum OTLButtonStyle {
     @objc get
     @objc set
   }
-  @_Concurrency.MainActor(unsafe) public var color: OTLContaner.OTLColor? {
+  @_Concurrency.MainActor(unsafe) public var color: UIKit.UIColor? {
     get
   }
-  @_Concurrency.MainActor(unsafe) public var font: OTLContaner.OTLFont? {
+  @_Concurrency.MainActor(unsafe) public var font: UIKit.UIFont? {
     get
   }
   @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var imageLeft: UIKit.UIImage? {
@@ -600,7 +527,7 @@ public enum OTLButtonStyle {
     @objc get
     @objc set
   }
-  @_Concurrency.MainActor(unsafe) public var backgoundColor: OTLContaner.OTLColor? {
+  @_Concurrency.MainActor(unsafe) public var backgoundColor: UIKit.UIColor? {
     get
   }
   @_Concurrency.MainActor(unsafe) public var style: OTLContaner.OTLButtonStyle {
@@ -628,11 +555,11 @@ public enum OTLButtonStyle {
     @objc set
   }
   @_Concurrency.MainActor(unsafe) public func setTitle(_ title: Swift.String, isSelected: Swift.Bool = false)
-  @_Concurrency.MainActor(unsafe) public func setColor(_ color: OTLContaner.OTLColor, isSelected: Swift.Bool = false)
-  @_Concurrency.MainActor(unsafe) public func setFont(_ font: OTLContaner.OTLFont, isSelected: Swift.Bool = false)
+  @_Concurrency.MainActor(unsafe) public func setColor(_ color: UIKit.UIColor, isSelected: Swift.Bool = false)
+  @_Concurrency.MainActor(unsafe) public func setFont(_ font: UIKit.UIFont, isSelected: Swift.Bool = false)
   @_Concurrency.MainActor(unsafe) public func setLeftImage(_ image: UIKit.UIImage, isSelected: Swift.Bool = false)
   @_Concurrency.MainActor(unsafe) public func setRightImage(_ image: UIKit.UIImage, isSelected: Swift.Bool = false)
-  @_Concurrency.MainActor(unsafe) public func setBackgoundColor(_ color: OTLContaner.OTLColor, isSelected: Swift.Bool = false)
+  @_Concurrency.MainActor(unsafe) public func setBackgoundColor(_ color: UIKit.UIColor, isSelected: Swift.Bool = false)
   @objc deinit
 }
 extension UIKit.UIColor {
@@ -650,6 +577,7 @@ extension UIKit.UIViewController {
 extension Swift.String {
   public func size(OfFont font: UIKit.UIFont) -> CoreFoundation.CGSize
 }
+public func isInternetAvailable() -> Swift.Bool
 public struct OTLAlertModel {
   public let title: Swift.String
   public let id: Swift.Int
@@ -673,12 +601,6 @@ public func showAlert(title: Swift.String, message: Swift.String, buttons: [OTLC
   }
   @objc deinit
 }
-extension OTLContaner.OTLAppearance : Swift.Equatable {}
-extension OTLContaner.OTLAppearance : Swift.Hashable {}
-extension OTLContaner.OTLFontFamilyType : Swift.Equatable {}
-extension OTLContaner.OTLFontFamilyType : Swift.Hashable {}
-extension OTLContaner.OTLFontSize : Swift.Equatable {}
-extension OTLContaner.OTLFontSize : Swift.Hashable {}
 extension OTLContaner.OTLImageButtonType : Swift.Equatable {}
 extension OTLContaner.OTLImageButtonType : Swift.Hashable {}
 extension OTLContaner.OTLBottomTabBarItem : Swift.Equatable {}

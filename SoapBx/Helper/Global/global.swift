@@ -1,8 +1,10 @@
 //
 //  global.swift
-//  SoapBx
+//  Operators Techno Lab, Ahmedabad
 //
-//  Created by Mac on 05/07/23.
+//  Developed by Harsh Kadiya
+//  Created by OTL-HK on 26/02/2019.
+//  Copyright © 2023 OTL-HK. All rights reserved.
 //
 
 import UIKit
@@ -28,4 +30,12 @@ func showAlert( message: String,
                 style: UIAlertController.Style = .alert,
                 complition: ((OTLAlertModel)->())? = nil) {
     showAlert(title: "SoapBx", message: message, buttons: buttons, style: style, complition: complition)
+}
+
+func showLoader() {
+    otlStartActivityIndicator(color: .primaryBlue)
+}
+
+func hideLoader() {
+    otlStopActivityIndicator()
 }

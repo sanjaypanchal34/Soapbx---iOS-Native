@@ -26,6 +26,7 @@ class LoginVC: UIViewController {
     @IBOutlet private weak var lblNotAMamber: UILabel!
     @IBOutlet private weak var btnSignUp: UIButton!
     
+    private let vmObject = LoginViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,9 +59,18 @@ class LoginVC: UIViewController {
     
     //Actions
     @IBAction private func click_Singin() {
-        showToast(message: "Please enter vallied details")
-//        let vc = HomeVC()
-//        mackRootView(vc)
+        let validateEmail = txtEmail.text.validateEmail()
+        let validatePass = txtPassword.text.validatePassword()
+        
+        if validateEmail.status == false {
+            showToast(message: validateEmail.message)
+        }
+        else if validatePass.status == false {
+            showToast(message: validatePass.message)
+        }
+        else {
+            login()
+        }
     }
     
     @IBAction private func click_ForgotPassword() {
@@ -88,5 +98,21 @@ class LoginVC: UIViewController {
     @IBAction private func click_SignUp() {
         let vc = SignupVC()
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    //API Calls
+    private func login() {
+        showLoader()
+        vmObject.login(email: txtEmail.text,
+                       password: txtPassword.text,
+                       complition:  { result in
+            hideLoader()
+            if result.status{
+                
+            } else {
+                showToast(message: result.message)
+            }
+            
+        })
     }
 }

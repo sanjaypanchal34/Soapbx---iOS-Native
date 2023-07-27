@@ -85,7 +85,7 @@ extension UIButton {
                   backgound: UIColor = .clear) {
         self.setTitle(text, for: .normal)
         self.setTitleColor(color, for: .normal)
-        self.titleLabel?.font = font.font(size: size) ?? UIFont.systemFont(ofSize: size, weight: .regular)
+        self.titleLabel?.font = font.font(size: size) 
         self.backgroundColor = backgound
     }
 }
@@ -99,14 +99,14 @@ extension OTLTextField {
                   size: CGFloat = 16,
                   leftIcon:UIImage? = nil,
                   leftSelectedIcon:UIImage? = nil,
-                  backgound: OTLColor = OTLColorPrefrance.primary) {
+                  backgound: UIColor = .primaryBlue) {
         self.text = text
         self.placeholder = placeholder
         self.color = color
         self.font = font.font(size: size)
         self.leftIcon = leftIcon
         self.leftSelectedIcon = leftSelectedIcon
-        self.borderActiveColor = .primaryBlue
+        self.borderActiveColor = backgound
     }
 }
 
@@ -117,7 +117,7 @@ extension OTLPasswordField {
                   color: UIColor = .titleBlack,
                   font: AppFont = .regular,
                   size: CGFloat = 16,
-                  backgound: OTLColor = OTLColorPrefrance.primary) {
+                  backgound: UIColor = .primaryBlue) {
         self.text = text
         self.placeholder = placeholder
         self.color = color
@@ -125,7 +125,7 @@ extension OTLPasswordField {
         self.leftIcon = UIImage(named: "ic_lock")
         self.rightIcon = UIImage(named: "ic_eye")
         self.rightSelectedIcon = UIImage(named: "ic_closeEye")
-        self.borderActiveColor = .primaryBlue
+        self.borderActiveColor = backgound
     }
 }
 extension OTLOTPView {
@@ -202,5 +202,10 @@ extension UIView {
                 return (self.window?.rootViewController?.navigationController)!
             }
         }
+    }
+}
+extension String {
+    func isEmpty() -> Bool{
+        return self.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
 }

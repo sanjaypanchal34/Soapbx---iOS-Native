@@ -27,13 +27,16 @@ class TrendsItemCell: AppCollectionViewCell {
         super.awakeFromNib()
         viewMain.layer.cornerRadius = 10
         lblTitle.setTheme("", color: .white, lines: 1)
+        imgIcon.backgroundColor = .clear
+        imgIcon.layer.cornerRadius = imgIcon.frame.height/2
         imgCheckBox.backgroundColor = .clear
         imgCheckBox.layer.cornerRadius = imgCheckBox.frame.height/2
     }
 
-    func setData(_ object: DummyTrends, isSelected: Bool = false) {
-        lblTitle.text = object.title
-        viewMain.backgroundColor = UIColor.hex(toUIColor: object.colorHax)
+    func setData(_ object: TrendsModel, color: String, isSelected: Bool = false) {
+        lblTitle.text = object.name
+        imgIcon.setImage(object.image_url, placeHolder: UIImage(named: "allTrends")!)
+        viewMain.backgroundColor = UIColor.hex(toUIColor: color)
         imgCheckBox.image = isSelected ? UIImage(named: "ic_planChecked") : UIImage(named: "ic_planUnchecked")
     }
 }

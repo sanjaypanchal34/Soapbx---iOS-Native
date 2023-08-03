@@ -26,9 +26,9 @@ class YouInterestedItemCell: UICollectionViewCell {
         viewSelectdIcon.backgroundColor = UIColor.primaryBlue.withAlphaComponent(0.3)
     }
     
-    func setData(_ object: String, isSelcted: Bool = false) {
-        self.imgIcon.image = UIImage(named: "ic_user")
-        lblTitle.text = object
+    func setData(_ object: TrendsModel, isSelcted: Bool = false) {
+        self.imgIcon.setImage(object.image_url)
+        lblTitle.text = object.name
         viewSelectdIcon.isHidden = !isSelcted
         
         DispatchQueue.main.async {

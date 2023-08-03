@@ -1,12 +1,18 @@
 //
 //  VerificationCodeVC.swift
-//  SoapBx
+//  Operators Techno Lab, Ahmedabad
 //
-//  Created by Mac on 08/07/23.
+//  Developed by Harsh Kadiya
+//  Created by OTL-HK on 28/07/2019.
+//  Copyright © 2023 OTL-HK. All rights reserved.
 //
 
 import UIKit
 import OTLContaner
+
+enum VerificationCodeScreenType {
+    case fromSignup, fromForgotPassword
+}
 
 class VerificationCodeVC: UIViewController {
 
@@ -19,6 +25,7 @@ class VerificationCodeVC: UIViewController {
     @IBOutlet private weak var btnNext: OTLTextButton!
     
     private var vmObject = SignupViewModel()
+    private var screenType = VerificationCodeScreenType.fromSignup
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,8 +34,16 @@ class VerificationCodeVC: UIViewController {
     }
 
     func navigate(_ data: SignupRequestModel) {
+        screenType = .fromSignup
         vmObject.signupJson = data
     }
+    
+    func navigateWithForgot(_ email: String) {
+        screenType = .fromForgotPassword
+        vmObject.signupJson =  SignupRequestModel()
+        vmObject.signupJson?.email = email
+    }
+    
     //MARK: - Setup view
     private func setupUI() {
         lblTitle.setTheme("Verification code",
@@ -44,11 +59,17 @@ class VerificationCodeVC: UIViewController {
         otpField.setOTPTheme()
         btnResend.setTheme("Resend", color: .primaryBlue, font: .medium)
         btnNext.appButton("Next")
+        
+        if screenType == .fromSignup {
+            btnResend.isHidden = false
+        } else {
+            btnResend.isHidden = true
+        }
     }
     
     // action
     @IBAction private func click_resend(){
-        
+        resendOTP()
     }
     
     @IBAction private func click_Next(){
@@ -58,7 +79,12 @@ class VerificationCodeVC: UIViewController {
             showToast(message: validateOTP.message)
         } else {
             vmObject.signupJson?.otp = otpField.text
-            registerWithVerify()
+            if screenType == .fromSignup {
+                registerWithVerify()
+            }
+            else if screenType == .fromForgotPassword {
+                verifyOTP()
+            }
         }
     }
     
@@ -73,6 +99,22 @@ class VerificationCodeVC: UIViewController {
                 showToast(message: result.message)
             }
         })
+    }
+    
+    private func verifyOTP() {
+        showLoader()
+        vmObject.verifyOTP(otp: otpField.text) { result in
+            hideLoader()
+            showToast(message: result.message)
+            if result.status {
+                let vc = ChangePasswordVC()
+                vc.navigateForForgot(otp: self.otpField.text, email: self.vmObject.signupJson?.email ?? "")
+                mackRootView(vc)
+            }
+            else {
+                showToast(message: result.message)
+            }
+        }
     }
     
     private func resendOTP() {

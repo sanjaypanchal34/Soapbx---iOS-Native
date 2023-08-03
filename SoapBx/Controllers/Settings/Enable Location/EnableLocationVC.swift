@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import CoreLocation
 
-class EnableLocationVC: UIViewController {
+class EnableLocationVC: UIViewController  {
     
     @IBOutlet private weak var lblTitle: UILabel!
     @IBOutlet private weak var imgIcon: UIImageView!
@@ -15,10 +16,18 @@ class EnableLocationVC: UIViewController {
     @IBOutlet private weak var btnNext: UIButton!
     @IBOutlet private weak var btnSkip: UIButton!
     
+    private var locationManager: CLLocationManager?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        
+        locationManager = CLLocationManager()
+        locationManager?.delegate = self
+        locationManager?.requestWhenInUseAuthorization()
+        locationManager?.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager?.startUpdatingLocation()
+        locationManager?.startMonitoringSignificantLocationChanges()
         // Do any additional setup after loading the view.
     }
 
@@ -38,9 +47,50 @@ class EnableLocationVC: UIViewController {
     //Actions
     @IBAction private func click_btnNext() {
         
+        if CLLocationManager.locationServicesEnabled()
+        {
+            switch(CLLocationManager.authorizationStatus())
+            {
+                    
+                case .authorizedAlways, .authorizedWhenInUse:
+                    
+                    print("Authorize.")
+                    
+                    break
+                    
+                case .notDetermined:
+                    
+                    print("Not determined.")
+                    
+                    break
+                    
+                case .restricted:
+                    
+                    print("Restricted.")
+                    
+                    break
+                    
+                case .denied:
+                    
+                    print("Denied.")
+                default:
+                    break
+                    
+            }
+        }
+
     }
     
     @IBAction private func click_skipNow() {
         mackRootView(HomeVC())
+    }
+}
+extension EnableLocationVC : CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        authUser?.user?.longitude = locations.first?.coordinate.longitude ?? 0
+        authUser?.user?.latitude = locations.first?.coordinate.latitude ?? 0
+        locationManager?.stopUpdatingLocation()
+        locationManager?.stopMonitoringSignificantLocationChanges()
     }
 }

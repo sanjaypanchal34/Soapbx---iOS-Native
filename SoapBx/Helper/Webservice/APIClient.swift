@@ -142,8 +142,16 @@ class OTLAPIClient: NSObject {
                         if let json = value as? [String: Any] {
 
                             printLog("RequestResponse: \(json)", log: .api_response)
-                            let objResponse = APIResponse(json, code: statusCode)
-                              requestObjc.resultCompletion?(.success(objResponse))
+                            if response.response?.statusCode == 401 {
+                                showAlert(title: "Session Expired", message: "You must login again to continue", buttons: [OTLAlertModel(title: "Okay", id: 0)])
+                                authUser?.logout()
+                                DispatchQueue.main.async {
+                                    mackRootView(LoginVC())
+                                }
+                            } else {
+                                let objResponse = APIResponse(json, code: statusCode)
+                                requestObjc.resultCompletion?(.success(objResponse))
+                            }
                         } else {
                               requestObjc.resultCompletion?(.fail(ResponseParseErrorMessage, statusCode, nil))
                         }
@@ -161,7 +169,7 @@ class OTLAPIClient: NSObject {
       // class methods
       class func httpsHeaders(_ header: OTLStringJson? = nil) -> HTTPHeaders {
           var defaultHeaders = HTTPHeaders()
-          if let header = header {
+          if let header = header, header.count > 0 {
               header.forEach { headerObj in
                   defaultHeaders[headerObj.key] = headerObj.value
               }

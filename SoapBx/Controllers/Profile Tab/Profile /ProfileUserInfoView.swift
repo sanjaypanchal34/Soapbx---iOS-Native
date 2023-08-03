@@ -31,11 +31,13 @@ class ProfileUserInfoView: UIView {
     @IBOutlet private weak var btnVoiceToday:OTLPTButton!
     
     var screenType = ProfileScreenType.profileTab
+    var userObj: PostUser?
     
     public func setupUIWithData(screenType: ProfileScreenType = .profileTab) {
         self.screenType = screenType
         imgCover.image = UIImage(named: "")
         imgCover.backgroundColor = .lightGrey
+        imgCover.contentMode = .scaleAspectFill
         imgProfile.image = UIImage(named: "profileOne")
         imgProfile.contentMode = .scaleAspectFill
         imgProfile.layer.cornerRadius = imgProfile.frame.height/2
@@ -85,7 +87,30 @@ class ProfileUserInfoView: UIView {
             btnDeleteAccunt.isHidden = true
             
         }
+    }
+    
+    func updateOtherUserProfileData(_ userObj: PostUser) {
+        self.userObj = userObj
         
+        imgCover.setImage(userObj.coverPhotoURL)
+        imgProfile.setImage(userObj.profilePhotoURL)
+        lblProfileName.text = userObj.name
+        lblLocation.text = userObj.location
+        
+        btnFollowers.lblTitle.text = "\(userObj.followers ?? 0)"
+        btnFollowing.lblTitle.text = "\(userObj.following ?? 0)"
+        btnPoliticians.lblTitle.text = "\(userObj.politician ?? 0)"
+    }
+    
+    func updateSelfProfileData(_ userObj: UserAuthModel) {
+        imgCover.setImage(userObj.cover_photo_url)
+        imgProfile.setImage(userObj.profile_photo_url)
+        lblProfileName.text = userObj.name
+        lblLocation.text = userObj.location
+        
+        btnFollowers.lblTitle.text = "\(userObj.followers)"
+        btnFollowing.lblTitle.text = "\(userObj.following)"
+        btnPoliticians.lblTitle.text = "\(userObj.politician)"
     }
     
     @IBAction private func click_editProfile() {

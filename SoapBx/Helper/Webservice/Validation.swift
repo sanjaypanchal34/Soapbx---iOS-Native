@@ -9,6 +9,7 @@
 
 import Foundation
 import UIKit
+import OTLContaner
 //Password RX details
 /*^                         Start anchor
  (?=.*[A-Z].*[A-Z])              Ensure string has two uppercase letters.
@@ -48,7 +49,7 @@ typealias ValidationResult = (status : Bool, message: String)
 extension String
 {
     func validateFirst() -> ValidationResult {
-        if self.isEmpty() {
+        if self.isEmptyString {
             return (false, "Enter First Name.")
         } else {
             return (true, "")
@@ -56,7 +57,7 @@ extension String
     }
     
     func validateLast() -> ValidationResult {
-        if self.isEmpty() {
+        if self.isEmptyString {
             return (false, "Enter Last Name.")
         } else {
             return (true, "")
@@ -64,7 +65,7 @@ extension String
     }
     
     func validateEmail() -> ValidationResult {
-        if self.isEmpty() {
+        if self.isEmptyString {
             return (false, "Please enter email")
         } else if !self.validateWith(RX: .email) {
             return (false, "Please enter valid email")
@@ -74,7 +75,7 @@ extension String
     }
     
     func validatePhone() -> ValidationResult {
-        if self.isEmpty() {
+        if self.isEmptyString {
             return (false, "Please enter password")
         } else if self.count < 8 || self.count >= 15 {
             return (false, "Password must contain at least 8 characters")
@@ -86,7 +87,17 @@ extension String
     }
     
     func validatePassword() -> ValidationResult {
-        if self.isEmpty() {
+        if self.isEmptyString {
+            return (false, "Please enter password")
+        } else if self.count < 7 {
+            return (false, "Password must contain at least 8 characters")
+        } else {
+            return (true, "")
+        }
+    }
+    
+    func validateNewPassword() -> ValidationResult {
+        if self.isEmptyString {
             return (false, "Please enter password")
         } else if self.count < 7 {
             return (false, "Password must contain at least 8 characters")
@@ -96,7 +107,7 @@ extension String
     }
     
     func validateConfirmPassword(with password: String) -> ValidationResult {
-        if self.isEmpty() {
+        if self.isEmptyString {
             return (false, "Please enter confirm password")
         } else if self.count < 7 {
             return (false, "Confirm password must contain at least 8 characters")
@@ -108,11 +119,27 @@ extension String
     }
     
     func validateOTP() -> ValidationResult {
-        if self.isEmpty() {
+        if self.isEmptyString {
             return (false, "Please enter OTP")
         } else if self.count < 4 {
             return (false, "OTP must contain 4 characters")
         } else {
+            return (true, "")
+        }
+    }
+    
+    func validateCommentOnPost() -> ValidationResult {
+        if self.isEmptyString {
+            return (false, "Please add a comment")
+        }else {
+            return (true, "")
+        }
+    }
+    
+    func validateReason() -> ValidationResult {
+        if self.isEmptyString {
+            return (false, "Please enter reason")
+        }else {
             return (true, "")
         }
     }

@@ -20,7 +20,7 @@ class InviteFriendsVC: UIViewController {
     
     @IBOutlet private weak var btnInvite:OTLTextButton!
     
-    private var strReferCode = "X9ml5"
+    private var strReferCode = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +29,8 @@ class InviteFriendsVC: UIViewController {
     
     private func setupUI() {
         headerView.lblTitle.setHeader("Invite Friends")
+        strReferCode = authUser?.user?.referral_code ?? ""
+        
         
         viewRefreCode.layer.cornerRadius = 10
         viewRefreCode.layer.borderColor = UIColor.lightGrey.cgColor
@@ -51,16 +53,10 @@ class InviteFriendsVC: UIViewController {
     @IBAction private func click_btnInvite() {
         // text to share
         let text = "Play Store/App Store \(strReferCode)"
-        
-        // set up activity view controller
         let textToShare = [ text ]
         let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
-        
-        // exclude some activity types from the list (optional)
-        activityViewController.excludedActivityTypes = [ UIActivity.ActivityType.airDrop, UIActivity.ActivityType.postToFacebook ]
-        
-        // present the view controller
-        self.present(activityViewController, animated: true, completion: nil)
+        activityViewController.excludedActivityTypes = [ .airDrop, .postToFacebook, .message, .mail]
+        navigationController?.present(activityViewController, animated: true, completion: nil)
     }
 }

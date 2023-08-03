@@ -95,7 +95,7 @@ extension OTLContaner.OTLPasswordField : UIKit.UITextViewDelegate {
     get
     set
   }
-  @_Concurrency.MainActor(unsafe) public var formate: OTLContaner.DateTimeFormate?
+  @_Concurrency.MainActor(unsafe) public var formate: OTLContaner.OTLDateTimeFormat?
   @objc deinit
 }
 public struct OTLData {
@@ -125,6 +125,10 @@ public enum OTLTextFieldStyle {
     set
   }
   @_Concurrency.MainActor(unsafe) public var text: Swift.String {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var keyboardType: UIKit.UIKeyboardType {
     get
     set
   }
@@ -286,11 +290,16 @@ public protocol OTLDatePickerDelegate {
 extension OTLContaner.OTLDatePickerDelegate {
   public func dateTime(onCancel dateTime: OTLContaner.OTLDatePicker)
 }
-public enum DateTimeFormate {
+public enum OTLDateTimeFormat {
   case MMMddyyyy, ddMMyyyy, yyyyMMdd, ddMMMyy
   case hhmma, hhmm, HHmm
   case ddMMyyyy_hhmma, yyyyMMdd_hhmma
+  case yyyyMMdd_T_HHmmssZ
+  case mmmDDyyyyAthhmma
   case other(Swift.String)
+  public var string: Swift.String {
+    get
+  }
 }
 public struct OTLIndex {
   public var section: Swift.Int
@@ -562,6 +571,20 @@ public enum OTLButtonStyle {
   @_Concurrency.MainActor(unsafe) public func setBackgoundColor(_ color: UIKit.UIColor, isSelected: Swift.Bool = false)
   @objc deinit
 }
+@objc @_inheritsConvenienceInitializers public class OTLDateConvert : ObjectiveC.NSObject {
+  public static let instance: OTLContaner.OTLDateConvert
+  public func convertDatetoDeviceTime(selectedDate: Foundation.Date) -> Swift.String
+  public func getDatefromTimestamp(timestamp: Swift.Double) -> Foundation.Date
+  public func convert(date: Foundation.Date, toString format: OTLContaner.OTLDateTimeFormat) -> Swift.String
+  public func convert(timestamp string: Swift.String, toString format: OTLContaner.OTLDateTimeFormat) -> Swift.String
+  public func convert(string: Swift.String, toDate format: OTLContaner.OTLDateTimeFormat, timeZone: Foundation.TimeZone = TimeZone.current) -> Foundation.Date
+  public func convert(date string: Swift.String, set format: OTLContaner.OTLDateTimeFormat, getFormat: OTLContaner.OTLDateTimeFormat) -> Swift.String
+  public func localToUTC(dateStr: Swift.String, dateFormat: Swift.String) -> Foundation.Date?
+  public func utcToLocal(dateStr: Swift.String) -> Foundation.Date
+  public func getDateDiff(previousDate: Swift.String) -> Swift.String
+  @objc override dynamic public init()
+  @objc deinit
+}
 extension UIKit.UIColor {
   public static func hex(toUIColor hex: Swift.String) -> UIKit.UIColor
 }
@@ -576,8 +599,20 @@ extension UIKit.UIViewController {
 }
 extension Swift.String {
   public func size(OfFont font: UIKit.UIFont) -> CoreFoundation.CGSize
+  public var isEmptyString: Swift.Bool {
+    get
+  }
 }
-public func isInternetAvailable() -> Swift.Bool
+extension UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) public func setCornerRadius(border: CoreFoundation.CGFloat = 0.01, color: UIKit.UIColor = UIColor.clear, corner: CoreFoundation.CGFloat = 0)
+  @_Concurrency.MainActor(unsafe) public func setCorner(msak: QuartzCore.CACornerMask = [.layerMaxXMinYCorner,.layerMaxXMaxYCorner,.layerMinXMaxYCorner], _ corner: CoreFoundation.CGFloat = 10)
+  @_Concurrency.MainActor(unsafe) public func setShadow(opacity: Swift.Float = 0.3, offSet: CoreFoundation.CGSize = CGSize(width: 0, height: 0), color: UIKit.UIColor = UIColor.black, radius: CoreFoundation.CGFloat = 2)
+  @_Concurrency.MainActor(unsafe) public func setShadowEffect(color: UIKit.UIColor = UIColor.black)
+  @_Concurrency.MainActor(unsafe) public func setIn4SideShadow()
+  @_Concurrency.MainActor(unsafe) public func setGradientBackground(color: [CoreGraphics.CGColor], startPoint: CoreFoundation.CGPoint = CGPoint(x: 0.0, y: 1.0), endPoint: CoreFoundation.CGPoint = CGPoint(x: 1.0, y: 1.0))
+  @_Concurrency.MainActor(unsafe) public func setShadowWithCorner(opacity: Swift.Float = 0.3, offSet: CoreFoundation.CGSize = CGSize(width: 0, height: 0), color: UIKit.UIColor = UIColor.darkGray, corner: CoreFoundation.CGFloat = -1, radius: CoreFoundation.CGFloat = 3.0, bounds: Swift.Bool = false)
+  @_Concurrency.MainActor(unsafe) public func addShadow(shadowColor: UIKit.UIColor = UIColor.darkGray, offSet: CoreFoundation.CGSize = CGSize(width: 1.5, height: 1.5), opacity: Swift.Float = 0.5, shadowRadius: CoreFoundation.CGFloat = 5.0, cornerRadius: CoreFoundation.CGFloat = -1, corners: UIKit.UIRectCorner = [.allCorners], fillColor: UIKit.UIColor = .white)
+}
 public struct OTLAlertModel {
   public let title: Swift.String
   public let id: Swift.Int
@@ -586,6 +621,7 @@ public struct OTLAlertModel {
   public init(title: Swift.String, id: Swift.Int, style: UIKit.UIAlertAction.Style = .default, data: Any? = nil)
 }
 public func showAlert(title: Swift.String, message: Swift.String, buttons: [OTLContaner.OTLAlertModel], style: UIKit.UIAlertController.Style = .alert, complition: ((OTLContaner.OTLAlertModel) -> ())? = nil)
+public func isInternetAvailable() -> Swift.Bool
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) final public class OTLSearchView : UIKit.UIView {
   @_Concurrency.MainActor(unsafe) final public var placeholder: Swift.String? {
     get

@@ -38,10 +38,11 @@ class LoginVC: UIViewController {
         lblTitle.setTheme("Sign in to Soapbx",
                           font: .bold,
                           size: 38)
-        lblSubtitle.setTheme("Enter our details below",
+        lblSubtitle.setTheme("Enter your details below",
                              color: .titleGrey)
         txtEmail.setTheme(placeholder: "Email",
                           leftIcon: UIImage(named: "ic_email"))
+        txtEmail.keyboardType = .emailAddress
         
         txtPassword.setTheme(placeholder: "Password")
         
@@ -108,7 +109,18 @@ class LoginVC: UIViewController {
                        complition:  { result in
             hideLoader()
             if result.status{
-                
+                if authUser?.user?.step == 2 {
+                    mackRootView(ProfileCoverVC())
+                }
+                else if authUser?.user?.step == 3 {
+                    mackRootView(YouInterestedVC())
+                }
+                else if authUser?.user?.step == 4 {
+                    mackRootView(SubscribeVC())
+                }
+                else {
+                    mackRootView(HomeVC())
+                }
             } else {
                 showToast(message: result.message)
             }

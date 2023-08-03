@@ -1,8 +1,10 @@
 //
 //  SideMenu.swift
-//  SoapBx
+//  Operators Techno Lab, Ahmedabad
 //
-//  Created by Mac on 17/07/23.
+//  Developed by Harsh Kadiya
+//  Created by OTL-HK on 28/07/2019.
+//  Copyright © 2023 OTL-HK. All rights reserved.
 //
 
 import UIKit
@@ -43,11 +45,11 @@ class SideMenu: UIControl {
         
         viewMain.backgroundColor = .white
         
-        imgProfile.image = UIImage(named: "profile_Three")
+        imgProfile.setImage(authUser?.user?.profile_photo_url)
         imgProfile.contentMode = .scaleAspectFill
         imgProfile.layer.cornerRadius = imgProfile.frame.height/2
         
-        lblProfileName.setTheme("Robert Watson", size: 22)
+        lblProfileName.setTheme(authUser?.user?.name ?? "", size: 22, lines: 2)
         lblViewProfile.setTheme("View Profile", size: 14)
         
         tblList.register(["MenuItemCell"], delegate: self, dataSource: self)
@@ -173,7 +175,22 @@ extension SideMenu: UITableViewDelegate {
             let okay = OTLAlertModel(title: "Okay", id: 1, style: .destructive)
             showAlert(message: "Are you sure you want to logout?",  buttons: [cancel,okay]) { alert in
                 if alert.id == 1 {
-                    mackRootView(LoginVC())
+                    if authUser?.loginType == .userLogin {
+                        let vmObject = LoginViewModel()
+                        showLoader()
+                        vmObject.logout { result in
+                            hideLoader()
+                            if result.status {
+                                mackRootView(LoginVC())
+                            } else {
+                                SoapBx.showToast(message: result.message)
+                            }
+                        }
+                    }
+                    else {
+                        mackRootView(LoginVC())
+                    }
+                    
                 }
             }
             break

@@ -31,8 +31,8 @@ class SplashVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        mackRootView(LoginVC())
-        return 
+        goToInitialScreen()
+        return;
         //Hiding objects before app opening
         
         redBalloon.center.x += view.bounds.width
@@ -163,7 +163,27 @@ class SplashVC: UIViewController {
     }
     
     @objc func goToInitialScreen() {
-//        mackRootView(LoginVC())
+        if AuthorizedUser.isUserSessionAvailable(){
+            if authUser?.loginType  == .userLogin  {
+                if authUser?.user?.step == 2 {
+                    mackRootView(ProfileCoverVC())
+                }
+                else if authUser?.user?.step == 3 {
+                    mackRootView(YouInterestedVC())
+                }
+                else if authUser?.user?.step == 4 {
+                    mackRootView(SubscribeVC())
+                }
+                else {
+                    mackRootView(HomeVC())
+                }
+            }
+            else {
+                mackRootView(HomeVC())
+            }
+        } else {
+            mackRootView(LoginVC())
+        }
     }
     
     

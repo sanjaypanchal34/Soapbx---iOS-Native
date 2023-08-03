@@ -1,8 +1,10 @@
 //
 //  MenuModel.swift
-//  SoapBx
+//  Operators Techno Lab, Ahmedabad
 //
-//  Created by Mac on 17/07/23.
+//  Developed by Harsh Kadiya
+//  Created by OTL-HK on 28/07/2019.
+//  Copyright © 2023 OTL-HK. All rights reserved.
 //
 
 import Foundation

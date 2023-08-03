@@ -39,7 +39,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0wC-s8-lT8">
-                            <rect key="frame" x="306.33333333333331" y="10" width="76.666666666666686" height="40"/>
+                            <rect key="frame" x="296.33333333333331" y="10" width="76.666666666666686" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="qea-rL-O4t"/>
                             </constraints>
@@ -67,7 +67,7 @@
                         <constraint firstAttribute="trailing" secondItem="fwS-nS-9x3" secondAttribute="trailing" constant="20" id="ECQ-VK-9Lx"/>
                         <constraint firstItem="0wC-s8-lT8" firstAttribute="top" secondItem="F3W-PW-Dxs" secondAttribute="top" constant="10" id="PCz-Ac-dpe"/>
                         <constraint firstItem="hIE-ca-VEa" firstAttribute="top" secondItem="fwS-nS-9x3" secondAttribute="bottom" constant="20" id="T1x-wG-Buo"/>
-                        <constraint firstAttribute="trailing" secondItem="0wC-s8-lT8" secondAttribute="trailing" constant="10" id="T2v-EF-YUm"/>
+                        <constraint firstAttribute="trailing" secondItem="0wC-s8-lT8" secondAttribute="trailing" constant="20" id="T2v-EF-YUm"/>
                         <constraint firstItem="CaL-4a-cWe" firstAttribute="top" secondItem="F3W-PW-Dxs" secondAttribute="top" constant="10" id="Ukd-WH-iqu"/>
                         <constraint firstAttribute="trailing" secondItem="hIE-ca-VEa" secondAttribute="trailing" id="Xhx-I9-1Fj"/>
                         <constraint firstItem="fwS-nS-9x3" firstAttribute="top" secondItem="0wC-s8-lT8" secondAttribute="bottom" constant="20" id="cQf-wQ-8Wn"/>

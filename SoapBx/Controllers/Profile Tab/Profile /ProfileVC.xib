@@ -102,7 +102,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="988"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hrD-90-dub" customClass="ProfileUserInfoView" customModule="SoapBx" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="658.33333333333337"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="653.33333333333337"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p2b-Th-AFP">
                                                     <rect key="frame" x="0.0" y="0.0" width="393" height="150"/>
@@ -118,7 +118,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="cRD-4P-ybr">
-                                                    <rect key="frame" x="20" y="209.99999999999997" width="353" height="433.33333333333326"/>
+                                                    <rect key="frame" x="20" y="204.99999999999997" width="353" height="433.33333333333326"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="tv8-jH-ugq">
                                                             <rect key="frame" x="139" y="0.0" width="75" height="68.666666666666671"/>
@@ -336,7 +336,7 @@
                                                                     <rect key="frame" x="8" y="8" width="34" height="34"/>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6lb-Lc-gSF">
-                                                                    <rect key="frame" x="57" y="14.999999999999998" width="286" height="20.333333333333329"/>
+                                                                    <rect key="frame" x="52" y="14.999999999999998" width="291" height="20.333333333333329"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -344,7 +344,7 @@
                                                             </subviews>
                                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                             <constraints>
-                                                                <constraint firstItem="6lb-Lc-gSF" firstAttribute="leading" secondItem="YNh-6n-q22" secondAttribute="trailing" constant="15" id="0aM-Ew-tZ8"/>
+                                                                <constraint firstItem="6lb-Lc-gSF" firstAttribute="leading" secondItem="YNh-6n-q22" secondAttribute="trailing" constant="10" id="0aM-Ew-tZ8"/>
                                                                 <constraint firstItem="6lb-Lc-gSF" firstAttribute="centerY" secondItem="YNh-6n-q22" secondAttribute="centerY" id="BWq-eT-xhB"/>
                                                                 <constraint firstItem="YNh-6n-q22" firstAttribute="top" secondItem="tSe-iL-rt7" secondAttribute="top" constant="8" id="Ghr-VV-UZn"/>
                                                                 <constraint firstAttribute="bottom" secondItem="YNh-6n-q22" secondAttribute="bottom" constant="8" id="WRo-F8-Rj9"/>
@@ -365,7 +365,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="p2b-Th-AFP" secondAttribute="trailing" id="4fW-yI-LUo"/>
                                                 <constraint firstItem="qUT-Rz-wlf" firstAttribute="top" secondItem="p2b-Th-AFP" secondAttribute="bottom" constant="-35" id="6he-NW-2dt"/>
-                                                <constraint firstItem="cRD-4P-ybr" firstAttribute="top" secondItem="qUT-Rz-wlf" secondAttribute="bottom" constant="15" id="EkX-oo-vKl"/>
+                                                <constraint firstItem="cRD-4P-ybr" firstAttribute="top" secondItem="qUT-Rz-wlf" secondAttribute="bottom" constant="10" id="EkX-oo-vKl"/>
                                                 <constraint firstAttribute="bottom" secondItem="cRD-4P-ybr" secondAttribute="bottom" constant="15" id="GG3-0i-QP0"/>
                                                 <constraint firstItem="cRD-4P-ybr" firstAttribute="centerX" secondItem="hrD-90-dub" secondAttribute="centerX" id="Nkx-ID-kn0"/>
                                                 <constraint firstItem="qUT-Rz-wlf" firstAttribute="centerX" secondItem="p2b-Th-AFP" secondAttribute="centerX" id="We3-06-S2E"/>
@@ -391,7 +391,7 @@
                                             </connections>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F1a-Tn-etl" customClass="TradPostListView" customModule="SoapBx" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="658.33333333333337" width="393" height="70"/>
+                                            <rect key="frame" x="0.0" y="653.33333333333337" width="393" height="334.66666666666663"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="DTh-YG-SjW">
                                                     <rect key="frame" x="0.0" y="0.0" width="393" height="65"/>
@@ -421,7 +421,7 @@
                                                 <constraint firstItem="fTk-oz-JnF" firstAttribute="leading" secondItem="F1a-Tn-etl" secondAttribute="leading" id="2Mj-Pt-ZSY"/>
                                                 <constraint firstItem="DTh-YG-SjW" firstAttribute="leading" secondItem="F1a-Tn-etl" secondAttribute="leading" id="5gZ-Nx-2Bd"/>
                                                 <constraint firstItem="DTh-YG-SjW" firstAttribute="top" secondItem="F1a-Tn-etl" secondAttribute="top" id="9r6-7z-k3S"/>
-                                                <constraint firstAttribute="bottom" secondItem="fTk-oz-JnF" secondAttribute="bottom" constant="5" id="ZyO-F3-Eq7"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="fTk-oz-JnF" secondAttribute="bottom" constant="5" id="ZyO-F3-Eq7"/>
                                                 <constraint firstAttribute="trailing" secondItem="fTk-oz-JnF" secondAttribute="trailing" id="hqe-dc-4GS"/>
                                                 <constraint firstItem="fTk-oz-JnF" firstAttribute="top" secondItem="DTh-YG-SjW" secondAttribute="bottom" id="puq-hw-lP0"/>
                                             </constraints>
@@ -440,7 +440,7 @@
                                         <constraint firstAttribute="trailing" secondItem="F1a-Tn-etl" secondAttribute="trailing" id="fEN-Ab-dB2"/>
                                         <constraint firstItem="hrD-90-dub" firstAttribute="top" secondItem="cHl-Eb-boB" secondAttribute="top" id="oto-6m-NRv"/>
                                         <constraint firstAttribute="trailing" secondItem="hrD-90-dub" secondAttribute="trailing" id="uos-mo-f9v"/>
-                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="F1a-Tn-etl" secondAttribute="bottom" id="yWL-fh-UQb"/>
+                                        <constraint firstAttribute="bottom" secondItem="F1a-Tn-etl" secondAttribute="bottom" id="yWL-fh-UQb"/>
                                     </constraints>
                                 </view>
                             </subviews>

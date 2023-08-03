@@ -1,8 +1,10 @@
 //
 //  SubscribeVC.swift
-//  SoapBx
+//  Operators Techno Lab, Ahmedabad
 //
-//  Created by Mac on 08/07/23.
+//  Developed by Harsh Kadiya
+//  Created by OTL-HK on 28/07/2019.
+//  Copyright © 2023 OTL-HK. All rights reserved.
 //
 
 import UIKit
@@ -36,16 +38,16 @@ class SubscribeVC: UIViewController {
     @IBOutlet private weak var constTblListHeight: NSLayoutConstraint!
     @IBOutlet private weak var btnNext: OTLTextButton!
     
-    //
-    private var arrSubscribeNote: [SubscribeNotesModel] = []
-    private var arrSubscribe: [SubscribeModel] = []
-    private var isFreemiumSelected = true
-    //
+    // private declaration
+    private let vmObject = SubscriptionViewModel()
+    
+    // internal declaration
     var screenType = SubscribeScreenType.fromRegister
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        getSubscriptionPlans()
         // Do any additional setup after loading the view.
     }
     
@@ -76,6 +78,7 @@ class SubscribeVC: UIViewController {
                           font: .bold,
                           size: 40)
         tblList.register(["SubscriptionNotesItemCell","SubscriptionNotesHeaderCell", "SubscriptionItemCell"], delegate: self, dataSource: self)
+        viewHeader.btnBack.isHidden = screenType == .fromRegister
         
         btnSupport.backgroundColor = .primaryBlue
         btnSupport.title?.setTheme("Support Soapbx", color: .white)
@@ -85,31 +88,20 @@ class SubscribeVC: UIViewController {
         
         btnNext.appButton(screenType.buttonTitle)
         
-        arrSubscribeNote = [
-            SubscribeNotesModel(title: "Blog and Report", freemium: "1/Month", premium: "1/Day",canSymbol: false),
-            SubscribeNotesModel(title: "Conduct Polls", freemium: "1", premium: "1/Week",canSymbol: false),
-            SubscribeNotesModel(title: "Priority Support", freemium: "n", premium: "y"),
-            SubscribeNotesModel(title: "Choose Trends", freemium: "y", premium: "y"),
-            SubscribeNotesModel(title: "Soapbx Initiatives", freemium: "n", premium: "y"),
-            SubscribeNotesModel(title: "Featured Member", freemium: "n", premium: "y"),
-            SubscribeNotesModel(title: "Rewards", freemium: "n", premium: "y"),
-            SubscribeNotesModel(title: "Invite Friends", freemium: "y", premium: "y"),
-            SubscribeNotesModel(title: "Featured Blog", freemium: "y", premium: "y"),
-            SubscribeNotesModel(title: "Featured Poll", freemium: "n", premium: "y"),
-        ]
-        
-        arrSubscribe = [
-            SubscribeModel(title: "Freemium", subtitle: "This is free one", isSelected: true),
-            SubscribeModel(title: "Premium", subtitle: "$3.99 / 1 Month"),
-            SubscribeModel(title: "Premium", subtitle: "$12.00 / 6 Month"),
-            SubscribeModel(title: "Premium", subtitle: "$22.00 / 1 Year"),
-        ]
         tblList.reloadData()
     }
     
     @IBAction private func click_btnNext() {
-        let vc = EnableLocationVC()
-        navigationController?.pushViewController(vc, animated: true)
+        let object = vmObject.arrSubsciption.compactMap{ obj in
+            return obj.isSelected ? true : nil
+        }
+        
+        if object.count > 0 {
+            updateSubscriptionPlans()
+        } else {
+            showToast(message: "Please select subscription plan")
+        }
+        
     }
     
     @IBAction private func click_btnSupport() {
@@ -118,29 +110,62 @@ class SubscribeVC: UIViewController {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
+    
+    // API calls
+    private func getSubscriptionPlans() {
+        showLoader()
+        vmObject.getSubscriptionPlans { result in
+            hideLoader()
+            if result.status {
+                self.tblList.reloadData()
+            }
+        }
+    }
+    
+    private func updateSubscriptionPlans() {
+        vmObject.updateSubscriptionPlans { result in
+            if result.status {
+                if self.screenType == .fromRegister {
+                    let vc = EnableLocationVC()
+                    self.navigationController?.pushViewController(vc, animated: true)
+                } else {
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
+            else {
+                showToast(message: result.message)
+            }
+        }
+    }
 }
 extension SubscribeVC: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        if vmObject.arrSubsciption.count > 0 {
+            return 2
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return arrSubscribeNote.count
+        if vmObject.arrSubsciption.count > 0 {
+            if section == 0 {
+                return vmObject.arrSubscribeNote.count
+            }
+            return vmObject.arrSubsciption.count
         }
-        return arrSubscribe.count
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0,
            let cell = tableView.dequeueReusableCell(withIdentifier: "SubscriptionNotesItemCell") as? SubscriptionNotesItemCell {
-            cell.setData(arrSubscribeNote[indexPath.row],
-                         isFreemiumSelected: isFreemiumSelected,
-                         isLastIndex: (arrSubscribeNote.count - 1) == indexPath.row )
+            cell.setData(vmObject.arrSubscribeNote[indexPath.row],
+                         isFreemiumSelected: vmObject.isFreemiumSelected,
+                         isLastIndex: (vmObject.arrSubscribeNote.count - 1) == indexPath.row )
             return cell
         } else if indexPath.section == 1,
                   let cell = tableView.dequeueReusableCell(withIdentifier: "SubscriptionItemCell") as? SubscriptionItemCell {
-            cell.setData(arrSubscribe[indexPath.row])
+            cell.setData(vmObject.arrSubsciption[indexPath.row])
             return cell
                 }
         return UITableViewCell()
@@ -151,7 +176,7 @@ extension SubscribeVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
             if let header = tableView.dequeueReusableCell(withIdentifier: "SubscriptionNotesHeaderCell") as? SubscriptionNotesHeaderCell {
-                header.setData(SubscribeNotesModel(title: "", freemium: "Freemium", premium: "Premium"), isFreemiumSelected: isFreemiumSelected)
+                header.setData(SubscribeNotesModel(title: "", freemium: "Freemium", premium: "Premium"), isFreemiumSelected: vmObject.isFreemiumSelected)
                 return header
             }
         }
@@ -168,15 +193,15 @@ extension SubscribeVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 {
             if indexPath.row == 0 {
-                isFreemiumSelected = true
+                vmObject.isFreemiumSelected = true
             }
             else {
-                isFreemiumSelected = false
+                vmObject.isFreemiumSelected = false
             }
-            for index in 0..<arrSubscribe.count {
-                arrSubscribe[index].isSelected = false
+            for index in 0..<vmObject.arrSubsciption.count {
+                vmObject.arrSubsciption[index].isSelected = false
             }
-            arrSubscribe[indexPath.row].isSelected = true
+            vmObject.arrSubsciption[indexPath.row].isSelected = true
             tableView.reloadData()
         }
     }

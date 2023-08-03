@@ -1,8 +1,10 @@
 //
 //  LocationSearchVC.swift
-//  SoapBx
+//  Operators Techno Lab, Ahmedabad
 //
-//  Created by Mac on 26/07/23.
+//  Developed by Harsh Kadiya
+//  Created by OTL-HK on 28/07/2019.
+//  Copyright © 2023 OTL-HK. All rights reserved.
 //
 
 import UIKit
@@ -38,8 +40,8 @@ class LocationSearchVC: UIViewController {
         txtSearch.delegate = self
         txtSearch.clearButtonMode = .whileEditing
         
-        btnCancel.setTheme("Cancel", color: .titleBlack)
-        btnDone.setTheme("Done", color: .primaryBlue)
+        btnCancel.setTheme("Cancel", color: .titleBlack, size: 16)
+        btnDone.setTheme("Done", color: .primaryBlue, font: .bold, size: 16)
         
         tblSearch.register(["LocationItemCell"], delegate: self, dataSource: self)
     }

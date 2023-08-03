@@ -23,8 +23,8 @@ class SubscriptionItemCell: AppTableViewCell {
     }
 
     func setData(_ data:SubscribeModel) {
-        lblTitle.text = data.title
-        lblSubtitle.text = data.subtitle
+        lblTitle.text = data.name
+        lblSubtitle.text = data.description
         lblTitle.textColor = data.isSelected ? UIColor.appYellow : UIColor.titleBlack
         lblSubtitle.textColor = data.isSelected ? UIColor.white : UIColor.titleBlack
         viewItem.backgroundColor = data.isSelected ? UIColor.primaryBlue : UIColor.titleGrey

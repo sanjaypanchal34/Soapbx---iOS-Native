@@ -327,6 +327,12 @@ SWIFT_CLASS("_TtC11OTLContaner13OTLDashedView")
 @end
 
 
+SWIFT_CLASS("_TtC11OTLContaner14OTLDateConvert")
+@interface OTLDateConvert : NSObject
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
 SWIFT_CLASS("_TtC11OTLContaner13OTLDatePicker")
 @interface OTLDatePicker : UITextField
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
@@ -441,6 +447,7 @@ SWIFT_CLASS("_TtC11OTLContaner13OTLTextButton")
 
 @interface OTLTextField (SWIFT_EXTENSION(OTLContaner)) <UITextViewDelegate>
 @end
+
 
 
 
@@ -782,6 +789,12 @@ SWIFT_CLASS("_TtC11OTLContaner13OTLDashedView")
 @end
 
 
+SWIFT_CLASS("_TtC11OTLContaner14OTLDateConvert")
+@interface OTLDateConvert : NSObject
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
 SWIFT_CLASS("_TtC11OTLContaner13OTLDatePicker")
 @interface OTLDatePicker : UITextField
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
@@ -896,6 +909,7 @@ SWIFT_CLASS("_TtC11OTLContaner13OTLTextButton")
 
 @interface OTLTextField (SWIFT_EXTENSION(OTLContaner)) <UITextViewDelegate>
 @end
+
 
 
 

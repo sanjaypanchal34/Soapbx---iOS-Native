@@ -19,13 +19,13 @@ class YouInterestedVC: UIViewController {
     @IBOutlet private weak var collInterested: UICollectionView!
     @IBOutlet private weak var btnNext: UIButton!
     
-    private var arrTemp = ["Item 1", "Item 2", "Item 3"]
-    private var arrSelectTemp: [String] = []
+    private let vmObject = YouInterestedViewModel()
     var screenType = ScreenType.fromSignup
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        getTrends()
         // Do any additional setup after loading the view.
     }
 
@@ -35,7 +35,7 @@ class YouInterestedVC: UIViewController {
         
         lblTitle.setTheme(screenType == .fromSignup ? "What are you interested in?" : "",
                           font: .bold,
-                          size: 40)
+                          size: 38)
         collInterested.register(["YouInterestedItemCell"], delegate: self, dataSource: self)
         collInterested.delegate = self
         collInterested.dataSource = self
@@ -46,22 +46,62 @@ class YouInterestedVC: UIViewController {
     
     //Actions
     @IBAction private func click_btnNext() {
-        if screenType == .fromSignup {
-            let vc = SubscribeVC()
-            self.navigationController?.pushViewController(vc, animated: true)
-        }else {
-            self.navigationController?.popToRootViewController(animated: true)
+        if vmObject.arrSelectedId.count == 0 {
+            showToast(message: "Please select atleast one trend")
+        } else {
+            updateTrends()
+        }
+    }
+    
+    // API CAllS
+    
+    private func getUserTrends() {
+        showLoader()
+        vmObject.getUserTrends { result in
+            hideLoader()
+            if result.status {
+                self.collInterested.reloadData()
+            }
+        }
+    }
+    
+    private func getTrends() {
+        showLoader()
+        vmObject.getTrends { result in
+            hideLoader()
+            if result.status {
+                if self.screenType == .fromSetting {
+                    self.getUserTrends()
+                } else {
+                    self.collInterested.reloadData()
+                }
+            }
+        }
+    }
+    
+    private func updateTrends() {
+        showLoader()
+        vmObject.updateTrends { result in
+            hideLoader()
+            if result.status {
+                if self.screenType == .fromSignup {
+                    let vc = SubscribeVC()
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }else {
+                    self.navigationController?.popToRootViewController(animated: true)
+                }
+            }
         }
     }
 }
 extension YouInterestedVC : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return arrTemp.count
+        return vmObject.arrList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "YouInterestedItemCell", for: indexPath) as? YouInterestedItemCell {
-            cell.setData(arrTemp[indexPath.row],isSelcted: arrSelectTemp.contains(arrTemp[indexPath.row]))
+            cell.setData(vmObject.arrList[indexPath.row],isSelcted: vmObject.arrSelectedId.contains(vmObject.arrList[indexPath.row].id ?? 0))
             return cell
         }
         return UICollectionViewCell()
@@ -70,15 +110,21 @@ extension YouInterestedVC : UICollectionViewDataSource {
 }
 extension YouInterestedVC : UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if arrSelectTemp.contains(arrTemp[indexPath.row]) {
-            arrSelectTemp = arrSelectTemp.filter { str in
-                if str != arrTemp[indexPath.row] {
+        
+        if vmObject.arrSelectedId.contains(vmObject.arrList[indexPath.row].id ?? 0) {
+            vmObject.arrSelectedId = vmObject.arrSelectedId.filter { id in
+                if id != (vmObject.arrList[indexPath.row].id ?? 0) {
                     return true
                 }
                 return false
             }
         } else {
-            arrSelectTemp.append(arrTemp[indexPath.row])
+            if vmObject.arrSelectedId.count >= vmObject.maxSelection {
+                showToast(message: "You can choose a maximum of \(vmObject.maxSelection) trends.")
+            } else {
+                vmObject.arrSelectedId.append(vmObject.arrList[indexPath.row].id ?? 0)
+            }
+            
         }
         collectionView.reloadData()
     }
@@ -94,7 +140,7 @@ extension YouInterestedVC : UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (Int(collectionView.frame.width) / 3) - 10
+        let width = (Int(collectionView.frame.width) / 3) - 20
         return CGSize(width: width, height: width + 30)
     }
 }

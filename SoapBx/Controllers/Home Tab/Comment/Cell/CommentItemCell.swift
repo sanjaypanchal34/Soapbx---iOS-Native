@@ -8,12 +8,19 @@
 import UIKit
 import OTLContaner
 
+protocol CommentItemDelegate {
+    func commentItem(_ cell: CommentItemCell, didSelectReport object: CommentModel)
+}
+
 class CommentItemCell: AppTableViewCell {
 
     @IBOutlet private weak var imgProfile:UIImageView!
     @IBOutlet private weak var lblProfileName:UILabel!
     @IBOutlet private weak var lblComment:UILabel!
     @IBOutlet private weak var btnReport:OTLTextButton!
+    
+    private var object:CommentModel?
+    private var delegate:CommentItemDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,7 +36,23 @@ class CommentItemCell: AppTableViewCell {
         btnReport.setTheme("Report",color: .titleRed,size: 11)
     }
     
-    func setData() {
-        btnReport.setTheme("Report",color: .titleRed,size: 11)
+    func setData(_ object: CommentModel, indexPath: IndexPath, delegate:CommentItemDelegate) {
+        self.object = object
+        self.indexPath = indexPath
+        self.delegate = delegate
+        imgProfile.setImage(object.user?.profilePhotoURL)
+        lblProfileName.text = object.user?.name
+        lblComment.text = object.comment
+        if object.user?.id == authUser?.user?.id {
+            btnReport.isHidden = true
+        } else {
+            btnReport.isHidden = false
+        }
+    }
+    
+    @IBAction private func click_btnReport() {
+        if let obj = object {
+            delegate?.commentItem(self, didSelectReport: obj)
+        }
     }
 }

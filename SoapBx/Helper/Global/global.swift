@@ -32,6 +32,16 @@ func showAlert( message: String,
     showAlert(title: "SoapBx", message: message, buttons: buttons, style: style, complition: complition)
 }
 
+func showAlert( message: String,
+                buttons: [String] = ["Okay"],
+                style: UIAlertController.Style = .alert,
+                complition: ((OTLAlertModel)->())? = nil) {
+    let arrButtons = buttons.enumerated().map({ element in
+        OTLAlertModel(title: element.element, id: element.offset)
+    })
+    showAlert(title: "SoapBx", message: message, buttons: arrButtons, style: style, complition: complition)
+}
+
 func showLoader() {
     otlStartActivityIndicator(color: .primaryBlue)
 }

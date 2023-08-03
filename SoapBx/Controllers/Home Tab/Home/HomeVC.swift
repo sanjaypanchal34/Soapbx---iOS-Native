@@ -18,13 +18,6 @@ class HomeVC: UIViewController {
     @IBOutlet private weak var tblList: UITableView!
     @IBOutlet private weak var bottomTab: OTLBottomTabBar!
 
-    private var arrTernds: [DummyTrends] = [
-        DummyTrends(title: "All Trends", colorHax: "#FFD800"),
-        DummyTrends(title: "Think Talk", colorHax: "#F1120B"),
-        DummyTrends(title: "Crrcular Economy", colorHax: "#CDFFFF"),
-        DummyTrends(title: "Global Affairs", colorHax: "#FFD800"),
-    ]
-
     private var selectedIndex = 0
     
     override func viewDidLoad() {
@@ -48,6 +41,8 @@ class HomeVC: UIViewController {
         bottomTab.setTabTheme()
         bottomTab.delegate = self
         viewTradPost.regiter()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateList), name: .homePostUpdate, object: nil)
     }
     
     @IBAction private func click_menu() {
@@ -61,6 +56,10 @@ class HomeVC: UIViewController {
     @IBAction private func click_messageList() {
         let vc = MessageListVC()
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc private func updateList() {
+        viewTradPost.getPost()
     }
 }
 

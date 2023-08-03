@@ -19,20 +19,10 @@ class PostImageItemCell: AppCollectionViewCell {
         btnCancel.isHidden = true
     }
 
-    func setData(_ index:Int) {
+    func setData(_ object: PostImage) {
         btnCancel.isHidden = true
-        if index == 0 {
-            imagePost.backgroundColor = .titleGrey
-        }
-        else if index == 1 {
-            imagePost.backgroundColor = .primaryBlue
-        }
-        else if index == 2 {
-            imagePost.backgroundColor = .appYellow
-        }
-        else if index == 3 {
-            imagePost.backgroundColor = .titleRed
-        }
+        imagePost.setImage(object.imageURL)
+        imagePost.contentMode = .scaleAspectFill
     }
     
     func setDataCreatePostImage(_ image: String) {

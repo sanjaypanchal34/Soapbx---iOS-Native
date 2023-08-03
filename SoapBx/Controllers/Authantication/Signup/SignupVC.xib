@@ -275,10 +275,10 @@
                                     </connections>
                                 </view>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="b8D-M3-RXC">
-                                    <rect key="frame" x="77.666666666666657" y="819.66666666666663" width="258.66666666666674" height="34.333333333333371"/>
+                                    <rect key="frame" x="76.666666666666657" y="819.66666666666663" width="260.66666666666674" height="34.333333333333371"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CU4-fR-7Qh">
-                                            <rect key="frame" x="0.0" y="0.0" width="258.66666666666669" height="34.333333333333336"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="CU4-fR-7Qh">
+                                            <rect key="frame" x="0.0" y="0.0" width="260.66666666666669" height="34.333333333333336"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already a member?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wiH-Ae-yIh">
                                                     <rect key="frame" x="0.0" y="0.0" width="147.33333333333334" height="34.333333333333336"/>
@@ -286,8 +286,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6yJ-oj-SHL">
-                                                    <rect key="frame" x="147.33333333333331" y="0.0" width="111.33333333333331" height="34.333333333333336"/>
+                                                <button opaque="NO" contentMode="left" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6yJ-oj-SHL">
+                                                    <rect key="frame" x="149.33333333333331" y="0.0" width="111.33333333333331" height="34.333333333333336"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" title="Sign in now"/>
                                                     <connections>

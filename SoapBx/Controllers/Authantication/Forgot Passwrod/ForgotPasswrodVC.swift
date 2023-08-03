@@ -1,8 +1,10 @@
 //
 //  ForgotPasswrodVC.swift
-//  SoapBx
+//  Operators Techno Lab, Ahmedabad
 //
-//  Created by Mac on 06/07/23.
+//  Developed by Harsh Kadiya
+//  Created by OTL-HK on 24/07/2023.
+//  Copyright © 2023 OTL-HK. All rights reserved.
 //
 
 import UIKit
@@ -19,6 +21,8 @@ class ForgotPasswrodVC: UIViewController {
     
     @IBOutlet private weak var btnNext: OTLTextButton!
     
+    private let vmObject = LoginViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,11 +33,12 @@ class ForgotPasswrodVC: UIViewController {
         lblTitle.setTheme("Forgot password?",
                           font: .bold,
                           size: 38)
-        lblSubtitle.setTheme("Please enter vour email / phone number to reset your account password",
+        lblSubtitle.setTheme("Please enter your email / phone number to reset your account password",
                              color: .titleGrey)
         
         txtEmail.setTheme(placeholder: "Email / Phone Number",
                           leftIcon: UIImage(named: "ic_email"))
+        txtEmail.keyboardType = .emailAddress
         
         btnNext.appButton("Next")
 
@@ -43,7 +48,28 @@ class ForgotPasswrodVC: UIViewController {
     //Actions
    
     @IBAction private func click_Next() {
+        let validateEmail = txtEmail.text.validateEmail()
         
+        if validateEmail.status == false {
+            showToast(message: validateEmail.message)
+        }
+        else {
+            forgotPassword()
+        }
     }
     
+    
+    //API call
+    private func forgotPassword() {
+        showLoader()
+        vmObject.forgotPassword(email: txtEmail.text) { result in
+            hideLoader()
+            showToast(message: result.message)
+            if result.status {
+                let vc = VerificationCodeVC()
+                vc.navigateWithForgot(self.txtEmail.text)
+                mackRootView(vc)
+            }
+        }
+    }
 }

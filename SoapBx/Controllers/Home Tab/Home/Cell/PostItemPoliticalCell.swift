@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import OTLContaner
 
 class PostItemPoliticalCell: AppCollectionViewCell {
 
@@ -16,21 +17,22 @@ class PostItemPoliticalCell: AppCollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         lblTitle.setTheme("", color: .white, size: 12)
+        
     }
     
-    func setDataSoapbx(_ title: String) {
+    func setDataSoapbx(_ object: PostTag) {
         viewMain.backgroundColor = .primaryBlue
-        lblTitle.text = title
+        lblTitle.text = object.trend?.name
         DispatchQueue.main.async {
-            self.viewMain.layer.cornerRadius =  self.viewMain.frame.height/2
+            self.viewMain.setShadowWithCorner(corner:-1)
         }
     }
     
-    func setDataPolitician(_ title: String) {
+    func setDataPolitician(_ object: PostTag) {
         viewMain.backgroundColor = .appYellow
-        lblTitle.text = title
+        lblTitle.text = object.politician?.name
         DispatchQueue.main.async {
-            self.viewMain.layer.cornerRadius =  self.viewMain.frame.height/2
+            self.viewMain.setShadowWithCorner(corner:-1)
         }
     }
 
@@ -39,7 +41,7 @@ class PostItemPoliticalCell: AppCollectionViewCell {
         lblTitle.font = AppFont.medium.font(size: 14)
         lblTitle.text = " "+title+" "
         DispatchQueue.main.async {
-            self.viewMain.layer.cornerRadius =  self.viewMain.frame.height/2
+            self.viewMain.setShadowWithCorner(corner:-1)
         }
     }
 }

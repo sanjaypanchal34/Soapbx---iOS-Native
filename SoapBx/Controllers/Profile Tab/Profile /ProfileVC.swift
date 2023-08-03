@@ -25,11 +25,12 @@ class ProfileVC: UIViewController {
     @IBOutlet private weak var bottomTab: OTLBottomTabBar!
     
     var screenType = ProfileScreenType.profileTab
+    var userObj: PostUser?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupUI()
+        setData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,6 +71,13 @@ class ProfileVC: UIViewController {
         }
     }
 
+    private func setData() {
+        if let obj = userObj, screenType == .fromOtherUserProfile {
+            viewProfile.updateOtherUserProfileData(obj)
+        } else if let obj = authUser?.user{
+            viewProfile.updateSelfProfileData(obj)
+        }
+    }
     
     @IBAction private func click_menu() {
         showSideMenu()

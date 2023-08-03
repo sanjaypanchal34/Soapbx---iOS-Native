@@ -8,6 +8,14 @@
 import UIKit
 import OTLContaner
 
+protocol CommentDelegate {
+    func comment(didUpdate object: PostModel?)
+}
+
+enum CommentScreenType {
+    case fromHome, fromSaved
+}
+
 class CommentVC: UIViewController {
     
     @IBOutlet private weak var viewHeader: OTLHeader!
@@ -22,7 +30,7 @@ class CommentVC: UIViewController {
     @IBOutlet private weak var lblPostTime: UILabel!
     
     @IBOutlet private weak var lblPostTitle: UILabel!
-    @IBOutlet private weak var lblPostDescription: UILabel!
+    @IBOutlet private weak var txtPostDescription: UITextView!
     @IBOutlet private weak var collectionPostImage: UICollectionView!
     @IBOutlet private weak var collectionSoapbx: UICollectionView!
     @IBOutlet private weak var collectionPolitician: UICollectionView!
@@ -40,12 +48,21 @@ class CommentVC: UIViewController {
     @IBOutlet private weak var txtComment: UITextField!
     @IBOutlet private weak var btnSendComment: OTLImageButton!
     
-    private var arrSoapbxTrends = ["Think Talk", "Circular Economy", "Global Affairs"]
-    private var arrPolitician = ["Roger Wicker", "Narendra Modi", "Putin"]
-    private var delegate:HomeItemCellDelegate?
+    private var delegate:CommentDelegate?
+    private var screenType = CommentScreenType.fromHome
+    private let vmObject = CommentViewModel()
+    private let vmLikeDislikeObj = LikeDislikeViewModel()
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         self.setupUI()
+        if self.vmObject.objPost == nil{
+            self.navigationController?.popViewController(animated: true)
+        }
+        setData()
+        updateView()
+        getPost()
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         tblCommentsList.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
@@ -68,30 +85,36 @@ class CommentVC: UIViewController {
     }
     
     private func setupUI(){
-        viewHeader.lblTitle.setHeader("Robert Watson")
+        viewHeader.lblTitle.setHeader("")
         
         imgProfile.layer.cornerRadius = imgProfile.frame.height/2
-        lblProfileName.setTheme("Soapbx Admin", size: 18)
-        lblPostLocation.setTheme("San Jose. CA. USA",size: 12)
-        lblPostTime.setTheme("Apr 11 2023 @ 10:13 PM", size: 12)
+        lblProfileName.setTheme("", size: 18)
+        lblPostLocation.setTheme("",size: 12)
+        lblPostTime.setTheme("", size: 12)
         
-        lblPostTitle.setTheme("Groundwater Gold Rush", color: .primaryBlue, font: .semibold)
-        lblPostDescription.setTheme("Banks, pension funds and insurers have been turning California's scarce water into enormous profits, leaving people with less to drink. https://www.bloomberg.com/graphics/2023-wall-street -speeds-california-groundwater-depletion/?srnd=premium #xi4v7vzkg", size: 14, lines: 0)
+        lblPostTitle.setTheme("", color: .primaryBlue, font: .semibold)
+        txtPostDescription.text = ""
+        txtPostDescription.font = AppFont.regular.font(size: 14)
+        txtPostDescription.sizeToFit()
+        txtPostDescription.isScrollEnabled = false
+        txtPostDescription.isEditable = false
+        txtPostDescription.isSelectable = true
+        txtPostDescription.dataDetectorTypes = .all
+        txtPostDescription.linkTextAttributes = [.foregroundColor:UIColor.primaryBlue]
+        txtPostDescription.delegate = self
         
         collectionPostImage.register(["PostImageItemCell"], delegate: self, dataSource: self)
         collectionSoapbx.register(["PostItemPoliticalCell"], delegate: self, dataSource: self)
         collectionPolitician.register(["PostItemPoliticalCell"], delegate: self, dataSource: self)
         
-        
-        
         viewActionButtons.layer.cornerRadius = viewActionButtons.frame.height/2
         viewActionButtons.layer.borderWidth = 0.5
         viewActionButtons.layer.borderColor = UIColor.titleGrey.cgColor
         btnLike.title?.setTheme("0", size: 14)
-        btnLike.imageView?.image = UIImage(named: "ic_like_grey")
+        btnLike.imageView?.image = UIImage(named: "ic_like_grey")?.withRenderingMode(.alwaysTemplate)
         
         btnDislike.title?.setTheme("0", size: 14)
-        btnDislike.imageView?.image = UIImage(named: "ic_dislike_grey")
+        btnDislike.imageView?.image = UIImage(named: "ic_dislike_grey")?.withRenderingMode(.alwaysTemplate)
         
         btnComment.title?.setTheme("0", size: 14)
         btnComment.imageView?.image = UIImage(named: "ic_comments_grey")
@@ -111,16 +134,133 @@ class CommentVC: UIViewController {
         btnSendComment.image = UIImage(named: "ic_commentSend")
     }
 
-    func setData(delegate:HomeItemCellDelegate){
+    func navigateData(_ object: PostModel, screenType: CommentScreenType , delegate:CommentDelegate){
+        self.vmObject.objPost = object
+        self.screenType = screenType
         self.delegate = delegate
-        DispatchQueue.main.async {
+    }
+    func setData() {
+        let object = self.vmObject.objPost
+        viewHeader.lblTitle.text = object?.user?.name
+        
+        imgProfile.setImage(object?.user?.profilePhotoURL)
+        lblProfileName.text = object?.user?.name
+        lblPostLocation.text = object?.user?.location
+        lblPostTime.text = OTLDateConvert.instance.convert(date: object?.createdAt ?? "", set: .yyyyMMdd_T_HHmmssZ, getFormat: .mmmDDyyyyAthhmma)
+                
+        lblPostTitle.text = object?.title
+        txtPostDescription.text = object?.description
+        
+        if (object?.images?.count ?? 0) > 0 {
+            collectionPostImage.isHidden = false
             self.collectionPostImage.reloadData()
+        } else {
+            collectionPostImage.isHidden = true
         }
+        
+        if (object?.trendTags?.count ?? 0) > 0 {
+            collectionSoapbx.isHidden = false
+            self.collectionSoapbx.reloadData()
+        } else {
+            collectionSoapbx.isHidden = true
+        }
+        
+        if (object?.politicianTags?.count ?? 0) > 0 {
+            collectionPolitician.isHidden = false
+            self.collectionPolitician.reloadData()
+        } else {
+            collectionPolitician.isHidden = true
+        }
+        
+        btnLike.title?.text = "\(object?.likeCount ?? 0)"
+        btnLike.imageView?.tintColor = object?.likeStatus == 1 ? .primaryBlue : .titleGrey
+        btnDislike.title?.text = "\(object?.dislikeCount ?? 0)"
+        btnDislike.imageView?.tintColor = object?.dislikeStatus == 1 ? .primaryBlue : .titleGrey
+        btnComment.title?.text = "\(object?.commentsCount ?? 0)"
     }
     
     //Actions
     @IBAction private func click_btnProfileActio() {
         
+    }
+    
+    @IBAction private func click_btnLike() {
+        likeDislikeonPost(isLike: true)
+    }
+    @IBAction private func click_btnDislike() {
+        likeDislikeonPost(isLike: false)
+    }
+    
+    @IBAction private func click_btnSendComment() {
+        let validate = txtComment.text?.validateCommentOnPost()
+        
+        if validate?.status == false {
+            showToast(message: validate?.message ?? "")
+        } else {
+            self.view.endEditing(true)
+            self.postComment()
+        }
+    }
+    
+    //API calls
+   public func paginationManage() {
+        if vmObject.currentPage < vmObject.totalPage {
+            vmObject.currentPage = vmObject.currentPage + 1
+        }
+    }
+    
+        // API Calls
+    private func updateView() {
+        vmObject.updateViewComplition = {
+            self.tblCommentsList.reloadData()
+        }
+    }
+    
+    private func getPost() {
+        showLoader()
+        vmObject.getPost { result in
+            hideLoader()
+            self.tblCommentsList.reloadData()
+            self.collectionPostImage.reloadData()
+            self.collectionSoapbx.reloadData()
+            self.collectionPolitician.reloadData()
+            self.setData()
+        }
+    }
+    
+    private func postComment() {
+        showLoader()
+        vmObject.postComment(comment: txtComment.text ?? "") { result in
+            hideLoader()
+            self.txtComment.text = ""
+            if result.status{
+                self.btnComment.title?.text = "\(self.vmObject.objPost?.commentsCount ?? 0)"
+                self.tblCommentsList.reloadData()
+                self.delegate?.comment(didUpdate: self.vmObject.objPost)
+            }
+        }
+    }
+    
+    private func reportComment(commentId: Int, reason: String) {
+        showLoader()
+        vmObject.report(commentId: commentId, reason: reason) { result in
+            hideLoader()
+            showToast(message: result.message)
+        }
+    }
+    
+    private func likeDislikeonPost(isLike: Bool) {
+        vmLikeDislikeObj.likeDislike(post: vmObject.objPost!, isLike: isLike) { result, newObject in
+            if result.status {
+                if let updatedObj = newObject {
+                    self.vmObject.objPost = updatedObj
+                    self.setData()
+                    self.delegate?.comment(didUpdate: updatedObj)
+                }
+            } else {
+                SoapBx.showToast(message: result.message)
+            }
+        }
     }
 }
 extension CommentVC: UIScrollViewDelegate {
@@ -131,51 +271,69 @@ extension CommentVC: UIScrollViewDelegate {
             pageCounter.currentPage = Int(x/w)
         }
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+    }
 }
-extension CommentVC: UITableViewDataSource{
+extension CommentVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return vmObject.arrComments.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "CommentItemCell") as? CommentItemCell {
-            cell.setData()
+            cell.setData(vmObject.arrComments[indexPath.row], indexPath: indexPath, delegate: self)
             return cell
         }
         return UITableViewCell()
     }
 }
-extension CommentVC: UITableViewDelegate {
-    
+extension CommentVC: CommentItemDelegate{
+    func commentItem(_ cell: CommentItemCell, didSelectReport object: CommentModel) {
+        self.view.showReportView(comment: object.id ?? 0) { id, report in
+            self.reportComment(commentId: id, reason: report)
+        }
+    }
 }
+
 
 extension CommentVC: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == collectionPostImage {
-            return 3
+            return self.vmObject.objPost?.images?.count ?? 0
         } else if collectionView == collectionPolitician {
-            return arrPolitician.count
+            return self.vmObject.objPost?.politicianTags?.count ?? 0
         } else {
-            return arrSoapbxTrends.count
+            return self.vmObject.objPost?.trendTags?.count ?? 0
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == collectionPostImage,
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PostImageItemCell", for: indexPath) as? PostImageItemCell {
-            cell.setData(indexPath.row)
-            return cell
+           let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PostImageItemCell", for: indexPath) as? PostImageItemCell {
+            if let obj = self.vmObject.objPost?.images?[indexPath.row] {
+                cell.setData(obj)
+                return cell
+            }
         }
         else if collectionView == collectionSoapbx,
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PostItemPoliticalCell", for: indexPath) as? PostItemPoliticalCell {
-            cell.setDataSoapbx(arrSoapbxTrends[indexPath.row])
+            if let obj = self.vmObject.objPost?.trendTags?[indexPath.row] {
+                cell.setDataSoapbx(obj)
                 return cell
             }
+            
+        }
         else if collectionView == collectionPolitician,
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PostItemPoliticalCell", for: indexPath) as? PostItemPoliticalCell {
-            cell.setDataPolitician(arrPolitician[indexPath.row])
+            if let obj = self.vmObject.objPost?.politicianTags?[indexPath.row] {
+                cell.setDataPolitician(obj)
                 return cell
             }
+            
+            
+        }
         return UICollectionViewCell()
     }
     
@@ -183,17 +341,17 @@ extension CommentVC: UICollectionViewDataSource{
 extension CommentVC: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == collectionPostImage {
-            return CGSize(width: collectionView.frame.width - 20, height: collectionView.frame.width - 20)
+            return CGSize(width: collectionView.frame.width - 20, height: collectionView.frame.width - 10)
         } else {
-            let text = collectionView == collectionSoapbx ? arrSoapbxTrends[indexPath.row] : arrPolitician[indexPath.row]
-            let width = text.size(OfFont: AppFont.regular.font(size: 14)).width
-            return CGSize(width: width + 20, height: collectionView.frame.height - 10)
+            let text = collectionView == collectionSoapbx ? self.vmObject.objPost?.trendTags?[indexPath.row].trend?.name : self.vmObject.objPost?.politicianTags?[indexPath.row].politician?.name
+            let width = (text ?? "").size(OfFont: AppFont.regular.font(size: 14)).width
+            return CGSize(width: width + 20, height: collectionView.frame.height - 5)
         }
         
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 5
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -202,5 +360,14 @@ extension CommentVC: UICollectionViewDelegateFlowLayout, UICollectionViewDelegat
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+    }
+}
+extension CommentVC: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldInteractWith url: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        if UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url)
+        }
+        printLog("[HomeItemCell] shouldInteractWith")
+        return false
     }
 }

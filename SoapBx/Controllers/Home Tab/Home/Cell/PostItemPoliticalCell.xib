@@ -19,10 +19,10 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uAv-I0-PbX">
-                        <rect key="frame" x="0.0" y="0.0" width="182" height="50"/>
+                        <rect key="frame" x="5" y="5" width="172" height="40"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DN0-CL-NF0">
-                                <rect key="frame" x="70.333333333333329" y="14.999999999999998" width="41.333333333333329" height="20.333333333333329"/>
+                                <rect key="frame" x="65.333333333333329" y="9.9999999999999982" width="41.333333333333329" height="20.333333333333329"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -40,10 +40,10 @@
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="uAv-I0-PbX" secondAttribute="bottom" id="Djz-eJ-JF4"/>
-                <constraint firstAttribute="trailing" secondItem="uAv-I0-PbX" secondAttribute="trailing" id="P8p-iO-cs2"/>
-                <constraint firstItem="uAv-I0-PbX" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="YKp-xz-Gsc"/>
-                <constraint firstItem="uAv-I0-PbX" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="wie-AV-JbT"/>
+                <constraint firstAttribute="bottom" secondItem="uAv-I0-PbX" secondAttribute="bottom" constant="5" id="Djz-eJ-JF4"/>
+                <constraint firstAttribute="trailing" secondItem="uAv-I0-PbX" secondAttribute="trailing" constant="5" id="P8p-iO-cs2"/>
+                <constraint firstItem="uAv-I0-PbX" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="YKp-xz-Gsc"/>
+                <constraint firstItem="uAv-I0-PbX" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="wie-AV-JbT"/>
             </constraints>
             <size key="customSize" width="182" height="50"/>
             <connections>

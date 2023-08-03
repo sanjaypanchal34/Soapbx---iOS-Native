@@ -7,6 +7,7 @@
 
 import UIKit
 import OTLContaner
+import Photos
 
 extension UILabel {
     
@@ -204,8 +205,66 @@ extension UIView {
         }
     }
 }
-extension String {
-    func isEmpty() -> Bool{
-        return self.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+
+public extension PHPhotoLibrary {
+    static func execute(controller: UIViewController,
+                        onAccessHasBeenGranted: @escaping () -> Void,
+                        onAccessHasBeenDenied: (() -> Void)? = nil) {
+        
+        let onDeniedOrRestricted = onAccessHasBeenDenied ?? {
+            let alert = UIAlertController(
+                title: "We were unable to load your album groups. Sorry!",
+                message: "You can enable access in Privacy Settings",
+                preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "Settings", style: .default, handler: { _ in
+                if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
+                    UIApplication.shared.open(settingsURL)
+                }
+            }))
+            controller.present(alert, animated: true)
+        }
+        
+        let status = PHPhotoLibrary.authorizationStatus()
+        switch status {
+        case .notDetermined:
+            onNotDetermined(onDeniedOrRestricted, onAccessHasBeenGranted)
+        case .denied, .restricted:
+            DispatchQueue.main.async { onDeniedOrRestricted()}
+        case .authorized:
+            DispatchQueue.main.async {onAccessHasBeenGranted() }
+        case .limited:
+            DispatchQueue.main.async { onAccessHasBeenGranted()}
+        @unknown default:
+            fatalError("PHPhotoLibrary::execute - \"Unknown case\"")
+        }
+        
+        
     }
+    
+    
+    private static func onNotDetermined(_ onDeniedOrRestricted: @escaping (()->Void), _ onAuthorized: @escaping (()->Void)) {
+        
+        DispatchQueue.main.async {
+            PHPhotoLibrary.requestAuthorization({ status in
+                switch status {
+                case .notDetermined:
+                    self.onNotDetermined(onDeniedOrRestricted, onAuthorized)
+                case .denied, .restricted:
+                    onDeniedOrRestricted()
+                case .authorized:
+                    onAuthorized()
+                case .limited:
+                    onAuthorized()
+                @unknown default:
+                    fatalError("PHPhotoLibrary::execute - \"Unknown case\"")
+                }
+            })
+        }
+        
+    }
+}
+extension NSNotification.Name{
+    
+    static let homePostUpdate = NSNotification.Name("OTL_homePostUpdate")
 }

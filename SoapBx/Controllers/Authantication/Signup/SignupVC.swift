@@ -60,8 +60,12 @@ class SignupVC: UIViewController {
                              leftIcon: UIImage(named: "ic_user"))
         txtPhoneNo.setTheme(placeholder: "Phone Number",
                           leftIcon: UIImage(named: "ic_phone"))
+        txtPhoneNo.keyboardType = .phonePad
+        
         txtEmail.setTheme(placeholder: "Email",
                           leftIcon: UIImage(named: "ic_email"))
+        txtEmail.keyboardType = .emailAddress
+        
         txtPassword.setTheme(placeholder: "Password")
         txtConfPassword.setTheme(placeholder: "Confirm Password")
         txtLocation.setTheme(placeholder: "Location",

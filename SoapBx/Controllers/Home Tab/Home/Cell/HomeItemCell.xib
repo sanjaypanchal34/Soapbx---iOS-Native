@@ -21,35 +21,35 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tyc-a4-vH7">
                         <rect key="frame" x="20" y="10" width="385" height="780"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k1H-u0-kB4">
-                                <rect key="frame" x="0.0" y="10" width="385" height="75"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k1H-u0-kB4">
+                                <rect key="frame" x="0.0" y="10" width="385" height="69.333333333333329"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2qu-tr-aOb" customClass="UIControl">
-                                        <rect key="frame" x="0.0" y="-9" width="191" height="93"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2qu-tr-aOb" customClass="UIControl">
+                                        <rect key="frame" x="0.0" y="0.0" width="191.33333333333334" height="69.333333333333329"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="UcJ-Vo-AvS">
-                                                <rect key="frame" x="10" y="10" width="55" height="55"/>
+                                                <rect key="frame" x="10" y="0.0" width="55" height="55"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="55" id="6wy-ac-J9f"/>
                                                     <constraint firstAttribute="width" secondItem="UcJ-Vo-AvS" secondAttribute="height" multiplier="1:1" id="LVU-mz-kmR"/>
                                                 </constraints>
                                             </imageView>
-                                            <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="agF-eH-ZgS">
-                                                <rect key="frame" x="75" y="30" width="116.33333333333331" height="54.333333333333343"/>
+                                            <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="agF-eH-ZgS">
+                                                <rect key="frame" x="75" y="5.0000000000000036" width="116.33333333333331" height="54.333333333333343"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Soapbx Admin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E3c-YY-k5X">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Soapbx Admin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E3c-YY-k5X">
                                                         <rect key="frame" x="0.0" y="0.0" width="109.66666666666667" height="20.333333333333332"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="San Jose. CA. USA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qxk-AL-VTH">
-                                                        <rect key="frame" x="0.0" y="25.333333333333329" width="90.666666666666671" height="12"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="San Jose. CA. USA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qxk-AL-VTH">
+                                                        <rect key="frame" x="0.0" y="25.333333333333336" width="90.666666666666671" height="12"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Apr 11 2023 @ 10:13 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jzm-kO-UgO">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Apr 11 2023 @ 10:13 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jzm-kO-UgO">
                                                         <rect key="frame" x="0.0" y="42.333333333333329" width="116.33333333333333" height="12"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                         <nil key="textColor"/>
@@ -62,9 +62,9 @@
                                         <constraints>
                                             <constraint firstItem="agF-eH-ZgS" firstAttribute="leading" secondItem="UcJ-Vo-AvS" secondAttribute="trailing" constant="10" id="Cbh-1B-905"/>
                                             <constraint firstAttribute="trailing" secondItem="agF-eH-ZgS" secondAttribute="trailing" id="IKc-GQ-mBU"/>
-                                            <constraint firstItem="UcJ-Vo-AvS" firstAttribute="top" secondItem="2qu-tr-aOb" secondAttribute="top" constant="10" id="JqO-td-8tc"/>
+                                            <constraint firstItem="UcJ-Vo-AvS" firstAttribute="top" secondItem="2qu-tr-aOb" secondAttribute="top" id="JqO-td-8tc"/>
                                             <constraint firstAttribute="bottom" secondItem="agF-eH-ZgS" secondAttribute="bottom" constant="10" id="UZC-HQ-xUt"/>
-                                            <constraint firstItem="agF-eH-ZgS" firstAttribute="top" secondItem="UcJ-Vo-AvS" secondAttribute="top" constant="10" id="bXr-lS-GxZ"/>
+                                            <constraint firstItem="agF-eH-ZgS" firstAttribute="top" secondItem="UcJ-Vo-AvS" secondAttribute="top" constant="5" id="bXr-lS-GxZ"/>
                                             <constraint firstItem="UcJ-Vo-AvS" firstAttribute="leading" secondItem="2qu-tr-aOb" secondAttribute="leading" constant="10" id="fEU-5v-Bf1"/>
                                         </constraints>
                                         <connections>
@@ -72,22 +72,22 @@
                                         </connections>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vK2-zM-beC">
-                                        <rect key="frame" x="285" y="0.0" width="100" height="40"/>
+                                        <rect key="frame" x="301" y="0.0" width="84" height="40"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GlE-Dy-Ilv" customClass="OTLPTButton" customModule="OTLContaner">
-                                                <rect key="frame" x="0.0" y="0.0" width="60" height="40"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="44" height="40"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="FVU-s7-iTJ">
-                                                        <rect key="frame" x="13.666666666666686" y="9.9999999999999982" width="32.666666666666664" height="20.333333333333329"/>
+                                                    <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="FVU-s7-iTJ">
+                                                        <rect key="frame" x="6.6666666666666874" y="9.9999999999999982" width="30.666666666666671" height="20.333333333333329"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s2Z-OI-the">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s2Z-OI-the">
                                                                 <rect key="frame" x="0.0" y="0.0" width="7.666666666666667" height="20.333333333333332"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_save" translatesAutoresizingMaskIntoConstraints="NO" id="FDa-gS-f5G">
-                                                                <rect key="frame" x="12.666666666666629" y="0.0" width="20" height="20"/>
+                                                                <rect key="frame" x="10.666666666666629" y="0.0" width="20" height="20"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="20" id="dpT-Cq-2Vu"/>
                                                                     <constraint firstAttribute="width" secondItem="FDa-gS-f5G" secondAttribute="height" multiplier="1:1" id="uYc-c8-EXV"/>
@@ -101,11 +101,16 @@
                                                     <constraint firstItem="FVU-s7-iTJ" firstAttribute="centerX" secondItem="GlE-Dy-Ilv" secondAttribute="centerX" id="9DS-A0-9ZY"/>
                                                     <constraint firstItem="FVU-s7-iTJ" firstAttribute="centerY" secondItem="GlE-Dy-Ilv" secondAttribute="centerY" id="HS0-4u-eeP"/>
                                                     <constraint firstAttribute="height" constant="40" id="bCv-dV-uCS"/>
-                                                    <constraint firstAttribute="width" secondItem="GlE-Dy-Ilv" secondAttribute="height" multiplier="1.5:1" id="d7l-XV-KSe"/>
+                                                    <constraint firstAttribute="width" secondItem="GlE-Dy-Ilv" secondAttribute="height" multiplier="1.1:1" id="d7l-XV-KSe"/>
                                                 </constraints>
+                                                <connections>
+                                                    <action selector="click_btnSave" destination="KGk-i7-Jjw" eventType="touchUpInside" id="EdQ-ux-tTd"/>
+                                                    <outlet property="imageView" destination="FDa-gS-f5G" id="qz1-Y4-BXa"/>
+                                                    <outlet property="title" destination="s2Z-OI-the" id="LWj-TE-P9B"/>
+                                                </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2lw-i0-D4d" customClass="OTLImageButton" customModule="OTLContaner">
-                                                <rect key="frame" x="60" y="0.0" width="40" height="40"/>
+                                                <rect key="frame" x="44" y="0.0" width="40" height="40"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="2lw-i0-D4d" secondAttribute="height" multiplier="1:1" id="Z6n-7C-VCz"/>
@@ -128,8 +133,8 @@
                                     <constraint firstAttribute="trailing" secondItem="vK2-zM-beC" secondAttribute="trailing" id="vhU-Qy-Evo"/>
                                 </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="1Kx-bC-1lE">
-                                <rect key="frame" x="10" y="95" width="365" height="165.66666666666669"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="1Kx-bC-1lE">
+                                <rect key="frame" x="10" y="89.333333333333329" width="365" height="170.66666666666669"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Groundwater Gold Rush" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WmX-xD-Vn7">
                                         <rect key="frame" x="0.0" y="0.0" width="365" height="21.666666666666668"/>
@@ -137,22 +142,18 @@
                                         <color key="textColor" systemColor="linkColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aDB-Kd-Mmg">
-                                        <rect key="frame" x="0.0" y="31.666666666666671" width="365" height="134"/>
-                                        <string key="text">Banks, pension funds and insurers have been
-turning California's scarce water into enormous
-profits, leaving people with less to drink.
-https://www.bloomberg.com/graphics/2023-wall-street
--speeds-california-groundwater-depletion/?srnd=premium
-#xi4v7vzkg</string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="vx6-QM-YbQ">
+                                        <rect key="frame" x="0.0" y="21.666666666666671" width="365" height="149"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="textColor" systemColor="labelColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES"/>
+                                    </textView>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ZRd-sj-p3E">
-                                <rect key="frame" x="10" y="270" width="365" height="435"/>
+                                <rect key="frame" x="10" y="260" width="365" height="455"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="7S9-TX-mib">
                                         <rect key="frame" x="0.0" y="0.0" width="365" height="365"/>
@@ -168,10 +169,10 @@ https://www.bloomberg.com/graphics/2023-wall-street
                                         </collectionViewFlowLayout>
                                     </collectionView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Db3-00-KwW">
-                                        <rect key="frame" x="0.0" y="365" width="365" height="35"/>
+                                        <rect key="frame" x="0.0" y="365" width="365" height="45"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="Q1a-BA-2fr"/>
+                                            <constraint firstAttribute="height" constant="45" id="Q1a-BA-2fr"/>
                                         </constraints>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tOu-VX-4up">
                                             <size key="itemSize" width="128" height="128"/>
@@ -181,10 +182,10 @@ https://www.bloomberg.com/graphics/2023-wall-street
                                         </collectionViewFlowLayout>
                                     </collectionView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="nO4-cz-Dbb">
-                                        <rect key="frame" x="0.0" y="400" width="365" height="35"/>
+                                        <rect key="frame" x="0.0" y="410" width="365" height="45"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="Q60-Jh-dQc"/>
+                                            <constraint firstAttribute="height" constant="45" id="Q60-Jh-dQc"/>
                                         </constraints>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="MJ6-UE-QzR">
                                             <size key="itemSize" width="128" height="128"/>
@@ -196,26 +197,26 @@ https://www.bloomberg.com/graphics/2023-wall-street
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6rb-cS-yq5">
-                                <rect key="frame" x="35" y="715" width="315" height="50"/>
+                                <rect key="frame" x="35" y="725" width="315" height="40"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="uJa-Xu-bdJ">
-                                        <rect key="frame" x="5" y="5" width="305" height="40"/>
+                                        <rect key="frame" x="5" y="0.0" width="305" height="40"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lGO-Lv-283" customClass="OTLPTButton" customModule="OTLContaner">
                                                 <rect key="frame" x="0.0" y="0.0" width="80" height="40"/>
                                                 <subviews>
                                                     <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="6MC-eo-X26">
-                                                        <rect key="frame" x="23.666666666666668" y="10" width="32.666666666666657" height="20"/>
+                                                        <rect key="frame" x="24.666666666666671" y="11" width="30.666666666666671" height="18"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_like_grey" translatesAutoresizingMaskIntoConstraints="NO" id="H5E-4n-uJk">
-                                                                <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="18" height="18"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" constant="20" id="V9e-VT-5Q4"/>
+                                                                    <constraint firstAttribute="height" constant="18" id="V9e-VT-5Q4"/>
                                                                     <constraint firstAttribute="width" secondItem="H5E-4n-uJk" secondAttribute="height" multiplier="1:1" id="bMx-Vb-vpd"/>
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xKc-Cw-oFN">
-                                                                <rect key="frame" x="25" y="0.0" width="7.6666666666666643" height="20"/>
+                                                                <rect key="frame" x="23" y="0.0" width="7.6666666666666679" height="18"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -231,22 +232,27 @@ https://www.bloomberg.com/graphics/2023-wall-street
                                                     <constraint firstItem="6MC-eo-X26" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="lGO-Lv-283" secondAttribute="leading" constant="3" id="uQw-13-40c"/>
                                                     <constraint firstItem="6MC-eo-X26" firstAttribute="centerX" secondItem="lGO-Lv-283" secondAttribute="centerX" id="wPt-fq-aTa"/>
                                                 </constraints>
+                                                <connections>
+                                                    <action selector="click_btnLike" destination="KGk-i7-Jjw" eventType="touchUpInside" id="WKC-aQ-Nw2"/>
+                                                    <outlet property="imageView" destination="H5E-4n-uJk" id="l66-cz-TE6"/>
+                                                    <outlet property="title" destination="xKc-Cw-oFN" id="0ca-7S-cmd"/>
+                                                </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="04e-eb-yPT" customClass="OTLPTButton" customModule="OTLContaner">
                                                 <rect key="frame" x="112.66666666666666" y="0.0" width="80" height="40"/>
                                                 <subviews>
                                                     <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="17N-YL-5Pd">
-                                                        <rect key="frame" x="23.666666666666682" y="10" width="32.666666666666657" height="20"/>
+                                                        <rect key="frame" x="24.666666666666686" y="11" width="30.666666666666671" height="18"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_dislike_grey" translatesAutoresizingMaskIntoConstraints="NO" id="TF3-Sd-zwv">
-                                                                <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="18" height="18"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="TF3-Sd-zwv" secondAttribute="height" multiplier="1:1" id="GIl-L4-rQW"/>
-                                                                    <constraint firstAttribute="height" constant="20" id="jn9-Xd-LMp"/>
+                                                                    <constraint firstAttribute="height" constant="18" id="jn9-Xd-LMp"/>
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vO6-ls-uc3">
-                                                                <rect key="frame" x="25" y="0.0" width="7.6666666666666643" height="20"/>
+                                                                <rect key="frame" x="23" y="0.0" width="7.6666666666666679" height="18"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -262,22 +268,27 @@ https://www.bloomberg.com/graphics/2023-wall-street
                                                     <constraint firstItem="17N-YL-5Pd" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="04e-eb-yPT" secondAttribute="leading" constant="3" id="fSB-iQ-Gso"/>
                                                     <constraint firstItem="17N-YL-5Pd" firstAttribute="centerY" secondItem="04e-eb-yPT" secondAttribute="centerY" id="qmU-5Q-tVo"/>
                                                 </constraints>
+                                                <connections>
+                                                    <action selector="click_btnDislike" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Elw-KN-TFW"/>
+                                                    <outlet property="imageView" destination="TF3-Sd-zwv" id="aKs-QQ-opC"/>
+                                                    <outlet property="title" destination="vO6-ls-uc3" id="VdP-sv-OvS"/>
+                                                </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q4L-Tp-Opu" customClass="OTLPTButton" customModule="OTLContaner">
                                                 <rect key="frame" x="225" y="0.0" width="80" height="40"/>
                                                 <subviews>
                                                     <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="zmZ-KK-bXK">
-                                                        <rect key="frame" x="23.666666666666682" y="10" width="32.666666666666657" height="20"/>
+                                                        <rect key="frame" x="24.666666666666686" y="11" width="30.666666666666671" height="18"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_comments_grey" translatesAutoresizingMaskIntoConstraints="NO" id="huS-tj-GwW">
-                                                                <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="18" height="18"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="huS-tj-GwW" secondAttribute="height" multiplier="1:1" id="0rv-0d-uXw"/>
-                                                                    <constraint firstAttribute="height" constant="20" id="bO5-dG-W3a"/>
+                                                                    <constraint firstAttribute="height" constant="18" id="bO5-dG-W3a"/>
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nnw-Av-Lvn">
-                                                                <rect key="frame" x="25" y="0.0" width="7.6666666666666643" height="20"/>
+                                                                <rect key="frame" x="23" y="0.0" width="7.6666666666666679" height="18"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -295,6 +306,8 @@ https://www.bloomberg.com/graphics/2023-wall-street
                                                 </constraints>
                                                 <connections>
                                                     <action selector="click_btnComment" destination="KGk-i7-Jjw" eventType="touchUpInside" id="N4D-4V-C9a"/>
+                                                    <outlet property="imageView" destination="huS-tj-GwW" id="SAg-QA-My1"/>
+                                                    <outlet property="title" destination="Nnw-Av-Lvn" id="bbN-cb-O08"/>
                                                 </connections>
                                             </view>
                                         </subviews>
@@ -302,8 +315,9 @@ https://www.bloomberg.com/graphics/2023-wall-street
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="uJa-Xu-bdJ" firstAttribute="top" secondItem="6rb-cS-yq5" secondAttribute="top" constant="5" id="8l2-5y-h5r"/>
-                                    <constraint firstAttribute="bottom" secondItem="uJa-Xu-bdJ" secondAttribute="bottom" constant="5" id="aNA-vm-OeO"/>
+                                    <constraint firstItem="uJa-Xu-bdJ" firstAttribute="top" secondItem="6rb-cS-yq5" secondAttribute="top" id="8l2-5y-h5r"/>
+                                    <constraint firstAttribute="height" constant="40" id="CJ3-dp-nex"/>
+                                    <constraint firstAttribute="bottom" secondItem="uJa-Xu-bdJ" secondAttribute="bottom" id="aNA-vm-OeO"/>
                                     <constraint firstAttribute="trailing" secondItem="uJa-Xu-bdJ" secondAttribute="trailing" constant="5" id="gfN-oT-TC3"/>
                                     <constraint firstItem="uJa-Xu-bdJ" firstAttribute="leading" secondItem="6rb-cS-yq5" secondAttribute="leading" constant="5" id="wIa-Pw-oGZ"/>
                                 </constraints>
@@ -313,7 +327,6 @@ https://www.bloomberg.com/graphics/2023-wall-street
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="6rb-cS-yq5" secondAttribute="bottom" constant="15" id="Cp1-e2-ujj"/>
                             <constraint firstItem="1Kx-bC-1lE" firstAttribute="leading" secondItem="Tyc-a4-vH7" secondAttribute="leading" constant="10" id="FuY-We-1he"/>
-                            <constraint firstItem="1Kx-bC-1lE" firstAttribute="top" secondItem="k1H-u0-kB4" secondAttribute="bottom" constant="10" id="IKr-bJ-oWp"/>
                             <constraint firstItem="ZRd-sj-p3E" firstAttribute="leading" secondItem="1Kx-bC-1lE" secondAttribute="leading" id="JEd-eb-vtY"/>
                             <constraint firstItem="6rb-cS-yq5" firstAttribute="centerX" secondItem="Tyc-a4-vH7" secondAttribute="centerX" id="K18-Ij-iaW"/>
                             <constraint firstAttribute="trailing" secondItem="1Kx-bC-1lE" secondAttribute="trailing" constant="10" id="KZ4-E2-7Ds"/>
@@ -343,16 +356,17 @@ https://www.bloomberg.com/graphics/2023-wall-street
                 <outlet property="btnDislike" destination="04e-eb-yPT" id="o9d-ac-pHz"/>
                 <outlet property="btnDotMenu" destination="2lw-i0-D4d" id="0PK-Un-D9B"/>
                 <outlet property="btnLike" destination="lGO-Lv-283" id="nox-44-ojO"/>
+                <outlet property="btnProfileActio" destination="2qu-tr-aOb" id="hoe-I4-VgZ"/>
                 <outlet property="btnSave" destination="GlE-Dy-Ilv" id="jfT-U7-kIi"/>
                 <outlet property="collectionPolitician" destination="nO4-cz-Dbb" id="Xbo-3K-6gu"/>
                 <outlet property="collectionPostImage" destination="7S9-TX-mib" id="3U7-hj-jNZ"/>
                 <outlet property="collectionSoapbx" destination="Db3-00-KwW" id="7Lw-Ed-Xij"/>
                 <outlet property="imgProfile" destination="UcJ-Vo-AvS" id="cc3-jd-Uvz"/>
-                <outlet property="lblPostDescription" destination="aDB-Kd-Mmg" id="BI5-Ia-kgT"/>
                 <outlet property="lblPostLocation" destination="qxk-AL-VTH" id="8Ab-Ke-y6w"/>
                 <outlet property="lblPostTime" destination="jzm-kO-UgO" id="HBh-ML-MWO"/>
                 <outlet property="lblPostTitle" destination="WmX-xD-Vn7" id="YpB-HR-SLn"/>
                 <outlet property="lblProfileName" destination="E3c-YY-k5X" id="iGf-oU-0LL"/>
+                <outlet property="txtPostDescription" destination="vx6-QM-YbQ" id="f88-fm-8y1"/>
                 <outlet property="viewActionButtons" destination="6rb-cS-yq5" id="pTj-pU-u45"/>
                 <outlet property="viewMain" destination="Tyc-a4-vH7" id="mR2-Hk-fAX"/>
             </connections>
@@ -364,7 +378,10 @@ https://www.bloomberg.com/graphics/2023-wall-street
         <image name="ic_comments_grey" width="20" height="19"/>
         <image name="ic_dislike_grey" width="20" height="20"/>
         <image name="ic_like_grey" width="20" height="20"/>
-        <image name="ic_save" width="16" height="20.333333969116211"/>
+        <image name="ic_save" width="20" height="20"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

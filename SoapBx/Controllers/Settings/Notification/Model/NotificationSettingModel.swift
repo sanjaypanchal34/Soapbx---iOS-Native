@@ -8,6 +8,7 @@
 import Foundation
 
 struct NotificationSettingModel {
+    var id: Int
     var title: String
     var isSelected: Bool
 }

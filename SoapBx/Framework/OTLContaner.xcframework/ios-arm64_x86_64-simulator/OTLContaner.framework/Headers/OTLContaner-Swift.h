@@ -231,6 +231,7 @@ using UInt = size_t;
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
 @import CoreFoundation;
+@import Foundation;
 @import ObjectiveC;
 @import UIKit;
 #endif
@@ -434,6 +435,15 @@ SWIFT_CLASS("_TtC11OTLContaner13OTLSearchView")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
 @end
 
+@class UICollectionViewLayoutAttributes;
+
+SWIFT_CLASS("_TtC11OTLContaner16OTLTagFlowLayout")
+@interface OTLTagFlowLayout : UICollectionViewFlowLayout
+- (NSArray<UICollectionViewLayoutAttributes *> * _Nullable)layoutAttributesForElementsInRect:(CGRect)rect SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
 
 SWIFT_CLASS("_TtC11OTLContaner13OTLTextButton")
 @interface OTLTextButton : UIControl
@@ -448,6 +458,12 @@ SWIFT_CLASS("_TtC11OTLContaner13OTLTextButton")
 @interface OTLTextField (SWIFT_EXTENSION(OTLContaner)) <UITextViewDelegate>
 @end
 
+
+
+@interface UITextField (SWIFT_EXTENSION(OTLContaner))
+@property (nonatomic) IBInspectable NSInteger maxLength;
+- (void)limitLengthWithTextField:(UITextField * _Nonnull)textField;
+@end
 
 
 
@@ -693,6 +709,7 @@ using UInt = size_t;
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
 @import CoreFoundation;
+@import Foundation;
 @import ObjectiveC;
 @import UIKit;
 #endif
@@ -896,6 +913,15 @@ SWIFT_CLASS("_TtC11OTLContaner13OTLSearchView")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
 @end
 
+@class UICollectionViewLayoutAttributes;
+
+SWIFT_CLASS("_TtC11OTLContaner16OTLTagFlowLayout")
+@interface OTLTagFlowLayout : UICollectionViewFlowLayout
+- (NSArray<UICollectionViewLayoutAttributes *> * _Nullable)layoutAttributesForElementsInRect:(CGRect)rect SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
 
 SWIFT_CLASS("_TtC11OTLContaner13OTLTextButton")
 @interface OTLTextButton : UIControl
@@ -910,6 +936,12 @@ SWIFT_CLASS("_TtC11OTLContaner13OTLTextButton")
 @interface OTLTextField (SWIFT_EXTENSION(OTLContaner)) <UITextViewDelegate>
 @end
 
+
+
+@interface UITextField (SWIFT_EXTENSION(OTLContaner))
+@property (nonatomic) IBInspectable NSInteger maxLength;
+- (void)limitLengthWithTextField:(UITextField * _Nonnull)textField;
+@end
 
 
 

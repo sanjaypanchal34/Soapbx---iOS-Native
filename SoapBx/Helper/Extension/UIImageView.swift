@@ -1,16 +1,21 @@
 //
 //  UIImageView.swift
-//  SoapBx
+//  Operators Techno Lab, Ahmedabad
 //
-//  Created by admin on 29/07/23.
+//  Developed by Harsh Kadiya
+//  Created by OTL-HK on 06/08/2023.
+//  Copyright © 2023 OTL-HK. All rights reserved.
 //
+
 import UIKit
+import OTLContaner
 import SDWebImage
 
 extension UIImageView {
     func setImage(_ urlString:String?, placeHolder:UIImage = UIImage(named: "ic_user")! , sizeAccrodingSelf : Bool = false) {
         guard var strURL = urlString else { return }
 //        printLog("set Image from URL : \(strURL)")
+        self.contentMode = .scaleAspectFill
         strURL = urlString!.replacingOccurrences(of: " ", with: "%20")
         if let url = URL(string: strURL) {
             self.sd_imageIndicator = SDWebImageActivityIndicator.gray
@@ -42,5 +47,26 @@ extension UIImageView {
         let newImage: UIImage? = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         self.image = newImage
+    }
+}
+
+extension OTLImageButton {
+    func setImage(_ urlString:String?, placeHolder:UIImage = UIImage(named: "ic_user")! , sizeAccrodingSelf : Bool = false){
+        guard var strURL = urlString else { return }
+        strURL = urlString!.replacingOccurrences(of: " ", with: "%20")
+        image = placeHolder
+        self.contentMode = .scaleAspectFill
+        self.sd_imageIndicator = SDWebImageActivityIndicator.gray
+        if let url = URL(string: strURL) {
+            SDWebImageManager().loadImage(with: url) { receivedSize, IntexpectedSize, url in
+                
+            } completed: { image, data, error, catchType, status, url in
+                if status {
+                    self.image = image
+                    self.sd_imageIndicator = nil
+                }
+            }
+
+        }
     }
 }

@@ -27,6 +27,8 @@ class SuggestFeatureVC: UIViewController {
     @IBOutlet private weak var btnUpdate: OTLTextButton!
     
     var screenType = SuggestFeatureScreenType.suggestFeature
+    private let vmObject = SuggestFeatureViewModel()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,11 +53,52 @@ class SuggestFeatureVC: UIViewController {
         txtComment.delegate = self
         
         btnUpdate.appButton("Send")
+        setData()
+    }
+    
+    private func setData() {
+        txtProfileName.text = authUser?.user?.name ?? ""
+        txtEmail.text = authUser?.user?.email ?? ""
+        txtLocation.text = authUser?.user?.location ?? ""
+        txtPhoneNo.text = authUser?.user?.phone_number ?? ""
+        
     }
     
     //actions
     @IBAction private func click_btnUpdate() {
-        self.navigationController?.popViewController(animated: true)
+        let validateProfileName = txtProfileName.text.validateProfileName()
+        let validateEmail = txtEmail.text.validateEmail()
+        let validatePhone = txtPhoneNo.text.validatePhone()
+        let validateComment = (txtComment.text ?? "").validateSuggestComment()
+        
+        if validateProfileName.status == false {
+            showToast(message: validateProfileName.message)
+        }
+        else if validateEmail.status == false {
+            showToast(message: validateEmail.message)
+        }
+        else if validatePhone.status == false{
+            showToast(message: validatePhone.message)
+        }
+        else if validateComment.status == false {
+            showToast(message: validateComment.message)
+        }
+        else {
+            feedback()
+        }
+    }
+    
+    
+    //API Calls
+    private func feedback() {
+        showLoader()
+        vmObject.updateSubscriptionPlans(name: txtProfileName.text, type: screenType, email: txtEmail.text, comment: txtComment.text, location: txtLocation.text, number: txtPhoneNo.text) { result in
+            hideLoader()
+            showToast(message: result.message)
+            if result.status {
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
     }
 }
 extension SuggestFeatureVC : UITextViewDelegate {

@@ -30,4 +30,13 @@ class SearchItemCell: AppTableViewCell {
     func setDataForPublicSearch() {
         btnCancel.isHidden = false
     }
+    
+    func setDataPolition(_ object: PostUser, isSelected: Bool = false) {
+        imgProfile.setImage(object.profilePhotoURL)
+        lblProfileName.text = object.name
+        btnCancel.isUserInteractionEnabled = false
+        btnCancel.isHidden = false
+        btnCancel.setImage(UIImage(named: isSelected ? "ic_radioSelected" : "ic_radio")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        btnCancel.tintColor = .primaryBlue
+    }
 }

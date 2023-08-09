@@ -123,7 +123,7 @@ class SubscribeVC: UIViewController {
     }
     
     private func updateSubscriptionPlans() {
-        vmObject.updateSubscriptionPlans { result in
+        vmObject.updateSubscriptionPlans() { result in
             if result.status {
                 if self.screenType == .fromRegister {
                     let vc = EnableLocationVC()

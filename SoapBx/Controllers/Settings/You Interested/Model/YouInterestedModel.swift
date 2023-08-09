@@ -11,37 +11,43 @@ import Foundation
 
 struct TrendsModel: Codable {
     let active: Int?
-    let sub_category_id: Int?
-    let updated_at: String?
-    let category_id: Int?
-    let created_at: String?
+    let subCategoryID: Int?
+    let updatedAt: String?
+    let categoryID: Int?
+    let createdAt: String?
     let id: Int?
     let image: String?
-    let image_url: String?
+    let imageURL: String?
     let name: String?
-    let sub_category: TrendsCategoryModel?
+    let subCategory: TrendsCategoryModel?
     let category: TrendsCategoryModel?
     var isSelected: Bool = false
     
     init(name: String) {
-        active = 0
-        sub_category_id = 0
-        updated_at = ""
-        category_id = 0
-        created_at = ""
-        id = 0
-        image = ""
-        image_url = ""
+        self.active = 0
+        self.subCategoryID = 0
+        self.updatedAt = ""
+        self.categoryID = 0
+        self.createdAt = ""
+        self.id = 0
+        self.image = ""
+        self.imageURL = ""
         self.name = name
-        sub_category = nil
-        category = nil
+        self.subCategory = nil
+        self.category = nil
     }
-    
     
     enum CodingKeys: String, CodingKey {
-        case active, sub_category_id, updated_at, category_id, created_at, id, image, image_url, name, sub_category, category
+        case id
+        case categoryID = "category_id"
+        case subCategoryID = "sub_category_id"
+        case name, image, active
+        case createdAt = "created_at"
+        case updatedAt = "updated_at"
+        case imageURL = "image_url"
+        case subCategory = "sub_category"
+        case category
     }
-    
 }
 
 struct TrendsCategoryModel: Codable {

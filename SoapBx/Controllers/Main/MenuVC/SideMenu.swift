@@ -125,6 +125,11 @@ extension SideMenu: UITableViewDelegate {
             }
             break
         case "Home":
+                if ((rootViewController.topViewController as? HomeVC) != nil) {
+                    
+                } else {
+                    mackRootView(HomeVC())
+                }
             break
         case "Polls":
             let vc = PollsListVC()

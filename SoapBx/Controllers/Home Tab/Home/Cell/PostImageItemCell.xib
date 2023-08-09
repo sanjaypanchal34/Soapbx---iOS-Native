@@ -28,6 +28,9 @@
                             <constraint firstAttribute="height" constant="35" id="67z-mI-VPM"/>
                             <constraint firstAttribute="width" secondItem="09r-5Z-QhF" secondAttribute="height" multiplier="1:1" id="PLR-Qh-lR0"/>
                         </constraints>
+                        <connections>
+                            <action selector="click_btnCancel" destination="gTV-IL-0wX" eventType="touchUpInside" id="TuD-1Q-i2L"/>
+                        </connections>
                     </view>
                 </subviews>
             </view>

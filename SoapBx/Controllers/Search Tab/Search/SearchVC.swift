@@ -8,7 +8,11 @@
 import UIKit
 import OTLContaner
 enum SearchScreenType {
-    case searchTab, fromPublicFigures
+    case searchTab, fromPublicFigures, fromCreatePost
+}
+
+protocol SearchDelegate {
+    func search(selectedUserForCreatePost users: [PostUser])
 }
 class SearchVC: UIViewController {
     
@@ -19,27 +23,45 @@ class SearchVC: UIViewController {
     @IBOutlet private weak var txtSearch: UITextField!
     @IBOutlet private weak var tblList: UITableView!
     
+    @IBOutlet private weak var viewBottomButton: UIView!
+    @IBOutlet private weak var btnDone: OTLTextButton!
+    
     @IBOutlet private weak var bottomTab: OTLBottomTabBar!
     
-    var screenType = SearchScreenType.searchTab
+    private var screenType = SearchScreenType.searchTab
+    private let vmObject = SearchViewModel()
+    private var delegate:SearchDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupUI()
+        getPoliticians()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if screenType == .searchTab {
-        bottomTab.selectedTab = .search
+            bottomTab.selectedTab = .search
             viewHeader.btnBack.isHidden = true
         } else {
             bottomTab.isHidden = true
             viewHeader.btnBack.isHidden = false
         }
     }
-
+    // navigation Data
+    func navigateFromCreatePost(selected user: [PostUser], delegate:SearchDelegate) {
+        screenType = .fromCreatePost
+        self.delegate = delegate
+        vmObject.arrSelectedId = user.compactMap({ user in
+            return user.id
+        })
+    }
+    
+    func navigateFromPublicFigures() {
+        screenType = .fromPublicFigures
+    }
+    
+    //setup UI/UX
     private func setupUI() {
         bottomTab.setTabTheme()
         bottomTab.delegate = self
@@ -54,19 +76,56 @@ class SearchVC: UIViewController {
         txtSearch.font = AppFont.regular.font(size: 16)
         
         tblList.register(["SearchItemCell"], delegate: self, dataSource: self)
+        viewBottomButton.isHidden = true
         
+        btnDone.appButton("Done")
+        
+        if screenType == .fromCreatePost {
+            viewHeader.lblTitle.text = "Public Figures"
+            viewBottomButton.isHidden = false
+        }
+    }
+    
+    @IBAction private func click_btnDone() {
+        if screenType == .fromCreatePost {
+            var selectedUser: [PostUser] = vmObject.arrList.compactMap { user in
+                if vmObject.arrSelectedId.contains(user.id ?? 0) {
+                    return user
+                }
+                return nil
+            }
+            delegate?.search(selectedUserForCreatePost: selectedUser)
+            navigationController?.popViewController(animated: true)
+        }
     }
 
-    //
+    //API calls
+    private func getPoliticians() {
+        showLoader()
+        vmObject.getPolitician { result in
+            hideLoader()
+            if result.status {
+                self.tblList.reloadData()
+            }
+        }
+    }
+    
 }
 extension SearchVC: UITableViewDataSource, UITableViewDelegate  {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        if screenType == .fromCreatePost {
+            return vmObject.arrList.count
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "SearchItemCell") as? SearchItemCell {
-            if screenType == .searchTab {
+            if screenType == .fromCreatePost {
+                cell.setDataPolition(vmObject.arrList[indexPath.row],
+                                     isSelected: vmObject.arrSelectedId.contains(vmObject.arrList[indexPath.row].id ?? 0))
+            }
+            else if screenType == .searchTab {
                 cell.setDataForSearchTab()
             } else {
                 cell.setDataForPublicSearch()
@@ -76,6 +135,23 @@ extension SearchVC: UITableViewDataSource, UITableViewDelegate  {
         return UITableViewCell()
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if vmObject.arrSelectedId.contains(vmObject.arrList[indexPath.row].id ?? 0) {
+            vmObject.arrSelectedId = vmObject.arrSelectedId.filter { id in
+                if id != (vmObject.arrList[indexPath.row].id ?? 0) {
+                    return true
+                }
+                return false
+            }
+        } else {
+            vmObject.arrSelectedId.append(vmObject.arrList[indexPath.row].id ?? 0)
+        }
+        if let cell = tableView.cellForRow(at: indexPath) as? SearchItemCell,
+           screenType == .fromCreatePost{
+            cell.setDataPolition(vmObject.arrList[indexPath.row],
+                                 isSelected: vmObject.arrSelectedId.contains(vmObject.arrList[indexPath.row].id ?? 0))
+        }
+    }
 }
 extension SearchVC: OTLBottomTabBarDelegate {
     

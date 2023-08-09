@@ -35,7 +35,7 @@ class TrendsItemCell: AppCollectionViewCell {
 
     func setData(_ object: TrendsModel, color: String, isSelected: Bool = false) {
         lblTitle.text = object.name
-        imgIcon.setImage(object.image_url, placeHolder: UIImage(named: "allTrends")!)
+        imgIcon.setImage(object.imageURL, placeHolder: UIImage(named: "allTrends")!)
         viewMain.backgroundColor = UIColor.hex(toUIColor: color)
         imgCheckBox.image = isSelected ? UIImage(named: "ic_planChecked") : UIImage(named: "ic_planUnchecked")
     }

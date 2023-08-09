@@ -14,6 +14,7 @@
                 <outlet property="bottomTab" destination="jHg-1x-93v" id="q7O-aC-3uS"/>
                 <outlet property="btnManu" destination="JEE-A8-hFk" id="LZ9-lc-KRl"/>
                 <outlet property="btnNotification" destination="Fhz-QW-Qfw" id="Bx9-CE-31d"/>
+                <outlet property="scrollBody" destination="x9w-HP-fC1" id="ydB-qj-Ubn"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewBody" destination="23w-2y-678" id="aea-XZ-phj"/>
                 <outlet property="viewHeader" destination="RsL-36-kI0" id="qnL-UW-Ru3"/>
@@ -354,6 +355,7 @@
                                                                 <constraint firstAttribute="height" constant="50" id="tS0-21-hf7"/>
                                                             </constraints>
                                                             <connections>
+                                                                <action selector="click_createPost" destination="hrD-90-dub" eventType="touchUpInside" id="QRr-ad-9cE"/>
                                                                 <outlet property="imageView" destination="YNh-6n-q22" id="jHH-QY-U3u"/>
                                                                 <outlet property="title" destination="6lb-Lc-gSF" id="RPI-wG-94n"/>
                                                             </connections>
@@ -384,6 +386,7 @@
                                                 <outlet property="btnPoliticians" destination="auo-FU-67p" id="7kX-vF-3S7"/>
                                                 <outlet property="btnVoiceToday" destination="tSe-iL-rt7" id="BLe-iw-GOC"/>
                                                 <outlet property="imgCover" destination="p2b-Th-AFP" id="fwy-rC-swr"/>
+                                                <outlet property="imgLocationIcon" destination="ZAP-cO-afh" id="HAz-Ra-mkh"/>
                                                 <outlet property="imgProfile" destination="qUT-Rz-wlf" id="SAs-AW-M5Y"/>
                                                 <outlet property="lblLocation" destination="VCb-Bs-LaK" id="LSV-nc-sJN"/>
                                                 <outlet property="lblProfileName" destination="Gdm-66-f2F" id="Rpy-2H-XaB"/>

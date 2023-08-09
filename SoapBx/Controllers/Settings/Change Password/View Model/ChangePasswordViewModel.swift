@@ -35,4 +35,25 @@ class ChangePasswordViewModel {
                 }
             }
         }
+    
+    func changePassword(new password: String, newPassword: String, confirmPassword: String , complition: @escaping (ResponseCallBack)) {
+        let para: JSON = [
+            "current_password": password,
+            "password": newPassword,
+            "password_confirmation": confirmPassword
+        ]
+        
+        Webservice.Profile.changePassword.requestWith(parameter: para) { result in
+            switch result {
+                case .fail(let message,let code,_):
+                    complition(CompanComplition(message: message, code: code ?? 111, status: false))
+                case .success(let data):
+                    if data.code == 200 {
+                        complition(CompanComplition(message: data.message, code: data.code, status: true))
+                    } else {
+                        complition(CompanComplition(message: data.message, code: data.code, status: false))
+                    }
+            }
+        }
+    }
 }

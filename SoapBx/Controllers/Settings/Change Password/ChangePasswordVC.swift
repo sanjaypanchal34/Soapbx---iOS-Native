@@ -53,7 +53,7 @@ class ChangePasswordVC: UIViewController {
     
     //actions
     @IBAction private func click_btnUpdate() {
-        let validatePass = txtOldPassword.text.validatePassword()
+        let validatePass = txtOldPassword.text.validateOldPassword()
         let validateNewPass = txtNewPassword.text.validateNewPassword()
         let validateConfPass = txtConfPassword.text.validateConfirmPassword(with: txtNewPassword.text)
         
@@ -67,13 +67,14 @@ class ChangePasswordVC: UIViewController {
             showToast(message: validateConfPass.message)
         } else {
             if screenType == .fromSetting {
-                self.navigationController?.popViewController(animated: true)
+                changePassword()
             } else {
                 resetForgotPassword()
             }
         }
     }
     
+    // API calls
     private func resetForgotPassword() {
         showLoader()
         vmObject.resetForgotPassword(new: txtNewPassword.text,
@@ -83,6 +84,17 @@ class ChangePasswordVC: UIViewController {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
                     mackRootView(LoginVC())
                 })
+            }
+            hideLoader()
+        }
+    }
+    
+    private func changePassword() {
+        showLoader()
+        vmObject.changePassword(new: txtOldPassword.text, newPassword: txtNewPassword.text, confirmPassword: txtConfPassword.text) { result in
+            showToast(message: result.message)
+            if result.status {
+                self.navigationController?.popViewController(animated: true)
             }
             hideLoader()
         }

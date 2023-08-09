@@ -14,7 +14,7 @@
                 <outlet property="btnEditCover" destination="SCs-m7-8a8" id="ow9-dX-FsG"/>
                 <outlet property="btnProfile" destination="Run-ft-xo4" id="5jx-5N-FQa"/>
                 <outlet property="btnUpdate" destination="y7e-XW-DwY" id="Nkr-mg-JGU"/>
-                <outlet property="imgCover" destination="Y6A-oe-QTZ" id="7Zt-ub-87o"/>
+                <outlet property="imgCoverView" destination="Y6A-oe-QTZ" id="7Zt-ub-87o"/>
                 <outlet property="txtEmail" destination="gNn-WU-VZH" id="0dg-jE-DcH"/>
                 <outlet property="txtFirstName" destination="JPP-Eb-01R" id="EAT-3a-TmP"/>
                 <outlet property="txtLastName" destination="fsc-ch-4Fg" id="Ndd-rQ-Hnl"/>
@@ -87,6 +87,9 @@
                                         <constraint firstAttribute="height" constant="45" id="5bE-cb-9aw"/>
                                         <constraint firstAttribute="width" secondItem="SCs-m7-8a8" secondAttribute="height" multiplier="1:1" id="mc6-5n-c0J"/>
                                     </constraints>
+                                    <connections>
+                                        <action selector="click_btnCover" destination="-1" eventType="touchUpInside" id="2P4-rv-XkD"/>
+                                    </connections>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Run-ft-xo4" customClass="OTLImageButton" customModule="OTLContaner">
                                     <rect key="frame" x="156.66666666666666" y="120" width="80" height="80"/>
@@ -95,6 +98,9 @@
                                         <constraint firstAttribute="height" constant="80" id="KIq-nN-Yqg"/>
                                         <constraint firstAttribute="width" secondItem="Run-ft-xo4" secondAttribute="height" multiplier="1:1" id="M8c-RJ-TvM"/>
                                     </constraints>
+                                    <connections>
+                                        <action selector="click_btnProfile" destination="-1" eventType="touchUpInside" id="TXi-Fj-pS9"/>
+                                    </connections>
                                 </view>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="JxC-N1-0ow">
                                     <rect key="frame" x="20" y="230" width="353" height="230"/>
@@ -147,6 +153,9 @@
                                     <constraints>
                                         <constraint firstAttribute="height" constant="50" id="fYO-Cb-Nog"/>
                                     </constraints>
+                                    <connections>
+                                        <action selector="click_update" destination="-1" eventType="touchUpInside" id="zsU-ik-KDx"/>
+                                    </connections>
                                 </view>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

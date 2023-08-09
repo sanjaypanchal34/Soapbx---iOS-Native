@@ -185,7 +185,7 @@ public enum OTLTextFieldStyle {
 }
 extension OTLContaner.OTLTextField : UIKit.UITextViewDelegate {
 }
-public func otlStartActivityIndicator(color: UIKit.UIColor = .white)
+public func otlStartActivityIndicator(color: UIKit.UIColor = .white, labelComplition: ((UIKit.UILabel) -> ())? = nil)
 public func otlStopActivityIndicator()
 public struct OTLButtonPresentable {
   public var font: UIKit.UIFont
@@ -293,7 +293,7 @@ extension OTLContaner.OTLDatePickerDelegate {
 public enum OTLDateTimeFormat {
   case MMMddyyyy, ddMMyyyy, yyyyMMdd, ddMMMyy
   case hhmma, hhmm, HHmm
-  case ddMMyyyy_hhmma, yyyyMMdd_hhmma
+  case ddMMyyyy_hhmma, yyyyMMdd_hhmma, yyyyMMdd_HHmm
   case yyyyMMdd_T_HHmmssZ
   case mmmDDyyyyAthhmma
   case other(Swift.String)
@@ -307,6 +307,15 @@ public struct OTLIndex {
   public var item: Swift.Int
   public var subitem: Swift.Int
   public init(section: Swift.Int = 0, row: Swift.Int = 0, item: Swift.Int = 0, subitem: Swift.Int = 0)
+}
+@_hasMissingDesignatedInitializers public class OTLCollectionLayoutRow {
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class OTLTagFlowLayout : UIKit.UICollectionViewFlowLayout {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func layoutAttributesForElements(in rect: CoreFoundation.CGRect) -> [UIKit.UICollectionViewLayoutAttributes]?
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init()
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
 }
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class OTLDashedView : UIKit.UIControl {
   @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var cornerRadius: CoreFoundation.CGFloat {
@@ -612,6 +621,13 @@ extension UIKit.UIView {
   @_Concurrency.MainActor(unsafe) public func setGradientBackground(color: [CoreGraphics.CGColor], startPoint: CoreFoundation.CGPoint = CGPoint(x: 0.0, y: 1.0), endPoint: CoreFoundation.CGPoint = CGPoint(x: 1.0, y: 1.0))
   @_Concurrency.MainActor(unsafe) public func setShadowWithCorner(opacity: Swift.Float = 0.3, offSet: CoreFoundation.CGSize = CGSize(width: 0, height: 0), color: UIKit.UIColor = UIColor.darkGray, corner: CoreFoundation.CGFloat = -1, radius: CoreFoundation.CGFloat = 3.0, bounds: Swift.Bool = false)
   @_Concurrency.MainActor(unsafe) public func addShadow(shadowColor: UIKit.UIColor = UIColor.darkGray, offSet: CoreFoundation.CGSize = CGSize(width: 1.5, height: 1.5), opacity: Swift.Float = 0.5, shadowRadius: CoreFoundation.CGFloat = 5.0, cornerRadius: CoreFoundation.CGFloat = -1, corners: UIKit.UIRectCorner = [.allCorners], fillColor: UIKit.UIColor = .white)
+}
+extension UIKit.UITextField {
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic public var maxLength: Swift.Int {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func limitLength(textField: UIKit.UITextField)
 }
 public struct OTLAlertModel {
   public let title: Swift.String

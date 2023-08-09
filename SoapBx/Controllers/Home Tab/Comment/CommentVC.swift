@@ -313,7 +313,7 @@ extension CommentVC: UICollectionViewDataSource{
         if collectionView == collectionPostImage,
            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PostImageItemCell", for: indexPath) as? PostImageItemCell {
             if let obj = self.vmObject.objPost?.images?[indexPath.row] {
-                cell.setData(obj)
+                cell.setData(obj, indexPath: indexPath)
                 return cell
             }
         }
@@ -342,11 +342,29 @@ extension CommentVC: UICollectionViewDelegateFlowLayout, UICollectionViewDelegat
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == collectionPostImage {
             return CGSize(width: collectionView.frame.width - 20, height: collectionView.frame.width - 10)
-        } else {
-            let text = collectionView == collectionSoapbx ? self.vmObject.objPost?.trendTags?[indexPath.row].trend?.name : self.vmObject.objPost?.politicianTags?[indexPath.row].politician?.name
-            let width = (text ?? "").size(OfFont: AppFont.regular.font(size: 14)).width
-            return CGSize(width: width + 20, height: collectionView.frame.height - 5)
         }
+        else if collectionView == collectionSoapbx,
+                 (self.vmObject.objPost?.trendTags?.count ?? 0) > 0{
+            let text = self.vmObject.objPost?.trendTags?[indexPath.row].trend?.name ?? ""
+            let width = text.size(OfFont: AppFont.regular.font(size: 16)).width + 20
+            if width < 55 {
+                return CGSize(width: 55, height: 35)
+            }
+            else {
+                return CGSize(width: width, height: 35)
+            }
+        }else if collectionView == collectionPolitician,
+                 (self.vmObject.objPost?.politicianTags?.count ?? 0) > 0{
+            let text = self.vmObject.objPost?.politicianTags?[indexPath.row].politician?.name ?? ""
+            let width = text.size(OfFont: AppFont.regular.font(size: 16)).width + 20
+            if width < 55 {
+                return CGSize(width: 55, height: 35)
+            }
+            else {
+                return CGSize(width: width, height: 35)
+            }
+        }
+        return CGSize()
         
     }
     

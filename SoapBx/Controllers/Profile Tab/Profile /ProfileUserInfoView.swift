@@ -17,6 +17,7 @@ class ProfileUserInfoView: UIView {
     @IBOutlet private weak var btnDeleteAccunt:UIButton!
     
     @IBOutlet private weak var lblProfileName:UILabel!
+    @IBOutlet private weak var imgLocationIcon:UIImageView!
     @IBOutlet private weak var lblLocation:UILabel!
     
     @IBOutlet private weak var viewMessageFollowBackButtons:UIView!
@@ -96,6 +97,7 @@ class ProfileUserInfoView: UIView {
         imgProfile.setImage(userObj.profilePhotoURL)
         lblProfileName.text = userObj.name
         lblLocation.text = userObj.location
+        imgLocationIcon.isHidden = !((userObj.location?.count ?? 0) > 0)
         
         btnFollowers.lblTitle.text = "\(userObj.followers ?? 0)"
         btnFollowing.lblTitle.text = "\(userObj.following ?? 0)"
@@ -107,6 +109,7 @@ class ProfileUserInfoView: UIView {
         imgProfile.setImage(userObj.profile_photo_url)
         lblProfileName.text = userObj.name
         lblLocation.text = userObj.location
+        imgLocationIcon.isHidden = !(userObj.location.count > 0)
         
         btnFollowers.lblTitle.text = "\(userObj.followers)"
         btnFollowing.lblTitle.text = "\(userObj.following)"
@@ -155,5 +158,10 @@ class ProfileUserInfoView: UIView {
     @IBAction private func click_btnBlock() {
 //        let vc = ChatVC()
 //        rootViewController?.pushViewController(vc, animated: true)
+    }
+    
+    @IBAction private func click_createPost() {
+        let vc = CreatePostVC()
+        rootViewController.pushViewController(vc, animated: true)
     }
 }

@@ -9,7 +9,11 @@ import UIKit
 import OTLContaner
 
 enum ScreenType {
-    case fromSignup, fromSetting
+    case fromSignup, fromSetting, fromCreatePost
+}
+
+protocol YouInterestedDelegate {
+    func youInterested(didSelected trends: [TrendsModel])
 }
 
 class YouInterestedVC: UIViewController {
@@ -17,9 +21,11 @@ class YouInterestedVC: UIViewController {
     @IBOutlet private weak var viewHeader: OTLHeader!
     @IBOutlet private weak var lblTitle: UILabel!
     @IBOutlet private weak var collInterested: UICollectionView!
-    @IBOutlet private weak var btnNext: UIButton!
+    @IBOutlet private weak var btnNext: OTLTextButton!
     
     private let vmObject = YouInterestedViewModel()
+    private var delegate:YouInterestedDelegate?
+    
     var screenType = ScreenType.fromSignup
     
     override func viewDidLoad() {
@@ -27,6 +33,14 @@ class YouInterestedVC: UIViewController {
         setupUI()
         getTrends()
         // Do any additional setup after loading the view.
+    }
+    
+    func navigateFromCreatePost(_ selected: [TrendsModel], delegate:YouInterestedDelegate) {
+        screenType = .fromCreatePost
+        self.delegate = delegate
+        vmObject.arrSelectedId = selected.compactMap({ element in
+            return element.id
+        })
     }
 
     //MARK: - Setup view
@@ -40,16 +54,39 @@ class YouInterestedVC: UIViewController {
         collInterested.delegate = self
         collInterested.dataSource = self
         
-        btnNext.appButton(screenType == .fromSignup ? "Next" : "Update")
+        btnNext.appButton("Next")
+        switch screenType {
+            case .fromSignup:
+                btnNext.text = "Next"
+                lblTitle.text = "What are you interested in?"
+            case .fromSetting:
+                btnNext.text = "Update"
+                lblTitle.text = "What are you interested in?"
+            case .fromCreatePost:
+                btnNext.text = "Done"
+                lblTitle.text = "Choose Relevant Trends"
+        }
+        
         collInterested.reloadData()
     }
     
     //Actions
     @IBAction private func click_btnNext() {
-        if vmObject.arrSelectedId.count == 0 {
+        if vmObject.arrSelectedId.count == 0, screenType != .fromCreatePost {
             showToast(message: "Please select atleast one trend")
         } else {
-            updateTrends()
+            if screenType == .fromCreatePost {
+                let array = vmObject.arrList.compactMap { element in
+                    if vmObject.arrSelectedId.contains(element.id ?? 0) {
+                        return element
+                    }
+                    return nil
+                }
+                delegate?.youInterested(didSelected: array)
+                navigationController?.popViewController(animated: true)
+            } else {
+                updateTrends()
+            }
         }
     }
     
@@ -88,9 +125,10 @@ class YouInterestedVC: UIViewController {
                     let vc = SubscribeVC()
                     self.navigationController?.pushViewController(vc, animated: true)
                 }else {
-                    self.navigationController?.popToRootViewController(animated: true)
+//                    self.navigationController?.popViewController(animated: true)
                 }
             }
+            showToast(message: result.message)
         }
     }
 }
@@ -119,7 +157,7 @@ extension YouInterestedVC : UICollectionViewDelegate {
                 return false
             }
         } else {
-            if vmObject.arrSelectedId.count >= vmObject.maxSelection {
+            if vmObject.arrSelectedId.count > vmObject.maxSelection {
                 showToast(message: "You can choose a maximum of \(vmObject.maxSelection) trends.")
             } else {
                 vmObject.arrSelectedId.append(vmObject.arrList[indexPath.row].id ?? 0)

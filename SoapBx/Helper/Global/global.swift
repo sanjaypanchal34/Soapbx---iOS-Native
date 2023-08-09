@@ -42,9 +42,10 @@ func showAlert( message: String,
     showAlert(title: "SoapBx", message: message, buttons: arrButtons, style: style, complition: complition)
 }
 
-func showLoader() {
-    otlStartActivityIndicator(color: .primaryBlue)
+func showLoader(labelComplition: ((UILabel)->())? = nil) {
+    otlStartActivityIndicator(color: .primaryBlue, labelComplition: labelComplition)
 }
+
 
 func hideLoader() {
     otlStopActivityIndicator()

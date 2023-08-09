@@ -8,18 +8,19 @@
 //
 
 import Foundation
+import UIKit
 
 struct PostModel: Codable {
     let id, userID: Int?
-    let title, description: String?
+    var title, description: String?
     let status: Int?
     let createdAt, updatedAt: String?
     var commentsCount, likeCount, dislikeCount, savedsCount: Int?
     var saveStatus, likeStatus, dislikeStatus: Int?
-    let images: [PostImage]?
+    var images: [PostImage]?
     let user: PostUser?
-    let trendTags: [PostTag]?
-    let politicianTags: [PostTag]?
+    var trendTags: [PostTag]?
+    var politicianTags: [PostTag]?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -39,7 +40,31 @@ struct PostModel: Codable {
         case politicianTags = "politician_tags"
     }
     
-    
+    mutating func updateValue(title: String, description: String, images: [PostImage], politician: [PostUser], trend: [TrendsModel]) {
+        self.title = title
+        self.description = description
+        self.images = images
+        self.politicianTags = politician.compactMap({ user in
+            var politician: PostTag? = nil
+            for poli in (self.politicianTags ?? []) {
+                if poli.politician?.id == user.id {
+                    politician = poli
+                    politician?.politician = user
+                }
+            }
+            return politician
+        })
+        self.trendTags = trend.compactMap({ user in
+            var politician: PostTag? = nil
+            for poli in (self.trendTags ?? []) {
+                if poli.trend?.id == user.id {
+                    politician = poli
+                    politician?.trend = user
+                }
+            }
+            return politician
+        })
+    }
 }
 
     // MARK: - Image
@@ -48,6 +73,7 @@ struct PostImage: Codable {
     let image: String?
     let createdAt, updatedAt: String?
     let imageURL: String?
+    var localImage: UIImage?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -57,6 +83,16 @@ struct PostImage: Codable {
         case updatedAt = "updated_at"
         case imageURL = "image_url"
     }
+    
+    init(image: UIImage) {
+        self.id = nil
+        self.postID = nil
+        self.image = nil
+        self.createdAt = nil
+        self.updatedAt = nil
+        self.imageURL = nil
+        self.localImage = image
+    }
 }
 
     // MARK: - Tag
@@ -64,8 +100,8 @@ struct PostTag: Codable {
     let id, postID, trendID, politicianID: Int?
     let type: Int?
     let createdAt, updatedAt: String?
-    let politician: PostUser?
-    let trend: PostTrend?
+    var politician: PostUser?
+    var trend: TrendsModel?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -115,23 +151,47 @@ struct PostUser: Codable {
         case endDateSubscription = "end_date_subscription"
         case subscriptionType = "subscription_type"
     }
-}
-
-    // MARK: - Trend
-struct PostTrend: Codable {
-    let id, categoryID, subCategoryID: Int?
-    let name, image: String?
-    let active: Int?
-    let createdAt, updatedAt: String?
-    let imageURL: String?
     
-    enum CodingKeys: String, CodingKey {
-        case id
-        case categoryID = "category_id"
-        case subCategoryID = "sub_category_id"
-        case name, image, active
-        case createdAt = "created_at"
-        case updatedAt = "updated_at"
-        case imageURL = "image_url"
+    init(name: String) {
+        
+        id = nil
+        firstName = ""
+        lastName = ""
+        self.name = name
+        profilePhoto = ""
+        coverPhoto = ""
+        location = ""
+        coverPhotoURL = ""
+        coverPhotoThumbURL = ""
+        profilePhotoURL = ""
+        profilePhotoThumbURL = ""
+        followers = 0
+        politician = 0
+        following = 0
+        voters = 0
+        statusUser = 0
+        statusPoli = 0
+        fullName = ""
+        endDateSubscription = ""
+        subscriptionType = 0
     }
 }
+
+//    // MARK: - Trend
+//struct PostTrend: Codable {
+//    let id, categoryID, subCategoryID: Int?
+//    let name, image: String?
+//    let active: Int?
+//    let createdAt, updatedAt: String?
+//    let imageURL: String?
+//    
+//    enum CodingKeys: String, CodingKey {
+//        case id
+//        case categoryID = "category_id"
+//        case subCategoryID = "sub_category_id"
+//        case name, image, active
+//        case createdAt = "created_at"
+//        case updatedAt = "updated_at"
+//        case imageURL = "image_url"
+//    }
+//}

@@ -96,11 +96,21 @@ extension String
         }
     }
     
+    func validateOldPassword() -> ValidationResult {
+        if self.isEmptyString {
+            return (false, "Please enter old password")
+        } else if self.count < 7 {
+            return (false, "Old password must contain at least 8 characters")
+        } else {
+            return (true, "")
+        }
+    }
+    
     func validateNewPassword() -> ValidationResult {
         if self.isEmptyString {
-            return (false, "Please enter password")
+            return (false, "Please enter new password")
         } else if self.count < 7 {
-            return (false, "Password must contain at least 8 characters")
+            return (false, "New Password must contain at least 8 characters")
         } else {
             return (true, "")
         }
@@ -140,6 +150,69 @@ extension String
         if self.isEmptyString {
             return (false, "Please enter reason")
         }else {
+            return (true, "")
+        }
+    }
+    
+    func validateTitle() -> ValidationResult {
+        if self.isEmptyString {
+            return (false, "Please enter title")
+        }else {
+            return (true, "")
+        }
+    }
+    
+    func validateDescription() -> ValidationResult {
+        if self.isEmptyString {
+            return (false, "Please enter description")
+        }else {
+            return (true, "")
+        }
+    }
+    
+    func validateProfileName() -> ValidationResult {
+        if self.isEmptyString {
+            return (false, "Enter profile name.")
+        } else {
+            return (true, "")
+        }
+    }
+    
+    func validateSuggestComment() -> ValidationResult {
+        if self.isEmptyString {
+            return (false, "Please provide a comment.")
+        } else {
+            return (true, "")
+        }
+    }
+    
+    func validateQuestion() -> ValidationResult {
+        if self.isEmptyString {
+            return (false, "Please provide a question")
+        } else {
+            return (true, "")
+        }
+    }
+    
+    func validateStartDate() -> ValidationResult {
+        if self.isEmptyString {
+            return (false, "Please provide start date")
+        } else {
+            return (true, "")
+        }
+    }
+    func validateEndDate() -> ValidationResult {
+        if self.isEmptyString {
+            return (false, "Please provide end date")
+        } else {
+            return (true, "")
+        }
+    }
+    
+    func validatePollOptions(_ option: String) -> ValidationResult {
+        if self.isEmptyString {
+            return (false, "Please provide option \(option) value")
+        } else {
             return (true, "")
         }
     }

@@ -11,14 +11,16 @@ import Foundation
 
 class TradPostListViewModel {
     
+    var viewType:TradPostListViewType = .fromHome
     var updateViewComplition:(()->Void)?
     var arrTernds:[TrendsModel] = [TrendsModel(name: "All Trends")]
     var selectedTerndsIndex = 0 {
         didSet {
-            if oldValue != selectedTerndsIndex {
+            if oldValue != selectedTerndsIndex, viewType == .fromHome {
                 arrPosts = []
                 currentPage = 1
                 totalPage = 0
+                showLoader()
                 getPost()
             }
         }
@@ -28,18 +30,20 @@ class TradPostListViewModel {
     private var isDataLoading: Bool = false
     var currentPage = 1 {
         didSet {
-            if oldValue < currentPage {
+            if oldValue < currentPage, viewType == .fromHome {
                 if isDataLoading {
                     currentPage = oldValue
                 } else {
+                    showLoader()
                     getPost()
                 }
             }
         }
     }
-    var totalPage = 0
+    var totalPage: Int = 0
     
     func getPost(complition: (ResponseCallBack)? = nil) {
+        guard viewType == .fromHome else{ return }
         if self.isDataLoading{
             return
         }
@@ -77,7 +81,9 @@ class TradPostListViewModel {
                                 self.arrPosts = []
                             }
                             if let posts = data["posts"] as? JSON {
-                                self.totalPage =  posts["total"] as? Int ?? 0
+                                let total = posts["total"] as? Int ?? 0
+                                let perPage = posts["per_page"] as? Int ?? 0
+                                self.totalPage = Int(CGFloat(total/perPage).rounded(.up))
                                 if let postData = posts["data"] as? JSONArray {
                                     for obj in postData {
                                         do {
@@ -107,5 +113,5 @@ class TradPostListViewModel {
             }
         }
     }
-    
+
 }

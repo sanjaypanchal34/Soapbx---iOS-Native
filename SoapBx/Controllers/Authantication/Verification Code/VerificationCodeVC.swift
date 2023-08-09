@@ -11,7 +11,7 @@ import UIKit
 import OTLContaner
 
 enum VerificationCodeScreenType {
-    case fromSignup, fromForgotPassword
+    case fromSignup, fromForgotPassword, fromUpdateProfile
 }
 
 class VerificationCodeVC: UIViewController {
@@ -26,6 +26,7 @@ class VerificationCodeVC: UIViewController {
     
     private var vmObject = SignupViewModel()
     private var screenType = VerificationCodeScreenType.fromSignup
+    private var vmProfileObject: EditProfileViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +37,12 @@ class VerificationCodeVC: UIViewController {
     func navigate(_ data: SignupRequestModel) {
         screenType = .fromSignup
         vmObject.signupJson = data
+    }
+    
+    func navigateUpdateProfile(_ vmObject: EditProfileViewModel) {
+        screenType = .fromUpdateProfile
+        self.vmProfileObject = vmObject
+        self.vmObject.signupJson = vmObject.requestObj
     }
     
     func navigateWithForgot(_ email: String) {
@@ -58,9 +65,9 @@ class VerificationCodeVC: UIViewController {
         
         otpField.setOTPTheme()
         btnResend.setTheme("Resend", color: .primaryBlue, font: .medium)
-        btnNext.appButton("Next")
+        btnNext.appButton(screenType == .fromUpdateProfile ? "Verify" : "Next")
         
-        if screenType == .fromSignup {
+        if screenType == .fromSignup || screenType == .fromUpdateProfile{
             btnResend.isHidden = false
         } else {
             btnResend.isHidden = true
@@ -69,7 +76,12 @@ class VerificationCodeVC: UIViewController {
     
     // action
     @IBAction private func click_resend(){
-        resendOTP()
+        if screenType == .fromSignup {
+            resendOTP()
+        }
+        else if screenType == .fromUpdateProfile {
+            resendUpdateProfileOTP()
+        }
     }
     
     @IBAction private func click_Next(){
@@ -117,6 +129,20 @@ class VerificationCodeVC: UIViewController {
         }
     }
     
+    private func verifyUpdateProfileOTP() {
+        showLoader()
+        vmProfileObject?.verifyUpdateProfileOTP(otp: otpField.text) { result in
+            hideLoader()
+            showToast(message: result.message)
+            if result.status {
+                mackRootView(ProfileVC())
+            }
+            else {
+                showToast(message: result.message)
+            }
+        }
+    }
+    
     private func resendOTP() {
         showLoader()
         vmObject.register(phone: vmObject.signupJson?.phone_number ?? "",
@@ -131,5 +157,17 @@ class VerificationCodeVC: UIViewController {
                 showToast(message: result.message)
             }
         })
+    }
+    
+    private func resendUpdateProfileOTP() {
+        showLoader()
+        vmProfileObject?.updateProfile { result in
+            hideLoader()
+            if result.status {
+                showToast(message: result.message)
+            } else {
+                showToast(message: result.message)
+            }
+        }
     }
 }

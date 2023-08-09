@@ -165,6 +165,7 @@ extension UITableView {
 
 class AppCollectionViewCell: UICollectionViewCell {
     var index: OTLIndex = OTLIndex()
+    var indexPath: IndexPath = IndexPath()
 }
 
 class AppTableViewCell: UITableViewCell {
@@ -267,4 +268,5 @@ public extension PHPhotoLibrary {
 extension NSNotification.Name{
     
     static let homePostUpdate = NSNotification.Name("OTL_homePostUpdate")
+    static let savePostUpdate = NSNotification.Name("OTL_savePostUpdate")
 }

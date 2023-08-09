@@ -12,11 +12,13 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchVC" customModule="SoapBx" customModuleProvider="target">
             <connections>
                 <outlet property="bottomTab" destination="9KW-gS-kTK" id="YKJ-yl-7jq"/>
+                <outlet property="btnDone" destination="TO7-Tz-nnb" id="WVK-7g-Gbm"/>
                 <outlet property="searchView" destination="2FK-xl-qkH" id="bYB-fn-Lxw"/>
                 <outlet property="tblList" destination="v6j-7r-LMO" id="bsy-aR-fhd"/>
                 <outlet property="txtSearch" destination="xcT-1T-11P" id="5bH-j8-NyL"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewBody" destination="s0N-oI-KnS" id="JIy-i2-cD7"/>
+                <outlet property="viewBottomButton" destination="LsI-rk-9zN" id="Djn-ux-ph1"/>
                 <outlet property="viewHeader" destination="Dcg-Yo-Zpf" id="AKR-oi-m77"/>
             </connections>
         </placeholder>
@@ -99,23 +101,53 @@
                             </connections>
                         </view>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="v6j-7r-LMO">
-                            <rect key="frame" x="0.0" y="70" width="393" height="618"/>
+                            <rect key="frame" x="0.0" y="70" width="393" height="533"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <connections>
                                 <outlet property="dataSource" destination="-1" id="DJb-In-4y2"/>
                                 <outlet property="delegate" destination="-1" id="e1u-15-kTy"/>
                             </connections>
                         </tableView>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gWo-lw-hLV">
+                            <rect key="frame" x="0.0" y="603" width="393" height="85"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LsI-rk-9zN">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="85"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TO7-Tz-nnb" customClass="OTLTextButton" customModule="OTLContaner">
+                                            <rect key="frame" x="20" y="10" width="353" height="55"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="55" id="ZMk-JT-fuX"/>
+                                            </constraints>
+                                            <connections>
+                                                <action selector="click_btnDone" destination="-1" eventType="touchUpInside" id="kbJ-Td-cdm"/>
+                                            </connections>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstItem="TO7-Tz-nnb" firstAttribute="leading" secondItem="LsI-rk-9zN" secondAttribute="leading" constant="20" id="99q-F5-tHA"/>
+                                        <constraint firstAttribute="bottom" secondItem="TO7-Tz-nnb" secondAttribute="bottom" constant="20" id="Ubo-gW-erP"/>
+                                        <constraint firstItem="TO7-Tz-nnb" firstAttribute="top" secondItem="LsI-rk-9zN" secondAttribute="top" constant="10" id="b5f-z2-tCO"/>
+                                        <constraint firstAttribute="trailing" secondItem="TO7-Tz-nnb" secondAttribute="trailing" constant="20" id="m1P-dE-rBr"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                        </stackView>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstItem="2FK-xl-qkH" firstAttribute="top" secondItem="s0N-oI-KnS" secondAttribute="top" constant="15" id="5uw-j5-BQz"/>
                         <constraint firstItem="v6j-7r-LMO" firstAttribute="leading" secondItem="s0N-oI-KnS" secondAttribute="leading" id="6co-sf-NBp"/>
                         <constraint firstItem="v6j-7r-LMO" firstAttribute="top" secondItem="2FK-xl-qkH" secondAttribute="bottom" constant="10" id="K17-lz-4Jl"/>
+                        <constraint firstAttribute="bottom" secondItem="gWo-lw-hLV" secondAttribute="bottom" id="LGg-Kw-W70"/>
+                        <constraint firstItem="gWo-lw-hLV" firstAttribute="leading" secondItem="s0N-oI-KnS" secondAttribute="leading" id="Vuu-QU-XxP"/>
                         <constraint firstAttribute="trailing" secondItem="2FK-xl-qkH" secondAttribute="trailing" constant="20" id="afV-9L-fzt"/>
-                        <constraint firstAttribute="bottom" secondItem="v6j-7r-LMO" secondAttribute="bottom" id="art-Kd-fJo"/>
                         <constraint firstItem="2FK-xl-qkH" firstAttribute="leading" secondItem="s0N-oI-KnS" secondAttribute="leading" constant="20" id="hYH-77-bjd"/>
+                        <constraint firstItem="gWo-lw-hLV" firstAttribute="top" secondItem="v6j-7r-LMO" secondAttribute="bottom" id="sY5-tS-VIP"/>
                         <constraint firstAttribute="trailing" secondItem="v6j-7r-LMO" secondAttribute="trailing" id="wBT-Zj-4HM"/>
+                        <constraint firstAttribute="trailing" secondItem="gWo-lw-hLV" secondAttribute="trailing" id="zzE-Gh-If7"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9KW-gS-kTK" customClass="OTLBottomTabBar" customModule="OTLContaner">

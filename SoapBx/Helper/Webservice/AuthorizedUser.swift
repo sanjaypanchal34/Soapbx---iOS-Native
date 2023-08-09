@@ -139,9 +139,9 @@ struct UserAuthModel {
         self.full_name          = json["full_name"] as? String ?? ""
         self.id                 = json["id"] as? Int ?? 0
         self.last_name          = json["last_name"] as? String ?? ""
-        self.latitude           = json["latitude"] as? Double ?? 0
+        self.latitude           = Double(json["latitude"] as? String ?? "0") ?? 0
         self.location           = json["location"] as? String ?? ""
-        self.longitude          = json["longitude"] as? Double ?? 0
+        self.longitude          = Double(json["longitude"] as? String ?? "0") ?? 0
         self.name               = json["name"] as? String ?? ""
         self.phone_number       = json["phone_number"] as? String ?? ""
         self.politician         = json["politician"] as? Int ?? 0

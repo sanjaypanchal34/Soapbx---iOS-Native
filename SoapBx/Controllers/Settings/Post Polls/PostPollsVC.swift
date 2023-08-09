@@ -47,18 +47,8 @@ class PostPollsVC: UIViewController {
     @IBOutlet private weak var btnPost: OTLTextButton!
     
     // private
-    private var arrSoapbxTrends = [ "Think Talk", "Circular Economy", "Global Affairs"]
-    private var arrOptions:[String] = ["","",""] {
-        didSet {
-            if arrOptions.count < intMaxOptions {
-                btnAddOptions.isHidden = false
-            } else {
-                btnAddOptions.isHidden = true
-            }
-        }
-    }
-    private let intMinOptions = 2
-    private let intMaxOptions = 15
+    private let vmTrends = YouInterestedViewModel()
+    private let vmObject = PollsViewModel()
     
     // public
     var screenType = PostPollsScreenType.post
@@ -67,6 +57,7 @@ class PostPollsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        getTrends()
     }
     override func viewWillAppear(_ animated: Bool) {
         tblOptions.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
@@ -118,11 +109,15 @@ class PostPollsVC: UIViewController {
         txtStartDate.placeholder = "What do you want your poll to be open for voting?"
         txtStartDate.font = AppFont.regular.font(size: 16)
         txtStartDate.minDate = Date()
+        txtStartDate.datePickerMode = .dateAndTime
+        txtStartDate.formate = .yyyyMMdd_hhmma
         txtStartDate.datetimeDelegate = self
         
         lblEndDate.setTheme("End Date", color: .primaryBlue, font: .bold)
         txtEndDate.placeholder = "What do you want your poll to be closed from voting?"
         txtEndDate.font = AppFont.regular.font(size: 16)
+        txtEndDate.datePickerMode = .dateAndTime
+        txtEndDate.formate = .yyyyMMdd_hhmma
         txtEndDate.isUserInteractionEnabled = false
         
         tblOptions.register(["PostPollsItemCell"], delegate: self, dataSource: self)
@@ -131,7 +126,9 @@ class PostPollsVC: UIViewController {
         
         lblSoapbxTrends.setTheme("Soapbx trends", color: .primaryBlue, font: .bold)
         collSoapbxTrends.register(["PostItemPoliticalCell"], delegate: self, dataSource: self)
-        collSoapbxTrends.collectionViewLayout = createLeftAlignedLayout()
+        let layout1 = OTLTagFlowLayout()
+        layout1.estimatedItemSize = CGSize(width: 140, height: 40)
+        collSoapbxTrends.collectionViewLayout = layout1
         
         for view in [viewTitle, viewStartDate, viewEndDate] {
             view?.backgroundColor = .white
@@ -141,32 +138,76 @@ class PostPollsVC: UIViewController {
         }
         
         btnPost.appButton(screenType == .update ? "Update" : "Post")
+        updateButtonOnAddItem()
     }
     
-    private func createLeftAlignedLayout() -> UICollectionViewLayout {
-      let item = NSCollectionLayoutItem(          // this is your cell
-        layoutSize: NSCollectionLayoutSize(
-          widthDimension: .estimated(70),         // variable width
-          heightDimension: .absolute(40)          // fixed height
-        )
-      )
-      
-      let group = NSCollectionLayoutGroup.horizontal(
-        layoutSize: .init(
-          widthDimension: .fractionalWidth(1.0),  // 100% width as inset by its Section
-          heightDimension: .estimated(50)         // variable height; allows for multiple rows of items
-        ),
-        subitems: [item]
-      )
-      group.contentInsets = .init(top: 5, leading: 0, bottom: 5, trailing: 0)
-      group.interItemSpacing = .fixed(10)         // horizontal spacing between cells
-        group.edgeSpacing = .init(leading: .fixed(0), top: .fixed(2), trailing: .fixed(0), bottom: .fixed(2))
-      return UICollectionViewCompositionalLayout(section: .init(group: group))
+    //
+    private func updateButtonOnAddItem() {
+        vmObject.complitionOnAddOptions = { [self] in
+            if vmTrends.arrList.count < vmObject.intMaxOptions {
+                btnAddOptions.isHidden = false
+            } else {
+                btnAddOptions.isHidden = true
+            }
+            collSoapbxTrends.reloadData()
+        }
     }
-    
+    // Buttons Actions
     @IBAction private func click_addOptions() {
-        arrOptions.append("")
+        vmObject.arrOptions.append("")
         tblOptions.reloadData()
+    }
+    
+    @IBAction private func click_postPolls() {
+        self.view.endEditing(true)
+        let validateOptions1 = vmObject.arrOptions[0].validatePollOptions("1")
+        let validateOptions2 = vmObject.arrOptions[1].validatePollOptions("2")
+        
+        
+        if let validate = txtTitle.text?.validateQuestion(),
+           validate.status == false {
+            showToast(message: validate.message)
+        }
+        else if let validate = txtStartDate.text?.validateStartDate(),
+                  validate.status == false {
+            showToast(message: validate.message)
+        }
+        else if let validate = txtEndDate.text?.validateEndDate(),
+                  validate.status == false {
+            showToast(message: validate.message)
+        }
+        else if validateOptions1.status == false{
+            showToast(message: validateOptions1.message)
+        }
+        else if validateOptions2.status == false {
+            showToast(message: validateOptions2.message)
+        }
+        else {
+            postPolls()
+        }
+    }
+    
+    // API calls
+    
+    private func getTrends() {
+        showLoader()
+        vmTrends.getTrends { result in
+            hideLoader()
+            if result.status {
+                self.collSoapbxTrends.reloadData()
+            }
+        }
+    }
+    
+    private func postPolls() {
+        showLoader()
+        vmObject.postPoll(question: txtTitle.text ?? "", start: txtStartDate.selectedItem!, end: txtEndDate.selectedItem!) { result in
+            hideLoader()
+            showToast(message: result.message)
+            if result.status {
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
     }
 }
 extension PostPollsVC : UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -185,19 +226,34 @@ extension PostPollsVC : UICollectionViewDelegate, UICollectionViewDelegateFlowLa
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-            let text = arrSoapbxTrends[indexPath.row]
-            let width = text.size(OfFont: AppFont.regular.font(size: 14)).width
-            return CGSize(width: width + 20, height: collectionView.frame.height)
+        let text = vmTrends.arrList[indexPath.row].name ?? ""
+            let width = text.size(OfFont: AppFont.regular.font(size: 18)).width
+        if width < 55 {
+            return CGSize(width: 55, height: 35)
+        }
+        else {
+            return CGSize(width: width, height: 35)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if vmObject.isTredSelected(id: vmTrends.arrList[indexPath.row].id ?? 0) {
+            vmObject.selectedTred = vmObject.selectedTred.filter({ tred in
+                (tred.id ?? 0) != (vmTrends.arrList[indexPath.row].id ?? 0)
+            })
+        } else {
+            vmObject.selectedTred.append(vmTrends.arrList[indexPath.row])
+        }
     }
 }
 extension PostPollsVC : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return arrSoapbxTrends.count
+            return vmTrends.arrList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PostItemPoliticalCell", for: indexPath) as? PostItemPoliticalCell{
-            cell.setCreatePost(arrSoapbxTrends[indexPath.row])
+           cell.setPollsTrends(vmTrends.arrList[indexPath.row], isSelected: vmObject.isTredSelected(id: vmTrends.arrList[indexPath.row].id ?? 0))
             return cell
         }
         return UICollectionViewCell()
@@ -207,14 +263,14 @@ extension PostPollsVC : UICollectionViewDataSource {
 }
 extension PostPollsVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrOptions.count
+        return  vmObject.arrOptions.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "PostPollsItemCell") as? PostPollsItemCell {
             cell.indexPath = indexPath
-            let isLastIndex = arrOptions.count == intMinOptions ? false : (arrOptions.count == (indexPath.row + 1) ? true : false)
-            cell.setData(text: arrOptions[indexPath.row], isLastIndex: isLastIndex, delegate: self)
+            let isLastIndex = vmObject.arrOptions.count == vmObject.intMinOptions ? false : (vmObject.arrOptions.count == (indexPath.row + 1) ? true : false)
+            cell.setData(text: vmObject.arrOptions[indexPath.row], isLastIndex: isLastIndex, delegate: self)
             return cell
         }
         return UITableViewCell()
@@ -230,12 +286,12 @@ extension PostPollsVC : OTLDatePickerDelegate {
 }
 extension PostPollsVC : PostPollsItemDelegate {
     func postPollsItem(_ cell: PostPollsItemCell, didUpdateText: String) {
-        arrOptions[cell.indexPath.row] = didUpdateText
+        vmObject.arrOptions[cell.indexPath.row] = didUpdateText
     }
     
     func postPollsItem(_ cell: PostPollsItemCell, didTabDelete: Void) {
         cell.text = ""
-        arrOptions.remove(at: cell.indexPath.row)
+        vmObject.arrOptions.remove(at: cell.indexPath.row)
         tblOptions.reloadData()
     }
     

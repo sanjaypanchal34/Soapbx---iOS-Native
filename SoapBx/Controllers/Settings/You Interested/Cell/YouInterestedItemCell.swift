@@ -27,7 +27,7 @@ class YouInterestedItemCell: UICollectionViewCell {
     }
     
     func setData(_ object: TrendsModel, isSelcted: Bool = false) {
-        self.imgIcon.setImage(object.image_url)
+        self.imgIcon.setImage(object.imageURL)
         lblTitle.text = object.name
         viewSelectdIcon.isHidden = !isSelcted
         

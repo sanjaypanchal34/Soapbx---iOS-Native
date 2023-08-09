@@ -56,7 +56,11 @@ public class OTLWebserviceConfiguration {
                                                   live: "https://soapbx.net/api/",
                                                   local: "http://164.90.178.223:9179/api/")
         self.header = [:]
-        appState = .live
+         #if DEBUG
+            appState = .development
+         #else
+            appState = .live
+         #endif
     }
     
 

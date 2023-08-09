@@ -323,6 +323,9 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="hUa-L7-rT4"/>
                     </constraints>
+                    <connections>
+                        <action selector="click_postPolls" destination="-1" eventType="touchUpInside" id="JHe-zL-QuE"/>
+                    </connections>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

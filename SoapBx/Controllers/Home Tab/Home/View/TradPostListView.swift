@@ -1,20 +1,24 @@
-//
-//  TradPostListView.swift
-//  Operators Techno Lab, Ahmedabad
-//
-//  Developed by Harsh Kadiya
-//  Created by OTL-HK on 28/07/2019.
-//  Copyright © 2023 OTL-HK. All rights reserved.
-//
+    //
+    //  TradPostListView.swift
+    //  Operators Techno Lab, Ahmedabad
+    //
+    //  Developed by Harsh Kadiya
+    //  Created by OTL-HK on 28/07/2019.
+    //  Copyright © 2023 OTL-HK. All rights reserved.
+    //
 
 import UIKit
 
 enum TradPostListViewType {
-    case fromHome, fromProfile
+    case fromHome, fromProfile, fromOtherUserProfile
+}
+
+protocol TradPostListDelegate{
+    func tradPostList(didSelectTernd: TrendsModel)
 }
 
 class TradPostListView: UIView {
-
+    
     @IBOutlet private weak var collectionTrends: UICollectionView!
     @IBOutlet private weak var tblList: UITableView!
     @IBOutlet private weak var constListHeight: NSLayoutConstraint?
@@ -23,7 +27,8 @@ class TradPostListView: UIView {
     private let vmObject = TradPostListViewModel()
     private let vmLikeDislikeObj = LikeDislikeViewModel()
     
-    var viewType:TradPostListViewType = .fromHome
+    private var viewType:TradPostListViewType = .fromHome
+    private var delegate:TradPostListDelegate?
     
     func addHeightListener() {
         tblList.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
@@ -46,14 +51,18 @@ class TradPostListView: UIView {
         }
     }
     
-    func regiter( viewType:TradPostListViewType = .fromHome) {
+    func regiter( viewType:TradPostListViewType = .fromHome, delegate:TradPostListDelegate?) {
         self.viewType = viewType
+        self.delegate = delegate
+        self.vmObject.viewType = viewType
         backgroundColor = UIColor.lightGrey
         tblList.register(["HomeItemCell"], delegate: self, dataSource: self)
         collectionTrends.register(["TrendsItemCell"], delegate: self, dataSource: self)
         updateView()
-            OTLWebserviceConfiguration.instance.appState = .live
-        getPost()
+        if viewType == .fromHome {
+            getPost()
+        }
+        NotificationCenter.default.addObserver(self, selector: #selector(updateList), name: .homePostUpdate, object: nil)
     }
     
     public func paginationManage() {
@@ -62,7 +71,21 @@ class TradPostListView: UIView {
         }
     }
     
-    // API Calls
+    func updatePostObject(posts: [PostModel]) {
+        vmObject.arrPosts = posts
+        tblList.reloadData()
+    }
+    
+    func updateTerndsObject(ternds: [TrendsModel]) {
+        vmObject.arrTernds = ternds
+        collectionTrends.reloadData()
+    }
+    
+    @objc private func updateList() {
+        getPost()
+    }
+    
+        // API Calls
     private func updateView() {
         vmObject.updateViewComplition = {
             hideLoader()
@@ -71,7 +94,7 @@ class TradPostListView: UIView {
         }
     }
     
-    func getPost() {
+    private func getPost() {
         if viewType == .fromHome {
             self.getHomePost()
         }
@@ -97,6 +120,7 @@ class TradPostListView: UIView {
                 if let cell = self.tblList.cellForRow(at: IndexPath(row: row, section: 0)) as? HomeItemCell{
                     cell.updateData(self.vmObject.arrPosts[row])
                 }
+                NotificationCenter.default.post(name: .savePostUpdate, object: nil)
             } else {
                 SoapBx.showToast(message: result.message)
             }
@@ -161,8 +185,12 @@ extension TradPostListView: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "HomeItemCell") as? HomeItemCell {
-            cell.setData(vmObject.arrPosts[indexPath.row], indexPath: indexPath, delegate: self, isDotOptionsVisible: (dotMenuIndexPath?.row ?? -1) == indexPath.row)
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "HomeItemCell") as? HomeItemCell, vmObject.arrPosts.count > 0 {
+            cell.setData(vmObject.arrPosts[indexPath.row],
+                         indexPath: indexPath,
+                         delegate: self,
+                         isDotOptionsVisible: (dotMenuIndexPath?.row ?? -1) == indexPath.row,
+                         screenType: viewType)
             return cell
         }
         return UITableViewCell()
@@ -183,7 +211,7 @@ extension TradPostListView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TrendsItemCell", for: indexPath) as? TrendsItemCell {
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TrendsItemCell", for: indexPath) as? TrendsItemCell, vmObject.arrTernds.count > 0 {
             cell.setData(vmObject.arrTernds[indexPath.row],
                          color: vmObject.arrTerndsColor[indexPath.row%3],
                          isSelected: vmObject.selectedTerndsIndex == indexPath.row)
@@ -191,13 +219,14 @@ extension TradPostListView: UICollectionViewDataSource {
         }
         return UICollectionViewCell()
     }
-        
+    
     
 }
 extension TradPostListView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         vmObject.selectedTerndsIndex = indexPath.row
         collectionView.reloadData()
+        delegate?.tradPostList(didSelectTernd: vmObject.arrTernds[indexPath.row])
     }
 }
 extension TradPostListView: UICollectionViewDelegateFlowLayout {
@@ -230,10 +259,11 @@ extension TradPostListView: HomeItemCellDelegate{
     }
     
     func homeItemCell(_ cell: HomeItemCell, didSelectProfile object: PostModel?) {
-        let vc = ProfileVC()
-        vc.screenType = .fromOtherUserProfile
-        vc.userObj = object?.user
-        rootViewController.pushViewController(vc, animated: true)
+        if let user = object?.user, viewType != .fromOtherUserProfile {
+            let vc = ProfileVC()
+            vc.navigateForOtherUser(user)
+            rootViewController.pushViewController(vc, animated: true)
+        }
     }
     
     func homeItemCell(_ cell: HomeItemCell, didSelectSave object: PostModel?) {
@@ -268,16 +298,17 @@ extension TradPostListView: HomeItemCellDelegate{
     func homeItemCell(_ cell: HomeItemCell, didSelectDotMenu: ThreeDotItemModel,  object: PostModel?) {
         dotMenuIndexPath = nil
         switch didSelectDotMenu.title {
-        case .openProfile:
-                let vc = ProfileVC()
-                vc.screenType = .fromOtherUserProfile
-                vc.userObj = object?.user
-                rootViewController.pushViewController(vc, animated: true)
-            break;
-        case .hidePost(_):
-            self.hidePost(post: object?.userID ?? 0)
-            break;
-        case .share:
+            case .openProfile:
+                if let user = object?.user , viewType != .fromOtherUserProfile{
+                    let vc = ProfileVC()
+                    vc.navigateForOtherUser(user)
+                    rootViewController.pushViewController(vc, animated: true)
+                }
+                break;
+            case .hidePost(_):
+                self.hidePost(post: object?.userID ?? 0)
+                break;
+            case .share:
                 showLoader()
                 let text = "soapbx://home/\(object?.id ?? 0)"
                 let textToShare = [ text ]
@@ -287,23 +318,25 @@ extension TradPostListView: HomeItemCellDelegate{
                 rootViewController.present(activityViewController, animated: true, completion: {
                     hideLoader()
                 })
-            break;
-        case .report:
-            reportPost(post: object?.id ?? 0)
-            break;
-        case .edit:
-            let vc = CreatePostVC()
-            vc.screenType = .editPost
-            rootViewController.pushViewController(vc, animated: true)
-            break;
-        case .delete:
+                break;
+            case .report:
+                reportPost(post: object?.id ?? 0)
+                break;
+            case .edit:
+                if let postObj = object {
+                    let vc = CreatePostVC()
+                    vc.navigateFromEdit(post: postObj, indexPath: cell.indexPath, delegate: self)
+                    rootViewController.pushViewController(vc, animated: true)
+                }
+                break;
+            case .delete:
                 showAlert(message: "Are you sure you want to delete this post?", buttons: ["Cancel", "Delete"]) { alert in
                     if alert.title == "Delete" {
                         self.deletePost(post: object?.id ?? 0, row: cell.indexPath.row)
                     }
                 }
-            break;
-        default: break;
+                break;
+            default: break;
         }
     }
 }
@@ -323,4 +356,20 @@ extension TradPostListView: CommentDelegate {
     }
     
     
+}
+extension TradPostListView: CreatePostDelegate {
+    
+    func createPost(deletePostImages at: IndexPath, with postId: Int, imageId: Int) {
+        let index = vmObject.arrPosts[at.row].images?.firstIndex(where: { image in
+            return image.id == imageId
+        })
+        
+        if let row = index {
+            vmObject.arrPosts[at.row].images?.remove(at: row)
+        }
+        
+        if let cell = tblList.cellForRow(at: at)  as? HomeItemCell{
+            cell.updateData(vmObject.arrPosts[at.row])
+        }
+    }
 }

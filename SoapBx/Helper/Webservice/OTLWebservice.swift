@@ -15,7 +15,6 @@ public protocol OTLRequestExecuter
 {
     var apiName: String { get }
     var method: OTLHTTPMethod { get }
-    var isQueryPara: Bool { get }
     
     func requestWith(parameter: OTLJson,
                      queryPara: OTLStringJson,
@@ -41,7 +40,7 @@ public extension OTLRequestExecuter
         if let nsurl = NSURL(string: strUrl),
            UIApplication.shared.canOpenURL(nsurl as URL){
             
-            if self.isQueryPara {
+            if queryPara.count > 0 {
                 var urlComponents = URLComponents(url: nsurl as URL, resolvingAgainstBaseURL: false)
                 let qPara = queryPara.compactMap({ object in
                     return URLQueryItem(name: object.key, value: object.value)
@@ -72,7 +71,7 @@ public extension OTLRequestExecuter
         var strUrl = OTLWebserviceConfiguration.instance.baseURL + self.apiName
         if let nsurl = NSURL(string: strUrl),
            UIApplication.shared.canOpenURL(nsurl as URL){
-            if self.isQueryPara {
+            if queryPara.count > 0 {
                 var urlComponents = URLComponents(url: nsurl as URL, resolvingAgainstBaseURL: false)
                 let qPara = queryPara.compactMap({ object in
                     return URLQueryItem(name: object.key, value: object.value)
@@ -100,8 +99,6 @@ enum Webservice
     enum Auth: OTLRequestExecuter {
         case register, login, forgotPassword, logout, verifySignup, completeProfile, verifyOtp, resetPassword
         
-        var isQueryPara: Bool { return false }
-        
         var method: OTLHTTPMethod {
             return .post
         }
@@ -121,9 +118,7 @@ enum Webservice
     }
     
     enum Settings: OTLRequestExecuter {
-        case getTrends, chooseTrends, getSubscriptionPlans, chooseSubscription, saveHistory(String), getSavedPosts, getUserTrends
-        
-        var isQueryPara: Bool { return false }
+        case getTrends, chooseTrends, getSubscriptionPlans, chooseSubscription, saveHistory(String), getSavedPosts, getUserTrends, feedback, addPoll
         
         var method: OTLHTTPMethod {
             switch self {
@@ -145,23 +140,15 @@ enum Webservice
                 case .saveHistory(let id):  return "saveHistory/\(id)"
                 case .getSavedPosts:        return "getSavedPosts"
                 case .getUserTrends:        return "getUserTrends"
+                case .feedback:             return "feedback"
+                case .addPoll:              return "addPoll"
             }
         }
     }
     
     enum Home: OTLRequestExecuter {
-        case getHomePost, getPost(String), commentOnPost, reportPostComment, likeDislikePost, deletePost(String), saveUnsavePost, blockReportUser
-        
-        
-        
-        var isQueryPara: Bool {
-            switch self {
-                case .getHomePost:          return true
-                case .getPost:              return true
-                default: return false
-            }
-        }
-        
+        case getHomePost, getPost(String), commentOnPost, reportPostComment, likeDislikePost, deletePost(String), saveUnsavePost, blockReportUser, listing
+       
         var method: OTLHTTPMethod {
             switch self {
                 case .getHomePost:          return .get
@@ -180,6 +167,50 @@ enum Webservice
                 case .deletePost(let id):   return "deletePost/\(id)"
                 case .saveUnsavePost:       return "saveUnsavePost"
                 case .blockReportUser:      return "blockReportUser"
+                case .listing:              return "listing"
+            }
+        }
+    }
+    
+    enum Post: OTLRequestExecuter {
+        case addPost, deleteImage(String), deletePost(String), editPost
+        
+        var method: OTLHTTPMethod {
+            switch self {
+                default: return .post
+            }
+        }
+        
+        var apiName: String {
+            switch self {
+                case .addPost:                  return "addPost"
+                case .deleteImage(let id):      return "deleteImage/\(id)"
+                case .deletePost(let id):       return "deletePost/\(id)"
+                case .editPost:                 return "editPost"
+            }
+        }
+    }
+    
+    enum Profile: OTLRequestExecuter {
+        case getProfile, updateProfile, deleteAccount, getPoliticianOrUser(String), verifyOTPUpdateProfile, changePassword, notificationStatus
+        
+        var method: OTLHTTPMethod {
+            switch self {
+                case .getProfile:               return .get
+                case .getPoliticianOrUser:      return .get
+                default: return .post
+            }
+        }
+        
+        var apiName: String {
+            switch self {
+                case .getProfile:               return "detail"
+                case .updateProfile:            return "updateProfile"
+                case .deleteAccount:            return "delete_account"
+                case .getPoliticianOrUser(let id):      return "getPoliticianOrUser/\(id)"
+                case .verifyOTPUpdateProfile:   return "verifyOtpUpdateProfile"
+                case .changePassword:           return "changePassword"
+                case .notificationStatus:       return "notificationStatus"
             }
         }
     }

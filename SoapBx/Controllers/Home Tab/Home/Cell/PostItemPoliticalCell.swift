@@ -36,10 +36,37 @@ class PostItemPoliticalCell: AppCollectionViewCell {
         }
     }
 
-    func setCreatePost(_ title: String) {
+    func setCreatePostPolitician(_ object: PostUser) {
         viewMain.backgroundColor = .primaryBlue
         lblTitle.font = AppFont.medium.font(size: 14)
-        lblTitle.text = " "+title+" "
+        lblTitle.text = " "+(object.name ?? "")+" "
+        DispatchQueue.main.async {
+            self.viewMain.setShadowWithCorner(corner:-1)
+        }
+    }
+    
+    func setCreatePostTreds(_ object: TrendsModel) {
+        viewMain.backgroundColor = .primaryBlue
+        lblTitle.font = AppFont.medium.font(size: 14)
+        lblTitle.text = " "+(object.name ?? "")+" "
+        DispatchQueue.main.async {
+            self.viewMain.setShadowWithCorner(corner:-1)
+        }
+    }
+    
+    func setPollsTrends(_ object: TrendsModel, isSelected: Bool) {
+        if isSelected {
+            viewMain.backgroundColor = .primaryBlue
+            viewMain.layer.borderColor = UIColor.clear.cgColor
+            lblTitle.textColor = .white
+        } else {
+            viewMain.backgroundColor = .white
+            viewMain.layer.borderWidth = 0.5
+            viewMain.layer.borderColor = UIColor.black.cgColor
+            lblTitle.textColor = .titleGrey
+        }
+        lblTitle.font = AppFont.medium.font(size: 14)
+        lblTitle.text = " "+(object.name ?? "")+" "
         DispatchQueue.main.async {
             self.viewMain.setShadowWithCorner(corner:-1)
         }

@@ -47,7 +47,7 @@ class PublicFiguresVC: UIViewController {
     //
     @IBAction private func click_search() {
         let vc = SearchVC()
-        vc.screenType = .fromPublicFigures
+        vc.navigateFromPublicFigures()
         navigationController?.pushViewController(vc, animated: true)
     }
 }

@@ -7,11 +7,14 @@
 
 import UIKit
 import OTLContaner
+import Photos
 
 enum CreatePostScreenType {
     case createPost, editPost
 }
-
+protocol CreatePostDelegate {
+    func createPost(deletePostImages at:IndexPath, with postId: Int, imageId: Int)
+}
 class CreatePostVC: UIViewController {
 
     @IBOutlet private weak var viewHeader: OTLHeader!
@@ -49,13 +52,12 @@ class CreatePostVC: UIViewController {
     @IBOutlet private weak var btnPost: OTLTextButton!
     
     // private
-    private var arrSoapbxTrends = [ "Add Politician +", "Think Talk", "Circular Economy", "Global Affairs"]
-    private var arrPolitician = ["Add Trends +","Roger Wicker", "Narendra Modi", "Putin"]
-    private var arrImage = ["ic_add", "profileOne"]
-    
+    private let imagePicker = UIImagePickerController()
+    private let vmObject = CreatePostViewModel()
     // public
-    var screenType = CreatePostScreenType.createPost
-    
+    private var screenType = CreatePostScreenType.createPost
+    private var indexPath = IndexPath()
+    private var delegate: CreatePostDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,19 +92,41 @@ class CreatePostVC: UIViewController {
         }
     }
     
+    func navigateFromEdit(post object: PostModel, indexPath: IndexPath, delegate: CreatePostDelegate) {
+        self.indexPath = indexPath
+        self.delegate = delegate
+        vmObject.postObj = object
+        screenType = .editPost
+        vmObject.arrImages = object.images ?? []
+        
+        let politions = object.politicianTags?.compactMap({ postTag in
+            return postTag.politician
+        }) ?? []
+        
+        let trends = object.trendTags?.compactMap({ postTag in
+            return postTag.trend
+        }) ?? []
+        
+        vmObject.arrPolitions = politions + [PostUser(name: vmObject.addPolitician)]
+        vmObject.arrTrends = trends + [TrendsModel(name: vmObject.addTrends)]
+    }
+    
+    
     private func setupUI() {
         viewHeader.lblTitle.setHeader(screenType == .editPost ? "Edit Post" : "Create Post")
         
         imgProfile.layer.cornerRadius = imgProfile.frame.height/2
-        imgProfile.image = UIImage(named: "profile_Three")
+        imgProfile.setImage(authUser?.user?.profile_photo_url)
         imgProfile.contentMode = .scaleAspectFill
-        lblProfileName.setTheme("Robert Watson")
-        lblLocation.setTheme("Ahmedabad, Gujarat, India",size: 10)
-        lblTime.setTheme("Jul 16 2023 @ 09:02 PM",size: 12)
+        lblProfileName.setTheme(authUser?.user?.name ?? "")
+        lblLocation.setTheme(authUser?.user?.location ?? "",size: 10)
+        lblTime.setTheme("",size: 12)
+        lblTime.text = OTLDateConvert.instance.convert(date: Date(), toString: .mmmDDyyyyAthhmma)
         
         lblTitle.setTheme("Add Title", color: .primaryBlue, font: .bold)
         txtTitle.placeholder = "What is your post aboit?"
         txtTitle.font = AppFont.regular.font(size: 18)
+        txtTitle.maxLength = 50
         
         lblDescription.setTheme("Add Description", color: .primaryBlue, font: .bold)
         lblDescriptionPlaceholder.setTheme("What is on your mind?", color: .titleGrey, size: 18)
@@ -111,15 +135,22 @@ class CreatePostVC: UIViewController {
         
         lblImage.setTheme("Add Image", color: .primaryBlue, font: .bold)
         collImage.register(["PostImageItemCell"], delegate: self, dataSource: self)
-        
+        let layoutForImage = UICollectionViewFlowLayout()
+        layoutForImage.scrollDirection = .horizontal
+        collImage.collectionViewLayout = layoutForImage
         
         lblPolitician.setTheme("Politician Involved", color: .primaryBlue, font: .bold)
         collPolitician.register(["PostItemPoliticalCell"], delegate: self, dataSource: self)
-        collPolitician.collectionViewLayout = createLeftAlignedLayout()
+        let layout = OTLTagFlowLayout()
+        layout.estimatedItemSize = CGSize(width: 140, height: 40)
+        collPolitician.collectionViewLayout = layout
+//        collPolitician.collectionViewLayout = politicianFlowLayout
         
         lblSoapbxTrends.setTheme("Soapbx trends", color: .primaryBlue, font: .bold)
         collSoapbxTrends.register(["PostItemPoliticalCell"], delegate: self, dataSource: self)
-        collSoapbxTrends.collectionViewLayout = createLeftAlignedLayout()
+        let layout1 = OTLTagFlowLayout()
+        layout1.estimatedItemSize = CGSize(width: 140, height: 40)
+        collSoapbxTrends.collectionViewLayout = layout1
         
         for view in [viewTitle, viewDescription, viewImage] {
             view?.backgroundColor = .white
@@ -128,32 +159,134 @@ class CreatePostVC: UIViewController {
             view?.layer.borderColor = UIColor.lightGrey.cgColor
         }
         
-        btnPost.appButton(screenType == .editPost ? "Update" : "Post")
+        btnPost.appButton("Post")
+        if screenType == .editPost {
+            btnPost.text = "Update"
+            txtTitle.text = vmObject.postObj?.title
+            txtDescription.text = vmObject.postObj?.description
+            lblDescriptionPlaceholder.isHidden = (vmObject.postObj?.description?.count ?? 0) > 0
+        }
     }
     
-    private func createLeftAlignedLayout() -> UICollectionViewLayout {
-      let item = NSCollectionLayoutItem(          // this is your cell
-        layoutSize: NSCollectionLayoutSize(
-          widthDimension: .estimated(70),         // variable width
-          heightDimension: .absolute(40)          // fixed height
-        )
-      )
-      
-      let group = NSCollectionLayoutGroup.horizontal(
-        layoutSize: .init(
-          widthDimension: .fractionalWidth(1.0),  // 100% width as inset by its Section
-          heightDimension: .estimated(50)         // variable height; allows for multiple rows of items
-        ),
-        subitems: [item]
-      )
-      group.contentInsets = .init(top: 5, leading: 0, bottom: 5, trailing: 0)
-      group.interItemSpacing = .fixed(10)         // horizontal spacing between cells
-        group.edgeSpacing = .init(leading: .fixed(0), top: .fixed(2), trailing: .fixed(0), bottom: .fixed(2))
-      return UICollectionViewCompositionalLayout(section: .init(group: group))
+    
+    //Actins
+    @IBAction private func click_post() {
+        self.view.endEditing(true)
+        if let validateTitle = txtTitle.text?.validateTitle(), validateTitle.status == false {
+            showToast(message: validateTitle.message)
+        }
+        else if let validateLast = txtDescription.text?.validateDescription(), validateLast.status == false {
+            showToast(message: validateLast.message)
+        }
+        else {
+            if screenType == .editPost {
+                updatePost()
+            }
+            else {
+                createPost()
+            }
+        }
+    }
+    
+    
+    
+    private func addImageAlert() {
+        PHPhotoLibrary.execute(controller: self, onAccessHasBeenGranted: {
+            let camera = OTLAlertModel(title: "Camera", id: 0)
+            let gallary = OTLAlertModel(title: "Gallary", id: 1)
+            let cancel = OTLAlertModel(title: "Cancel", id: 2, style: .destructive)
+            
+            showAlert(title: "Media Type", message: "", buttons: [camera, gallary, cancel]) { alert in
+                if alert.id == 0 {
+                    self.openCamera()
+                } else if alert.id == 1 {
+                    self.openGallary()
+                }
+            }
+        })
+    }
+    
+        //MARK:-
+    private func openCamera()  {
+        if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerController.SourceType.camera)){
+            imagePicker.sourceType = UIImagePickerController.SourceType.camera
+            imagePicker.allowsEditing = true
+            imagePicker.delegate = self
+            imagePicker.modalTransitionStyle = .coverVertical
+            imagePicker.modalPresentationStyle = .overFullScreen
+            self.present(imagePicker, animated: true, completion: nil)
+        } else {
+            openGallary()
+        }
+    }
+    
+    private func openGallary(){
+        imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
+        imagePicker.allowsEditing = true
+        imagePicker.delegate = self
+        imagePicker.modalTransitionStyle = .coverVertical
+        imagePicker.modalPresentationStyle = .overFullScreen
+        self.present(imagePicker, animated: true, completion: nil)
+    }
+  
+    
+    //API calls
+    private func createPost() {
+        var lblProgress: UILabel?
+        showLoader { label in
+            lblProgress = label
+            lblProgress?.text = "0.00%"
+            lblProgress?.isHidden = false
+        }
+        vmObject.addPost(title: txtTitle.text ?? "", description: txtDescription.text ?? "" ) { progressValue in
+            lblProgress?.text = String(format: "%.2f%", progressValue*100)
+        } complition: { result in
+            hideLoader()
+            if result.status {
+                NotificationCenter.default.post(name: .homePostUpdate, object: nil)
+                DispatchQueue.main.async {
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
+            showToast(message: result.message)
+        }
+    }
+    
+    private func updatePost() {
+        var lblProgress: UILabel?
+        showLoader { label in
+            lblProgress = label
+            lblProgress?.text = "0.00%"
+            lblProgress?.isHidden = false
+        }
+        vmObject.updatePost(title: txtTitle.text ?? "", description: txtDescription.text ?? "" ) { progressValue in
+            lblProgress?.text = String(format: "%.2f", progressValue*100)
+        } complition: { result in
+            showToast(message: result.message)
+            if result.status {
+                NotificationCenter.default.post(name: .homePostUpdate, object: nil)
+                DispatchQueue.main.async {
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
+            hideLoader()
+        }
+    }
+    
+    private func deleteImage(image id: Int) {
+        showLoader()
+        vmObject.deleteImage(image: id) { result in
+            hideLoader()
+            showToast(message: result.message)
+            if result.status {
+                self.delegate?.createPost(deletePostImages: self.indexPath, with: self.vmObject.postObj?.id ?? 0, imageId: id)
+                self.collImage.reloadData()
+            }
+        }
     }
 }
 extension CreatePostVC : UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    
+   
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 10
     }
@@ -163,16 +296,56 @@ extension CreatePostVC : UICollectionViewDelegate, UICollectionViewDelegateFlowL
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
+        return UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == collImage {
-            return CGSize(width: collectionView.frame.height - 10, height: collectionView.frame.height - 10)
-        } else {
-            let text = collectionView == collPolitician ? arrPolitician[indexPath.row] : arrSoapbxTrends[indexPath.row]
-            let width = text.size(OfFont: AppFont.regular.font(size: 14)).width
-            return CGSize(width: width + 20, height: collectionView.frame.height)
+            return CGSize(width: collectionView.frame.height, height: collectionView.frame.height)
+        } else  if collectionView == collSoapbxTrends,
+                   vmObject.arrTrends.count > 0{
+            let text = vmObject.arrTrends[indexPath.row].name ?? ""
+            let width = text.size(OfFont: AppFont.regular.font(size: 16)).width + 20
+            if width < 55 {
+                return CGSize(width: 55, height: 35)
+            }
+            else {
+                return CGSize(width: width, height: 35)
+            }
+        }else if collectionView == collPolitician,
+                 vmObject.arrPolitions.count > 0{
+            let text = vmObject.arrPolitions[indexPath.row].name ?? ""
+            let width = text.size(OfFont: AppFont.regular.font(size: 16)).width + 20
+            if width < 55 {
+                return CGSize(width: 55, height: 35)
+            }
+            else {
+                return CGSize(width: width, height: 35)
+            }
+        }
+        return CGSize()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == collImage {
+            if vmObject.arrImages.count < vmObject.maxImage {
+                if indexPath.row == vmObject.arrImages.count{
+                    addImageAlert()
+                }
+            }
+        }
+        else if collectionView == collPolitician,
+                vmObject.arrPolitions[indexPath.row].name == vmObject.addPolitician
+        {
+            let vc = SearchVC()
+            vc.navigateFromCreatePost(selected: vmObject.arrPolitions, delegate: self)
+            navigationController?.pushViewController(vc, animated: true)
+        }
+        else if collectionView == collSoapbxTrends,
+                    vmObject.arrTrends[indexPath.row].name == vmObject.addTrends{
+            let vc = YouInterestedVC()
+            vc.navigateFromCreatePost(vmObject.arrTrends, delegate: self)
+            navigationController?.pushViewController(vc, animated: true)
         }
         
     }
@@ -180,13 +353,18 @@ extension CreatePostVC : UICollectionViewDelegate, UICollectionViewDelegateFlowL
 extension CreatePostVC : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == collImage {
-            return arrImage.count
+            if vmObject.arrImages.count < vmObject.maxImage {
+                return vmObject.arrImages.count + 1
+            }
+            else {
+                return vmObject.arrImages.count
+            }
         }
         else if collectionView == collPolitician {
-            return arrPolitician.count
+            return vmObject.arrPolitions.count
         }
         else {
-            return arrSoapbxTrends.count
+            return vmObject.arrTrends.count
         }
         
     }
@@ -194,20 +372,25 @@ extension CreatePostVC : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == collImage,
            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PostImageItemCell", for: indexPath) as? PostImageItemCell{
-            if indexPath.row == 0 {
-                cell.setDataCreatePostImageAddImage()
+            if vmObject.arrImages.count < vmObject.maxImage {
+                if indexPath.row < vmObject.arrImages.count{
+                    cell.setDataCreatePostImage(vmObject.arrImages[indexPath.row], indexPath: indexPath, delegate: self)
+                } else {
+                    cell.setDataCreatePostImageAddImage()
+                }
             } else {
-                cell.setDataCreatePostImage(arrImage[indexPath.row])
+                cell.setDataCreatePostImage(vmObject.arrImages[indexPath.row], indexPath: indexPath, delegate: self)
             }
+           
             return cell
         }
         else if collectionView == collPolitician,
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PostItemPoliticalCell", for: indexPath) as? PostItemPoliticalCell{
-            cell.setCreatePost(arrPolitician[indexPath.row])
+            cell.setCreatePostPolitician(vmObject.arrPolitions[indexPath.row])
             return cell
         }
         else if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PostItemPoliticalCell", for: indexPath) as? PostItemPoliticalCell{
-            cell.setCreatePost(arrSoapbxTrends[indexPath.row])
+            cell.setCreatePostTreds(vmObject.arrTrends[indexPath.row])
             return cell
         }
         return UICollectionViewCell()
@@ -224,5 +407,54 @@ extension CreatePostVC : UITextViewDelegate {
             lblDescriptionPlaceholder.isHidden = false
         }
         return true
+    }
+}
+extension CreatePostVC : SearchDelegate, YouInterestedDelegate {
+    func search(selectedUserForCreatePost users: [PostUser]) {
+        vmObject.arrPolitions = users + [PostUser(name: vmObject.addPolitician)]
+        collPolitician.reloadData()
+    }
+    
+    func youInterested(didSelected trends: [TrendsModel]) {
+        vmObject.arrTrends = trends + [TrendsModel(name: vmObject.addTrends)]
+        collSoapbxTrends.reloadData()
+    }
+}
+extension CreatePostVC:  UIImagePickerControllerDelegate , UINavigationControllerDelegate{
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])
+    {
+        if let pickedImage = info[.editedImage] as? UIImage {
+            vmObject.arrImages.append(PostImage(image: pickedImage))
+        } else if let pickedImage = info[.originalImage] as? UIImage {
+            vmObject.arrImages.append(PostImage(image: pickedImage))
+        }
+        dismiss(animated: true, completion: {
+            DispatchQueue.main.async {
+                self.collImage.reloadData()
+            }
+        })
+        
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+}
+extension CreatePostVC: PostImageItemDelegate {
+    func postImageItem(_ cell: PostImageItemCell, didSelectDelete: Void) {
+        showAlert(message: "Are you sure you want to delete this image?", buttons: ["Yes", "No"]) { alert in
+            if alert.title == "Yes" {
+                if self.screenType == .editPost {
+                    if let id = self.vmObject.arrImages[cell.indexPath.row].id {
+                        self.deleteImage(image: id)
+                    }
+                    self.vmObject.arrImages.remove(at: cell.indexPath.row)
+                    self.collImage.reloadData()
+                } else {
+                    self.vmObject.arrImages.remove(at: cell.indexPath.row)
+                    self.collImage.reloadData()
+                }
+            }
+        }
     }
 }

@@ -79,12 +79,21 @@ struct GMapResult {
         placeId = json["place_id"] as? String ?? ""
         geometry = GMapGeometry(json["geometry"] as? JSON ?? [:])
     }
+    
+    init(formattedAddress: String, geometry: GMapGeometry) {
+        self.formattedAddress = formattedAddress
+        self.geometry = geometry
+    }
 }
 struct GMapGeometry {
     var location:GMapLocation?
     
     init(_ json: JSON) {
         location = GMapLocation(json["location"] as? JSON ?? [:])
+    }
+    
+    init(_ location:GMapLocation) {
+        self.location = location
     }
 }
 struct GMapLocation {
@@ -94,5 +103,10 @@ struct GMapLocation {
     init(_ json: JSON) {
         lat = json["lat"] as? Double ?? 0
         lng = json["lng"] as? Double ?? 0
+    }
+    
+    init(lat: Double, lng: Double) {
+        self.lat = lat
+        self.lng = lng
     }
 }

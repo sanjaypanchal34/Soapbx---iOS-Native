@@ -97,7 +97,7 @@ class HomeItemCell: AppTableViewCell {
         
     }
     
-    func setData(_ object: PostModel, indexPath: IndexPath, delegate:HomeItemCellDelegate, isDotOptionsVisible: Bool = false){
+    func setData(_ object: PostModel, indexPath: IndexPath, delegate:HomeItemCellDelegate, isDotOptionsVisible: Bool = false, screenType: TradPostListViewType){
         self.object = object
         self.indexPath = indexPath
         self.delegate = delegate
@@ -107,6 +107,12 @@ class HomeItemCell: AppTableViewCell {
         } else {
             dotMenuView?.hideSelf()
         }
+        
+//        if screenType == .fromProfile, object.user?.id == authUser?.user?.id {
+//            btnDotMenu.isHidden = true
+//        } else {
+//            btnDotMenu.isHidden = false
+//        }
     }
     
     func updateData(_ object: PostModel){
@@ -264,8 +270,8 @@ extension HomeItemCell: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == collectionPostImage,
            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PostImageItemCell", for: indexPath) as? PostImageItemCell {
-            if let obj = object?.images?[indexPath.row] {
-                cell.setData(obj)
+            if (object?.images?.count ?? 0) > 0 , let obj = object?.images?[indexPath.row] {
+                cell.setData(obj, indexPath: indexPath)
                 return cell
             }
         }
@@ -300,12 +306,30 @@ extension HomeItemCell: UICollectionViewDelegateFlowLayout, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == collectionPostImage {
             return CGSize(width: collectionView.frame.width - 20, height: collectionView.frame.width - 10)
-        } else {
-            let text = collectionView == collectionSoapbx ? object?.trendTags?[indexPath.row].trend?.name : object?.politicianTags?[indexPath.row].politician?.name
-            let width = (text ?? "").size(OfFont: AppFont.regular.font(size: 14)).width
-            return CGSize(width: width + 20, height: collectionView.frame.height - 5)
+        }
+        else if collectionView == collectionSoapbx,
+                (object?.trendTags?.count ?? 0) > 0{
+            let text = object?.trendTags?[indexPath.row].trend?.name ?? ""
+            let width = text.size(OfFont: AppFont.regular.font(size: 16)).width + 20
+            if width < 55 {
+                return CGSize(width: 55, height: 35)
+            }
+            else {
+                return CGSize(width: width, height: 35)
+            }
+        }else if collectionView == collectionPolitician,
+                 (object?.politicianTags?.count ?? 0) > 0{
+            let text = object?.politicianTags?[indexPath.row].politician?.name ?? ""
+            let width = text.size(OfFont: AppFont.regular.font(size: 16)).width + 20
+            if width < 55 {
+                return CGSize(width: 55, height: 35)
+            }
+            else {
+                return CGSize(width: width, height: 35)
+            }
         }
         
+        return CGSize()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

@@ -40,9 +40,7 @@ class HomeVC: UIViewController {
         btnManu.height = 20
         bottomTab.setTabTheme()
         bottomTab.delegate = self
-        viewTradPost.regiter()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(updateList), name: .homePostUpdate, object: nil)
+        viewTradPost.regiter(viewType: .fromHome , delegate: nil)
     }
     
     @IBAction private func click_menu() {
@@ -56,10 +54,6 @@ class HomeVC: UIViewController {
     @IBAction private func click_messageList() {
         let vc = MessageListVC()
         navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    @objc private func updateList() {
-        viewTradPost.getPost()
     }
 }
 

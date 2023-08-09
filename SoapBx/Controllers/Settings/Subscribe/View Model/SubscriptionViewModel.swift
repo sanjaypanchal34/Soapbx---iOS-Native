@@ -58,7 +58,7 @@ class SubscriptionViewModel {
         }
     }
     
-    func updateSubscriptionPlans( complition: @escaping (ResponseCallBack)) {
+    func updateSubscriptionPlans(complition: @escaping (ResponseCallBack)) {
         let subscription = arrSubsciption.compactMap { sub in
             if sub.isSelected {
                 return sub
@@ -66,7 +66,7 @@ class SubscriptionViewModel {
             return nil
         }
         if subscription.count > 0 {
-            let para: JSON = ["subscription_id": subscription.first?.id ?? 1]
+            let para: JSON = ["subscription_id": subscription.first?.id ?? 0]
             
             Webservice.Settings.chooseSubscription.requestWith(parameter: para) { result in
                 switch result {

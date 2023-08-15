@@ -331,11 +331,10 @@ public struct OTLIndex {
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class OTLActionTitle : UIKit.UIControl {
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class OTLActionTitle : UIKit.UIControl {
   @objc @IBOutlet @_Concurrency.MainActor(unsafe) weak public var lblTitle: UIKit.UILabel!
   @objc @IBOutlet @_Concurrency.MainActor(unsafe) weak public var lblDescription: UIKit.UILabel!
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
-  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class OTLTextButton : UIKit.UIControl {
@@ -472,6 +471,12 @@ extension OTLContaner.OTLPasswordFieldDelegate {
   public func otlTextField(_ textField: OTLContaner.OTLPasswordField, willStartEditing: Swift.Bool)
   public func otlTextField(_ textField: OTLContaner.OTLPasswordField, didEndEditing: Swift.Bool)
 }
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class OTLProgressView : UIKit.UIProgressView {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class OTLOTPView : UIKit.UIView {
   @_Concurrency.MainActor(unsafe) public var otpCount: Swift.Int {
     get
@@ -515,11 +520,10 @@ extension OTLContaner.OTLPasswordFieldDelegate {
 public enum OTLButtonStyle {
   case roundPi, corner(Swift.Double), squere
 }
-@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class OTLPTButton : UIKit.UIControl {
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class OTLPTButton : UIKit.UIControl {
   @objc @IBOutlet @_Concurrency.MainActor(unsafe) weak public var title: UIKit.UILabel?
   @objc @IBOutlet @_Concurrency.MainActor(unsafe) weak public var imageView: UIKit.UIImageView?
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
-  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class OTLButton : UIKit.UIControl {
@@ -638,6 +642,7 @@ public struct OTLAlertModel {
 }
 public func showAlert(title: Swift.String, message: Swift.String, buttons: [OTLContaner.OTLAlertModel], style: UIKit.UIAlertController.Style = .alert, complition: ((OTLContaner.OTLAlertModel) -> ())? = nil)
 public func isInternetAvailable() -> Swift.Bool
+public func getValueOrDefult(_ value: Any?, decimal: Swift.Int = 2, defaultValue string: Swift.String = "-") -> Swift.String
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) final public class OTLSearchView : UIKit.UIView {
   @_Concurrency.MainActor(unsafe) final public var placeholder: Swift.String? {
     get

@@ -7,6 +7,10 @@
 
 import UIKit
 import OTLContaner
+protocol ProfileUserInfoDelegate{
+    func profileUser(follow user:PostUser)
+    func profileUser(block user:PostUser)
+}
 
 class ProfileUserInfoView: UIView {
     
@@ -21,9 +25,9 @@ class ProfileUserInfoView: UIView {
     @IBOutlet private weak var lblLocation:UILabel!
     
     @IBOutlet private weak var viewMessageFollowBackButtons:UIView!
-    @IBOutlet private weak var btnMessage:UIButton!
-    @IBOutlet private weak var btnFollow:UIButton!
-    @IBOutlet private weak var btnBlock:UIButton!
+    @IBOutlet private weak var btnMessage:OTLTextButton!
+    @IBOutlet private weak var btnFollow:OTLTextButton!
+    @IBOutlet private weak var btnBlock:OTLTextButton!
     
     @IBOutlet private weak var btnFollowers:OTLActionTitle!
     @IBOutlet private weak var btnFollowing:OTLActionTitle!
@@ -33,13 +37,15 @@ class ProfileUserInfoView: UIView {
     
     var screenType = ProfileScreenType.profileTab
     var userObj: PostUser?
+    var delegate:ProfileUserInfoDelegate?
     
-    public func setupUIWithData(screenType: ProfileScreenType = .profileTab) {
+    public func setupUIWithData(screenType: ProfileScreenType = .profileTab, delegate: ProfileUserInfoDelegate) {
         self.screenType = screenType
+        self.delegate = delegate
         imgCover.image = UIImage(named: "")
         imgCover.backgroundColor = .lightGrey
         imgCover.contentMode = .scaleAspectFill
-        imgProfile.image = UIImage(named: "profileOne")
+        imgProfile.image = UIImage(named: "")
         imgProfile.contentMode = .scaleAspectFill
         imgProfile.layer.cornerRadius = imgProfile.frame.height/2
         
@@ -48,15 +54,15 @@ class ProfileUserInfoView: UIView {
         btnDeleteAccunt.setTitle("Delete Account", for: .normal)
         btnDeleteAccunt.setTitleColor(.titleRed, for: .normal)
         
-        lblProfileName.setTheme("Robert Watson", font: .bold,size: 20)
-        lblLocation.setTheme("185 Dirksen Sente Office Building", size: 14)
+        lblProfileName.setTheme("", font: .bold,size: 20)
+        lblLocation.setTheme("", size: 14)
         
         viewMessageFollowBackButtons.backgroundColor = .clear
-        btnMessage.setTheme("Message", color: .white, font: .bold, size: 14,backgound: .primaryBlue)
+        btnMessage.setTheme("Message", color: .white, font: .bold, size: 14,background: .primaryBlue)
         btnMessage.layer.cornerRadius = 5
-        btnFollow.setTheme("Follow", color: .white, font: .bold, size: 14,backgound: .titleRed)
+        btnFollow.setTheme("Follow", color: .white, font: .bold, size: 14,background: .titleRed)
         btnFollow.layer.cornerRadius = 5
-        btnBlock.setTheme("Block", color: .white, font: .bold, size: 14,backgound: .primaryBlue)
+        btnBlock.setTheme("Block", color: .white, font: .bold, size: 14,background: .primaryBlue)
         btnBlock.layer.cornerRadius = 5
         
         
@@ -90,18 +96,32 @@ class ProfileUserInfoView: UIView {
         }
     }
     
+    func updateProfileData(_ user: PostUser) {
+        self.userObj = user
+        
+        imgCover.setImage(user.coverPhotoURL)
+        imgProfile.setImage(user.profilePhotoURL)
+        lblProfileName.text = user.name
+        lblLocation.text = user.location
+        imgLocationIcon.isHidden = !((user.location?.count ?? 0) > 0)
+        
+        btnFollowers.lblTitle.text = "\(user.followers ?? 0)"
+        btnFollowing.lblTitle.text = "\(user.following ?? 0)"
+        btnPoliticians.lblTitle.text = "\(user.politician ?? 0)"
+        if user.statusUser == 1 {
+            btnFollow.text = "Requested"
+            btnFollow.backgroundColor = .primaryBlue
+        } else if user.statusUser == 2 {
+            btnFollow.text = "Unfollow"
+            btnFollow.backgroundColor = .primaryBlue
+        } else {
+            btnFollow.text = "Follow"
+            btnFollow.backgroundColor = .titleRed
+        }
+    }
+    
     func updateOtherUserProfileData(_ userObj: PostUser) {
-        self.userObj = userObj
-        
-        imgCover.setImage(userObj.coverPhotoURL)
-        imgProfile.setImage(userObj.profilePhotoURL)
-        lblProfileName.text = userObj.name
-        lblLocation.text = userObj.location
-        imgLocationIcon.isHidden = !((userObj.location?.count ?? 0) > 0)
-        
-        btnFollowers.lblTitle.text = "\(userObj.followers ?? 0)"
-        btnFollowing.lblTitle.text = "\(userObj.following ?? 0)"
-        btnPoliticians.lblTitle.text = "\(userObj.politician ?? 0)"
+        updateProfileData(userObj)
     }
     
     func updateSelfProfileData(_ userObj: UserAuthModel) {
@@ -133,16 +153,25 @@ class ProfileUserInfoView: UIView {
     }
     
     @IBAction private func click_btnFollowers(){
-        let vc = FollowFolloingVC()
-        rootViewController.pushViewController(vc, animated: true)
+        if let user = userObj {
+            let vc = FollowFolloingVC()
+            vc.navigate(user, tab: .followers, screenType: screenType)
+            rootViewController.pushViewController(vc, animated: true)
+        }
     }
     @IBAction private func click_btnFollowing(){
-        let vc = FollowFolloingVC()
-        rootViewController.pushViewController(vc, animated: true)
+        if let user = userObj {
+            let vc = FollowFolloingVC()
+            vc.navigate(user, tab: .following, screenType: screenType)
+            rootViewController.pushViewController(vc, animated: true)
+        }
     }
     @IBAction private func click_btnPoliticians(){
-        let vc = FollowFolloingVC()
-        rootViewController.pushViewController(vc, animated: true)
+        if let user = userObj {
+            let vc = FollowFolloingVC()
+            vc.navigate(user, tab: .politicians, screenType: screenType)
+            rootViewController.pushViewController(vc, animated: true)
+        }
     }
     
     @IBAction private func click_btnMessage() {
@@ -151,11 +180,13 @@ class ProfileUserInfoView: UIView {
     }
     
     @IBAction private func click_btnFollow() {
+        delegate?.profileUser(follow: userObj!)
 //        let vc = ChatVC()
 //        rootViewController?.pushViewController(vc, animated: true)
     }
     
     @IBAction private func click_btnBlock() {
+        delegate?.profileUser(block: userObj!)
 //        let vc = ChatVC()
 //        rootViewController?.pushViewController(vc, animated: true)
     }

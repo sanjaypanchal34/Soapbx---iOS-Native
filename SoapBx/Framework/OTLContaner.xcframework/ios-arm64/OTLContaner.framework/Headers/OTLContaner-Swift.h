@@ -261,8 +261,10 @@ SWIFT_CLASS("_TtC11OTLContaner14OTLActionTitle")
 @interface OTLActionTitle : UIControl
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified lblTitle;
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified lblDescription;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
 @end
 
 @class NSString;
@@ -408,8 +410,10 @@ SWIFT_CLASS("_TtC11OTLContaner11OTLPTButton")
 @interface OTLPTButton : UIControl
 @property (nonatomic, weak) IBOutlet UILabel * _Nullable title;
 @property (nonatomic, weak) IBOutlet UIImageView * _Nullable imageView;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
 @end
 
 
@@ -424,6 +428,14 @@ SWIFT_CLASS("_TtC11OTLContaner16OTLPasswordField")
 
 
 @interface OTLPasswordField (SWIFT_EXTENSION(OTLContaner)) <UITextViewDelegate>
+@end
+
+
+SWIFT_CLASS("_TtC11OTLContaner15OTLProgressView")
+@interface OTLProgressView : UIProgressView
+- (void)layoutSubviews;
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
@@ -457,6 +469,7 @@ SWIFT_CLASS("_TtC11OTLContaner13OTLTextButton")
 
 @interface OTLTextField (SWIFT_EXTENSION(OTLContaner)) <UITextViewDelegate>
 @end
+
 
 
 

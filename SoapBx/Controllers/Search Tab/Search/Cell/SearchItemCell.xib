@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -33,16 +34,17 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SCU-04-ycd">
-                                <rect key="frame" x="240" y="7.6666666666666679" width="40" height="40"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u0u-Qy-M8J" customClass="OTLImageButton" customModule="OTLContaner">
+                                <rect key="frame" x="240" y="10" width="40" height="40"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="a2h-3Z-YWO"/>
-                                    <constraint firstAttribute="width" secondItem="SCU-04-ycd" secondAttribute="height" multiplier="1:1" id="iZb-dv-e2O"/>
+                                    <constraint firstAttribute="height" constant="40" id="dvj-3Z-dN8"/>
+                                    <constraint firstAttribute="width" secondItem="u0u-Qy-M8J" secondAttribute="height" multiplier="1:1" id="lMD-MC-PWg"/>
                                 </constraints>
-                                <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="ic_lightCross"/>
-                            </button>
+                                <connections>
+                                    <action selector="click_actionButton" destination="KGk-i7-Jjw" eventType="touchUpInside" id="3lK-LV-EPG"/>
+                                </connections>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pQu-Yr-Zr3">
                                 <rect key="frame" x="50" y="59" width="230" height="1"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -55,15 +57,15 @@
                         <constraints>
                             <constraint firstItem="lun-FA-e4i" firstAttribute="leading" secondItem="sQh-29-maW" secondAttribute="trailing" constant="15" id="4G4-Aa-4Nl"/>
                             <constraint firstItem="lun-FA-e4i" firstAttribute="centerY" secondItem="sQh-29-maW" secondAttribute="centerY" id="B7u-jS-LAq"/>
+                            <constraint firstAttribute="trailing" secondItem="u0u-Qy-M8J" secondAttribute="trailing" id="CtT-XX-OdP"/>
                             <constraint firstItem="sQh-29-maW" firstAttribute="leading" secondItem="WYB-7P-Kwu" secondAttribute="leading" id="EII-V6-bw0"/>
                             <constraint firstAttribute="trailing" secondItem="pQu-Yr-Zr3" secondAttribute="trailing" id="Fd4-si-9zO"/>
                             <constraint firstAttribute="bottom" secondItem="sQh-29-maW" secondAttribute="bottom" constant="15" id="Hdm-nO-G8Y"/>
                             <constraint firstAttribute="bottom" secondItem="pQu-Yr-Zr3" secondAttribute="bottom" id="Orz-7N-JXc"/>
-                            <constraint firstAttribute="trailing" secondItem="SCU-04-ycd" secondAttribute="trailing" id="Wux-NM-hnu"/>
+                            <constraint firstItem="u0u-Qy-M8J" firstAttribute="centerY" secondItem="WYB-7P-Kwu" secondAttribute="centerY" id="Y9e-oy-uJH"/>
                             <constraint firstItem="pQu-Yr-Zr3" firstAttribute="leading" secondItem="lun-FA-e4i" secondAttribute="leading" id="cPF-86-dNx"/>
-                            <constraint firstItem="SCU-04-ycd" firstAttribute="leading" secondItem="lun-FA-e4i" secondAttribute="trailing" constant="5" id="cjd-qh-CVR"/>
                             <constraint firstItem="sQh-29-maW" firstAttribute="top" secondItem="WYB-7P-Kwu" secondAttribute="top" constant="10" id="g6w-pT-6wf"/>
-                            <constraint firstItem="SCU-04-ycd" firstAttribute="centerY" secondItem="lun-FA-e4i" secondAttribute="centerY" id="gtl-fm-pBu"/>
+                            <constraint firstItem="u0u-Qy-M8J" firstAttribute="leading" secondItem="lun-FA-e4i" secondAttribute="trailing" constant="5" id="htm-ZY-EQy"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -76,7 +78,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="btnCancel" destination="SCU-04-ycd" id="7i1-64-gsh"/>
+                <outlet property="btnCancel" destination="u0u-Qy-M8J" id="bYY-RI-FQg"/>
                 <outlet property="imgProfile" destination="sQh-29-maW" id="FEW-eH-EJP"/>
                 <outlet property="lblProfileName" destination="lun-FA-e4i" id="1sL-Qk-R7s"/>
                 <outlet property="viewMain" destination="WYB-7P-Kwu" id="WQ7-BF-Qyb"/>
@@ -85,7 +87,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="ic_lightCross" width="15.666666984558105" height="15.666666984558105"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

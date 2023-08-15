@@ -44,16 +44,47 @@ class HomeVC: UIViewController {
     }
     
     @IBAction private func click_menu() {
-        showSideMenu()
+        if authUser?.loginType == .userLogin {
+            if let _ = authUser?.user {
+                showSideMenu()
+            }
+        } else {
+            showAlert(message: "You must Login to access this feature",buttons: ["Cancel", "Login"]) { alert in
+                if alert.title == "Login" {
+                    mackRootView(LoginVC())
+                }
+            }
+        }
+        
     }
     
     @IBAction private func click_notification() {
-        let vc = NotificationListVC()
-        navigationController?.pushViewController(vc, animated: true)
+        if authUser?.loginType == .userLogin {
+            if let _ = authUser?.user {
+                let vc = NotificationListVC()
+                navigationController?.pushViewController(vc, animated: true)
+            }
+        } else {
+            showAlert(message: "You must Login to access this feature",buttons: ["Cancel", "Login"]) { alert in
+                if alert.title == "Login" {
+                    mackRootView(LoginVC())
+                }
+            }
+        }
     }
     @IBAction private func click_messageList() {
-        let vc = MessageListVC()
-        navigationController?.pushViewController(vc, animated: true)
+        if authUser?.loginType == .userLogin {
+            if let _ = authUser?.user {
+                let vc = MessageListVC()
+                navigationController?.pushViewController(vc, animated: true)
+            }
+        } else {
+            showAlert(message: "You must Login to access this feature",buttons: ["Cancel", "Login"]) { alert in
+                if alert.title == "Login" {
+                    mackRootView(LoginVC())
+                }
+            }
+        }
     }
 }
 
@@ -61,20 +92,54 @@ extension HomeVC: OTLBottomTabBarDelegate {
     
     func didChangeTab(old: OTLContaner.OTLBottomTabBarItem, new: OTLContaner.OTLBottomTabBarItem) {
         switch new {
-        case .home:
-            break
-        case .publicFigures:
-            mackRootView(PublicFiguresVC())
-            break
-        case .addPost:
-            navigationController?.pushViewController(CreatePostVC(), animated: true)
-            break
-        case .search:
-            mackRootView(SearchVC())
-            break
-        case .profile:
-            mackRootView(ProfileVC())
-            break
+            case .home:
+                break
+            case .publicFigures:
+                mackRootView(PublicFiguresVC())
+                break
+            case .addPost:
+                if authUser?.loginType == .userLogin {
+                    if let _ = authUser?.user {
+                        navigationController?.pushViewController(CreatePostVC(), animated: true)
+                    }
+                } else {
+                    bottomTab.selectedTab = .home
+                    showAlert(message: "You must Login to access this feature",buttons: ["Cancel", "Login"]) { alert in
+                        if alert.title == "Login" {
+                            mackRootView(LoginVC())
+                        }
+                    }
+                }
+                
+                break
+            case .search:
+                if authUser?.loginType == .userLogin {
+                    if let _ = authUser?.user {
+                        mackRootView(SearchVC())
+                    }
+                } else {
+                    bottomTab.selectedTab = .home
+                    showAlert(message: "You must Login to access this feature",buttons: ["Cancel", "Login"]) { alert in
+                        if alert.title == "Login" {
+                            mackRootView(LoginVC())
+                        }
+                    }
+                }
+                break
+            case .profile:
+                if authUser?.loginType == .userLogin {
+                    if let _ = authUser?.user {
+                        mackRootView(ProfileVC())
+                    }
+                } else {
+                    bottomTab.selectedTab = .home
+                    showAlert(message: "You must Login to access this feature",buttons: ["Cancel", "Login"]) { alert in
+                        if alert.title == "Login" {
+                            mackRootView(LoginVC())
+                        }
+                    }
+                }
+                break
         }
     }
 }

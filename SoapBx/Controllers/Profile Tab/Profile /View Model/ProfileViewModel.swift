@@ -1,11 +1,11 @@
-//
-//  ProfileViewModel.swift
-//  Operators Techno Lab, Ahmedabad
-//
-//  Developed by Harsh Kadiya
-//  Created by OTL-HK on 04/08/2023.
-//  Copyright © 2023 OTL-HK. All rights reserved.
-//
+    //
+    //  ProfileViewModel.swift
+    //  Operators Techno Lab, Ahmedabad
+    //
+    //  Developed by Harsh Kadiya
+    //  Created by OTL-HK on 04/08/2023.
+    //  Copyright © 2023 OTL-HK. All rights reserved.
+    //
 
 import Foundation
 
@@ -28,11 +28,13 @@ class ProfileViewModel {
     private var isDataLoading: Bool = false
     var currentPage = 1 {
         didSet {
-            if oldValue < currentPage {
-                if isDataLoading {
-                    currentPage = oldValue
-                } else {
-                    getProfile()
+            if self.isDataLoading == false {
+                if oldValue < currentPage {
+                    if isDataLoading {
+                        currentPage = oldValue
+                    } else {
+                        getProfile()
+                    }
                 }
             }
         }
@@ -63,13 +65,21 @@ class ProfileViewModel {
                 case .success(let data):
                     if data.code == 200 {
                         if let data = data.body?["data"] as? JSON {
-                            if let userDetail = data["detail"] as? JSON,
-                            let notification = userDetail["notification"] as? JSON{
+                            if let userDetail = data["detail"] as? JSON{
+                                authUser = AuthorizedUser(userDetail)
                                 do {
-                                    let notificationData = try JSONSerialization.data(withJSONObject: notification)
-                                    self.notificationModel = try JSONDecoder().decode(UserNotificationModel.self, from: notificationData)
-                                } catch{
+                                    let useProfileData = try JSONSerialization.data(withJSONObject: userDetail)
+                                    self.userObj = try JSONDecoder().decode(PostUser.self, from: useProfileData)
+                                }catch{
                                     print("[ProfileViewModel] getHomePost response trends try Catch : \(error)")
+                                }
+                                if let notification = userDetail["notification"] as? JSON{
+                                    do {
+                                        let notificationData = try JSONSerialization.data(withJSONObject: notification)
+                                        self.notificationModel = try JSONDecoder().decode(UserNotificationModel.self, from: notificationData)
+                                    } catch{
+                                        print("[ProfileViewModel] getHomePost response trends try Catch : \(error)")
+                                    }
                                 }
                             }
                             
@@ -144,10 +154,14 @@ class ProfileViewModel {
                 case .success(let data):
                     if data.code == 200 {
                         if let data = data.body?["data"] as? JSON {
-//                            if let useProfile = data["detail"] as? JSON{
-//                            let useProfileData = try JSONSerialization.data(withJSONObject: useProfile)
-//                            self.userObj = try JSONDecoder().decode(PostUser.self, from: useProfileData)
-//                            }
+                            if let useProfile = data["details"] as? JSON{
+                                do {
+                                    let useProfileData = try JSONSerialization.data(withJSONObject: useProfile)
+                                    self.userObj = try JSONDecoder().decode(PostUser.self, from: useProfileData)
+                                }catch{
+                                    print("[ProfileViewModel] getHomePost response trends try Catch : \(error)")
+                                }
+                            }
                             
                             if let trends = data["trends"] as? JSONArray {
                                 self.arrTernds = [TrendsModel(name: "All Trends")]
@@ -201,7 +215,7 @@ class ProfileViewModel {
     func updateNotification(_ notification: NotificationSettingModel, complition: @escaping (ResponseCallBack)) {
         let para: JSON = [
             "notification_status": notification.isSelected ? 1 : 0,
-                "type":notification.id]
+            "type":notification.id]
         Webservice.Profile.notificationStatus.requestWith(parameter: para) { result in
             switch result {
                 case .fail(let message,let code,_):
@@ -215,4 +229,55 @@ class ProfileViewModel {
             }
         }
     }
+    
+    func follow(user id: Int, user role: Int, complition: @escaping (ResponseCallBack)) {
+        if role == 3 {
+            let para: JSON = ["politician_id": id]
+            Webservice.Profile.followPolitician.requestWith(parameter: para) { result in
+                switch result {
+                    case .fail(let message,let code,_):
+                        complition(CompanComplition(message: message, code: code ?? 111, status: false))
+                    case .success(let data):
+                        if data.code == 200 {
+                            complition(CompanComplition(message: data.message, code: data.code, status: true))
+                        } else {
+                            complition(CompanComplition(message: data.message, code: data.code, status: false))
+                        }
+                }
+            }
+        }
+        else {
+            let para: JSON = ["request_id": id]
+            Webservice.Profile.sendFollowRequest.requestWith(parameter: para) { result in
+                switch result {
+                    case .fail(let message,let code,_):
+                        complition(CompanComplition(message: message, code: code ?? 111, status: false))
+                    case .success(let data):
+                        if data.code == 200 {
+                            complition(CompanComplition(message: data.message, code: data.code, status: true))
+                        } else {
+                            complition(CompanComplition(message: data.message, code: data.code, status: false))
+                        }
+                }
+            }
+        }
+    }
+    
+    func unfollow(user id: Int, isRemove: Bool = false, complition: @escaping (ResponseCallBack)) {
+        let para: JSON = ["user_id": id, "type": isRemove ? 2 : 1]
+        Webservice.Profile.unfollowRemoveUser.requestWith(parameter: para) { result in
+            switch result {
+                case .fail(let message,let code,_):
+                    complition(CompanComplition(message: message, code: code ?? 111, status: false))
+                case .success(let data):
+                    if data.code == 200 {
+                        complition(CompanComplition(message: data.message, code: data.code, status: true))
+                    } else {
+                        complition(CompanComplition(message: data.message, code: data.code, status: false))
+                    }
+            }
+        }
+    }
+    
+    
 }

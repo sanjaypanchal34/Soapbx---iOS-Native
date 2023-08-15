@@ -181,38 +181,32 @@
                                                             </subviews>
                                                         </stackView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iZM-Du-CBO">
-                                                            <rect key="frame" x="49" y="182.66666666666669" width="255" height="35"/>
+                                                            <rect key="frame" x="14" y="182.66666666666669" width="325" height="35"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="d8j-Nq-x52">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="255" height="35"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="325" height="35"/>
                                                                     <subviews>
-                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Boh-Ub-Uuz">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="75" height="35"/>
-                                                                            <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
-                                                                            <state key="normal" title="Button"/>
-                                                                            <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n7v-cV-g79" customClass="OTLTextButton" customModule="OTLContaner">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="120" height="35"/>
+                                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                             <connections>
-                                                                                <action selector="click_btnMessage" destination="hrD-90-dub" eventType="touchUpInside" id="sGw-j3-RFi"/>
+                                                                                <action selector="click_btnMessage" destination="hrD-90-dub" eventType="touchUpInside" id="gtv-a6-Exj"/>
                                                                             </connections>
-                                                                        </button>
-                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ySd-zr-i7b">
-                                                                            <rect key="frame" x="90" y="0.0" width="75" height="35"/>
-                                                                            <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
-                                                                            <state key="normal" title="Button"/>
-                                                                            <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                                                        </view>
+                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vnv-KY-YD6" customClass="OTLTextButton" customModule="OTLContaner">
+                                                                            <rect key="frame" x="135" y="0.0" width="100" height="35"/>
+                                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                             <connections>
-                                                                                <action selector="click_btnFollow" destination="hrD-90-dub" eventType="touchUpInside" id="q2E-gE-c3f"/>
+                                                                                <action selector="click_btnFollow" destination="hrD-90-dub" eventType="touchUpInside" id="nKp-qq-ACK"/>
                                                                             </connections>
-                                                                        </button>
-                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jit-1M-G1d">
-                                                                            <rect key="frame" x="180" y="0.0" width="75" height="35"/>
-                                                                            <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
-                                                                            <state key="normal" title="Button"/>
-                                                                            <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                                                        </view>
+                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="amu-f0-cyi" customClass="OTLTextButton" customModule="OTLContaner">
+                                                                            <rect key="frame" x="250" y="0.0" width="75" height="35"/>
+                                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                             <connections>
-                                                                                <action selector="click_btnBlock" destination="hrD-90-dub" eventType="touchUpInside" id="Ss8-Se-LSL"/>
+                                                                                <action selector="click_btnBlock" destination="hrD-90-dub" eventType="touchUpInside" id="7IV-PD-OCm"/>
                                                                             </connections>
-                                                                        </button>
+                                                                        </view>
                                                                     </subviews>
                                                                 </stackView>
                                                             </subviews>
@@ -376,13 +370,13 @@
                                                 <constraint firstItem="p2b-Th-AFP" firstAttribute="leading" secondItem="hrD-90-dub" secondAttribute="leading" id="wgL-wC-Cf8"/>
                                             </constraints>
                                             <connections>
-                                                <outlet property="btnBlock" destination="jit-1M-G1d" id="daD-gY-mFg"/>
+                                                <outlet property="btnBlock" destination="amu-f0-cyi" id="wYT-Df-oej"/>
                                                 <outlet property="btnDeleteAccunt" destination="oWu-v6-cb3" id="weE-cX-2aF"/>
                                                 <outlet property="btnEditProfile" destination="bhq-A6-l1q" id="mBB-Wj-dxJ"/>
-                                                <outlet property="btnFollow" destination="ySd-zr-i7b" id="3a7-r9-aCx"/>
+                                                <outlet property="btnFollow" destination="Vnv-KY-YD6" id="wnB-6G-wjD"/>
                                                 <outlet property="btnFollowers" destination="rdV-rf-zmo" id="Ilz-Xo-d7h"/>
                                                 <outlet property="btnFollowing" destination="72H-JY-UEq" id="jA9-lO-38H"/>
-                                                <outlet property="btnMessage" destination="Boh-Ub-Uuz" id="NGz-Fp-A6E"/>
+                                                <outlet property="btnMessage" destination="n7v-cV-g79" id="9by-RC-5Yo"/>
                                                 <outlet property="btnPoliticians" destination="auo-FU-67p" id="7kX-vF-3S7"/>
                                                 <outlet property="btnVoiceToday" destination="tSe-iL-rt7" id="BLe-iw-GOC"/>
                                                 <outlet property="imgCover" destination="p2b-Th-AFP" id="fwy-rC-swr"/>

@@ -2,8 +2,8 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,9 +11,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FollowFolloingVC" customModule="SoapBx" customModuleProvider="target">
             <connections>
-                <outlet property="btnFollowers" destination="WEs-8L-c8l" id="Sim-FQ-EdP"/>
-                <outlet property="btnFollowing" destination="PYr-G2-2IV" id="ahH-BP-tRM"/>
-                <outlet property="btnPoliticians" destination="D70-CM-8sF" id="LYk-PP-Yo1"/>
+                <outlet property="btnFollowers" destination="oZz-MA-3C7" id="G59-dR-LdO"/>
+                <outlet property="btnFollowing" destination="Mvn-NU-B1J" id="JOf-we-Rwo"/>
+                <outlet property="btnPoliticians" destination="v7e-0F-zsf" id="6E9-Ld-L6g"/>
                 <outlet property="lblNodata" destination="k1E-cv-84L" id="d0g-kV-gsQ"/>
                 <outlet property="tblList" destination="HS2-sA-qTN" id="omH-vj-tkz"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -68,49 +68,43 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QSS-qG-A3E">
                             <rect key="frame" x="20" y="10" width="353" height="55"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WEs-8L-c8l">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oZz-MA-3C7" customClass="OTLTextButton" customModule="OTLContaner">
                                     <rect key="frame" x="0.0" y="0.0" width="117.66666666666667" height="55"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <connections>
-                                        <action selector="click_btnFollowers" destination="-1" eventType="touchUpInside" id="Ssm-Yp-3Df"/>
+                                        <action selector="click_btnFollowers" destination="-1" eventType="touchUpInside" id="VDS-yU-mI2"/>
                                     </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PYr-G2-2IV">
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mvn-NU-B1J" customClass="OTLTextButton" customModule="OTLContaner">
                                     <rect key="frame" x="117.66666666666666" y="0.0" width="117.66666666666666" height="55"/>
-                                    <color key="backgroundColor" name="AccentColor"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" title="Button">
-                                        <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </buttonConfiguration>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <connections>
-                                        <action selector="click_btnFolloing" destination="-1" eventType="touchUpInside" id="JPR-Yf-Cm6"/>
+                                        <action selector="click_btnFollowing" destination="-1" eventType="touchUpInside" id="eCi-RU-LxW"/>
                                     </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D70-CM-8sF">
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v7e-0F-zsf" customClass="OTLTextButton" customModule="OTLContaner">
                                     <rect key="frame" x="235.33333333333334" y="0.0" width="117.66666666666666" height="55"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <connections>
-                                        <action selector="click_btnPoliticians" destination="-1" eventType="touchUpInside" id="jDh-vN-M3Y"/>
+                                        <action selector="click_btnPoliticians" destination="-1" eventType="touchUpInside" id="crw-0Z-T4t"/>
                                     </connections>
-                                </button>
+                                </view>
                             </subviews>
                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstItem="D70-CM-8sF" firstAttribute="leading" secondItem="PYr-G2-2IV" secondAttribute="trailing" id="0ue-oS-YTk"/>
-                                <constraint firstItem="D70-CM-8sF" firstAttribute="top" secondItem="PYr-G2-2IV" secondAttribute="top" id="6QU-m0-MuJ"/>
-                                <constraint firstAttribute="trailing" secondItem="D70-CM-8sF" secondAttribute="trailing" id="J0X-ta-UbZ"/>
+                                <constraint firstItem="oZz-MA-3C7" firstAttribute="top" secondItem="QSS-qG-A3E" secondAttribute="top" id="6Uf-Nt-bVD"/>
+                                <constraint firstItem="Mvn-NU-B1J" firstAttribute="leading" secondItem="oZz-MA-3C7" secondAttribute="trailing" id="KCP-ka-3w4"/>
+                                <constraint firstItem="v7e-0F-zsf" firstAttribute="width" secondItem="Mvn-NU-B1J" secondAttribute="width" id="N6x-NK-Smf"/>
                                 <constraint firstAttribute="height" constant="55" id="NgA-cz-Hwh"/>
-                                <constraint firstItem="PYr-G2-2IV" firstAttribute="leading" secondItem="WEs-8L-c8l" secondAttribute="trailing" id="WY8-Af-3M0"/>
-                                <constraint firstItem="D70-CM-8sF" firstAttribute="width" secondItem="PYr-G2-2IV" secondAttribute="width" id="Wtc-Sa-adh"/>
-                                <constraint firstItem="WEs-8L-c8l" firstAttribute="top" secondItem="QSS-qG-A3E" secondAttribute="top" id="XC3-FO-hc8"/>
-                                <constraint firstItem="WEs-8L-c8l" firstAttribute="leading" secondItem="QSS-qG-A3E" secondAttribute="leading" id="d5k-VF-lJb"/>
-                                <constraint firstItem="PYr-G2-2IV" firstAttribute="bottom" secondItem="WEs-8L-c8l" secondAttribute="bottom" id="mCG-zm-f0S"/>
-                                <constraint firstItem="PYr-G2-2IV" firstAttribute="width" secondItem="WEs-8L-c8l" secondAttribute="width" id="qdO-cz-djP"/>
-                                <constraint firstItem="PYr-G2-2IV" firstAttribute="top" secondItem="WEs-8L-c8l" secondAttribute="top" id="uLq-RY-zv9"/>
-                                <constraint firstAttribute="bottom" secondItem="WEs-8L-c8l" secondAttribute="bottom" id="xOE-2h-mpE"/>
-                                <constraint firstItem="D70-CM-8sF" firstAttribute="bottom" secondItem="PYr-G2-2IV" secondAttribute="bottom" id="yc4-0R-Vmi"/>
+                                <constraint firstAttribute="bottom" secondItem="Mvn-NU-B1J" secondAttribute="bottom" id="PC1-Va-4F0"/>
+                                <constraint firstItem="v7e-0F-zsf" firstAttribute="leading" secondItem="Mvn-NU-B1J" secondAttribute="trailing" id="Puv-ch-YgW"/>
+                                <constraint firstAttribute="bottom" secondItem="v7e-0F-zsf" secondAttribute="bottom" id="Y0n-yt-c52"/>
+                                <constraint firstItem="oZz-MA-3C7" firstAttribute="leading" secondItem="QSS-qG-A3E" secondAttribute="leading" id="e09-w8-END"/>
+                                <constraint firstItem="Mvn-NU-B1J" firstAttribute="width" secondItem="oZz-MA-3C7" secondAttribute="width" id="iHf-c9-VCn"/>
+                                <constraint firstAttribute="bottom" secondItem="oZz-MA-3C7" secondAttribute="bottom" id="ldQ-Cx-fOv"/>
+                                <constraint firstItem="Mvn-NU-B1J" firstAttribute="top" secondItem="QSS-qG-A3E" secondAttribute="top" id="rHE-sx-gkc"/>
+                                <constraint firstItem="v7e-0F-zsf" firstAttribute="top" secondItem="QSS-qG-A3E" secondAttribute="top" id="vnP-Ud-ffS"/>
+                                <constraint firstAttribute="trailing" secondItem="v7e-0F-zsf" secondAttribute="trailing" id="ygN-Tk-a6J"/>
                             </constraints>
                         </view>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="HS2-sA-qTN">
@@ -156,9 +150,6 @@
     </objects>
     <resources>
         <image name="backArrow" width="7.3333334922790527" height="13.333333015441895"/>
-        <namedColor name="AccentColor">
-            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

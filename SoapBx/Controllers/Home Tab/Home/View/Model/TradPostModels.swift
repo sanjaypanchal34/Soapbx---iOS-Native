@@ -117,29 +117,97 @@ struct PostTag: Codable {
 
     // MARK: - User
 struct PostUser: Codable {
-    let id: Int?
+    let id, step, roleID: Int?
+    let uuid, customerID: String?
+    let subscriptionID: Int?
     let firstName, lastName, name: String?
-    let profilePhoto: String?
-    let coverPhoto: String?
-    let location: String?
-    let coverPhotoURL: String?
-    let coverPhotoThumbURL: String?
-    let profilePhotoURL: String?
-    let profilePhotoThumbURL: String?
-    let followers, politician, following, voters: Int?
-    let statusUser, statusPoli: Int?
+    let profilePhoto, profilePhotoThumb, coverPhoto, coverPhotoThumb: String?
+    let email: String?
+    let emailVerifiedAt: String?
+    let countryCode, phoneNumber, location, longitude: String?
+    let latitude, electedIn, party: String?
+    let phoneVerifiedAt: String?
+    let otp: String?
+    let verified, active, onlineStatus: Int?
+    let deviceToken, deviceType, authToken, createdAt: String?
+    let updatedAt: String?
+    let notificationStatus: Int?
+    let referralCode: String?
+    let referralCodeUsed: String?
+    let poliID, apiURI, middleName, title: String?
+    let dateOfBirth, gender, url, rssURL: String?
+    let contactForm, totalVotes, missedVotes, totalPresent: String?
+    let office, phone, state, missedVotesPct: String?
+    let votesWithPartyPct, votesAgainstPartyPct, twitterAccount, facebookAccount: String?
+    let youtubeAccount: String?
+    let verifiedBy: Int?
+    let suffix, leadershipRole, inOffice, seniority: String?
+    let senateClass, stateRank, subscriptionStatus, subscribedFrom: String?
+    let coverPhotoURL, coverPhotoThumbURL, profilePhotoURL, profilePhotoThumbURL: String?
+    var followers, politician, following, voters: Int?
+    var statusUser, statusPoli: Int?
     let fullName: String?
     let endDateSubscription: String?
     let subscriptionType: Int?
     
     enum CodingKeys: String, CodingKey {
-        case id
+        case id, step
+        case roleID = "role_id"
+        case uuid
+        case customerID = "customer_id"
+        case subscriptionID = "subscription_id"
         case firstName = "first_name"
         case lastName = "last_name"
         case name
         case profilePhoto = "profile_photo"
+        case profilePhotoThumb = "profile_photo_thumb"
         case coverPhoto = "cover_photo"
-        case location
+        case coverPhotoThumb = "cover_photo_thumb"
+        case email
+        case emailVerifiedAt = "email_verified_at"
+        case countryCode = "country_code"
+        case phoneNumber = "phone_number"
+        case location, longitude, latitude
+        case electedIn = "elected_in"
+        case party
+        case phoneVerifiedAt = "phone_verified_at"
+        case otp, verified, active
+        case onlineStatus = "online_status"
+        case deviceToken = "device_token"
+        case deviceType = "device_type"
+        case authToken = "auth_token"
+        case createdAt = "created_at"
+        case updatedAt = "updated_at"
+        case notificationStatus = "notification_status"
+        case referralCode = "referral_code"
+        case referralCodeUsed = "referral_code_used"
+        case poliID = "poli_id"
+        case apiURI = "api_uri"
+        case middleName = "middle_name"
+        case title
+        case dateOfBirth = "date_of_birth"
+        case gender, url
+        case rssURL = "rss_url"
+        case contactForm = "contact_form"
+        case totalVotes = "total_votes"
+        case missedVotes = "missed_votes"
+        case totalPresent = "total_present"
+        case office, phone, state
+        case missedVotesPct = "missed_votes_pct"
+        case votesWithPartyPct = "votes_with_party_pct"
+        case votesAgainstPartyPct = "votes_against_party_pct"
+        case twitterAccount = "twitter_account"
+        case facebookAccount = "facebook_account"
+        case youtubeAccount = "youtube_account"
+        case verifiedBy = "verified_by"
+        case suffix
+        case leadershipRole = "leadership_role"
+        case inOffice = "in_office"
+        case seniority
+        case senateClass = "senate_class"
+        case stateRank = "state_rank"
+        case subscriptionStatus = "subscription_status"
+        case subscribedFrom = "subscribed_from"
         case coverPhotoURL = "cover_photo_url"
         case coverPhotoThumbURL = "cover_photo_thumb_url"
         case profilePhotoURL = "profile_photo_url"
@@ -152,28 +220,16 @@ struct PostUser: Codable {
         case subscriptionType = "subscription_type"
     }
     
-    init(name: String) {
-        
-        id = nil
-        firstName = ""
-        lastName = ""
-        self.name = name
-        profilePhoto = ""
-        coverPhoto = ""
-        location = ""
-        coverPhotoURL = ""
-        coverPhotoThumbURL = ""
-        profilePhotoURL = ""
-        profilePhotoThumbURL = ""
-        followers = 0
-        politician = 0
-        following = 0
-        voters = 0
-        statusUser = 0
-        statusPoli = 0
-        fullName = ""
-        endDateSubscription = ""
-        subscriptionType = 0
+    static func object(name: String)->PostUser? {
+        let json = ["name": name]
+        do {
+            let data = try JSONSerialization.data(withJSONObject: json)
+            return try JSONDecoder().decode(PostUser.self, from: data)
+            
+        } catch{
+            print("[TradPostListViewModel] getHomePost response posts try Catch : \(error)")
+            return nil
+        }
     }
 }
 

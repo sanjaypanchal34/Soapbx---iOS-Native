@@ -35,7 +35,7 @@ extension UIColor{
     static let titleGrey = UIColor.hex(toUIColor: "#D1D1D1") // grey
     static let disable = UIColor.hex(toUIColor: "#BABABA") // grey
     static let lightGrey = UIColor.hex(toUIColor: "#E0E0E0") // grey
-    
+    static let green = UIColor.hex(toUIColor: "#28a745") // grey
     
     static let titleRed = UIColor.hex(toUIColor: "#F1120B") // Red
 

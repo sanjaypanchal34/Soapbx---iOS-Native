@@ -30,12 +30,14 @@ class TradPostListViewModel {
     private var isDataLoading: Bool = false
     var currentPage = 1 {
         didSet {
-            if oldValue < currentPage, viewType == .fromHome {
-                if isDataLoading {
-                    currentPage = oldValue
-                } else {
-                    showLoader()
-                    getPost()
+            if self.isDataLoading == false {
+                if oldValue < currentPage, viewType == .fromHome {
+                    if isDataLoading {
+                        currentPage = oldValue
+                    } else {
+                        showLoader()
+                        getPost()
+                    }
                 }
             }
         }

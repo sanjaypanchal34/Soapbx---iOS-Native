@@ -8,33 +8,50 @@
 import UIKit
 import OTLContaner
 
+enum FollowFolloingType {
+    case followers, following, politicians
+}
+
 class FollowFolloingVC: UIViewController {
     
     @IBOutlet private weak var viewHeader: OTLHeader!
     
     @IBOutlet private weak var viewBody: UIView!
     @IBOutlet private weak var viewButtons: UIView!
-    @IBOutlet private weak var btnFollowers: UIButton!
-    @IBOutlet private weak var btnFollowing: UIButton!
-    @IBOutlet private weak var btnPoliticians: UIButton!
+    @IBOutlet private weak var btnFollowers: OTLTextButton!
+    @IBOutlet private weak var btnFollowing: OTLTextButton!
+    @IBOutlet private weak var btnPoliticians: OTLTextButton!
     @IBOutlet private weak var tblList: UITableView!
     @IBOutlet private weak var lblNodata: UILabel!
     
+    private let vmObject = FollowFolloingViewModel()
+    private let vmProfile = ProfileViewModel()
+    private var screenType = ProfileScreenType.profileTab
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
+        if vmObject.userObj == nil  {
+            navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    func navigate(_ user: PostUser, tab: FollowFolloingType, screenType: ProfileScreenType) {
+        vmObject.userObj = user
+        vmObject.userObj = user
+        vmObject.currentTabIndex = tab
+        
+        self.screenType = screenType
     }
     
     //
     private func setupUI() {
-        viewHeader.lblTitle.setHeader("Robert Watson")
+        viewHeader.lblTitle.setHeader(vmObject.userObj?.name ?? "")
         
         viewButtons.backgroundColor = .lightGrey
         viewButtons.layer.cornerRadius = 10
         btnFollowers.setTheme("Followers")
         btnFollowers.layer.cornerRadius = 10
-        btnFollowing.setTheme("Folloing")
+        btnFollowing.setTheme("Following")
         btnFollowing.layer.cornerRadius = 10
         btnPoliticians.setTheme("Politicians")
         btnPoliticians.layer.cornerRadius = 10
@@ -44,53 +61,144 @@ class FollowFolloingVC: UIViewController {
         lblNodata.setTheme("No Data Found",font: .bold, size: 22)
         lblNodata.isHidden = true
         
-        click_btnFollowers()
+        if vmObject.currentTabIndex == .followers {
+            click_btnFollowers()
+        }
+        else if vmObject.currentTabIndex == .following {
+            click_btnFollowing()
+        }
+        else if vmObject.currentTabIndex == .politicians {
+            click_btnPoliticians()
+        }
+        
+        var refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(pullupRefresh(_:)), for: .valueChanged)
+        tblList.refreshControl = refreshControl
+        
+        updateList()
+    }
+    
+    
+    // Actions
+    @objc private func pullupRefresh(_ sender: UIRefreshControl) {
+        sender.endRefreshing()
+        let oldValue = vmObject.currentTabIndex
+        vmObject.currentTabIndex = oldValue
     }
     
     @IBAction private func click_btnFollowers() {
+        vmObject.currentTabIndex = .followers
         btnFollowers.backgroundColor = .primaryBlue
-        btnFollowers.setTitleColor(.white, for: .normal)
+        btnFollowers.textColor = .white
         btnFollowing.backgroundColor = .clear
-        btnFollowing.setTitleColor(.titleBlack, for: .normal)
+        btnFollowing.textColor = .titleBlack
         btnPoliticians.backgroundColor = .clear
-        btnPoliticians.setTitleColor(.titleBlack, for: .normal)
-        lblNodata.isHidden = false
-        tblList.isHidden = true
+        btnPoliticians.textColor = .titleBlack
     }
-    @IBAction private func click_btnFolloing() {
+    @IBAction private func click_btnFollowing() {
+        vmObject.currentTabIndex = .following
         btnFollowers.backgroundColor = .clear
-        btnFollowers.setTitleColor(.titleBlack, for: .normal)
+        btnFollowers.textColor = .titleBlack
         btnFollowing.backgroundColor = .primaryBlue
-        btnFollowing.setTitleColor(.white, for: .normal)
+        btnFollowing.textColor = .white
         btnPoliticians.backgroundColor = .clear
-        btnPoliticians.setTitleColor(.titleBlack, for: .normal)
-        lblNodata.isHidden = false
-        tblList.isHidden = true
+        btnPoliticians.textColor = .titleBlack
     }
     @IBAction private func click_btnPoliticians() {
+        vmObject.currentTabIndex = .politicians
         btnFollowers.backgroundColor = .clear
-        btnFollowers.setTitleColor(.titleBlack, for: .normal)
+        btnFollowers.textColor = .titleBlack
         btnFollowing.backgroundColor = .clear
-        btnFollowing.setTitleColor(.titleBlack, for: .normal)
+        btnFollowing.textColor = .titleBlack
         btnPoliticians.backgroundColor = .primaryBlue
-        btnPoliticians.setTitleColor(.white, for: .normal)
-        tblList.isHidden = false
-        lblNodata.isHidden = true
-        
+        btnPoliticians.textColor = .white
     }
+    
+    private func updateList() {
+        vmObject.updateViewComplition = {
+            hideLoader()
+            self.tblList.reloadData()
+            self.tblList.isHidden = !(self.vmObject.arrList.count > 0)
+            self.lblNodata.isHidden = self.vmObject.arrList.count > 0
+        }
+    }
+    
+    // API Calls
+    
+    private func unfollowRemoveUser(indexPath: IndexPath, isRemove: Bool = false) {
+        showLoader()
+        vmProfile.unfollow(user: vmObject.arrList[indexPath.row].id ?? 0, isRemove: isRemove) {[self] result in
+            hideLoader()
+            self.vmObject.arrList.remove(at: indexPath.row)
+            if vmObject.arrList.count > 0 {
+                tblList.deleteRows(at: [indexPath], with: .fade)
+            } else {
+                tblList.reloadData()
+            }
+        }
+    }
+    
+    
 }
 extension FollowFolloingVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return self.vmObject.arrList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "PublicFiguresItemCell") as? PublicFiguresItemCell {
-            cell.setDataPoliticians()
+            if vmObject.currentTabIndex == .followers {
+                cell.setDataFollowers(self.vmObject.arrList[indexPath.row], indexPath: indexPath, delegate: self)
+            }
+            else  if vmObject.currentTabIndex == .following {
+                cell.setDataFollowing(self.vmObject.arrList[indexPath.row], indexPath: indexPath, delegate: self)
+            }
+            else if vmObject.currentTabIndex == .politicians {
+                cell.setDataPoliticians(self.vmObject.arrList[indexPath.row], indexPath: indexPath, delegate: self)
+            }
+            if screenType != .profileTab {
+                cell.hideButtonsForOtherUser()
+            }
             return cell
         }
         return UITableViewCell()
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard self.vmObject.arrList[indexPath.row].id != authUser?.user?.id else { return }
+        
+        if vmObject.currentTabIndex == .followers || vmObject.currentTabIndex == .following {
+            let vc = ProfileVC()
+            vc.navigateForOtherUser(self.vmObject.arrList[indexPath.row])
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        else if vmObject.currentTabIndex == .politicians {
+            let vc = PoliticianProfileVC()
+            vc.navigation(self.vmObject.arrList[indexPath.row], indexPath: indexPath, delegate: self)
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+}
+extension FollowFolloingVC: PublicFiguresItemDelegate {
+    func publicFigures(_ cell: PublicFiguresItemCell, didSelectActionButton object: PostUser) {
+        if vmObject.currentTabIndex == .followers {
+        }
+        else if vmObject.currentTabIndex == .following {
+            unfollowRemoveUser(indexPath: cell.indexPath)
+        }
+        else if vmObject.currentTabIndex == .politicians {
+            unfollowRemoveUser(indexPath: cell.indexPath)
+        }
+    }
     
+    func publicFigures(_ cell: PublicFiguresItemCell, didSelectAction2Button object: PostUser) {
+        if vmObject.currentTabIndex == .followers {
+            unfollowRemoveUser(indexPath: cell.indexPath, isRemove: true)
+        }
+    }
+}
+extension FollowFolloingVC: PoliticianProfileDelegate {
+    func politicianProfile(didUpadate user: PostUser, at indexPath: IndexPath) {
+        
+    }
 }

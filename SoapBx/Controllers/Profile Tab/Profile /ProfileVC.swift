@@ -27,6 +27,7 @@ class ProfileVC: UIViewController {
     
     // Private variables
     private let vmObject = ProfileViewModel()
+    private let vmLikeDislikeObj = LikeDislikeViewModel()
     private var screenType = ProfileScreenType.profileTab
     
     // Controllers lifecycle
@@ -66,7 +67,7 @@ class ProfileVC: UIViewController {
         btnManu.image = UIImage(named: "ic_drawer")
         btnManu.height = 20
         
-        viewProfile.setupUIWithData(screenType: screenType)
+        viewProfile.setupUIWithData(screenType: screenType, delegate: self)
         viewTradPost.regiter(viewType: screenType == .fromOtherUserProfile ? .fromOtherUserProfile : .fromProfile, delegate: self)
         
         if screenType == .profileTab {
@@ -75,18 +76,21 @@ class ProfileVC: UIViewController {
             btnNotification.isHidden = false
             btnManu.isHidden = false
         } else {
-            viewHeader.lblTitle.setHeader("Robert Watson")
+            viewHeader.lblTitle.setHeader("")
             viewHeader.btnBack.isHidden = false
             btnNotification.isHidden = true
             btnManu.isHidden = true
         }
-        
+        var refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(pullupRefresh(_:)), for: .valueChanged)
+        scrollBody.refreshControl = refreshControl
         scrollBody.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(updateList), name: .homePostUpdate, object: nil)
     }
 
     private func setData() {
         if let obj = vmObject.userObj, screenType == .fromOtherUserProfile {
+            viewHeader.lblTitle.text = obj.name
             viewProfile.updateOtherUserProfileData(obj)
         } else if let obj = authUser?.user{
             viewProfile.updateSelfProfileData(obj)
@@ -101,6 +105,12 @@ class ProfileVC: UIViewController {
         getUserPostWithProfile()
     }
     
+    @objc private func pullupRefresh(_ sender:UIRefreshControl ) {
+        vmObject.currentPage = 1
+        getUserPostWithProfile()
+        sender.endRefreshing()
+    }
+    
     //API calls
     private func getUserPostWithProfile() {
         if screenType == .profileTab {
@@ -113,19 +123,64 @@ class ProfileVC: UIViewController {
     
     private func getProfile() {
         showLoader()
-        vmObject.getProfile { result in
+        vmObject.getProfile {[self] result in
             hideLoader()
-            self.viewTradPost.updatePostObject(posts: self.vmObject.arrPosts)
-            self.viewTradPost.updateTerndsObject(ternds: self.vmObject.arrTernds)
+            if let user = vmObject.userObj {
+                viewProfile.updateProfileData(user)
+            }
+            viewTradPost.updatePostObject(posts: vmObject.arrPosts)
+            viewTradPost.updateTerndsObject(ternds: vmObject.arrTernds)
         }
     }
     
     private func getOtherProfile() {
         showLoader()
-        vmObject.getOtherProfile { result in
+        vmObject.getOtherProfile {[self] result in
             hideLoader()
-            self.viewTradPost.updatePostObject(posts: self.vmObject.arrPosts)
-            self.viewTradPost.updateTerndsObject(ternds: self.vmObject.arrTernds)
+            if let user = vmObject.userObj {
+                viewProfile.updateProfileData(user)
+            }
+            viewTradPost.updatePostObject(posts: vmObject.arrPosts)
+            viewTradPost.updateTerndsObject(ternds: vmObject.arrTernds)
+        }
+    }
+    
+    private func follow() {
+        showLoader()
+        vmObject.follow(user: vmObject.userObj?.id ?? 0,
+                         user: vmObject.userObj?.roleID ?? 3) {[self] result in
+            hideLoader()
+            if result.status {
+                vmObject.userObj?.statusUser = 1
+                if let user = vmObject.userObj {
+                    viewProfile.updateProfileData(user)
+                }
+            }
+        }
+    }
+    
+    private func unfollow() {
+        showLoader()
+        vmObject.unfollow(user: vmObject.userObj?.id ?? 0) {[self] result in
+            hideLoader()
+            if result.status {
+                vmObject.userObj?.statusUser = 0
+                if let user = vmObject.userObj {
+                    viewProfile.updateProfileData(user)
+                }
+            }
+        }
+    }
+    
+    private func hidePost(post id:Int) {
+        showLoader()
+        vmLikeDislikeObj.blockPost(post: id) { result in
+            hideLoader()
+            SoapBx.showToast(message: result.message)
+            if result.status {
+                self.vmObject.currentPage = 1
+                mackRootView(HomeVC())
+            }
         }
     }
 }
@@ -174,4 +229,19 @@ extension ProfileVC: TradPostListDelegate {
         vmObject.currentPage = 1
         getUserPostWithProfile()
     }
+}
+extension ProfileVC: ProfileUserInfoDelegate {
+    func profileUser(follow user: PostUser) {
+        if user.statusUser == 0{
+            follow()
+        } else if user.statusUser == 2{
+            unfollow()
+        }
+    }
+    
+    func profileUser(block user: PostUser) {
+        hidePost(post: user.id ?? 0)
+    }
+    
+    
 }

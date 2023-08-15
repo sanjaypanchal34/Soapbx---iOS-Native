@@ -22,7 +22,7 @@ class CreatePostViewModel {
     
     init() {
         arrTrends = [TrendsModel(name: addTrends)]
-        arrPolitions = [PostUser(name: addPolitician)]
+        arrPolitions = [PostUser.object(name: addPolitician)!]
     }
     
     

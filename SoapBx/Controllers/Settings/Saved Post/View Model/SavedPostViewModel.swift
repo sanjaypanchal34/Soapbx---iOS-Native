@@ -16,11 +16,13 @@ class SavedPostViewModel {
     var arrPosts:[PostModel] = []
     var currentPage = 1 {
         didSet {
-            if oldValue < currentPage {
-                if isDataLoading {
-                    currentPage = oldValue
-                } else {
-                    getSavedPosts()
+            if self.isDataLoading == false {
+                if oldValue < currentPage {
+                    if isDataLoading {
+                        currentPage = oldValue
+                    } else {
+                        getSavedPosts()
+                    }
                 }
             }
         }

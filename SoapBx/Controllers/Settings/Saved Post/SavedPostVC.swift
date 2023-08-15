@@ -108,12 +108,17 @@ class SavedPostVC: UIViewController{
     
     private func deletePost(post id:Int, row: Int) {
         showLoader()
-        vmLikeDislikeObj.delete(post: id) { result in
+        vmLikeDislikeObj.delete(post: id) {[self] result in
             hideLoader()
             SoapBx.showToast(message: result.message)
-            self.vmObject.arrPosts.remove(at: row)
-            if self.vmObject.arrPosts.count > 0{
-                self.tblList.deleteRows(at: [IndexPath(row: row, section: 0)], with: .fade)
+            vmObject.arrPosts.remove(at: row)
+            if vmObject.arrPosts.count > 0{
+                
+                if vmObject.arrPosts.count > 0 {
+                    tblList.deleteRows(at: [IndexPath(row: row, section: 0)], with: .fade)
+                } else {
+                    tblList.reloadData()
+                }
             }
         }
     }

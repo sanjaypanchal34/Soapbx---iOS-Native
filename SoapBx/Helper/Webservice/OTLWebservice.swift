@@ -118,7 +118,7 @@ enum Webservice
     }
     
     enum Settings: OTLRequestExecuter {
-        case getTrends, chooseTrends, getSubscriptionPlans, chooseSubscription, saveHistory(String), getSavedPosts, getUserTrends, feedback, addPoll
+        case getTrends, chooseTrends, getSubscriptionPlans, chooseSubscription, saveHistory(String), getSavedPosts, getUserTrends, feedback, addPoll, getPolls, getBockedUser, unfollowedAccounts, unblockUser(String), acceptRequest, deleteRequest(String)
         
         var method: OTLHTTPMethod {
             switch self {
@@ -127,6 +127,11 @@ enum Webservice
                 case .saveHistory:          return .get
                 case .getSavedPosts:        return .get
                 case .getUserTrends:        return .get
+                case .getPolls:             return .get
+                case .getBockedUser:        return .get
+                case .unfollowedAccounts:   return .get
+                case .unblockUser:          return .get
+                case .deleteRequest:        return .get
                 default: return .post
             }
         }
@@ -142,68 +147,91 @@ enum Webservice
                 case .getUserTrends:        return "getUserTrends"
                 case .feedback:             return "feedback"
                 case .addPoll:              return "addPoll"
+                case .getPolls:             return "getPolls"
+                case .getBockedUser:        return "getBockedUser"
+                case .unfollowedAccounts:   return "unfollowedAccounts"
+                case .unblockUser(let id):  return "unblockUser/\(id)"
+                case .acceptRequest:        return "acceptRequest"
+                case .deleteRequest(let id):    return "deleteRequest/\(id)"
             }
         }
     }
     
     enum Home: OTLRequestExecuter {
-        case getHomePost, getPost(String), commentOnPost, reportPostComment, likeDislikePost, deletePost(String), saveUnsavePost, blockReportUser, listing
+        case getHomePost, getPost(String), commentOnPost, reportPostComment, likeDislikePost, deletePost(String), saveUnsavePost, blockReportUser, listing, userSearchHistory(String), clearHistory, saveHistory(String), userSearch
        
         var method: OTLHTTPMethod {
             switch self {
                 case .getHomePost:          return .get
                 case .getPost:              return .get
+                case .userSearchHistory:    return .get
+                case .clearHistory:         return .get
+                case .saveHistory:          return .get
+                case .userSearch:           return .get
                 default: return .post
             }
         }
         
         var apiName: String {
             switch self {
-                case .getHomePost:          return "homeScreen"
-                case .getPost(let id):      return "getPost/\(id)"
-                case .commentOnPost:        return "commentOnPost"
-                case .reportPostComment:    return "reportPostComment"
-                case .likeDislikePost:      return "likeDislikePost"
-                case .deletePost(let id):   return "deletePost/\(id)"
-                case .saveUnsavePost:       return "saveUnsavePost"
-                case .blockReportUser:      return "blockReportUser"
-                case .listing:              return "listing"
+                case .getHomePost:                  return "homeScreen"
+                case .getPost(let id):              return "getPost/\(id)"
+                case .commentOnPost:                return "commentOnPost"
+                case .reportPostComment:            return "reportPostComment"
+                case .likeDislikePost:              return "likeDislikePost"
+                case .deletePost(let id):           return "deletePost/\(id)"
+                case .saveUnsavePost:               return "saveUnsavePost"
+                case .blockReportUser:              return "blockReportUser"
+                case .listing:                      return "listing"
+                case .userSearchHistory(let id):    return "userSearchHistory/\(id)"
+                case .clearHistory:                 return "clearHistory"
+                case .saveHistory(let id):          return "saveHistory/\(id)"
+                case .userSearch:                   return "userSearch"
             }
         }
     }
     
     enum Post: OTLRequestExecuter {
-        case addPost, deleteImage(String), deletePost(String), editPost
+        case addPost, deleteImage(String), deletePost(String), editPost, getFollowingOfUser(String), getFollowersOfUser(String), getPoliticiansOfUser(String)
         
         var method: OTLHTTPMethod {
             switch self {
+                case .getFollowingOfUser:       return .get
+                case .getFollowersOfUser:       return .get
+                case .getPoliticiansOfUser:     return .get
                 default: return .post
             }
         }
         
         var apiName: String {
             switch self {
-                case .addPost:                  return "addPost"
-                case .deleteImage(let id):      return "deleteImage/\(id)"
-                case .deletePost(let id):       return "deletePost/\(id)"
-                case .editPost:                 return "editPost"
+                case .addPost:                      return "addPost"
+                case .deleteImage(let id):          return "deleteImage/\(id)"
+                case .deletePost(let id):           return "deletePost/\(id)"
+                case .editPost:                     return "editPost"
+                case .getFollowingOfUser(let id):   return "getFollowingOfUser/\(id)"
+                case .getFollowersOfUser(let id):   return "getFollowersOfUser/\(id)"
+                case .getPoliticiansOfUser(let id): return "getPoliticiansOfUser/\(id)"
+
             }
         }
     }
     
     enum Profile: OTLRequestExecuter {
-        case getProfile, updateProfile, deleteAccount, getPoliticianOrUser(String), verifyOTPUpdateProfile, changePassword, notificationStatus
+        case getProfile, updateProfile, deleteAccount, getPoliticianOrUser(String), verifyOTPUpdateProfile, changePassword, notificationStatus, politicianList, unfollowRemoveUser, followPolitician, sendFollowRequest
         
         var method: OTLHTTPMethod {
             switch self {
                 case .getProfile:               return .get
                 case .getPoliticianOrUser:      return .get
+                case .politicianList:            return .get
                 default: return .post
             }
         }
         
         var apiName: String {
             switch self {
+                    
                 case .getProfile:               return "detail"
                 case .updateProfile:            return "updateProfile"
                 case .deleteAccount:            return "delete_account"
@@ -211,6 +239,10 @@ enum Webservice
                 case .verifyOTPUpdateProfile:   return "verifyOtpUpdateProfile"
                 case .changePassword:           return "changePassword"
                 case .notificationStatus:       return "notificationStatus"
+                case .politicianList:           return "politicianList"
+                case .unfollowRemoveUser:       return "unfollowRemoveUser"
+                case .followPolitician:         return "followPolitician"
+                case .sendFollowRequest:        return "sendFollowRequest"
             }
         }
     }

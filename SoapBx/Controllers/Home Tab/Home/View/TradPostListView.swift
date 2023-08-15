@@ -26,6 +26,7 @@ class TradPostListView: UIView {
     private var dotMenuIndexPath: IndexPath?
     private let vmObject = TradPostListViewModel()
     private let vmLikeDislikeObj = LikeDislikeViewModel()
+    private var refreshControl: UIRefreshControl?
     
     private var viewType:TradPostListViewType = .fromHome
     private var delegate:TradPostListDelegate?
@@ -61,6 +62,9 @@ class TradPostListView: UIView {
         updateView()
         if viewType == .fromHome {
             getPost()
+            refreshControl = UIRefreshControl()
+            refreshControl?.addTarget(self, action: #selector(pullupRefresh), for: .valueChanged)
+            tblList.refreshControl = refreshControl
         }
         NotificationCenter.default.addObserver(self, selector: #selector(updateList), name: .homePostUpdate, object: nil)
     }
@@ -82,7 +86,14 @@ class TradPostListView: UIView {
     }
     
     @objc private func updateList() {
+        vmObject.currentPage = 1
         getPost()
+    }
+    
+    @objc private func pullupRefresh() {
+        vmObject.currentPage = 1
+        getPost()
+        refreshControl?.endRefreshing()
     }
     
         // API Calls
@@ -167,12 +178,15 @@ class TradPostListView: UIView {
     
     private func deletePost(post id:Int, row: Int) {
         showLoader()
-        vmLikeDislikeObj.delete(post: id) { result in
+        vmLikeDislikeObj.delete(post: id) {[self] result in
             hideLoader()
             SoapBx.showToast(message: result.message)
             self.vmObject.arrPosts.remove(at: row)
-            if self.vmObject.arrPosts.count > 0{
-                self.tblList.deleteRows(at: [IndexPath(row: row, section: 0)], with: .fade)
+            if vmObject.arrPosts.count > 0{
+                tblList.deleteRows(at: [IndexPath(row: row, section: 0)], with: .fade)
+            }
+            else {
+                tblList.reloadData()
             }
         }
     }

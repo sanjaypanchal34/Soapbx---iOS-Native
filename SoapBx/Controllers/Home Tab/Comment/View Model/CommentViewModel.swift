@@ -18,11 +18,13 @@ class CommentViewModel {
     private var isDataLoading: Bool = false
     var currentPage = 1 {
         didSet {
-            if oldValue < currentPage {
-                if isDataLoading {
-                    currentPage = oldValue
-                } else {
-                    getPost()
+            if self.isDataLoading == false {
+                if oldValue < currentPage {
+                    if isDataLoading {
+                        currentPage = oldValue
+                    } else {
+                        getPost()
+                    }
                 }
             }
         }

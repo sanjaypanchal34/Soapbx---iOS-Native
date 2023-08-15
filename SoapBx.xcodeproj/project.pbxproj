@@ -140,6 +140,16 @@
 		04DA4A5B2A67E15B00AF540B /* ChangePasswordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04DA4A592A67E15A00AF540B /* ChangePasswordVC.xib */; };
 		04E844BA2A727DD1004AAF37 /* SignupRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E844B92A727DD1004AAF37 /* SignupRequestModel.swift */; };
 		04F896CF2A738B4700636B2F /* ProfileCoverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F896CE2A738B4700636B2F /* ProfileCoverViewModel.swift */; };
+		84255FE02A84EC5700D6170A /* PublicFiguresViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84255FDF2A84EC5700D6170A /* PublicFiguresViewModel.swift */; };
+		84A2A51D2A866F0F00387118 /* PoliticianProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A51B2A866F0F00387118 /* PoliticianProfileVC.swift */; };
+		84A2A51E2A866F0F00387118 /* PoliticianProfileVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A2A51C2A866F0F00387118 /* PoliticianProfileVC.xib */; };
+		84A2A5212A86929900387118 /* ViewBasicDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A5202A86929900387118 /* ViewBasicDetails.swift */; };
+		84A2A5232A86952500387118 /* ViewPoliticianScorecard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A5222A86952500387118 /* ViewPoliticianScorecard.swift */; };
+		84A2A5332A869B7A00387118 /* ViewContactFollow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A5322A869B7A00387118 /* ViewContactFollow.swift */; };
+		84A2A5362A87E81500387118 /* FollowFolloingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A5352A87E81500387118 /* FollowFolloingViewModel.swift */; };
+		84A2A5392A893E1100387118 /* ConnectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A5382A893E1100387118 /* ConnectionViewModel.swift */; };
+		84A2A5412A8B4F0B00387118 /* OTLContaner.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A2A53F2A8B4EFF00387118 /* OTLContaner.xcframework */; };
+		84A2A5422A8B4F0B00387118 /* OTLContaner.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84A2A53F2A8B4EFF00387118 /* OTLContaner.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		84ADF9F52A7B7596005D3E9D /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ADF9F42A7B7596005D3E9D /* ChangePasswordViewModel.swift */; };
 		84B1D5232A74D06E0051558B /* YouInterestedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B1D5222A74D06E0051558B /* YouInterestedViewModel.swift */; };
 		84B1D5292A74D3110051558B /* YouInterestedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B1D5282A74D3110051558B /* YouInterestedModel.swift */; };
@@ -155,8 +165,6 @@
 		84B1D5E02A79782B0051558B /* SavedPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B1D5DF2A79782B0051558B /* SavedPostViewModel.swift */; };
 		84C67FBA2A816033000B7503 /* UserNotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C67FB92A816033000B7503 /* UserNotificationModel.swift */; };
 		84C67FC12A840BD3000B7503 /* PollsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C67FC02A840BD3000B7503 /* PollsViewModel.swift */; };
-		84C67FC42A841F63000B7503 /* OTLContaner.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C67FC22A841F5D000B7503 /* OTLContaner.xcframework */; };
-		84C67FC52A841F63000B7503 /* OTLContaner.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84C67FC22A841F5D000B7503 /* OTLContaner.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		84CC5AA02A7F735500B88B0A /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CC5A9F2A7F735500B88B0A /* ProfileViewModel.swift */; };
 		84CC5AA32A7F910600B88B0A /* SuggestFeatureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CC5AA22A7F910600B88B0A /* SuggestFeatureViewModel.swift */; };
 		84CC5AA62A7FB1CC00B88B0A /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CC5AA52A7FB1CC00B88B0A /* EditProfileViewModel.swift */; };
@@ -172,7 +180,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				84C67FC52A841F63000B7503 /* OTLContaner.xcframework in Embed Frameworks */,
+				84A2A5422A8B4F0B00387118 /* OTLContaner.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -316,6 +324,15 @@
 		04E844B92A727DD1004AAF37 /* SignupRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupRequestModel.swift; sourceTree = "<group>"; };
 		04F896CE2A738B4700636B2F /* ProfileCoverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoverViewModel.swift; sourceTree = "<group>"; };
 		6606E9F1F3155B6AB15CD78B /* Pods-SoapBx.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoapBx.release.xcconfig"; path = "Target Support Files/Pods-SoapBx/Pods-SoapBx.release.xcconfig"; sourceTree = "<group>"; };
+		84255FDF2A84EC5700D6170A /* PublicFiguresViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicFiguresViewModel.swift; sourceTree = "<group>"; };
+		84A2A51B2A866F0F00387118 /* PoliticianProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoliticianProfileVC.swift; sourceTree = "<group>"; };
+		84A2A51C2A866F0F00387118 /* PoliticianProfileVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PoliticianProfileVC.xib; sourceTree = "<group>"; };
+		84A2A5202A86929900387118 /* ViewBasicDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewBasicDetails.swift; sourceTree = "<group>"; };
+		84A2A5222A86952500387118 /* ViewPoliticianScorecard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPoliticianScorecard.swift; sourceTree = "<group>"; };
+		84A2A5322A869B7A00387118 /* ViewContactFollow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewContactFollow.swift; sourceTree = "<group>"; };
+		84A2A5352A87E81500387118 /* FollowFolloingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowFolloingViewModel.swift; sourceTree = "<group>"; };
+		84A2A5382A893E1100387118 /* ConnectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionViewModel.swift; sourceTree = "<group>"; };
+		84A2A53F2A8B4EFF00387118 /* OTLContaner.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = OTLContaner.xcframework; sourceTree = "<group>"; };
 		84ADF9F42A7B7596005D3E9D /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewModel.swift; sourceTree = "<group>"; };
 		84B1D5222A74D06E0051558B /* YouInterestedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouInterestedViewModel.swift; sourceTree = "<group>"; };
 		84B1D5282A74D3110051558B /* YouInterestedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouInterestedModel.swift; sourceTree = "<group>"; };
@@ -331,7 +348,6 @@
 		84B1D5DF2A79782B0051558B /* SavedPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedPostViewModel.swift; sourceTree = "<group>"; };
 		84C67FB92A816033000B7503 /* UserNotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationModel.swift; sourceTree = "<group>"; };
 		84C67FC02A840BD3000B7503 /* PollsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollsViewModel.swift; sourceTree = "<group>"; };
-		84C67FC22A841F5D000B7503 /* OTLContaner.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = OTLContaner.xcframework; sourceTree = "<group>"; };
 		84CC5A9F2A7F735500B88B0A /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		84CC5AA22A7F910600B88B0A /* SuggestFeatureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestFeatureViewModel.swift; sourceTree = "<group>"; };
 		84CC5AA52A7FB1CC00B88B0A /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
@@ -347,7 +363,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A2AF6D6F88FA4790A2B1DBB1 /* Pods_SoapBx.framework in Frameworks */,
-				84C67FC42A841F63000B7503 /* OTLContaner.xcframework in Frameworks */,
+				84A2A5412A8B4F0B00387118 /* OTLContaner.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,6 +384,7 @@
 		042A6A952A5F1C5200BB1D71 /* FollowFolloingVC */ = {
 			isa = PBXGroup;
 			children = (
+				84A2A5342A87E80200387118 /* View Model */,
 				042A6A992A5F1C9500BB1D71 /* FollowFolloingVC.swift */,
 				042A6A9A2A5F1C9500BB1D71 /* FollowFolloingVC.xib */,
 			);
@@ -400,6 +417,7 @@
 		043E265F2A5C5EA600695C2D /* Public Figures Tab */ = {
 			isa = PBXGroup;
 			children = (
+				84A2A51A2A866ECC00387118 /* Politician Profile */,
 				043E26602A5C5EC500695C2D /* Public Figures */,
 			);
 			path = "Public Figures Tab";
@@ -408,6 +426,7 @@
 		043E26602A5C5EC500695C2D /* Public Figures */ = {
 			isa = PBXGroup;
 			children = (
+				84255FDE2A84EC4500D6170A /* View Model */,
 				043E26672A5C64C500695C2D /* Cell */,
 				043E26612A5C5EDE00695C2D /* PublicFiguresVC.swift */,
 				043E26622A5C5EDE00695C2D /* PublicFiguresVC.xib */,
@@ -591,6 +610,7 @@
 		04749C282A69881600A67A96 /* Connection */ = {
 			isa = PBXGroup;
 			children = (
+				84A2A5372A893E0000387118 /* View Model */,
 				04749C2C2A6989DD00A67A96 /* ConnectionVC.swift */,
 				04749C2D2A6989DD00A67A96 /* ConnectionVC.xib */,
 			);
@@ -929,7 +949,7 @@
 		049D88AF2A52DD2800876D27 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
-				84C67FC22A841F5D000B7503 /* OTLContaner.xcframework */,
+				84A2A53F2A8B4EFF00387118 /* OTLContaner.xcframework */,
 			);
 			path = Framework;
 			sourceTree = "<group>";
@@ -1080,6 +1100,50 @@
 				04E844B92A727DD1004AAF37 /* SignupRequestModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		84255FDE2A84EC4500D6170A /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				84255FDF2A84EC5700D6170A /* PublicFiguresViewModel.swift */,
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		84A2A51A2A866ECC00387118 /* Politician Profile */ = {
+			isa = PBXGroup;
+			children = (
+				84A2A51F2A86928500387118 /* View */,
+				84A2A51B2A866F0F00387118 /* PoliticianProfileVC.swift */,
+				84A2A51C2A866F0F00387118 /* PoliticianProfileVC.xib */,
+			);
+			path = "Politician Profile";
+			sourceTree = "<group>";
+		};
+		84A2A51F2A86928500387118 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				84A2A5202A86929900387118 /* ViewBasicDetails.swift */,
+				84A2A5322A869B7A00387118 /* ViewContactFollow.swift */,
+				84A2A5222A86952500387118 /* ViewPoliticianScorecard.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		84A2A5342A87E80200387118 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				84A2A5352A87E81500387118 /* FollowFolloingViewModel.swift */,
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		84A2A5372A893E0000387118 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				84A2A5382A893E1100387118 /* ConnectionViewModel.swift */,
+			);
+			path = "View Model";
 			sourceTree = "<group>";
 		};
 		84A94A3F2A7ACCFE00E36A9F /* View Model */ = {
@@ -1382,6 +1446,7 @@
 				047E119D2A59C2A300B7CC05 /* EnableLocationVC.xib in Resources */,
 				047DB0882A596D4E003DFE41 /* SubscribeVC.xib in Resources */,
 				049D88A52A52D9A800876D27 /* SFProDisplay-Regular.ttf in Resources */,
+				84A2A51E2A866F0F00387118 /* PoliticianProfileVC.xib in Resources */,
 				049D88882A52D5D900876D27 /* Assets.xcassets in Resources */,
 				04CA0E102A6435290043C530 /* CreatePostVC.xib in Resources */,
 				049AE1A62A6C28A8001FAA65 /* NotificationListItemCell.xib in Resources */,
@@ -1443,9 +1508,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84A2A5392A893E1100387118 /* ConnectionViewModel.swift in Sources */,
 				0442A55C2A57191500661988 /* ProfileCoverVC.swift in Sources */,
 				049AE19B2A6C22A8001FAA65 /* NotificationListVC.swift in Sources */,
 				043E268A2A5D553800695C2D /* TradPostListView.swift in Sources */,
+				84A2A5232A86952500387118 /* ViewPoliticianScorecard.swift in Sources */,
 				04A979792A7031C0002724E7 /* GooglePlaceAPI.swift in Sources */,
 				047DB08C2A596F6F003DFE41 /* SubscriptionNotesItemCell.swift in Sources */,
 				049AE1A02A6C24E7001FAA65 /* MessageListVC.swift in Sources */,
@@ -1453,6 +1520,7 @@
 				044C01C42A6BF42C00E79AD2 /* PollsListVC.swift in Sources */,
 				046D86AD2A65B50800D0312B /* SideMenu.swift in Sources */,
 				046D86B32A65BFE300D0312B /* EditProfileVC.swift in Sources */,
+				84A2A51D2A866F0F00387118 /* PoliticianProfileVC.swift in Sources */,
 				04A9797F2A703D69002724E7 /* LocationItemCell.swift in Sources */,
 				84C67FBA2A816033000B7503 /* UserNotificationModel.swift in Sources */,
 				84ADF9F52A7B7596005D3E9D /* ChangePasswordViewModel.swift in Sources */,
@@ -1470,6 +1538,7 @@
 				047E11A22A59C81200B7CC05 /* HomeVC.swift in Sources */,
 				049D887F2A52D5D600876D27 /* AppDelegate.swift in Sources */,
 				047DB0942A59756F003DFE41 /* SubscribeNotesModel.swift in Sources */,
+				84255FE02A84EC5700D6170A /* PublicFiguresViewModel.swift in Sources */,
 				047CACC42A56843900A64779 /* ForgotPasswrodVC.swift in Sources */,
 				040759C02A55D35F00318462 /* SignupVC.swift in Sources */,
 				0439B7412A60612100B74568 /* CommentItemCell.swift in Sources */,
@@ -1481,6 +1550,7 @@
 				049AE1A52A6C28A8001FAA65 /* NotificationListItemCell.swift in Sources */,
 				047DB0812A5960FB003DFE41 /* YouInterestedItemCell.swift in Sources */,
 				0459B5942A680DFA0096802C /* NotificationSettingModel.swift in Sources */,
+				84A2A5362A87E81500387118 /* FollowFolloingViewModel.swift in Sources */,
 				046D86AB2A65ADF400D0312B /* MenuModel.swift in Sources */,
 				047E11942A59808800B7CC05 /* SubscriptionItemCell.swift in Sources */,
 				04C17CB42A5478220034450A /* Extantion.swift in Sources */,
@@ -1489,6 +1559,7 @@
 				04DA4A472A67C55F00AF540B /* SavedPostVC.swift in Sources */,
 				043E26632A5C5EDE00695C2D /* PublicFiguresVC.swift in Sources */,
 				047DB0902A597183003DFE41 /* SubscriptionNotesHeaderCell.swift in Sources */,
+				84A2A5332A869B7A00387118 /* ViewContactFollow.swift in Sources */,
 				84C67FC12A840BD3000B7503 /* PollsViewModel.swift in Sources */,
 				04E844BA2A727DD1004AAF37 /* SignupRequestModel.swift in Sources */,
 				04749C2E2A6989DD00A67A96 /* ConnectionVC.swift in Sources */,
@@ -1533,6 +1604,7 @@
 				049D88972A52D6B100876D27 /* SplashVC.swift in Sources */,
 				04CA0E0F2A6435290043C530 /* CreatePostVC.swift in Sources */,
 				047604FC2A6BD36C00ED9AA6 /* Toast.swift in Sources */,
+				84A2A5212A86929900387118 /* ViewBasicDetails.swift in Sources */,
 				049D774E2A71384500A848F9 /* OTLConfiguration.swift in Sources */,
 				047DB0772A5950D3003DFE41 /* VerificationCodeVC.swift in Sources */,
 				04DA4A422A67BF5C00AF540B /* InviteFriendsVC.swift in Sources */,

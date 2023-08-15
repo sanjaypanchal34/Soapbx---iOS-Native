@@ -200,6 +200,9 @@ public struct APIResponse {
             let msg = json[config.messageKey] as? String ?? ""
             body = json
             message = msg
+            if let status = json["status"] as? Int {
+                self.code = status
+            }
         } else if let array = json as? OTLJsonArray {
             body = ["data": array]
             message = "Array Json"

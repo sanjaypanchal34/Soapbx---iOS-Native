@@ -17,10 +17,13 @@ class PollsListVC: UIViewController {
     @IBOutlet private weak var lblNoDataFound: UILabel!
     @IBOutlet private weak var tblList: UITableView!
     
+    private let vmObject = PollsViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupUI()
+        getPolls()
     }
 
     private func setupUI() {
@@ -37,6 +40,13 @@ class PollsListVC: UIViewController {
         let vc = PostPollsVC()
         navigationController?.pushViewController(vc, animated: true)
     }
+    
+    func getPolls() {
+        showLoader()
+        vmObject.getPolls { result in
+            hideLoader()
+        }
+    }
 }
 extension PollsListVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -46,7 +56,7 @@ extension PollsListVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "PublicFiguresItemCell") as? PublicFiguresItemCell {
             cell.indexPath = indexPath
-            cell.setDataBlock()
+//            cell.setDataBlock()
             return cell
         }
         return UITableViewCell()

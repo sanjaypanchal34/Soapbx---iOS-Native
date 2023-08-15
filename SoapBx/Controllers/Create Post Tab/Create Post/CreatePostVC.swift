@@ -107,7 +107,7 @@ class CreatePostVC: UIViewController {
             return postTag.trend
         }) ?? []
         
-        vmObject.arrPolitions = politions + [PostUser(name: vmObject.addPolitician)]
+        vmObject.arrPolitions = politions + [PostUser.object(name: vmObject.addPolitician)!]
         vmObject.arrTrends = trends + [TrendsModel(name: vmObject.addTrends)]
     }
     
@@ -411,7 +411,7 @@ extension CreatePostVC : UITextViewDelegate {
 }
 extension CreatePostVC : SearchDelegate, YouInterestedDelegate {
     func search(selectedUserForCreatePost users: [PostUser]) {
-        vmObject.arrPolitions = users + [PostUser(name: vmObject.addPolitician)]
+        vmObject.arrPolitions = users + [PostUser.object(name: vmObject.addPolitician)!]
         collPolitician.reloadData()
     }
     

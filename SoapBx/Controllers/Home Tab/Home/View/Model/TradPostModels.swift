@@ -125,7 +125,7 @@ struct PostUser: Codable {
     let email: String?
     let emailVerifiedAt: String?
     let countryCode, phoneNumber, location: String?
-    var latitude, longitude: Double?
+    var latitude, longitude: DoubleCast?
     let electedIn, party: String?
     let phoneVerifiedAt: String?
     let otp: String?
@@ -252,3 +252,40 @@ struct PostUser: Codable {
 //        case imageURL = "image_url"
 //    }
 //}
+
+enum DoubleCast: Codable {
+    
+    case string(String)
+    
+    var stringValue: String? {
+        switch self {
+            case .string(let s):
+                return s
+        }
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        if let x = try? container.decode(String.self) {
+            self = .string(x)
+            return
+        }
+        if let x = try? container.decode(Double.self) {
+            self = .string("\(x)")
+            return
+        }
+        if let x = try? container.decode(Int.self) {
+            self = .string("\(x)")
+            return
+        }
+        throw DecodingError.typeMismatch(DoubleCast.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Wrong type for MyValue"))
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+        switch self {
+            case .string(let x):
+                try container.encode(x)
+        }
+    }
+}

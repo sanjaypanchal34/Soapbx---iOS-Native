@@ -46,7 +46,7 @@ struct SignupRequestModel {
             "phone_number": phone_number,
             "password": password,
             "confirm_password": confirm_password,
-            "country_code": country_code,
+            "country_code": "+" + country_code,
             "location": location,
             "longitude": longitude,
             "latitude": latitude,

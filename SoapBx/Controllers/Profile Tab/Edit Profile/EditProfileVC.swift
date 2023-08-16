@@ -75,6 +75,7 @@ class EditProfileVC: UIViewController {
                           leftIcon: UIImage(named: "ic_phone"))
         txtEmail.setTheme(placeholder: "Email",
                           leftIcon: UIImage(named: "ic_email"))
+        txtEmail.isUserInteractionEnabled = false
         txtLocation.setTheme(placeholder: "Location",
                              leftIcon: UIImage(named: "ic_location_grey"))
         txtLocation.delegate = self

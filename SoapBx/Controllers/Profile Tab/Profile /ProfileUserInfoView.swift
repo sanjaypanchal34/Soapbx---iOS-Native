@@ -10,6 +10,7 @@ import OTLContaner
 protocol ProfileUserInfoDelegate{
     func profileUser(follow user:PostUser)
     func profileUser(block user:PostUser)
+    func profileUserMessage(message user: PostUser)
 }
 
 class ProfileUserInfoView: UIView {
@@ -175,8 +176,7 @@ class ProfileUserInfoView: UIView {
     }
     
     @IBAction private func click_btnMessage() {
-        let vc = ChatVC()
-        rootViewController.pushViewController(vc, animated: true)
+        delegate?.profileUserMessage(message: userObj!)
     }
     
     @IBAction private func click_btnFollow() {

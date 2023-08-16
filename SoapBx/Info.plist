@@ -10,6 +10,8 @@
 		<string>SFProDisplay-Semibold.ttf</string>
 		<string></string>
 	</array>
+    <key>UIUserInterfaceStyle</key>
+    <string>Light</string>
 	<key>NSCameraUsageDescription</key>
 	<string>$(PRODUCT_NAME) would like to access camera for upload profile and post</string>
 	<key>NSPhotoLibraryUsageDescription</key>

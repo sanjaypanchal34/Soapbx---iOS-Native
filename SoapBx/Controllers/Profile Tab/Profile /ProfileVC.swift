@@ -76,7 +76,9 @@ class ProfileVC: UIViewController {
             btnNotification.isHidden = false
             btnManu.isHidden = false
         } else {
-            viewHeader.lblTitle.setHeader("")
+            if let obj = vmObject.userObj {
+                viewHeader.lblTitle.setHeader(obj.name ?? "")
+            }
             viewHeader.btnBack.isHidden = false
             btnNotification.isHidden = true
             btnManu.isHidden = true
@@ -172,6 +174,24 @@ class ProfileVC: UIViewController {
         }
     }
     
+    private func message() {
+        showLoader()
+        vmObject.message(user: vmObject.userObj?.id ?? 0) {[self] result in
+            hideLoader()
+            if result.status {
+                print(result.message)
+                print(vmObject.uniqueId)
+                let vc = ChatVC()
+                if let obj = vmObject.userObj {
+                    vc.userObj = vmObject.userObj
+                    vc.uniqueID = vmObject.uniqueId
+                    vc.relationID = vmObject.relationId
+                }
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        }
+    }
+    
     private func hidePost(post id:Int) {
         showLoader()
         vmLikeDislikeObj.blockPost(post: id) { result in
@@ -243,5 +263,7 @@ extension ProfileVC: ProfileUserInfoDelegate {
         hidePost(post: user.id ?? 0)
     }
     
-    
+    func profileUserMessage(message user: PostUser) {
+        message()
+    }
 }

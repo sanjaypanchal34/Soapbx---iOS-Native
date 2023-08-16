@@ -217,6 +217,27 @@ enum Webservice
         }
     }
     
+    enum Chat: OTLRequestExecuter {
+        case startChat, userChat(String), sendMessage
+        
+        var method: OTLHTTPMethod {
+            switch self {
+                case .startChat:       return .get
+                case .userChat:       return .get
+                case .sendMessage:     return .get
+                default: return .post
+            }
+        }
+        
+        var apiName: String {
+            switch self {
+                case .startChat:                      return "startChat"
+                case .userChat(let id):          return "userChat/\(id)"
+                case .sendMessage:           return "sendMessage"
+            }
+        }
+    }
+    
     enum Profile: OTLRequestExecuter {
         case getProfile, updateProfile, deleteAccount, getPoliticianOrUser(String), verifyOTPUpdateProfile, changePassword, notificationStatus, politicianList, unfollowRemoveUser, followPolitician, sendFollowRequest
         

@@ -111,6 +111,27 @@ extension OTLTextField {
     }
 }
 
+extension OTLCountryCode {
+    
+    func setTheme(_ text: String = "",
+                  placeholder: String,
+                  defultCode:Int = 91,
+                  color: UIColor = .titleBlack,
+                  font: AppFont = .regular,
+                  size: CGFloat = 16,
+                  leftIcon:UIImage? = nil,
+                  leftSelectedIcon:UIImage? = nil,
+                  backgound: UIColor = .primaryBlue) {
+        self.text = text
+        self.placeholder = placeholder
+        self.color = color
+        self.font = font.font(size: size)
+        self.leftIcon = leftIcon
+        self.leftSelectedIcon = leftSelectedIcon
+        self.borderActiveColor = backgound
+    }
+}
+
 extension OTLPasswordField {
     
     func setTheme(_ text: String = "",

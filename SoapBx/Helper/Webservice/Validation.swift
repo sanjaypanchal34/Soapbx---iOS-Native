@@ -28,7 +28,7 @@ enum validationRX{
             case .email: return "^[_A-Za-z0-9-+]+(\\.[_A-Za-z0-9-+]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"
                 //            case .password: return "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@$!%*#?&])[A-Za-z\\d$@$!%*#?&]{6,50}$"
             case .password: return "^(?=.*[A-Z])(?=.*[0-9]).{4,50}$"
-            case .phoneNo : return "[0-9]"
+            case .phoneNo : return "^[0-9+]{0,1}+[0-9]{5,16}$"
             }
         }
     }
@@ -76,9 +76,7 @@ extension String
     
     func validatePhone() -> ValidationResult {
         if self.isEmptyString {
-            return (false, "Please enter password")
-        } else if self.count < 8 || self.count >= 15 {
-            return (false, "Password must contain at least 8 characters")
+            return (false, "Please enter phone number")
         } else if !self.validateWith(RX: .phoneNo)  {
             return (false, "Please enter valid phone number")
         } else {

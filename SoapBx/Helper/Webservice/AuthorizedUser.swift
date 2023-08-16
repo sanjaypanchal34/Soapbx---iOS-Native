@@ -10,12 +10,13 @@
 import Foundation
 
 var authUser : AuthorizedUser?
-
+typealias RememberMe = (email: String,password: String)
 
 struct OTLAppKey {
     static let isFirstTime = "OTL_isFirstTime"
     static let loginUser = "OTL_loginUser"
     static let isGuestUser = "OTL_isGuestUser"
+    static let RememberMe = "OTL_RememberMe"
 }
 
 enum UserLoginType{
@@ -73,6 +74,22 @@ class AuthorizedUser {
 //            loginType = .guestLogin
       }
 
+    static func rememberMe()-> RememberMe? {
+        if UserDefaults.standard.value(forKey: OTLAppKey.RememberMe) != nil {
+            if let json = UserDefaults.standard.value(forKey: OTLAppKey.RememberMe) as? JSON {
+                let email = json["email"] as? String ?? ""
+                let pass = json["password"] as? String ?? ""
+                return RememberMe(email, pass)
+            }
+        }
+        return nil
+    }
+    
+    static func updateRememberMe(email: String, password: String) {
+        let json = ["email": email, "password": password]
+        UserDefaults.standard.set(json, forKey: OTLAppKey.RememberMe)
+        UserDefaults.standard.synchronize()
+    }
 }
 
 enum SubscriptionPlan: String {

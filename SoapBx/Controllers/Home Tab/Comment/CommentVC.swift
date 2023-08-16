@@ -230,7 +230,7 @@ class CommentVC: UIViewController {
     
     private func postComment() {
         showLoader()
-        vmObject.postComment(comment: txtComment.text ?? "") { result in
+        vmObject.postComment(comment: txtComment.text ?? "") {[self] result in
             hideLoader()
             self.txtComment.text = ""
             if result.status{

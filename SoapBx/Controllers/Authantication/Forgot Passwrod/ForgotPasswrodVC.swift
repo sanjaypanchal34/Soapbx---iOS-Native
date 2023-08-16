@@ -21,7 +21,7 @@ class ForgotPasswrodVC: UIViewController {
     
     @IBOutlet private weak var btnNext: OTLTextButton!
     
-    private let vmObject = LoginViewModel()
+    private let vmObject = SignupViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()

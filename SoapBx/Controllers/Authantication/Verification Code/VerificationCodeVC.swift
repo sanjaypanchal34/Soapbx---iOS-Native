@@ -64,14 +64,11 @@ class VerificationCodeVC: UIViewController {
         lblDescription.attributedText = attributesMain
         
         otpField.setOTPTheme()
+        otpField.delegate = self
         btnResend.setTheme("Resend", color: .primaryBlue, font: .medium)
         btnNext.appButton(screenType == .fromUpdateProfile ? "Verify" : "Next")
         
-        if screenType == .fromSignup || screenType == .fromUpdateProfile{
-            btnResend.isHidden = false
-        } else {
-            btnResend.isHidden = true
-        }
+        btnResend.isHidden = false
     }
     
     // action
@@ -81,6 +78,9 @@ class VerificationCodeVC: UIViewController {
         }
         else if screenType == .fromUpdateProfile {
             resendUpdateProfileOTP()
+        }
+        else if screenType == .fromForgotPassword {
+            resendForgotOTP()
         }
     }
     
@@ -96,6 +96,9 @@ class VerificationCodeVC: UIViewController {
             }
             else if screenType == .fromForgotPassword {
                 verifyOTP()
+            }
+            else if screenType == .fromUpdateProfile {
+                verifyUpdateProfileOTP()
             }
         }
     }
@@ -169,5 +172,21 @@ class VerificationCodeVC: UIViewController {
                 showToast(message: result.message)
             }
         }
+    }
+    
+    private func resendForgotOTP() {
+        showLoader()
+        vmObject.forgotPassword(email: vmObject.signupJson?.email ?? "") { result in
+            hideLoader()
+            showToast(message: result.message)
+        }
+    }
+}
+extension VerificationCodeVC : OTLOTPViewDelegate {
+    func otlOTP(_ otpView: OTLContaner.OTLOTPView, didUpdateValue string: String, at index: Int) {
+    }
+    
+    func otlOTP(_ otpView:OTLOTPView, didFinish string: String ) {
+        click_Next()
     }
 }

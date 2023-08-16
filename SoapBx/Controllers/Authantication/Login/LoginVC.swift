@@ -55,6 +55,14 @@ class LoginVC: UIViewController {
         btnContinueGuest.setTheme("Continue as a guest", color: .titleGrey, font: .medium)
         lblNotAMamber.setTheme("Not a member?", size: 16)
         btnSignUp.setTheme("Sign up now", color: .primaryBlue)
+        
+        if let remembe = AuthorizedUser.rememberMe() {
+            txtEmail.text = remembe.email
+            txtPassword.text = remembe.password
+            imgRemamberMe.image = nil
+            imgRemamberMe.backgroundColor = .primaryBlue
+            imgRemamberMe.layer.cornerRadius = 2
+        }
     }
     
     
@@ -106,9 +114,13 @@ class LoginVC: UIViewController {
         showLoader()
         vmObject.login(email: txtEmail.text,
                        password: txtPassword.text,
-                       complition:  { result in
+                       complition:  {[self] result in
             hideLoader()
             if result.status{
+                if imgRemamberMe.image == nil {
+                    AuthorizedUser.updateRememberMe(email: txtEmail.text, password: txtPassword.text)
+                }
+                
                 if authUser?.user?.step == 2 {
                     mackRootView(ProfileCoverVC())
                 }

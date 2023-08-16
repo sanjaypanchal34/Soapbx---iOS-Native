@@ -192,15 +192,17 @@ class CreatePostVC: UIViewController {
     
     private func addImageAlert() {
         PHPhotoLibrary.execute(controller: self, onAccessHasBeenGranted: {
-            let camera = OTLAlertModel(title: "Camera", id: 0)
-            let gallary = OTLAlertModel(title: "Gallary", id: 1)
-            let cancel = OTLAlertModel(title: "Cancel", id: 2, style: .destructive)
-            
-            showAlert(title: "Media Type", message: "", buttons: [camera, gallary, cancel]) { alert in
-                if alert.id == 0 {
-                    self.openCamera()
-                } else if alert.id == 1 {
-                    self.openGallary()
+            DispatchQueue.main.async {
+                let camera = OTLAlertModel(title: "Camera", id: 0)
+                let gallary = OTLAlertModel(title: "Gallary", id: 1)
+                let cancel = OTLAlertModel(title: "Cancel", id: 2, style: .destructive)
+                
+                showAlert(title: "Media Type", message: "", buttons: [camera, gallary, cancel]) { alert in
+                    if alert.id == 0 {
+                        self.openCamera()
+                    } else if alert.id == 1 {
+                        self.openGallary()
+                    }
                 }
             }
         })

@@ -100,7 +100,7 @@ class CommentViewModel {
     func postComment(comment: String, complition: @escaping (ResponseCallBack)) {
         let para: JSON = ["post_id": objPost?.id ?? 0, "comment": comment]
         
-        Webservice.Home.commentOnPost.requestWith(parameter: para) { result in
+        Webservice.Home.commentOnPost.requestWith(parameter: para) {[self] result in
             switch result {
                 case .fail(let message,let code,_):
                     complition(CompanComplition(message: message, code: code ?? 111, status: false))
@@ -112,7 +112,8 @@ class CommentViewModel {
                                 if let postId = comment["post_id"] as? String {
                                     comment["post_id"] = Int(postId) ?? 0
                                 }
-                                self.objPost?.commentsCount = (self.objPost?.commentsCount ?? 0) + 1
+                                let count = objPost?.commentsCount ?? 0
+                                self.objPost?.commentsCount = count + 1
                                 let commentData = try JSONSerialization.data(withJSONObject: comment)
                                 let model = try JSONDecoder().decode(CommentModel.self, from: commentData)
                                 self.arrComments.insert(model, at: 0)

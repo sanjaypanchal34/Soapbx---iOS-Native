@@ -148,8 +148,7 @@
 		84A2A5332A869B7A00387118 /* ViewContactFollow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A5322A869B7A00387118 /* ViewContactFollow.swift */; };
 		84A2A5362A87E81500387118 /* FollowFolloingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A5352A87E81500387118 /* FollowFolloingViewModel.swift */; };
 		84A2A5392A893E1100387118 /* ConnectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A5382A893E1100387118 /* ConnectionViewModel.swift */; };
-		84A2A5412A8B4F0B00387118 /* OTLContaner.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A2A53F2A8B4EFF00387118 /* OTLContaner.xcframework */; };
-		84A2A5422A8B4F0B00387118 /* OTLContaner.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84A2A53F2A8B4EFF00387118 /* OTLContaner.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		84A2A5682A8C801000387118 /* OTLContaner.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A2A5672A8C801000387118 /* OTLContaner.xcframework */; };
 		84ADF9F52A7B7596005D3E9D /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ADF9F42A7B7596005D3E9D /* ChangePasswordViewModel.swift */; };
 		84B1D5232A74D06E0051558B /* YouInterestedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B1D5222A74D06E0051558B /* YouInterestedViewModel.swift */; };
 		84B1D5292A74D3110051558B /* YouInterestedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B1D5282A74D3110051558B /* YouInterestedModel.swift */; };
@@ -180,7 +179,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				84A2A5422A8B4F0B00387118 /* OTLContaner.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -332,7 +330,7 @@
 		84A2A5322A869B7A00387118 /* ViewContactFollow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewContactFollow.swift; sourceTree = "<group>"; };
 		84A2A5352A87E81500387118 /* FollowFolloingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowFolloingViewModel.swift; sourceTree = "<group>"; };
 		84A2A5382A893E1100387118 /* ConnectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionViewModel.swift; sourceTree = "<group>"; };
-		84A2A53F2A8B4EFF00387118 /* OTLContaner.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = OTLContaner.xcframework; sourceTree = "<group>"; };
+		84A2A5672A8C801000387118 /* OTLContaner.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = OTLContaner.xcframework; sourceTree = "<group>"; };
 		84ADF9F42A7B7596005D3E9D /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewModel.swift; sourceTree = "<group>"; };
 		84B1D5222A74D06E0051558B /* YouInterestedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouInterestedViewModel.swift; sourceTree = "<group>"; };
 		84B1D5282A74D3110051558B /* YouInterestedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouInterestedModel.swift; sourceTree = "<group>"; };
@@ -363,7 +361,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A2AF6D6F88FA4790A2B1DBB1 /* Pods_SoapBx.framework in Frameworks */,
-				84A2A5412A8B4F0B00387118 /* OTLContaner.xcframework in Frameworks */,
+				84A2A5682A8C801000387118 /* OTLContaner.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -949,7 +947,7 @@
 		049D88AF2A52DD2800876D27 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
-				84A2A53F2A8B4EFF00387118 /* OTLContaner.xcframework */,
+				84A2A5672A8C801000387118 /* OTLContaner.xcframework */,
 			);
 			path = Framework;
 			sourceTree = "<group>";

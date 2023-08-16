@@ -317,6 +317,17 @@ SWIFT_CLASS("_TtC11OTLContaner9OTLButton")
 @end
 
 
+SWIFT_CLASS("_TtC11OTLContaner14OTLCountryCode")
+@interface OTLCountryCode : UIView
+@property (nonatomic, strong) UIColor * _Nullable backgroundColor;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+- (nonnull instancetype)initWithFrame:(CGRect)frame SWIFT_UNAVAILABLE;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
+@end
+
+
+
 SWIFT_CLASS("_TtC11OTLContaner13OTLDashedView")
 @interface OTLDashedView : UIControl
 @property (nonatomic) IBInspectable CGFloat cornerRadius;

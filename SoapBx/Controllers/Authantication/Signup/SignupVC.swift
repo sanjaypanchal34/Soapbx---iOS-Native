@@ -15,7 +15,7 @@ class SignupVC: UIViewController {
     
     @IBOutlet private weak var txtFirstName: OTLTextField!
     @IBOutlet private weak var txtLastName: OTLTextField!
-    @IBOutlet private weak var txtPhoneNo: OTLTextField!
+    @IBOutlet private weak var txtPhoneNo: OTLCountryCode!
     @IBOutlet private weak var txtEmail: OTLTextField!
     @IBOutlet private weak var txtPassword: OTLPasswordField!
     @IBOutlet private weak var txtConfPassword: OTLPasswordField!
@@ -131,7 +131,11 @@ class SignupVC: UIViewController {
         }
         else if validateConfPass.status == false {
             showToast(message: validateConfPass.message)
-        } else {
+        }
+        else if imgIAccept.image == nil{
+            showToast(message: "please select accept")
+        }
+        else {
             register()
         }
         

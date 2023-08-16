@@ -124,8 +124,9 @@ struct PostUser: Codable {
     let profilePhoto, profilePhotoThumb, coverPhoto, coverPhotoThumb: String?
     let email: String?
     let emailVerifiedAt: String?
-    let countryCode, phoneNumber, location, longitude: String?
-    let latitude, electedIn, party: String?
+    let countryCode, phoneNumber, location: String?
+    var latitude, longitude: Double?
+    let electedIn, party: String?
     let phoneVerifiedAt: String?
     let otp: String?
     let verified, active, onlineStatus: Int?

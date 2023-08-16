@@ -283,6 +283,83 @@ public enum OTLImageButtonType {
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
   @objc deinit
 }
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) final public class OTLCountryCode : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) final public var delegate: OTLContaner.OTLTextFieldDelegate?
+  @_Concurrency.MainActor(unsafe) final public var placeholder: Swift.String {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var text: Swift.String {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var keyboardType: UIKit.UIKeyboardType {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override final public var backgroundColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) final public var bgColor: UIKit.UIColor? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var titleStyle: OTLContaner.OTLTextPresentable {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var isShowTitle: Swift.Bool {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var isShowError: Swift.Bool {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var leftIcon: UIKit.UIImage? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var leftIconHeight: CoreFoundation.CGFloat {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var leftSelectedIcon: UIKit.UIImage?
+  @_Concurrency.MainActor(unsafe) final public var rightIcon: UIKit.UIImage? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var rightIconHeight: CoreFoundation.CGFloat {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var rightSelectedIcon: UIKit.UIImage?
+  @_Concurrency.MainActor(unsafe) final public var style: OTLContaner.OTLTextFieldStyle {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var font: UIKit.UIFont {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var color: UIKit.UIColor {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var borderColor: UIKit.UIColor {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var countryCode: Swift.Int {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var borderActiveColor: UIKit.UIColor?
+  @_Concurrency.MainActor(unsafe) final public var borderErrorColor: UIKit.UIColor?
+  @_Concurrency.MainActor(unsafe) final public var maxLength: Swift.Int?
+  @objc deinit
+}
 public protocol OTLDatePickerDelegate {
   func dateTime(onCancel dateTime: OTLContaner.OTLDatePicker)
   func dateTime(_ dateTime: OTLContaner.OTLDatePicker, onSelected date: Foundation.Date)
@@ -510,6 +587,7 @@ extension OTLContaner.OTLPasswordFieldDelegate {
     get
     set
   }
+  @_Concurrency.MainActor(unsafe) public var delegate: OTLContaner.OTLOTPViewDelegate?
   @_Concurrency.MainActor(unsafe) @objc override dynamic public var backgroundColor: UIKit.UIColor? {
     @objc get
     @objc set
@@ -583,6 +661,14 @@ public enum OTLButtonStyle {
   @_Concurrency.MainActor(unsafe) public func setRightImage(_ image: UIKit.UIImage, isSelected: Swift.Bool = false)
   @_Concurrency.MainActor(unsafe) public func setBackgoundColor(_ color: UIKit.UIColor, isSelected: Swift.Bool = false)
   @objc deinit
+}
+public protocol OTLOTPViewDelegate {
+  func otlOTP(_ otpView: OTLContaner.OTLOTPView, didUpdateValue string: Swift.String, at index: Swift.Int)
+  func otlOTP(_ otpView: OTLContaner.OTLOTPView, didFinish string: Swift.String)
+}
+extension OTLContaner.OTLOTPViewDelegate {
+  public func otlOTP(_ otpView: OTLContaner.OTLOTPView, didUpdateValue string: Swift.String, at index: Swift.Int)
+  public func otlOTP(_ otpView: OTLContaner.OTLOTPView, didFinish string: Swift.String)
 }
 @objc @_inheritsConvenienceInitializers public class OTLDateConvert : ObjectiveC.NSObject {
   public static let instance: OTLContaner.OTLDateConvert

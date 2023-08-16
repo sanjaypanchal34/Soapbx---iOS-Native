@@ -29,7 +29,7 @@ class ChatViewModel {
         }
     }
     
-    func sendMessage(relationId relationId: String, sender sId: String, receiver rId: String, message msg: String, complition: @escaping (ResponseCallBack)) {
+    func sendMessage(relationId relationId: Int, sender sId: Int, receiver rId: Int, message msg: String, complition: @escaping (ResponseCallBack)) {
         let para: JSON = ["chat_relation_id":relationId, "sender_id" : sId, "receiver_id" : rId, "message" : msg, "type" : "0"]
         Webservice.Chat.sendMessage.requestWith(parameter: para) { result in
             switch result {
@@ -89,14 +89,13 @@ class ChatViewModel {
                                             var rName: String = ""
                                             var rImage: String = ""
                                             if let s = mData["sender"] as? JSON {
-                                                sName = (mData["full_name"] as? String)!
-                                                sImage = (mData["profile_photo"] as? String)!
+                                                sName = (s["name"] as? String)!
+                                                sImage = (s["profile_photo"] as? String)!
                                             }
-                                            if let s = mData["receiver"] as? JSON {
-                                                rName = (mData["full_name"] as? String)!
-                                                rImage = (mData["profile_photo"] as? String)!
+                                            if let r = mData["receiver"] as? JSON {
+                                                rName = (r["name"] as? String)!
+                                                rImage = (r["profile_photo"] as? String)!
                                             }
-                                            
                                             let model: ChatModel = .init(id: id, chat_relation_id: chat_relation_id, sender_id: sender_id, receiver_id: receiver_id, message: message, sName: sName, sImage: sImage, rName: rName, rImage: rImage)
                                             self.arrList.append(model)
                                         }

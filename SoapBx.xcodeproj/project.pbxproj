@@ -144,6 +144,10 @@
 		1F280DBF2A8CC19400273DD2 /* OTLContaner.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84A2A5672A8C801000387118 /* OTLContaner.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1F280DC32A8CD99200273DD2 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F280DC22A8CD99200273DD2 /* ChatViewModel.swift */; };
 		1F280DC52A8D089300273DD2 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F280DC42A8D089300273DD2 /* ChatModel.swift */; };
+		1F280DCB2A8D3DE100273DD2 /* ChatRCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F280DC72A8D3DE100273DD2 /* ChatRCell.xib */; };
+		1F280DCC2A8D3DE100273DD2 /* ChatSCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F280DC82A8D3DE100273DD2 /* ChatSCell.xib */; };
+		1F280DCD2A8D3DE100273DD2 /* ChatSCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F280DC92A8D3DE100273DD2 /* ChatSCell.swift */; };
+		1F280DCE2A8D3DE100273DD2 /* ChatRCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F280DCA2A8D3DE100273DD2 /* ChatRCell.swift */; };
 		84255FE02A84EC5700D6170A /* PublicFiguresViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84255FDF2A84EC5700D6170A /* PublicFiguresViewModel.swift */; };
 		84A2A51D2A866F0F00387118 /* PoliticianProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A51B2A866F0F00387118 /* PoliticianProfileVC.swift */; };
 		84A2A51E2A866F0F00387118 /* PoliticianProfileVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A2A51C2A866F0F00387118 /* PoliticianProfileVC.xib */; };
@@ -327,6 +331,10 @@
 		04F896CE2A738B4700636B2F /* ProfileCoverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoverViewModel.swift; sourceTree = "<group>"; };
 		1F280DC22A8CD99200273DD2 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		1F280DC42A8D089300273DD2 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
+		1F280DC72A8D3DE100273DD2 /* ChatRCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatRCell.xib; sourceTree = "<group>"; };
+		1F280DC82A8D3DE100273DD2 /* ChatSCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatSCell.xib; sourceTree = "<group>"; };
+		1F280DC92A8D3DE100273DD2 /* ChatSCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatSCell.swift; sourceTree = "<group>"; };
+		1F280DCA2A8D3DE100273DD2 /* ChatRCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRCell.swift; sourceTree = "<group>"; };
 		6606E9F1F3155B6AB15CD78B /* Pods-SoapBx.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoapBx.release.xcconfig"; path = "Target Support Files/Pods-SoapBx/Pods-SoapBx.release.xcconfig"; sourceTree = "<group>"; };
 		84255FDF2A84EC5700D6170A /* PublicFiguresViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicFiguresViewModel.swift; sourceTree = "<group>"; };
 		84A2A51B2A866F0F00387118 /* PoliticianProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoliticianProfileVC.swift; sourceTree = "<group>"; };
@@ -969,6 +977,7 @@
 		04A1690A2A6D40E60024EA7F /* Chat  */ = {
 			isa = PBXGroup;
 			children = (
+				1F280DC62A8D3DB900273DD2 /* Cells */,
 				1F280DC12A8CD97D00273DD2 /* ViewModel */,
 				04A1690E2A6D41360024EA7F /* ChatVC.swift */,
 				04A1690F2A6D41360024EA7F /* ChatVC.xib */,
@@ -1114,6 +1123,17 @@
 				1F280DC42A8D089300273DD2 /* ChatModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1F280DC62A8D3DB900273DD2 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				1F280DCA2A8D3DE100273DD2 /* ChatRCell.swift */,
+				1F280DC72A8D3DE100273DD2 /* ChatRCell.xib */,
+				1F280DC92A8D3DE100273DD2 /* ChatSCell.swift */,
+				1F280DC82A8D3DE100273DD2 /* ChatSCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		84255FDE2A84EC4500D6170A /* View Model */ = {
@@ -1425,6 +1445,7 @@
 				0439B7422A60612100B74568 /* CommentItemCell.xib in Resources */,
 				049D88A72A52D9A800876D27 /* SFProDisplay-Medium.ttf in Resources */,
 				04CA0E092A6407430043C530 /* ThreeDotMenuView.xib in Resources */,
+				1F280DCC2A8D3DE100273DD2 /* ChatSCell.xib in Resources */,
 				04DA4A4D2A67C7DA00AF540B /* SuggestFeatureVC.xib in Resources */,
 				043E26772A5C70CC00695C2D /* SearchItemCell.xib in Resources */,
 				044C01CA2A6BF45600E79AD2 /* PostPollsVC.xib in Resources */,
@@ -1449,6 +1470,7 @@
 				04DA4A5B2A67E15B00AF540B /* ChangePasswordVC.xib in Resources */,
 				044C01C52A6BF42C00E79AD2 /* PollsListVC.xib in Resources */,
 				049A0A3C2A5C53CA008A4CAF /* TrendsItemCell.xib in Resources */,
+				1F280DCB2A8D3DE100273DD2 /* ChatRCell.xib in Resources */,
 				04CA0DFF2A6403B20043C530 /* ThreeDotItemCell.xib in Resources */,
 				04DA4A482A67C55F00AF540B /* SavedPostVC.xib in Resources */,
 				0459B58C2A680CC10096802C /* NotificationSettingVC.xib in Resources */,
@@ -1583,6 +1605,7 @@
 				044C01C92A6BF45600E79AD2 /* PostPollsVC.swift in Sources */,
 				04DA4A5A2A67E15B00AF540B /* ChangePasswordVC.swift in Sources */,
 				049A0A3B2A5C53CA008A4CAF /* TrendsItemCell.swift in Sources */,
+				1F280DCD2A8D3DE100273DD2 /* ChatSCell.swift in Sources */,
 				049D774F2A71384500A848F9 /* APIClient.swift in Sources */,
 				84B1D5422A75246E0051558B /* TradPostListViewModel.swift in Sources */,
 				049D77512A71384500A848F9 /* LogType.swift in Sources */,
@@ -1601,6 +1624,7 @@
 				84B1D53C2A7505C50051558B /* SubscriptionViewModel.swift in Sources */,
 				049D889D2A52D95900876D27 /* LoginVC.swift in Sources */,
 				047DB07C2A595FED003DFE41 /* YouInterestedVC.swift in Sources */,
+				1F280DCE2A8D3DE100273DD2 /* ChatRCell.swift in Sources */,
 				04DA4A312A67B1E100AF540B /* SettingModel.swift in Sources */,
 				043E266A2A5C64E300695C2D /* PublicFiguresItemCell.swift in Sources */,
 				04A979772A702E4F002724E7 /* SignupViewModel.swift in Sources */,

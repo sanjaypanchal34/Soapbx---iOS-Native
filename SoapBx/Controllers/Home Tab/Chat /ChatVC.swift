@@ -23,7 +23,6 @@ class ChatVC: UIViewController , PusherDelegate{
     
     var uniqueID: Int!
     var relationID: Int!
-    var arrData : [Any] = []
     @IBOutlet private weak var viewHeader: OTLHeader!
     @IBOutlet private weak var btnDotMenu: OTLImageButton!
     
@@ -50,7 +49,17 @@ class ChatVC: UIViewController , PusherDelegate{
 
     private func updateList() {
         vmObject.updateViewComplition = {
-            self.tblList.reloadData()
+            DispatchQueue.main.async {
+                if self.vmObject.arrList.count > 0 {
+                    DispatchQueue.main.async {
+                        if self.vmObject.arrList.count > 0 {
+                            self.tblList.reloadData {
+                                self.tblList.scrollToBottom()
+                            }
+                        }
+                    }
+                }
+            }
             hideLoader()
         }
     }
@@ -60,7 +69,13 @@ class ChatVC: UIViewController , PusherDelegate{
         vmObject.getMessage(relationId : relationID) { [self] result in
             hideLoader()
             if result.status {
-                self.tblList.reloadData()
+                DispatchQueue.main.async {
+                    if self.vmObject.arrList.count > 0 {
+                        self.tblList.reloadData {
+                            self.tblList.scrollToBottom()
+                        }
+                    }
+                }
             }
         }
     }
@@ -73,7 +88,8 @@ class ChatVC: UIViewController , PusherDelegate{
         btnDotMenu.image = UIImage(named: "ic_dots")
         btnDotMenu.height = 30
         
-        tblList.register(["PublicFiguresItemCell"], delegate: self, dataSource: self)
+        tblList.register(["ChatRCell"], delegate: self, dataSource: self)
+        tblList.register(["ChatSCell"], delegate: self, dataSource: self)
         updateList()
         lblNoData.noDataTitle("")
         
@@ -116,7 +132,7 @@ class ChatVC: UIViewController , PusherDelegate{
     @IBAction private func click_btnSendMessage() {
         if self.txtMessage.text?.count ?? 0 > 0 {
             showLoader()
-            vmObject.sendMessage(relationId : "\(relationID)", sender: "\(userObj?.id)", receiver: "\(authUser?.user?.id)", message: self.txtMessage.text ?? "") { [self] result in
+            vmObject.sendMessage(relationId : relationID, sender: authUser?.user?.id ?? 0, receiver: userObj?.id ?? 0, message: self.txtMessage.text ?? "") { [self] result in
                 hideLoader()
                 if result.status {
                     self.txtMessage.text = ""
@@ -128,14 +144,49 @@ class ChatVC: UIViewController , PusherDelegate{
     
 }
 extension ChatVC: UITableViewDataSource, UITableViewDelegate  {
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return vmObject.arrList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let id: Int = authUser?.user?.id ?? 0
+        let item: ChatModel = vmObject.arrList[indexPath.row] as! ChatModel
+        if id == item.sender_id {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ChatSCell") as! ChatSCell
+            cell.lblMessage.text = item.message
+            cell.lblMessage.sizeToFit()
+            cell.vwMessage.roundedViewCorner(radius: 5)
+            cell.lblUName.text = ""
+            cell.lblUName.text = item.sName?.first?.uppercased()
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ChatRCell") as! ChatRCell
+            cell.lblMessage.text = item.message
+            cell.lblMessage.sizeToFit()
+            cell.vwMessage.roundedViewCorner(radius: 5)
+            cell.lblUName.text = ""
+            cell.lblUName.text = item.sName?.first?.uppercased()
+            return cell
+        }
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        printLog("[TradPostListView] willDisplay --->")
+        if (indexPath.row + 1) >= (vmObject.arrList.count - 3){
+            if vmObject.currentPage < vmObject.totalPage {
+                vmObject.currentPage = vmObject.currentPage + 1
+            }
+        }
+    }
     
     func setupPusher() -> Void {
         print("kPusherKey: \(kPusherKey)")
@@ -152,21 +203,20 @@ extension ChatVC: UITableViewDataSource, UITableViewDelegate  {
             
             eventName = channel.bind(eventName:kPusherNotifEventMessage, callback: { data -> Void in
                 print("notif_comment message received: \(data ?? "")")
-//                let modelStat:MChatObject =  decodeResponseDataToModel(type: MChatObject.self, responseObj: data as Any)!
+                if let d = data as? JSON {
+                    let chat_relation_id: String = d["chat_relation_id"] as! String
+                    let message: String = d["message"] as! String
+                    let model: ChatModel = .init(id: self.vmObject.arrList.count + 1, chat_relation_id: Int(chat_relation_id), sender_id: 10, receiver_id: 11, message: message, sName: "Sumit", sImage: "", rName: "Arvind", rImage: "")
+                    self.vmObject.arrList.append(model)
+                }
                 
-//                if modelStat.action_type == "chat" {
-//                    let chat: Chat = .init(url: modelStat.file_url, message: modelStat.message, userID: modelStat.senderId, id: modelStat.module_id, pName: "", time: modelStat.msg_time, type: modelStat.msg_type, v_thumbnail_url: modelStat.thumbnail_presignedUrl, user_role: modelStat.user_role, jersey_number: modelStat.jersey_number)
-//
-//                    self.arrData.append(chat)
-                    DispatchQueue.main.async {
-                        if self.arrData.count > 0 {
-                            self.tblList.reloadData {
-                                self.tblList.scrollToBottom()
-                            }
+                DispatchQueue.main.async {
+                    if self.vmObject.arrList.count > 0 {
+                        self.tblList.reloadData {
+                            self.tblList.scrollToBottom()
                         }
-                        
                     }
-//                }
+                }
             })
 
         }
@@ -192,21 +242,6 @@ extension ChatVC: UITableViewDataSource, UITableViewDelegate  {
         return String(format: "%@%d", channel_id, self.uniqueID )
         //ls.message.44080_ls.private.18659
     }
-    
-    func decodeResponseDataToModel<T:Codable>(type:T.Type,responseObj:Any) -> T? {
-        let jsonDecoder = JSONDecoder()
-        var model:T
-        do {
-            let data = try JSONSerialization.data(withJSONObject: responseObj, options: [])
-            model = try jsonDecoder.decode(type, from: data)
-            return model
-        }
-        catch {
-            print(error.localizedDescription)
-        }
-        return nil
-    }
-    
 }
 
 extension UITableView {
@@ -242,4 +277,11 @@ extension UITableView {
         return indexPath.section < self.numberOfSections && indexPath.row < self.numberOfRows(inSection: indexPath.section)
     }
     
+}
+
+extension UIView {
+    func roundedViewCorner(radius: Int){
+        self.layer.cornerRadius = CGFloat(radius)
+        self.clipsToBounds = true
+    }
 }

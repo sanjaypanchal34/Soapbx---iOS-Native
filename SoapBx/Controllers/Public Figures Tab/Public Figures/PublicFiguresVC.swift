@@ -110,7 +110,6 @@ extension PublicFiguresVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        printLog("[TradPostListView] willDisplay --->")
         if (indexPath.row + 1) >= (vmObject.arrList.count - 3){
             if vmObject.currentPage < vmObject.totalPage {
                 vmObject.currentPage = vmObject.currentPage + 1

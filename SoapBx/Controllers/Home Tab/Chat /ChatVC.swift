@@ -101,7 +101,7 @@ class ChatVC: UIViewController , PusherDelegate{
         viewMessage.backgroundColor = .lightGrey
         viewMessage.layer.cornerRadius = 10
         viewMessage.layer.borderWidth = 1
-        viewMessage.layer.borderColor = UIColor.titleGray.cgColor
+        viewMessage.layer.borderColor = UIColor.titleGrey.cgColor
         
         btnAddMedia.image = UIImage(named: "ic_paymentAdd")
         btnAddMedia.height = 25
@@ -137,8 +137,6 @@ class ChatVC: UIViewController , PusherDelegate{
     @IBAction private func click_btnSendMessage() {
         if self.txtMessage.text?.count ?? 0 > 0 {
             vmObject.sendMessage(relationId : relationID, sender: authUser?.user?.id ?? 0, receiver: userObj?.id ?? 0, message: self.txtMessage.text ?? "") { [self] result in
-                hideLoader()
-                showToast(message: result.message)
                 if result.status {
                     self.txtMessage.text = ""
                     print("Message sent Successfully")

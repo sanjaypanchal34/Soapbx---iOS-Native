@@ -14,11 +14,11 @@ class SignupViewModel {
     var selectedSearch:GMapResult?
     var signupJson: SignupRequestModel?
     
-    func register(phone number: String, country code: String = "+1", email: String, verified by: Int, complition: @escaping (ResponseCallBack)) {
+    func register(phone number: String, country code: String = "1", email: String, verified by: Int, complition: @escaping (ResponseCallBack)) {
         var para: JSON = ["email": email, "verified_by":by]
         if by == 1 {
             para["number"] = number
-            para["country_code"] = code
+            para["country_code"] = "+" + code
         }
         
         Webservice.Auth.register.requestWith(parameter: para) { result in

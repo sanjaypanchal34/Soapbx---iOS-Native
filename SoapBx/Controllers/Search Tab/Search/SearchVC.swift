@@ -225,19 +225,22 @@ class SearchVC: UIViewController {
             hideLoader()
             if result.status {
                 if self.screenType == .fromPublicFigures {
-                    self.vmObject.arrList.append(self.vmPublic.arrList[indexPath.row])
-                    self.vmPublic.searchString = ""
-                    let vc = PoliticianProfileVC()
-                    vc.navigation(self.vmPublic.arrList[indexPath.row], indexPath: indexPath, delegate: self)
-                    self.navigationController?.pushViewController(vc, animated: true)
+                    if self.vmPublic.arrList.count >= (indexPath.row + 1) {
+                        self.vmObject.arrList.append(self.vmPublic.arrList[indexPath.row])
+                        self.vmPublic.searchString = ""
+                        let vc = PoliticianProfileVC()
+                        vc.navigation(self.vmPublic.arrList[indexPath.row], indexPath: indexPath, delegate: self)
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
                 }
                 else if self.screenType == .searchTab {
-                    
-                    self.vmObject.arrList.append(self.vmObject.arrSearchList[indexPath.row])
-                    self.vmObject.searchString = ""
-                    let vc = ProfileVC()
-                    vc.navigateForOtherUser(self.vmObject.arrSearchList[indexPath.row])
-                    self.navigationController?.pushViewController(vc, animated: true)
+                    if self.vmObject.arrSearchList.count >= (indexPath.row + 1) {
+                        self.vmObject.arrList.append(self.vmObject.arrSearchList[indexPath.row])
+                        self.vmObject.searchString = ""
+                        let vc = ProfileVC()
+                        vc.navigateForOtherUser(self.vmObject.arrSearchList[indexPath.row])
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
                 }
             }
         }

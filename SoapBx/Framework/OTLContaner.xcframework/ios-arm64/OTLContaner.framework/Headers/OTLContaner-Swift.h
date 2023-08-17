@@ -254,6 +254,7 @@ using UInt = size_t;
 #endif
 
 #if defined(__OBJC__)
+
 @class UILabel;
 @class NSCoder;
 
@@ -319,6 +320,7 @@ SWIFT_CLASS("_TtC11OTLContaner9OTLButton")
 
 SWIFT_CLASS("_TtC11OTLContaner14OTLCountryCode")
 @interface OTLCountryCode : UIView
+@property (nonatomic, getter=isUserInteractionEnabled) BOOL userInteractionEnabled;
 @property (nonatomic, strong) UIColor * _Nullable backgroundColor;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
@@ -357,6 +359,7 @@ SWIFT_CLASS("_TtC11OTLContaner13OTLDatePicker")
 
 SWIFT_CLASS("_TtC11OTLContaner12OTLTextField")
 @interface OTLTextField : UIView
+@property (nonatomic, getter=isUserInteractionEnabled) BOOL userInteractionEnabled;
 @property (nonatomic, strong) UIColor * _Nullable backgroundColor;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
@@ -430,6 +433,7 @@ SWIFT_CLASS("_TtC11OTLContaner11OTLPTButton")
 
 SWIFT_CLASS("_TtC11OTLContaner16OTLPasswordField")
 @interface OTLPasswordField : UIView
+@property (nonatomic, getter=isUserInteractionEnabled) BOOL userInteractionEnabled;
 @property (nonatomic, strong) UIColor * _Nullable backgroundColor;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");

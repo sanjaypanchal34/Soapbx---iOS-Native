@@ -132,7 +132,7 @@ class SignupVC: UIViewController {
         else if validateConfPass.status == false {
             showToast(message: validateConfPass.message)
         }
-        else if imgIAccept.image == nil{
+        else if imgIAccept.image != nil{
             showToast(message: "please select accept")
         }
         else {
@@ -162,6 +162,7 @@ class SignupVC: UIViewController {
     private func register() {
         showLoader()
         vmObject.register(phone: txtPhoneNo.text,
+                          country: txtPhoneNo.countryCode.toString,
                           email: txtEmail.text,
                           verified: intVerifyType,
                           complition: { result in
@@ -175,7 +176,7 @@ class SignupVC: UIViewController {
                     phone_number: self.txtPhoneNo.text,
                     password: self.txtPassword.text,
                     confirm_password: self.txtConfPassword.text,
-                    country_code: "+1",
+                    country_code: self.txtPhoneNo.countryCode.toString,
                     location: self.vmObject.selectedSearch?.formattedAddress ?? "",
                     longitude: self.vmObject.selectedSearch?.geometry?.location?.lng ?? 0,
                     latitude: self.vmObject.selectedSearch?.geometry?.location?.lat ?? 0,

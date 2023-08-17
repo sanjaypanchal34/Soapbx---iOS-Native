@@ -122,7 +122,7 @@ class CommentVC: UIViewController {
         pageCounter.pageIndicatorTintColor = .titleGrey
         pageCounter.currentPageIndicatorTintColor = .primaryBlue
         pageCounter.currentPage = 0
-        pageCounter.numberOfPages = 3
+        pageCounter.numberOfPages = 0
         
         tblCommentsList.register(["CommentItemCell"], delegate: self, dataSource: self)
         tblCommentsList.isScrollEnabled = false
@@ -153,9 +153,13 @@ class CommentVC: UIViewController {
         
         if (object?.images?.count ?? 0) > 0 {
             collectionPostImage.isHidden = false
+            pageCounter.isHidden = false
             self.collectionPostImage.reloadData()
+            pageCounter.numberOfPages = object?.images?.count ?? 0
         } else {
             collectionPostImage.isHidden = true
+            pageCounter.isHidden = true
+            
         }
         
         if (object?.trendTags?.count ?? 0) > 0 {

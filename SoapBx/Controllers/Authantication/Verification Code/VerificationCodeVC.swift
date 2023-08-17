@@ -48,6 +48,7 @@ class VerificationCodeVC: UIViewController {
     func navigateWithForgot(_ email: String) {
         screenType = .fromForgotPassword
         vmObject.signupJson =  SignupRequestModel()
+        self.vmObject.signupJson?.verified_by = 0 // email verify
         vmObject.signupJson?.email = email
     }
     
@@ -56,9 +57,12 @@ class VerificationCodeVC: UIViewController {
         lblTitle.setTheme("Verification code",
                           font: .bold,
                           size: 40)
-        
-        let attributesMain = NSMutableAttributedString(string: "Please type the verification code sent to your email \(vmObject.signupJson?.email ?? "")")
-        let rang = attributesMain.mutableString.range(of: vmObject.signupJson?.email ?? "")
+        var displayString = vmObject.signupJson?.email ?? ""
+        if self.vmObject.signupJson?.verified_by == 1{ // phone verify
+            displayString = "+" + (self.vmObject.signupJson?.country_code ?? "1") + (self.vmObject.signupJson?.phone_number ?? "")
+        }
+        let attributesMain = NSMutableAttributedString(string: "Please type the verification code sent to your email \(displayString)")
+        let rang = attributesMain.mutableString.range(of: displayString)
         attributesMain.addAttributes([.foregroundColor: UIColor.primaryBlue, .font: AppFont.medium.font(size: 16)], range: rang)
         
         lblDescription.attributedText = attributesMain

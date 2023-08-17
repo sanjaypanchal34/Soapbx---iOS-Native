@@ -245,10 +245,7 @@ class CreatePostVC: UIViewController {
         } complition: { result in
             hideLoader()
             if result.status {
-                NotificationCenter.default.post(name: .homePostUpdate, object: nil)
-                DispatchQueue.main.async {
-                    self.navigationController?.popViewController(animated: true)
-                }
+                mackRootView(HomeVC())
             }
             showToast(message: result.message)
         }

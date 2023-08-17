@@ -23,6 +23,10 @@ public struct OTLBottomSheetViewModel : OTLContaner.OTLBottomSheetPresentable {
 }
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class OTLPasswordField : UIKit.UIView {
   @_Concurrency.MainActor(unsafe) public var delegate: OTLContaner.OTLPasswordFieldDelegate?
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var isUserInteractionEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
   @_Concurrency.MainActor(unsafe) public var placeholder: Swift.String {
     get
     set
@@ -51,8 +55,16 @@ public struct OTLBottomSheetViewModel : OTLContaner.OTLBottomSheetPresentable {
     get
     set
   }
+  @_Concurrency.MainActor(unsafe) public var leftIconHeight: CoreFoundation.CGFloat {
+    get
+    set
+  }
   @_Concurrency.MainActor(unsafe) public var leftSelectedIcon: UIKit.UIImage?
   @_Concurrency.MainActor(unsafe) public var rightIcon: UIKit.UIImage? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var rightIconHeight: CoreFoundation.CGFloat {
     get
     set
   }
@@ -119,6 +131,10 @@ public enum OTLTextFieldStyle {
   case roundPi, corner(Swift.Double), squere, bottom
 }
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class OTLTextField : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var isUserInteractionEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
   @_Concurrency.MainActor(unsafe) public var delegate: OTLContaner.OTLTextFieldDelegate?
   @_Concurrency.MainActor(unsafe) public var placeholder: Swift.String {
     get
@@ -156,8 +172,16 @@ public enum OTLTextFieldStyle {
     get
     set
   }
+  @_Concurrency.MainActor(unsafe) public var leftIconHeight: CoreFoundation.CGFloat {
+    get
+    set
+  }
   @_Concurrency.MainActor(unsafe) public var leftSelectedIcon: UIKit.UIImage?
   @_Concurrency.MainActor(unsafe) public var rightIcon: UIKit.UIImage? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var rightIconHeight: CoreFoundation.CGFloat {
     get
     set
   }
@@ -285,6 +309,10 @@ public enum OTLImageButtonType {
 }
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) final public class OTLCountryCode : UIKit.UIView {
   @_Concurrency.MainActor(unsafe) final public var delegate: OTLContaner.OTLTextFieldDelegate?
+  @_Concurrency.MainActor(unsafe) @objc override final public var isUserInteractionEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
   @_Concurrency.MainActor(unsafe) final public var placeholder: Swift.String {
     get
     set
@@ -718,6 +746,31 @@ extension UIKit.UITextField {
     @objc set
   }
   @objc @_Concurrency.MainActor(unsafe) dynamic public func limitLength(textField: UIKit.UITextField)
+}
+extension Swift.Double {
+  public var toString: Swift.String {
+    get
+  }
+}
+extension Swift.Int {
+  public var toString: Swift.String {
+    get
+  }
+}
+extension Swift.Float {
+  public var toString: Swift.String {
+    get
+  }
+}
+extension CoreFoundation.CGFloat {
+  public var toString: Swift.String {
+    get
+  }
+}
+extension Foundation.NSDictionary {
+  public var toString: Swift.String {
+    get
+  }
 }
 public struct OTLAlertModel {
   public let title: Swift.String

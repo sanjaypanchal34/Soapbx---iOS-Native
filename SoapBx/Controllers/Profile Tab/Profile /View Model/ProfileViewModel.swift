@@ -11,6 +11,8 @@ import Foundation
 
 class ProfileViewModel {
     
+    var uniqueId: Int = 0
+    var relationId: Int = 0
     var updateViewComplition:(()->Void)?
     var arrTernds:[TrendsModel] = [TrendsModel(name: "All Trends")]
     var selectedTerndsIndex = 0 {
@@ -279,5 +281,28 @@ class ProfileViewModel {
         }
     }
     
-    
+    func message(user id: Int, complition: @escaping (ResponseCallBack)) {
+        let para: JSON = ["user_id": id, "status_user" : "1"]
+        Webservice.Chat.startChat.requestWith(parameter: para) { result in
+            switch result {
+                case .fail(let message,let code,_):
+                    complition(CompanComplition(message: message, code: code ?? 111, status: false))
+                case .success(let data):
+                    if data.code == 200 {
+                        if let data = data.body?["data"] as? JSON {
+                            if let uID = data["unique"] as? Int {
+                                self.uniqueId = uID
+                            }
+                            
+                            if let rID = data["id"] as? Int {
+                                self.relationId = rID
+                            }
+                        }
+                        complition(CompanComplition(message: data.message, code: data.code, status: true))
+                    } else {
+                        complition(CompanComplition(message: data.message, code: data.code, status: false))
+                    }
+            }
+        }
+    }
 }

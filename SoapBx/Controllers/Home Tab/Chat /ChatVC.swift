@@ -7,9 +7,22 @@
 
 import UIKit
 import OTLContaner
+import PusherSwift
 
-class ChatVC: UIViewController {
+var channel: PusherChannel!
+var eventName: String!
     
+
+let pusher = Pusher(key: kPusherKey, options: PusherClientOptions(
+    authMethod: AuthMethod.inline(secret: kPusherSecret),
+    autoReconnect: true,
+    host: .cluster(kCluster)
+    ))
+
+class ChatVC: UIViewController , PusherDelegate{
+    
+    var uniqueID: Int!
+    var relationID: Int!
     @IBOutlet private weak var viewHeader: OTLHeader!
     @IBOutlet private weak var btnDotMenu: OTLImageButton!
     
@@ -23,20 +36,62 @@ class ChatVC: UIViewController {
     @IBOutlet private weak var btnAddMedia: OTLImageButton!
     @IBOutlet private weak var btnSendMessage: OTLImageButton!
     
+    var userObj: PostUser?
+    private let vmObject = ChatViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupUI()
+        setupPusher()
+        
+        getChatList()
     }
 
+    private func updateList() {
+        vmObject.updateViewComplition = {
+            DispatchQueue.main.async {
+                if self.vmObject.arrList.count > 0 {
+                    DispatchQueue.main.async {
+                        if self.vmObject.arrList.count > 0 {
+                            self.tblList.reloadData {
+                                self.tblList.scrollToBottom()
+                            }
+                        }
+                    }
+                }
+            }
+            hideLoader()
+        }
+    }
+    
+    func getChatList() {
+        showLoader()
+        vmObject.getMessage(relationId : relationID) { [self] result in
+            hideLoader()
+            if result.status {
+                DispatchQueue.main.async {
+                    if self.vmObject.arrList.count > 0 {
+                        self.tblList.reloadData {
+                            self.tblList.scrollToBottom()
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
     private func setupUI() {
-        viewHeader.lblTitle.setHeader("Robert Watson")
+        if let obj = userObj {
+            viewHeader.lblTitle.setHeader(obj.fullName ?? "")
+        }
+        
         btnDotMenu.image = UIImage(named: "ic_dots")
         btnDotMenu.height = 30
         
-        tblList.register(["SearchItemCell"], delegate: self, dataSource: self)
-        lblNoData.noDataTitle("Connecting")
+        tblList.register(["ChatRCell"], delegate: self, dataSource: self)
+        tblList.register(["ChatSCell"], delegate: self, dataSource: self)
+        updateList()
+        lblNoData.noDataTitle("")
         
         viewMessage.backgroundColor = .lightGrey
         viewMessage.layer.cornerRadius = 10
@@ -46,11 +101,14 @@ class ChatVC: UIViewController {
         btnAddMedia.image = UIImage(named: "ic_paymentAdd")
         btnAddMedia.height = 25
         btnAddMedia.backgroundColor = .clear
+        btnAddMedia.isHidden = true
+        
         txtMessage.font = AppFont.regular.font(size: 16)
         txtMessage.backgroundColor = .clear
         btnSendMessage.image = UIImage(named: "ic_chatSend")
         btnSendMessage.height = 25
-        btnSendMessage.backgroundColor = .clear
+        btnSendMessage.backgroundColor = .white
+        
     }
 
     //
@@ -72,18 +130,158 @@ class ChatVC: UIViewController {
         showAlert(message: "Media Type", buttons: [camera, gellary, cancel])
     }
     @IBAction private func click_btnSendMessage() {
-        
+        if self.txtMessage.text?.count ?? 0 > 0 {
+            showLoader()
+            vmObject.sendMessage(relationId : relationID, sender: authUser?.user?.id ?? 0, receiver: userObj?.id ?? 0, message: self.txtMessage.text ?? "") { [self] result in
+                hideLoader()
+                if result.status {
+                    self.txtMessage.text = ""
+                    print("Message sent Successfully")
+                }
+            }
+        }
     }
     
 }
 extension ChatVC: UITableViewDataSource, UITableViewDelegate  {
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return vmObject.arrList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let id: Int = authUser?.user?.id ?? 0
+        let item: ChatModel = vmObject.arrList[indexPath.row] as! ChatModel
+        if id == item.sender_id {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ChatSCell") as! ChatSCell
+            cell.lblMessage.text = item.message
+            cell.lblMessage.sizeToFit()
+            cell.vwMessage.roundedViewCorner(radius: 5)
+            cell.lblUName.text = ""
+            cell.lblUName.text = item.sName?.first?.uppercased()
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ChatRCell") as! ChatRCell
+            cell.lblMessage.text = item.message
+            cell.lblMessage.sizeToFit()
+            cell.vwMessage.roundedViewCorner(radius: 5)
+            cell.lblUName.text = ""
+            cell.lblUName.text = item.sName?.first?.uppercased()
+            return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        printLog("[TradPostListView] willDisplay --->")
+        if (indexPath.row + 1) >= (vmObject.arrList.count - 3){
+            if vmObject.currentPage < vmObject.totalPage {
+                vmObject.currentPage = vmObject.currentPage + 1
+            }
+        }
+    }
+    
+    func setupPusher() -> Void {
+        print("kPusherKey: \(kPusherKey)")
+        // subscribe to channel and bind to event
+        
+        if pusher.connection.connectionState == .disconnected
+        {
+            pusher.connect()
+            pusher.connection.delegate = self
+            
+            channel = pusher.subscribe(getChannelName())
+            
+            print("channel: " + getChannelName())
+            
+            eventName = channel.bind(eventName:kPusherNotifEventMessage, callback: { data -> Void in
+                print("notif_comment message received: \(data ?? "")")
+                if let d = data as? JSON {
+                    let chat_relation_id: String = d["chat_relation_id"] as! String
+                    let message: String = d["message"] as! String
+                    let model: ChatModel = .init(id: self.vmObject.arrList.count + 1, chat_relation_id: Int(chat_relation_id), sender_id: 10, receiver_id: 11, message: message, sName: "Sumit", sImage: "", rName: "Arvind", rImage: "")
+                    self.vmObject.arrList.append(model)
+                }
+                
+                DispatchQueue.main.async {
+                    if self.vmObject.arrList.count > 0 {
+                        self.tblList.reloadData {
+                            self.tblList.scrollToBottom()
+                        }
+                    }
+                }
+            })
+
+        }
+    }
+    
+    func changedConnectionState(from old: ConnectionState, to new: ConnectionState) {
+        print("Connection state old = \(old.rawValue), new = \(new.rawValue)")
+    }
+    
+    func subscribedToChannel(name: String) {
+        print("subscribedToChannel \(name)")
+    }
+    
+    func failedToSubscribeToChannel(name: String, response: URLResponse?, data: String?, error: NSError?) {
+        print("failedToSubscribeToChannel = \(name), err = \(String(describing: error))")
+    }
+    
+    func debugLog(message: String) {
+        print("debugLog = \(message)")
+    }
+
+    func getChannelName() -> String {
+        return String(format: "%@%d", channel_id, self.uniqueID )
+        //ls.message.44080_ls.private.18659
+    }
+}
+
+extension UITableView {
+    
+    func reloadData(completion:@escaping ()->()) {
+        UIView.animate(withDuration: 0, animations: reloadData)
+            { _ in completion() }
+    }
+    
+    func scrollToBottom(isAnimated:Bool = true){
+
+        DispatchQueue.main.async {
+            let indexPath = IndexPath(
+                row: self.numberOfRows(inSection:  self.numberOfSections-1) - 1,
+                section: self.numberOfSections - 1)
+            if self.hasRowAtIndexPath(indexPath: indexPath) {
+                self.scrollToRow(at: indexPath, at: .bottom, animated: isAnimated)
+            }
+        }
+    }
+    
+    func scrollToTop(isAnimated:Bool = true) {
+
+        DispatchQueue.main.async {
+            let indexPath = IndexPath(row: 0, section: 0)
+            if self.hasRowAtIndexPath(indexPath: indexPath) {
+                self.scrollToRow(at: indexPath, at: .top, animated: isAnimated)
+           }
+        }
+    }
+
+    func hasRowAtIndexPath(indexPath: IndexPath) -> Bool {
+        return indexPath.section < self.numberOfSections && indexPath.row < self.numberOfRows(inSection: indexPath.section)
     }
     
 }
 
+extension UIView {
+    func roundedViewCorner(radius: Int){
+        self.layer.cornerRadius = CGFloat(radius)
+        self.clipsToBounds = true
+    }
+}

@@ -10,6 +10,13 @@
 import UIKit
 import OTLContaner
 
+let kPusherAppId    = "1648260"
+let kPusherKey      = "1ca2423d166faafa7fdf"
+let kPusherSecret   = "c55f2b73c9552f786cfa"
+let kCluster = "ap2"
+let kPusherNotifEventMessage    = "myMessages"
+var channel_id: String = "private-channel_"
+
 func mackRootView(_ controller: UIViewController) {
     if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
         appDelegate.navigationController = UINavigationController.init(rootViewController: controller)

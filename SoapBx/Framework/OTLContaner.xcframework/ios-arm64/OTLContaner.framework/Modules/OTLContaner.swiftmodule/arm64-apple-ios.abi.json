@@ -28386,7 +28386,7 @@
           {
             "kind": "Function",
             "name": "getDateDiff",
-            "printedName": "getDateDiff(previousDate:)",
+            "printedName": "getDateDiff(startDate:end:subString:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -28396,14 +28396,28 @@
               },
               {
                 "kind": "TypeNominal",
+                "name": "Date",
+                "printedName": "Foundation.Date",
+                "hasDefaultArg": true,
+                "usr": "s:10Foundation4DateV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Date",
+                "printedName": "Foundation.Date",
+                "usr": "s:10Foundation4DateV"
+              },
+              {
+                "kind": "TypeNominal",
                 "name": "String",
                 "printedName": "Swift.String",
+                "hasDefaultArg": true,
                 "usr": "s:SS"
               }
             ],
             "declKind": "Func",
-            "usr": "s:11OTLContaner14OTLDateConvertC11getDateDiff08previousE0S2S_tF",
-            "mangledName": "$s11OTLContaner14OTLDateConvertC11getDateDiff08previousE0S2S_tF",
+            "usr": "s:11OTLContaner14OTLDateConvertC11getDateDiff05startE03end9subStringSS10Foundation0E0V_AJSStF",
+            "mangledName": "$s11OTLContaner14OTLDateConvertC11getDateDiff05startE03end9subStringSS10Foundation0E0V_AJSStF",
             "moduleName": "OTLContaner",
             "isOpen": true,
             "declAttributes": [
@@ -48474,392 +48488,392 @@
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "IntegerLiteral",
-      "offset": 415,
+      "offset": 519,
       "length": 1,
       "value": "3"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "BooleanLiteral",
-      "offset": 475,
+      "offset": 579,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "IntegerLiteral",
-      "offset": 751,
+      "offset": 855,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "BooleanLiteral",
-      "offset": 829,
+      "offset": 933,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "IntegerLiteral",
-      "offset": 914,
+      "offset": 1018,
       "length": 3,
       "value": "749"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "BooleanLiteral",
-      "offset": 993,
+      "offset": 1097,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "IntegerLiteral",
-      "offset": 1285,
+      "offset": 1389,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "BooleanLiteral",
-      "offset": 1345,
+      "offset": 1449,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "BooleanLiteral",
-      "offset": 1598,
+      "offset": 1702,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "IntegerLiteral",
-      "offset": 1684,
+      "offset": 1788,
       "length": 3,
       "value": "752"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "BooleanLiteral",
-      "offset": 1764,
+      "offset": 1868,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "IntegerLiteral",
-      "offset": 1904,
+      "offset": 2008,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "IntegerLiteral",
-      "offset": 1910,
+      "offset": 2014,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "BooleanLiteral",
-      "offset": 2036,
+      "offset": 2140,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "BooleanLiteral",
-      "offset": 2065,
+      "offset": 2169,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "BooleanLiteral",
-      "offset": 2127,
+      "offset": 2231,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "IntegerLiteral",
-      "offset": 2264,
+      "offset": 2368,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "IntegerLiteral",
-      "offset": 2270,
+      "offset": 2374,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "BooleanLiteral",
-      "offset": 2396,
+      "offset": 2500,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "BooleanLiteral",
-      "offset": 2425,
+      "offset": 2529,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "BooleanLiteral",
-      "offset": 2488,
+      "offset": 2592,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "IntegerLiteral",
-      "offset": 2571,
+      "offset": 2675,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "IntegerLiteral",
-      "offset": 2580,
+      "offset": 2684,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "IntegerLiteral",
-      "offset": 2591,
+      "offset": 2695,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "IntegerLiteral",
-      "offset": 2601,
+      "offset": 2705,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "BooleanLiteral",
-      "offset": 3043,
+      "offset": 3147,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "IntegerLiteral",
-      "offset": 3188,
+      "offset": 3292,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "IntegerLiteral",
-      "offset": 3194,
+      "offset": 3298,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "BooleanLiteral",
-      "offset": 3320,
+      "offset": 3424,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "BooleanLiteral",
-      "offset": 3349,
+      "offset": 3453,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "BooleanLiteral",
-      "offset": 3411,
+      "offset": 3515,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "StringLiteral",
-      "offset": 3541,
+      "offset": 3645,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "BooleanLiteral",
-      "offset": 3667,
+      "offset": 3771,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "IntegerLiteral",
-      "offset": 3753,
+      "offset": 3857,
       "length": 3,
       "value": "751"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "BooleanLiteral",
-      "offset": 3833,
+      "offset": 3937,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "BooleanLiteral",
-      "offset": 4581,
+      "offset": 4685,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "BooleanLiteral",
-      "offset": 4784,
+      "offset": 4888,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "BooleanLiteral",
-      "offset": 5010,
+      "offset": 5114,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "BooleanLiteral",
-      "offset": 5157,
+      "offset": 5261,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "StringLiteral",
-      "offset": 5338,
+      "offset": 5442,
       "length": 16,
       "value": "\"Placeholder...\""
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "BooleanLiteral",
-      "offset": 6463,
+      "offset": 6567,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "IntegerLiteral",
-      "offset": 6581,
+      "offset": 6685,
       "length": 1,
       "value": "3"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "IntegerLiteral",
-      "offset": 6585,
+      "offset": 6689,
       "length": 1,
       "value": "3"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "StringLiteral",
-      "offset": 6201,
+      "offset": 6305,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "BooleanLiteral",
-      "offset": 6644,
+      "offset": 6748,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "IntegerLiteral",
-      "offset": 7164,
+      "offset": 7268,
       "length": 2,
       "value": "10"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "IntegerLiteral",
-      "offset": 7234,
+      "offset": 7338,
       "length": 2,
       "value": "10"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "BooleanLiteral",
-      "offset": 7065,
+      "offset": 7169,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "IntegerLiteral",
-      "offset": 7451,
+      "offset": 7555,
       "length": 2,
       "value": "20"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "IntegerLiteral",
-      "offset": 7740,
+      "offset": 7844,
       "length": 2,
       "value": "20"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "IntegerLiteral",
-      "offset": 8072,
+      "offset": 8176,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "IntegerLiteral",
-      "offset": 8315,
+      "offset": 8419,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "IntegerLiteral",
-      "offset": 7909,
+      "offset": 8013,
       "length": 2,
       "value": "10"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "StringLiteral",
-      "offset": 8950,
+      "offset": 9054,
       "length": 17,
       "value": "\"+\""
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "StringLiteral",
-      "offset": 8966,
+      "offset": 9070,
       "length": 1,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/OTLCountryCode.swift",
       "kind": "IntegerLiteral",
-      "offset": 8901,
+      "offset": 9005,
       "length": 2,
       "value": "91"
     },
@@ -49013,14 +49027,14 @@
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/View\/Cell\/OTLCountryCodeItem.swift",
       "kind": "BooleanLiteral",
-      "offset": 796,
+      "offset": 900,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/View\/Cell\/OTLCountryCodeItem.swift",
       "kind": "BooleanLiteral",
-      "offset": 1091,
+      "offset": 1195,
       "length": 5,
       "value": "false"
     },
@@ -49230,14 +49244,14 @@
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/View\/OTLCountryCodeVC.swift",
       "kind": "IntegerLiteral",
-      "offset": 851,
+      "offset": 955,
       "length": 2,
       "value": "91"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCountryCode\/View\/OTLCountryCodeVC.swift",
       "kind": "StringLiteral",
-      "offset": 188,
+      "offset": 292,
       "length": 16,
       "value": "\"OTLContaner.OTLCountryCodeVC\""
     },
@@ -49587,7 +49601,14 @@
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Global\/OTLDateConvert.swift",
       "kind": "StringLiteral",
-      "offset": 7614,
+      "offset": 5123,
+      "length": 5,
+      "value": "\"ago\""
+    },
+    {
+      "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Global\/OTLDateConvert.swift",
+      "kind": "StringLiteral",
+      "offset": 7681,
       "length": 3,
       "value": "\"0\""
     },

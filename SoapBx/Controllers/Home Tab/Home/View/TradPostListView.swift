@@ -91,6 +91,7 @@ class TradPostListView: UIView {
     }
     
     @objc private func pullupRefresh() {
+        dotMenuIndexPath = nil
         vmObject.currentPage = 1
         getPost()
         refreshControl?.endRefreshing()
@@ -139,9 +140,9 @@ class TradPostListView: UIView {
     }
     
     private func likeDislikeonPost(isLike: Bool, row: Int) {
-        showLoader()
+//        showLoader()
         vmLikeDislikeObj.likeDislike(post: vmObject.arrPosts[row], isLike: isLike) { result, newObject in
-            hideLoader()
+//            hideLoader()
             if result.status {
                 if let updatedObj = newObject {
                     self.vmObject.arrPosts[row] = updatedObj

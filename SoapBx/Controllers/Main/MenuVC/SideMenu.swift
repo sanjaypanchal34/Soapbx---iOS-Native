@@ -113,7 +113,7 @@ extension SideMenu: UITableViewDelegate {
         stopAnimation()
         switch arrMenu[indexPath.row].title {
         case "Support Soapbx":
-            let url = URL(string: "https://soapbx.net/donate")!
+                let url = URL(string: "https://soapbx.net/donate_mobile?auth_token=\(authUser?.user?.auth_token ?? "")")!
             if UIApplication.shared.canOpenURL(url) {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             }

@@ -79,13 +79,18 @@ class ChangePasswordVC: UIViewController {
         showLoader()
         vmObject.resetForgotPassword(new: txtNewPassword.text,
                                      confirmPassword: txtConfPassword.text) { result in
+            
             showToast(message: result.message)
             if result.status {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
+                    hideLoader()
                     mackRootView(LoginVC())
                 })
             }
-            hideLoader()
+            else {
+                hideLoader()
+            }
+            
         }
     }
     

@@ -26,7 +26,7 @@ class CreatePostViewModel {
     }
     
     
-    func addPost(title: String , description: String , progress: @escaping ((CGFloat)->()), complition: @escaping (ResponseCallBack)) {
+    func addPost(title: String , description: String , progress: ((CGFloat)->())? = nil, complition: @escaping (ResponseCallBack)) {
         var para: JSON = [
             "title": title,
             "description":description,
@@ -52,7 +52,7 @@ class CreatePostViewModel {
         
         
         Webservice.Post.addPost.requestWith(multipart: imagesMetaData, parameter: para) { progressValue in
-            progress(progressValue)
+            progress?(progressValue)
         } completion: { result in
             switch result {
                 case .fail(let message,let code,_):
@@ -84,7 +84,7 @@ class CreatePostViewModel {
         }
     }
     
-    func updatePost(title: String , description: String , progress: @escaping ((CGFloat)->()), complition: @escaping (ResponseCallBack)) {
+    func updatePost(title: String , description: String , progress: ((CGFloat)->())? = nil, complition: @escaping (ResponseCallBack)) {
         var para: JSON = [
             "post_id": postObj?.id ?? 0,
             "title": title,
@@ -111,7 +111,7 @@ class CreatePostViewModel {
         
         
         Webservice.Post.editPost.requestWith(multipart: imagesMetaData, parameter: para) { progressValue in
-            progress(progressValue)
+            progress?(progressValue)
         } completion: { result in
             switch result {
                 case .fail(let message,let code,_):

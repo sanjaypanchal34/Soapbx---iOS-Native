@@ -48,7 +48,7 @@ class SuggestFeatureVC: UIViewController {
         viewComment.layer.cornerRadius = 10
         viewComment.layer.borderWidth = 1
         viewComment.layer.borderColor = UIColor.lightGrey.cgColor
-        lblCommentPlaceholder.setTheme("What is on your mind?", color: .titleGrey, size: 18)
+        lblCommentPlaceholder.setTheme("What is on your mind?", color: .titleGray, size: 18)
         txtComment.font = AppFont.regular.font(size: 18)
         txtComment.delegate = self
         
@@ -59,7 +59,7 @@ class SuggestFeatureVC: UIViewController {
     private func setData() {
         txtProfileName.text = authUser?.user?.name ?? ""
         txtEmail.text = authUser?.user?.email ?? ""
-        txtLocation.text = authUser?.user?.location ?? ""
+        txtLocation.text = getValueOrDefult(authUser?.user?.location, defaultValue: "N/A")
         txtPhoneNo.text = authUser?.user?.phone_number ?? ""
         
     }

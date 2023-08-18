@@ -52,10 +52,10 @@ class EnableLocationVC: UIViewController  {
                           font: .bold,
                           size: 40)
         
-        lblDescription.setTheme("We want to access your location only to provide a better experience by helping you finding your exact location.", color: .titleGrey, font: .regular, size: 14)
+        lblDescription.setTheme("We want to access your location only to provide a better experience by helping you finding your exact location.", color: .titleGray, font: .regular, size: 14)
         
         btnNext.appButton("Enable")
-        btnSkip.setTheme("Skip for now", color: .titleGrey)
+        btnSkip.setTheme("Skip for now", color: .titleGray)
         
     }
     

@@ -34,7 +34,7 @@ class SignupVC: UIViewController {
     @IBOutlet private weak var btnSignUp: OTLTextButton!
     
     @IBOutlet private weak var lblAlreadyAMamber: UILabel!
-    @IBOutlet private weak var btnSignIn: UIButton!
+    @IBOutlet private weak var btnSignIn: OTLTextButton!
     
     private var intVerifyType = 0
     private var vmObject = SignupViewModel()
@@ -52,7 +52,7 @@ class SignupVC: UIViewController {
                           font: .bold,
                           size: 38)
         lblSubtitle.setTheme("Enter our details below",
-                             color: .titleGrey)
+                             color: .titleGray)
         
         txtFirstName.setTheme(placeholder: "First name",
                           leftIcon: UIImage(named: "ic_user"))
@@ -72,8 +72,8 @@ class SignupVC: UIViewController {
                              leftIcon: UIImage(named: "ic_location_grey"))
         txtLocation.delegate = self
         
-        lblVerifyEmail.setTheme("Verify via Email")
-        lblVerifyPhone.setTheme("Verify via Number")
+        lblVerifyEmail.setTheme("Verify via Email", size: 14)
+        lblVerifyPhone.setTheme("Verify via Number", size: 14)
         for view in [viewVerifyEmail, viewVerifyPhone] {
             view?.layer.cornerRadius = 10
             view?.layer.borderWidth = 1
@@ -84,7 +84,7 @@ class SignupVC: UIViewController {
         btnSignUp.appButton("Sign up")
         
         lblAlreadyAMamber.setTheme("Already a member?")
-        btnSignIn.setTheme("Sign in now", color: .primaryBlue)
+        btnSignIn.setTheme("Sign in now",color: .primaryBlue, font: .medium, size: 16)
         
         click_verifyVia(viewVerifyEmail)
     }
@@ -143,14 +143,13 @@ class SignupVC: UIViewController {
     }
     
     @IBAction private func click_IAccept() {
-        if imgIAccept.image == nil {
-            imgIAccept.image = UIImage(named: "ic_unCheckbox")
+        if imgIAccept.image == UIImage(named: "ic_favChecked")?.withRenderingMode(.alwaysTemplate) {
+            imgIAccept.image = UIImage(named: "ic_unCheckbox")?.withRenderingMode(.alwaysOriginal)
             imgIAccept.backgroundColor = .clear
-            imgIAccept.layer.cornerRadius = 0
         } else { // selected
-            imgIAccept.image = nil
-            imgIAccept.backgroundColor = .primaryBlue
-            imgIAccept.layer.cornerRadius = 2
+            imgIAccept.image = UIImage(named: "ic_favChecked")?.withRenderingMode(.alwaysTemplate)
+            imgIAccept.tintColor = .primaryBlue
+            imgIAccept.backgroundColor = .clear
         }
     }
     

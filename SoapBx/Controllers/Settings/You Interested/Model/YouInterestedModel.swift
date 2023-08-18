@@ -18,7 +18,7 @@ struct TrendsModel: Codable {
     let id: Int?
     let image: String?
     let imageURL: String?
-    let name: String?
+    var name: String?
     let subCategory: TrendsCategoryModel?
     let category: TrendsCategoryModel?
     var isSelected: Bool = false
@@ -52,16 +52,16 @@ struct TrendsModel: Codable {
 
 struct TrendsCategoryModel: Codable {
     let active: Int?
-    let category_id: Int?
-    let created_at: String?
+    let categoryId: Int?
+    let createdAt: String?
     let id: Int?
     let image: String?
-    let image_url: String?
+    let imageURL: String?
     let name: String?
-    let updated_at: String?
+    let updatedAt: String?
     
     enum CodingKeys: String, CodingKey {
-        case active, category_id, created_at, id, image, image_url, name, updated_at
+        case active, categoryId = "category_id", createdAt = "created_at", id, image, imageURL = "image_url", name, updatedAt = "updated_at"
     }
     
 }

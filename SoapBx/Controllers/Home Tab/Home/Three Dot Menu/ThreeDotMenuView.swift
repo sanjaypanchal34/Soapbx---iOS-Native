@@ -13,6 +13,7 @@ class ThreeDotMenuView: UIControl {
     
     @IBOutlet private weak var tblList: UITableView!
     @IBOutlet private weak var constTblListHeigh: NSLayoutConstraint!
+    @IBOutlet private weak var constTblListWidth: NSLayoutConstraint!
     
     private var arrList: [ThreeDotItemModel] = []
     private var complition: ((ThreeDotItemModel)->())?
@@ -38,6 +39,18 @@ class ThreeDotMenuView: UIControl {
         tblList.reloadData()
         
         constTblListHeigh.constant =  CGFloat(arrList.count * 50)
+        var widthCount: CGFloat = 0
+        for item in arrList {
+            let width = item.title.title.size(OfFont: UIFont.systemFont(ofSize: 18)).width + 45 + 30
+            if width > widthCount {
+                if width > (self.frame.width - 40) {
+                    widthCount = self.frame.width - 40
+                } else {
+                    widthCount = width
+                }
+            }
+        }
+        constTblListWidth.constant = widthCount
     }
     
     @objc private func click_screen() {

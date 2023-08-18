@@ -103,13 +103,17 @@ class CommentVC: UIViewController {
         txtPostDescription.linkTextAttributes = [.foregroundColor:UIColor.primaryBlue]
         txtPostDescription.delegate = self
         
+        let snappingLayout = SnappingLayout()
+        snappingLayout.snapPosition = .center
+        snappingLayout.scrollDirection = .horizontal
+        collectionPostImage.collectionViewLayout = snappingLayout
         collectionPostImage.register(["PostImageItemCell"], delegate: self, dataSource: self)
         collectionSoapbx.register(["PostItemPoliticalCell"], delegate: self, dataSource: self)
         collectionPolitician.register(["PostItemPoliticalCell"], delegate: self, dataSource: self)
         
         viewActionButtons.layer.cornerRadius = viewActionButtons.frame.height/2
         viewActionButtons.layer.borderWidth = 0.5
-        viewActionButtons.layer.borderColor = UIColor.titleGrey.cgColor
+        viewActionButtons.layer.borderColor = UIColor.titleGray.cgColor
         btnLike.title?.setTheme("0", size: 14)
         btnLike.imageView?.image = UIImage(named: "ic_like_grey")?.withRenderingMode(.alwaysTemplate)
         
@@ -119,7 +123,7 @@ class CommentVC: UIViewController {
         btnComment.title?.setTheme("0", size: 14)
         btnComment.imageView?.image = UIImage(named: "ic_comments_grey")
             
-        pageCounter.pageIndicatorTintColor = .titleGrey
+        pageCounter.pageIndicatorTintColor = .titleGray
         pageCounter.currentPageIndicatorTintColor = .primaryBlue
         pageCounter.currentPage = 0
         pageCounter.numberOfPages = 0
@@ -145,21 +149,20 @@ class CommentVC: UIViewController {
         
         imgProfile.setImage(object?.user?.profilePhotoURL)
         lblProfileName.text = object?.user?.name
-        lblPostLocation.text = object?.user?.location
+        lblPostLocation.text = getValueOrDefult(object?.user?.location, defaultValue: "N/A")
         lblPostTime.text = OTLDateConvert.instance.convert(date: object?.createdAt ?? "", set: .yyyyMMdd_T_HHmmssZ, getFormat: .mmmDDyyyyAthhmma)
                 
         lblPostTitle.text = object?.title
         txtPostDescription.text = object?.description
         
+        pageCounter.isHidden = !((object?.images?.count ?? 0) > 1)
+        
         if (object?.images?.count ?? 0) > 0 {
             collectionPostImage.isHidden = false
-            pageCounter.isHidden = false
             self.collectionPostImage.reloadData()
             pageCounter.numberOfPages = object?.images?.count ?? 0
         } else {
             collectionPostImage.isHidden = true
-            pageCounter.isHidden = true
-            
         }
         
         if (object?.trendTags?.count ?? 0) > 0 {
@@ -177,9 +180,9 @@ class CommentVC: UIViewController {
         }
         
         btnLike.title?.text = "\(object?.likeCount ?? 0)"
-        btnLike.imageView?.tintColor = object?.likeStatus == 1 ? .primaryBlue : .titleGrey
+        btnLike.imageView?.tintColor = object?.likeStatus == 1 ? .primaryBlue : .titleGray
         btnDislike.title?.text = "\(object?.dislikeCount ?? 0)"
-        btnDislike.imageView?.tintColor = object?.dislikeStatus == 1 ? .primaryBlue : .titleGrey
+        btnDislike.imageView?.tintColor = object?.dislikeStatus == 1 ? .primaryBlue : .titleGray
         btnComment.title?.text = "\(object?.commentsCount ?? 0)"
     }
     
@@ -270,8 +273,8 @@ class CommentVC: UIViewController {
 extension CommentVC: UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if scrollView == collectionPostImage {
-            let x = scrollView.contentOffset.x + 20 + (10*3)
-            let w = scrollView.bounds.size.width
+            let x = Int(scrollView.contentOffset.x) + 20 + (10*(self.vmObject.objPost?.images?.count ?? 0))
+            let w = Int(scrollView.bounds.size.width)
             pageCounter.currentPage = Int(x/w)
         }
     }
@@ -345,7 +348,7 @@ extension CommentVC: UICollectionViewDataSource{
 extension CommentVC: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == collectionPostImage {
-            return CGSize(width: collectionView.frame.width - 20, height: collectionView.frame.width - 10)
+            return CGSize(width: collectionView.frame.width - 15, height: collectionView.frame.width - 10)
         }
         else if collectionView == collectionSoapbx,
                  (self.vmObject.objPost?.trendTags?.count ?? 0) > 0{

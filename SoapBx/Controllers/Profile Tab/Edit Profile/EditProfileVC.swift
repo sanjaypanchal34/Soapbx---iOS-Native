@@ -92,7 +92,7 @@ class EditProfileVC: UIViewController {
         txtLastName.text = authUser?.user?.last_name ?? ""
         txtPhoneNo.text = authUser?.user?.phone_number ?? ""
         txtEmail.text = authUser?.user?.email ?? ""
-        txtLocation.text = authUser?.user?.location ?? ""
+        txtLocation.text = getValueOrDefult(authUser?.user?.location, defaultValue: "N/A")
         let loca = GMapLocation(lat: authUser?.user?.latitude ?? 0, lng: authUser?.user?.longitude ?? 0)
         vmObject.selectedSearch = GMapResult(formattedAddress: authUser?.user?.location ?? "", geometry: GMapGeometry(loca))
     }

@@ -32,7 +32,7 @@ class ReportView: UIControl {
         viewBody.layer.cornerRadius = 10
         
         lblTitle.setHeader("Reason")
-        lblPlaceholder.setTheme("Write reason to report a", color: .titleGrey, size: 18)
+        lblPlaceholder.setTheme("Write reason to report a", color: .titleGray, size: 18)
         txtReason.setCornerRadius(border: 1, color: .lightGray, corner: 10)
         txtReason.font = AppFont.regular.font(size: 18)
         txtReason.delegate = self

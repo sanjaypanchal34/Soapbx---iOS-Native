@@ -19,6 +19,7 @@
                     <rect key="frame" x="98" y="79" width="275" height="180"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
+                        <constraint firstAttribute="width" constant="275" id="IG7-El-aR0"/>
                         <constraint firstAttribute="height" constant="180" id="txz-Mt-rCR"/>
                     </constraints>
                 </tableView>
@@ -26,12 +27,12 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="0.0" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="uJ9-qs-CSD" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.7" id="7DO-as-GaA"/>
                 <constraint firstItem="uJ9-qs-CSD" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="Wpy-O2-Dwy"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="uJ9-qs-CSD" secondAttribute="trailing" constant="20" id="k6e-oG-Nzr"/>
             </constraints>
             <connections>
                 <outlet property="constTblListHeigh" destination="txz-Mt-rCR" id="4u8-gZ-H8j"/>
+                <outlet property="constTblListWidth" destination="IG7-El-aR0" id="bsg-FM-Tr7"/>
                 <outlet property="tblList" destination="uJ9-qs-CSD" id="B0L-Tc-9Q4"/>
             </connections>
             <point key="canvasLocation" x="-33" y="-33"/>

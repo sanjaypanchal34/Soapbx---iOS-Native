@@ -95,11 +95,11 @@ class PostPollsVC: UIViewController {
         viewHeader.lblTitle.setHeader("")
         
         imgProfile.layer.cornerRadius = imgProfile.frame.height/2
-        imgProfile.image = UIImage(named: "profile_Three")
+        imgProfile.setImage(authUser?.user?.profile_photo_url)
         imgProfile.contentMode = .scaleAspectFill
-        lblProfileName.setTheme("Robert Watson")
-        lblLocation.setTheme("Ahmedabad, Gujarat, India",size: 8)
-        lblTime.setTheme("Jul 16 2023 @ 09:02 PM",size: 12)
+        lblProfileName.setTheme(authUser?.user?.name ?? "")
+        lblLocation.setTheme(getValueOrDefult(authUser?.user?.location, defaultValue: "N/A"),size: 8)
+        lblTime.setTheme(OTLDateConvert.instance.convert(date: Date(), toString: .mmmDDyyyyAthhmma),size: 12)
         
         lblTitle.setTheme("Question", color: .primaryBlue, font: .bold)
         txtTitle.placeholder = "What do you want the public to vote on?"
@@ -126,6 +126,8 @@ class PostPollsVC: UIViewController {
         
         lblSoapbxTrends.setTheme("Soapbx trends", color: .primaryBlue, font: .bold)
         collSoapbxTrends.register(["PostItemPoliticalCell"], delegate: self, dataSource: self)
+        collSoapbxTrends.semanticContentAttribute = .forceLeftToRight
+//        collSoapbxTrends.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
         let layout1 = OTLTagFlowLayout()
         layout1.estimatedItemSize = CGSize(width: 140, height: 40)
         collSoapbxTrends.collectionViewLayout = layout1
@@ -213,20 +215,20 @@ class PostPollsVC: UIViewController {
 extension PostPollsVC : UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 10
+        return 5
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 10
+        return 5
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
+        return UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let text = vmTrends.arrList[indexPath.row].name ?? ""
+        let text = (vmTrends.arrList[indexPath.row].name ?? "").replacingOccurrences(of: " ", with: "20%")
             let width = text.size(OfFont: AppFont.regular.font(size: 18)).width
         if width < 55 {
             return CGSize(width: 55, height: 35)
@@ -254,6 +256,7 @@ extension PostPollsVC : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PostItemPoliticalCell", for: indexPath) as? PostItemPoliticalCell{
            cell.setPollsTrends(vmTrends.arrList[indexPath.row], isSelected: vmObject.isTredSelected(id: vmTrends.arrList[indexPath.row].id ?? 0))
+//           cell.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
             return cell
         }
         return UICollectionViewCell()

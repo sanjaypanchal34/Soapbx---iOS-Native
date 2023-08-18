@@ -58,10 +58,12 @@ class VerificationCodeVC: UIViewController {
                           font: .bold,
                           size: 40)
         var displayString = vmObject.signupJson?.email ?? ""
+        var discription = "Please type the verification code sent to your email"
         if self.vmObject.signupJson?.verified_by == 1{ // phone verify
             displayString = "+" + (self.vmObject.signupJson?.country_code ?? "1") + (self.vmObject.signupJson?.phone_number ?? "")
+            discription = "Please type the verification code sent to your phone number"
         }
-        let attributesMain = NSMutableAttributedString(string: "Please type the verification code sent to your email \(displayString)")
+        let attributesMain = NSMutableAttributedString(string: "\(discription) \(displayString)")
         let rang = attributesMain.mutableString.range(of: displayString)
         attributesMain.addAttributes([.foregroundColor: UIColor.primaryBlue, .font: AppFont.medium.font(size: 16)], range: rang)
         

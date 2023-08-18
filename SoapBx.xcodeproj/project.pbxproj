@@ -140,8 +140,6 @@
 		04DA4A5B2A67E15B00AF540B /* ChangePasswordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04DA4A592A67E15A00AF540B /* ChangePasswordVC.xib */; };
 		04E844BA2A727DD1004AAF37 /* SignupRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E844B92A727DD1004AAF37 /* SignupRequestModel.swift */; };
 		04F896CF2A738B4700636B2F /* ProfileCoverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F896CE2A738B4700636B2F /* ProfileCoverViewModel.swift */; };
-		1F280DBE2A8CC19400273DD2 /* OTLContaner.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A2A5672A8C801000387118 /* OTLContaner.xcframework */; };
-		1F280DBF2A8CC19400273DD2 /* OTLContaner.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84A2A5672A8C801000387118 /* OTLContaner.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1F280DC32A8CD99200273DD2 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F280DC22A8CD99200273DD2 /* ChatViewModel.swift */; };
 		1F280DC52A8D089300273DD2 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F280DC42A8D089300273DD2 /* ChatModel.swift */; };
 		1F280DCB2A8D3DE100273DD2 /* ChatRCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F280DC72A8D3DE100273DD2 /* ChatRCell.xib */; };
@@ -156,8 +154,15 @@
 		84A2A5332A869B7A00387118 /* ViewContactFollow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A5322A869B7A00387118 /* ViewContactFollow.swift */; };
 		84A2A5362A87E81500387118 /* FollowFolloingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A5352A87E81500387118 /* FollowFolloingViewModel.swift */; };
 		84A2A5392A893E1100387118 /* ConnectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A5382A893E1100387118 /* ConnectionViewModel.swift */; };
-		84A2A5802A8D3BCE00387118 /* OTLContaner.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A2A57E2A8D3BC000387118 /* OTLContaner.xcframework */; };
-		84A2A5812A8D3BCE00387118 /* OTLContaner.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84A2A57E2A8D3BC000387118 /* OTLContaner.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		84A2A5962A8E7DD400387118 /* PollsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A5952A8E7DD400387118 /* PollsModel.swift */; };
+		84A2A5992A8E7F1A00387118 /* PollsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A5982A8E7F1A00387118 /* PollsListViewModel.swift */; };
+		84A2A59C2A8E810000387118 /* PollsListItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A59A2A8E810000387118 /* PollsListItemCell.swift */; };
+		84A2A59D2A8E810000387118 /* PollsListItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A2A59B2A8E810000387118 /* PollsListItemCell.xib */; };
+		84A2A5A02A8E83B600387118 /* PollListSubitemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A59E2A8E83B600387118 /* PollListSubitemCell.swift */; };
+		84A2A5A12A8E83B600387118 /* PollListSubitemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A2A59F2A8E83B600387118 /* PollListSubitemCell.xib */; };
+		84A2A5A42A8F274D00387118 /* OTLContaner.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A2A5A22A8F273E00387118 /* OTLContaner.xcframework */; };
+		84A2A5A52A8F274D00387118 /* OTLContaner.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84A2A5A22A8F273E00387118 /* OTLContaner.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		84A2A5A72A8F27F200387118 /* SnappingLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A5A62A8F27F200387118 /* SnappingLayout.swift */; };
 		84ADF9F52A7B7596005D3E9D /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ADF9F42A7B7596005D3E9D /* ChangePasswordViewModel.swift */; };
 		84B1D5232A74D06E0051558B /* YouInterestedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B1D5222A74D06E0051558B /* YouInterestedViewModel.swift */; };
 		84B1D5292A74D3110051558B /* YouInterestedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B1D5282A74D3110051558B /* YouInterestedModel.swift */; };
@@ -188,7 +193,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				84A2A5812A8D3BCE00387118 /* OTLContaner.xcframework in Embed Frameworks */,
+				84A2A5A52A8F274D00387118 /* OTLContaner.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -346,7 +351,14 @@
 		84A2A5322A869B7A00387118 /* ViewContactFollow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewContactFollow.swift; sourceTree = "<group>"; };
 		84A2A5352A87E81500387118 /* FollowFolloingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowFolloingViewModel.swift; sourceTree = "<group>"; };
 		84A2A5382A893E1100387118 /* ConnectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionViewModel.swift; sourceTree = "<group>"; };
-		84A2A57E2A8D3BC000387118 /* OTLContaner.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = OTLContaner.xcframework; sourceTree = "<group>"; };
+		84A2A5952A8E7DD400387118 /* PollsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollsModel.swift; sourceTree = "<group>"; };
+		84A2A5982A8E7F1A00387118 /* PollsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollsListViewModel.swift; sourceTree = "<group>"; };
+		84A2A59A2A8E810000387118 /* PollsListItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollsListItemCell.swift; sourceTree = "<group>"; };
+		84A2A59B2A8E810000387118 /* PollsListItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PollsListItemCell.xib; sourceTree = "<group>"; };
+		84A2A59E2A8E83B600387118 /* PollListSubitemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollListSubitemCell.swift; sourceTree = "<group>"; };
+		84A2A59F2A8E83B600387118 /* PollListSubitemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PollListSubitemCell.xib; sourceTree = "<group>"; };
+		84A2A5A22A8F273E00387118 /* OTLContaner.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = OTLContaner.xcframework; sourceTree = "<group>"; };
+		84A2A5A62A8F27F200387118 /* SnappingLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnappingLayout.swift; sourceTree = "<group>"; };
 		84ADF9F42A7B7596005D3E9D /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewModel.swift; sourceTree = "<group>"; };
 		84B1D5222A74D06E0051558B /* YouInterestedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouInterestedViewModel.swift; sourceTree = "<group>"; };
 		84B1D5282A74D3110051558B /* YouInterestedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouInterestedModel.swift; sourceTree = "<group>"; };
@@ -377,7 +389,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A2AF6D6F88FA4790A2B1DBB1 /* Pods_SoapBx.framework in Frameworks */,
-				84A2A5802A8D3BCE00387118 /* OTLContaner.xcframework in Frameworks */,
+				84A2A5A42A8F274D00387118 /* OTLContaner.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -520,6 +532,9 @@
 		044C01BE2A6BF3F400E79AD2 /* Polls List */ = {
 			isa = PBXGroup;
 			children = (
+				84A2A5972A8E7F0C00387118 /* View Model */,
+				84A2A5942A8E7DC200387118 /* Model */,
+				84A2A5932A8E7DBC00387118 /* Cell */,
 				044C01C22A6BF42C00E79AD2 /* PollsListVC.swift */,
 				044C01C32A6BF42C00E79AD2 /* PollsListVC.xib */,
 			);
@@ -963,7 +978,7 @@
 		049D88AF2A52DD2800876D27 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
-				84A2A57E2A8D3BC000387118 /* OTLContaner.xcframework */,
+				84A2A5A22A8F273E00387118 /* OTLContaner.xcframework */,
 			);
 			path = Framework;
 			sourceTree = "<group>";
@@ -1002,6 +1017,7 @@
 				04C17CB32A5478220034450A /* Extantion.swift */,
 				047604FB2A6BD36C00ED9AA6 /* Toast.swift */,
 				042925972A55DF8E00EE3B8D /* global.swift */,
+				84A2A5A62A8F27F200387118 /* SnappingLayout.swift */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -1178,6 +1194,33 @@
 			isa = PBXGroup;
 			children = (
 				84A2A5382A893E1100387118 /* ConnectionViewModel.swift */,
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		84A2A5932A8E7DBC00387118 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				84A2A59E2A8E83B600387118 /* PollListSubitemCell.swift */,
+				84A2A59F2A8E83B600387118 /* PollListSubitemCell.xib */,
+				84A2A59A2A8E810000387118 /* PollsListItemCell.swift */,
+				84A2A59B2A8E810000387118 /* PollsListItemCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		84A2A5942A8E7DC200387118 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				84A2A5952A8E7DD400387118 /* PollsModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		84A2A5972A8E7F0C00387118 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				84A2A5982A8E7F1A00387118 /* PollsListViewModel.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -1455,6 +1498,7 @@
 				04DA4A292A67AF8100AF540B /* SettingVC.xib in Resources */,
 				040759C12A55D35F00318462 /* SignupVC.xib in Resources */,
 				0481DFA82A602CED00486AD1 /* CommentVC.xib in Resources */,
+				84A2A5A12A8E83B600387118 /* PollListSubitemCell.xib in Resources */,
 				043E26722A5C6EC900695C2D /* SearchVC.xib in Resources */,
 				047E11A32A59C81200B7CC05 /* HomeVC.xib in Resources */,
 				04DA4A432A67BF5C00AF540B /* InviteFriendsVC.xib in Resources */,
@@ -1462,6 +1506,7 @@
 				047DB08D2A596F6F003DFE41 /* SubscriptionNotesItemCell.xib in Resources */,
 				043E266B2A5C64E300695C2D /* PublicFiguresItemCell.xib in Resources */,
 				049D88A62A52D9A800876D27 /* SFProDisplay-Semibold.ttf in Resources */,
+				84A2A59D2A8E810000387118 /* PollsListItemCell.xib in Resources */,
 				047CACC52A56843900A64779 /* ForgotPasswrodVC.xib in Resources */,
 				049D88AC2A52DA4B00876D27 /* Localizable.strings in Resources */,
 				047DB0822A5960FB003DFE41 /* YouInterestedItemCell.xib in Resources */,
@@ -1553,6 +1598,7 @@
 				84A2A5232A86952500387118 /* ViewPoliticianScorecard.swift in Sources */,
 				04A979792A7031C0002724E7 /* GooglePlaceAPI.swift in Sources */,
 				047DB08C2A596F6F003DFE41 /* SubscriptionNotesItemCell.swift in Sources */,
+				84A2A5992A8E7F1A00387118 /* PollsListViewModel.swift in Sources */,
 				049AE1A02A6C24E7001FAA65 /* MessageListVC.swift in Sources */,
 				84DEAA9D2A7D69D200009C1E /* SearchViewModel.swift in Sources */,
 				044C01C42A6BF42C00E79AD2 /* PollsListVC.swift in Sources */,
@@ -1562,6 +1608,7 @@
 				04A9797F2A703D69002724E7 /* LocationItemCell.swift in Sources */,
 				84C67FBA2A816033000B7503 /* UserNotificationModel.swift in Sources */,
 				84ADF9F52A7B7596005D3E9D /* ChangePasswordViewModel.swift in Sources */,
+				84A2A5A72A8F27F200387118 /* SnappingLayout.swift in Sources */,
 				042925982A55DF8E00EE3B8D /* global.swift in Sources */,
 				043E267C2A5C7AB200695C2D /* ProfileVC.swift in Sources */,
 				049B09F52A717F42008ADEF2 /* LocationSearchVC.swift in Sources */,
@@ -1577,7 +1624,9 @@
 				047E11A22A59C81200B7CC05 /* HomeVC.swift in Sources */,
 				049D887F2A52D5D600876D27 /* AppDelegate.swift in Sources */,
 				047DB0942A59756F003DFE41 /* SubscribeNotesModel.swift in Sources */,
+				84A2A59C2A8E810000387118 /* PollsListItemCell.swift in Sources */,
 				84255FE02A84EC5700D6170A /* PublicFiguresViewModel.swift in Sources */,
+				84A2A5A02A8E83B600387118 /* PollListSubitemCell.swift in Sources */,
 				047CACC42A56843900A64779 /* ForgotPasswrodVC.swift in Sources */,
 				040759C02A55D35F00318462 /* SignupVC.swift in Sources */,
 				0439B7412A60612100B74568 /* CommentItemCell.swift in Sources */,
@@ -1615,6 +1664,7 @@
 				047E11B32A5AC47700B7CC05 /* PostItemPoliticalCell.swift in Sources */,
 				049D88812A52D5D600876D27 /* SceneDelegate.swift in Sources */,
 				049618DC2A54123E0037001B /* Configration.swift in Sources */,
+				84A2A5962A8E7DD400387118 /* PollsModel.swift in Sources */,
 				04CA0E052A6406550043C530 /* ThreeDotItemModel.swift in Sources */,
 				042A6A9B2A5F1C9500BB1D71 /* FollowFolloingVC.swift in Sources */,
 				84B1D5462A75329E0051558B /* TradPostModels.swift in Sources */,
@@ -1804,9 +1854,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Y7T23Q9KPD;
+				DEVELOPMENT_TEAM = Q3V62YN77S;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SoapBx/Framework",
@@ -1825,6 +1876,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.operators.technolab.SoapBx;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;

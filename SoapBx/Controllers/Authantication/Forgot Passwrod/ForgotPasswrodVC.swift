@@ -34,7 +34,7 @@ class ForgotPasswrodVC: UIViewController {
                           font: .bold,
                           size: 38)
         lblSubtitle.setTheme("Please enter your email / phone number to reset your account password",
-                             color: .titleGrey)
+                             color: .titleGray)
         
         txtEmail.setTheme(placeholder: "Email / Phone Number",
                           leftIcon: UIImage(named: "ic_email"))

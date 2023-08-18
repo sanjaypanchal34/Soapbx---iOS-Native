@@ -211,7 +211,6 @@ extension TradPostListView: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        printLog("[TradPostListView] willDisplay --->")
         if viewType == .fromHome {
             if (indexPath.row + 1) >= (vmObject.arrPosts.count - 3){
                 self.paginationManage()

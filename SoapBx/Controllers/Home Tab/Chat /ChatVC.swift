@@ -42,11 +42,16 @@ class ChatVC: UIViewController , PusherDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        setupPusher()
-        
         getChatList()
     }
 
+    override func viewDidDisappear(_ animated: Bool) {
+        pusher.disconnect()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        setupPusher()
+    }
     private func updateList() {
         vmObject.updateViewComplition = {
             DispatchQueue.main.async {
@@ -131,7 +136,6 @@ class ChatVC: UIViewController , PusherDelegate{
     }
     @IBAction private func click_btnSendMessage() {
         if self.txtMessage.text?.count ?? 0 > 0 {
-            showLoader()
             vmObject.sendMessage(relationId : relationID, sender: authUser?.user?.id ?? 0, receiver: userObj?.id ?? 0, message: self.txtMessage.text ?? "") { [self] result in
                 hideLoader()
                 showToast(message: result.message)
@@ -181,7 +185,6 @@ extension ChatVC: UITableViewDataSource, UITableViewDelegate  {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        printLog("[TradPostListView] willDisplay --->")
         if (indexPath.row + 1) >= (vmObject.arrList.count - 3){
             if vmObject.currentPage < vmObject.totalPage {
                 vmObject.currentPage = vmObject.currentPage + 1
@@ -206,8 +209,13 @@ extension ChatVC: UITableViewDataSource, UITableViewDelegate  {
                 print("notif_comment message received: \(data ?? "")")
                 if let d = data as? JSON {
                     let chat_relation_id: String = d["chat_relation_id"] as! String
+                    let id: Int = d["id"] as! Int
+                    let receiver_id: String = d["receiver_id"] as! String
+                    let sender_id: Int = d["sender_id"] as! Int
                     let message: String = d["message"] as! String
-                    let model: ChatModel = .init(id: self.vmObject.arrList.count + 1, chat_relation_id: Int(chat_relation_id), sender_id: 10, receiver_id: 11, message: message, sName: "Sumit", sImage: "", rName: "Arvind", rImage: "")
+                    let receiver_name: String = d["receiver_name"] as! String
+                    let sender_name: String = d["sender_name"] as! String
+                    let model: ChatModel = .init(id: id, chat_relation_id: Int(chat_relation_id), sender_id: sender_id, receiver_id: Int(receiver_id), message: message, sName: sender_name, sImage: "", rName: receiver_name, rImage: "")
                     self.vmObject.arrList.append(model)
                 }
                 
@@ -215,6 +223,7 @@ extension ChatVC: UITableViewDataSource, UITableViewDelegate  {
                     if self.vmObject.arrList.count > 0 {
                         self.tblList.reloadData {
                             self.tblList.scrollToBottom()
+                            self.txtMessage.text = ""
                         }
                     }
                 }

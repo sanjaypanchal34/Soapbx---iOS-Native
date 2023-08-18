@@ -75,7 +75,7 @@ class ProfileUserInfoView: UIView {
         btnPoliticians.lblDescription.setTheme("Politicians", size: 14)
         
         
-        btnVoiceToday.imageView?.image = UIImage(named: "profileOne")
+        btnVoiceToday.imageView?.image = UIImage(named: "")
         btnVoiceToday.imageView?.contentMode = .scaleAspectFill
         btnVoiceToday.imageView?.layer.cornerRadius = (btnVoiceToday.imageView?.frame.height ?? 0)/2
         btnVoiceToday.title?.setTheme("What do you want to voice today?", color: .lightGrey)
@@ -103,8 +103,7 @@ class ProfileUserInfoView: UIView {
         imgCover.setImage(user.coverPhotoURL)
         imgProfile.setImage(user.profilePhotoURL)
         lblProfileName.text = user.name
-        lblLocation.text = user.location
-        imgLocationIcon.isHidden = !((user.location?.count ?? 0) > 0)
+        lblLocation.text = getValueOrDefult(user.location, defaultValue: "N/A")
         
         btnFollowers.lblTitle.text = "\(user.followers ?? 0)"
         btnFollowing.lblTitle.text = "\(user.following ?? 0)"
@@ -119,6 +118,7 @@ class ProfileUserInfoView: UIView {
             btnFollow.text = "Follow"
             btnFollow.backgroundColor = .titleRed
         }
+        btnVoiceToday.imageView?.setImage(user.profilePhotoURL)
     }
     
     func updateOtherUserProfileData(_ userObj: PostUser) {
@@ -129,12 +129,12 @@ class ProfileUserInfoView: UIView {
         imgCover.setImage(userObj.cover_photo_url)
         imgProfile.setImage(userObj.profile_photo_url)
         lblProfileName.text = userObj.name
-        lblLocation.text = userObj.location
-        imgLocationIcon.isHidden = !(userObj.location.count > 0)
+        lblLocation.text = getValueOrDefult(userObj.location, defaultValue: "N/A")
         
         btnFollowers.lblTitle.text = "\(userObj.followers)"
         btnFollowing.lblTitle.text = "\(userObj.following)"
         btnPoliticians.lblTitle.text = "\(userObj.politician)"
+        btnVoiceToday.imageView?.setImage(userObj.cover_photo_url)
     }
     
     @IBAction private func click_editProfile() {

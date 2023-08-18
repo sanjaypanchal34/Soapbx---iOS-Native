@@ -129,7 +129,7 @@ class CreatePostVC: UIViewController {
         txtTitle.maxLength = 50
         
         lblDescription.setTheme("Add Description", color: .primaryBlue, font: .bold)
-        lblDescriptionPlaceholder.setTheme("What is on your mind?", color: .titleGrey, size: 18)
+        lblDescriptionPlaceholder.setTheme("What is on your mind?", color: .titleGray, size: 18)
         txtDescription.font = AppFont.regular.font(size: 18)
         txtDescription.delegate = self
         
@@ -234,15 +234,8 @@ class CreatePostVC: UIViewController {
     
     //API calls
     private func createPost() {
-        var lblProgress: UILabel?
-        showLoader { label in
-            lblProgress = label
-            lblProgress?.text = "0.00%"
-            lblProgress?.isHidden = false
-        }
-        vmObject.addPost(title: txtTitle.text ?? "", description: txtDescription.text ?? "" ) { progressValue in
-            lblProgress?.text = String(format: "%.2f%", progressValue*100)
-        } complition: { result in
+        showLoader()
+        vmObject.addPost(title: txtTitle.text ?? "", description: txtDescription.text ?? "" ) { result in
             hideLoader()
             if result.status {
                 mackRootView(HomeVC())
@@ -253,14 +246,8 @@ class CreatePostVC: UIViewController {
     
     private func updatePost() {
         var lblProgress: UILabel?
-        showLoader { label in
-            lblProgress = label
-            lblProgress?.text = "0.00%"
-            lblProgress?.isHidden = false
-        }
-        vmObject.updatePost(title: txtTitle.text ?? "", description: txtDescription.text ?? "" ) { progressValue in
-            lblProgress?.text = String(format: "%.2f", progressValue*100)
-        } complition: { result in
+        showLoader()
+        vmObject.updatePost(title: txtTitle.text ?? "", description: txtDescription.text ?? "" ) { result in
             showToast(message: result.message)
             if result.status {
                 NotificationCenter.default.post(name: .homePostUpdate, object: nil)

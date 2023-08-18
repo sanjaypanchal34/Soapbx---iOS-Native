@@ -28,7 +28,7 @@ class SubscriptionNotesItemCell: AppTableViewCell {
         lblPremium.setTheme("",size: 14)
         imgPremium.isHidden = true
         viewPremiumBG.backgroundColor = .clear
-        viewDivider.backgroundColor = .titleGrey
+        viewDivider.backgroundColor = .titleGray
         viewFreeBG.backgroundColor = .primaryBlue
         viewPremiumBG.backgroundColor = .primaryBlue
     }

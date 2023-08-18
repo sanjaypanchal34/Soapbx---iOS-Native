@@ -33,7 +33,7 @@ class PublicFiguresItemCell: AppTableViewCell {
         super.awakeFromNib()
         
         viewMain.layer.cornerRadius = 10
-        viewMain.layer.borderColor = UIColor.titleGrey.cgColor
+        viewMain.layer.borderColor = UIColor.titleGray.cgColor
         viewMain.layer.borderWidth = 0.5
         
         imgProfile.layer.cornerRadius = imgProfile.frame.height/2
@@ -89,7 +89,7 @@ class PublicFiguresItemCell: AppTableViewCell {
         self.user = user
         imgProfile.setImage(user.profilePhotoURL)
         lblProfileName.text = user.name
-        lblLocation.text = user.location
+        lblLocation.text = getValueOrDefult(user.location, defaultValue: "N/A")
         imgLocation.isHidden = lblLocation.text?.isEmptyString ?? true
         btnAction.textColor = .white
         

@@ -27,7 +27,7 @@ class SearchItemCell: AppTableViewCell {
         imgProfile.image = UIImage(named: "Logo")
         imgProfile.layer.cornerRadius = imgProfile.frame.height / 2
         lblProfileName.setTheme("Todd Young", font: .semibold)
-        btnCancel.tintColor = .titleGrey
+        btnCancel.tintColor = .titleGray
     }
 
     func setDataForSearchTab() {
@@ -42,7 +42,7 @@ class SearchItemCell: AppTableViewCell {
         btnCancel.isUserInteractionEnabled = !isFromSearch
         btnCancel.isHidden = isFromSearch
         btnCancel.image = UIImage(named:"ic_lightCross")?.withRenderingMode(.alwaysTemplate)
-        btnCancel.tintColor = .titleGrey
+        btnCancel.tintColor = .titleGray
         btnCancel.height = 18
     }
     

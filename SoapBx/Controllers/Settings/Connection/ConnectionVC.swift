@@ -85,7 +85,7 @@ class ConnectionVC: UIViewController {
             btnBlock.backgroundColor = .primaryBlue
             btnBlock.textColor = .white
             btnUnfollow.backgroundColor = .lightGrey
-            btnUnfollow.textColor = .titleGrey
+            btnUnfollow.textColor = .titleGray
         } else {
             if screenType == .fromFriends{
                 vmSearch.type = .myFriends
@@ -93,7 +93,7 @@ class ConnectionVC: UIViewController {
                 vmObject.selectedTab = .unfollowed
             }
             btnBlock.backgroundColor = .lightGrey
-            btnBlock.textColor = .titleGrey
+            btnBlock.textColor = .titleGray
             btnUnfollow.backgroundColor = .primaryBlue
             btnUnfollow.textColor = .white
         }
@@ -127,11 +127,7 @@ class ConnectionVC: UIViewController {
         vmObject.unbockedUser(user: vmObject.arrList[indexPath.row].id ?? 0 ) {[self] result in
             hideLoader()
             vmObject.arrList.remove(at: indexPath.row)
-            if vmObject.arrList.count > 0 {
-                tblList.deleteRows(at: [indexPath], with: .fade)
-            } else {
-                tblList.reloadData()
-            }
+            tblList.reloadData()
             lblNoData.isHidden = vmObject.arrList.count > 0
         }
     }

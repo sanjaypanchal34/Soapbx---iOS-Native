@@ -90,7 +90,7 @@ class PoliticianProfileVC: UIViewController {
         imgCover.setImage(vmProfile.userObj?.coverPhotoURL)
         imgProfile.setImage(vmProfile.userObj?.profilePhotoURL)
         lblProfileName.text = vmProfile.userObj?.name
-        lblLocation.text = vmProfile.userObj?.location
+        lblLocation.text = getValueOrDefult(vmProfile.userObj?.location, defaultValue: "N/A")
         setFollowUnfollow()
         
         btnElectedIn.lblTitle.text = getValueOrDefult(vmProfile.userObj?.electedIn, defaultValue: "--")

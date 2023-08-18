@@ -41,7 +41,7 @@ class PublicFiguresVC: UIViewController {
         searchView.backgroundColor = .lightGrey
         searchView.layer.cornerRadius = searchView.frame.height/2
         searchView.imageView?.image = UIImage(named: "ic_search")?.withRenderingMode(.alwaysTemplate)
-        searchView.imageView?.tintColor = .titleGrey
+        searchView.imageView?.tintColor = .titleGray
         
         tblList.register(["PublicFiguresItemCell"], delegate: self, dataSource: self)
         updateList()

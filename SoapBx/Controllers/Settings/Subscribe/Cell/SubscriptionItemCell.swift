@@ -16,7 +16,7 @@ class SubscriptionItemCell: AppTableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        viewItem.backgroundColor = .titleGrey
+        viewItem.backgroundColor = .titleGray
         lblTitle.setTheme("", size: 14)
         lblSubtitle.setTheme("", font: .bold, size: 20)
         viewItem.layer.cornerRadius = 5
@@ -27,7 +27,7 @@ class SubscriptionItemCell: AppTableViewCell {
         lblSubtitle.text = data.description
         lblTitle.textColor = data.isSelected ? UIColor.appYellow : UIColor.titleBlack
         lblSubtitle.textColor = data.isSelected ? UIColor.white : UIColor.titleBlack
-        viewItem.backgroundColor = data.isSelected ? UIColor.primaryBlue : UIColor.titleGrey
+        viewItem.backgroundColor = data.isSelected ? UIColor.primaryBlue : UIColor.titleGray
     }
     
 }

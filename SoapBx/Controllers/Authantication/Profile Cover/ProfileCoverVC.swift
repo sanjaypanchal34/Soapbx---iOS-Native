@@ -50,7 +50,7 @@ class ProfileCoverVC: UIViewController {
                           font: .bold,
                           size: 40)
         
-        lblAddCover.setTheme("Add cover phote\n(Optional)", color: .titleGrey, font: .regular, size: 12)
+        lblAddCover.setTheme("Add cover phote\n(Optional)", color: .titleGray, font: .regular, size: 12)
         
         viewAddCover.addTarget(self, action: #selector(click_btnCover), for: .touchUpInside)
         
@@ -75,7 +75,7 @@ class ProfileCoverVC: UIViewController {
         btnNext.appButton("Next")
         
         lblDescription.setTheme("Add a profile picture so that you and your friend can identifv each other", color: .titleBlack)
-        lblNotes.setTheme("*Cover photo is optional and can be added later.", color: .titleGrey)
+        lblNotes.setTheme("*Cover photo is optional and can be added later.", color: .titleGray)
     }
     
     //Actions

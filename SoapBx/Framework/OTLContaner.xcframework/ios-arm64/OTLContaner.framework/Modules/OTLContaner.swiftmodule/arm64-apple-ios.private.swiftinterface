@@ -708,7 +708,7 @@ extension OTLContaner.OTLOTPViewDelegate {
   public func convert(date string: Swift.String, set format: OTLContaner.OTLDateTimeFormat, getFormat: OTLContaner.OTLDateTimeFormat) -> Swift.String
   public func localToUTC(dateStr: Swift.String, dateFormat: Swift.String) -> Foundation.Date?
   public func utcToLocal(dateStr: Swift.String) -> Foundation.Date
-  public func getDateDiff(previousDate: Swift.String) -> Swift.String
+  public func getDateDiff(startDate: Foundation.Date = Date(), end date: Foundation.Date, subString: Swift.String = "ago") -> Swift.String
   @objc override dynamic public init()
   @objc deinit
 }

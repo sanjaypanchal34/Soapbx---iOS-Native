@@ -29,7 +29,7 @@ extension UILabel {
     }
     
     func noDataTitle(_ text: String) {
-        setTheme(text,color: .titleGrey, font: .bold, size: 22)
+        setTheme(text,color: .titleGray, font: .bold, size: 22)
         textAlignment = .center
     }
 }

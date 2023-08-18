@@ -75,22 +75,4 @@ class PollsViewModel {
             }
         }
     }
-    
-    func getPolls(complition: @escaping (ResponseCallBack)) {
-        let para: JSON = [:]
-        let queryPara = ["page":"\(currentPage)"]
-        
-        Webservice.Settings.getPolls.requestWith(parameter: para, queryPara: queryPara) { result in
-            switch result {
-                case .fail(let message,let code,_):
-                    complition(CompanComplition(message: message, code: code ?? 111, status: false))
-                case .success(let data):
-                    if data.code == 200 {
-                        complition(CompanComplition(message: data.message, code: data.code, status: true))
-                    } else {
-                        complition(CompanComplition(message: data.message, code: data.code, status: false))
-                    }
-            }
-        }
-    }
 }

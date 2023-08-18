@@ -226,8 +226,8 @@
                                                 <constraint firstAttribute="bottom" secondItem="Phq-mt-FlH" secondAttribute="bottom" id="yWj-dK-dtl"/>
                                             </constraints>
                                         </view>
-                                        <pageControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="5AT-3P-CIM">
-                                            <rect key="frame" x="129.66666666666669" y="383" width="115.66666666666666" height="15"/>
+                                        <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="5AT-3P-CIM">
+                                            <rect key="frame" x="129.66666666666666" y="383" width="115.66666666666666" height="15"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="15" id="5ZA-DN-jtG"/>
                                             </constraints>
@@ -389,6 +389,7 @@
                                         <constraint firstItem="evX-er-6xd" firstAttribute="trailing" secondItem="CG5-Ou-Deq" secondAttribute="trailing" id="Ep6-oL-8Bi"/>
                                         <constraint firstAttribute="trailing" secondItem="CG5-Ou-Deq" secondAttribute="trailing" constant="20" id="InC-CE-435"/>
                                         <constraint firstAttribute="trailing" secondItem="I4v-mh-Xvm" secondAttribute="trailing" constant="20" symbolic="YES" id="L8D-n0-txG"/>
+                                        <constraint firstItem="5AT-3P-CIM" firstAttribute="centerX" secondItem="5yM-Be-tc4" secondAttribute="centerX" id="NHY-d9-qEq"/>
                                         <constraint firstItem="I4v-mh-Xvm" firstAttribute="leading" secondItem="5yM-Be-tc4" secondAttribute="leading" constant="20" symbolic="YES" id="Xiz-yB-80n"/>
                                         <constraint firstItem="Lra-Rq-aRR" firstAttribute="leading" secondItem="5yM-Be-tc4" secondAttribute="leading" constant="20" id="bjx-2v-Hyr"/>
                                         <constraint firstItem="I4v-mh-Xvm" firstAttribute="top" secondItem="5yM-Be-tc4" secondAttribute="top" constant="20" id="e5z-EZ-6NG"/>

@@ -46,6 +46,7 @@ class HomeItemCell: AppTableViewCell {
     private var object: PostModel?
     private var dotMenuView: ThreeDotMenuView?
     private var delegate:HomeItemCellDelegate?
+    private var currentPage = 0
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -78,14 +79,17 @@ class HomeItemCell: AppTableViewCell {
         txtPostDescription.linkTextAttributes = [.foregroundColor:UIColor.primaryBlue]
         txtPostDescription.delegate = self
         
-        
+        let snappingLayout = SnappingLayout()
+        snappingLayout.snapPosition = .center
+        snappingLayout.scrollDirection = .horizontal
+        collectionPostImage.collectionViewLayout = snappingLayout
         collectionPostImage.register(["PostImageItemCell"], delegate: self, dataSource: self)
         collectionSoapbx.register(["PostItemPoliticalCell"], delegate: self, dataSource: self)
         collectionPolitician.register(["PostItemPoliticalCell"], delegate: self, dataSource: self)
         
         viewActionButtons.layer.cornerRadius = viewActionButtons.frame.height/2
         viewActionButtons.layer.borderWidth = 0.5
-        viewActionButtons.layer.borderColor = UIColor.titleGrey.cgColor
+        viewActionButtons.layer.borderColor = UIColor.titleGray.cgColor
         btnLike.title?.setTheme("0", size: 14)
         btnLike.imageView?.image = UIImage(named: "ic_like_grey")?.withRenderingMode(.alwaysTemplate)
         
@@ -107,7 +111,6 @@ class HomeItemCell: AppTableViewCell {
         } else {
             dotMenuView?.hideSelf()
         }
-        
 //        if screenType == .fromProfile, object.user?.id == authUser?.user?.id {
 //            btnDotMenu.isHidden = true
 //        } else {
@@ -120,7 +123,7 @@ class HomeItemCell: AppTableViewCell {
         self.indexPath = indexPath
         imgProfile.setImage(object.user?.profilePhotoURL)
         lblProfileName.text = object.user?.name
-        lblPostLocation.text = object.user?.location
+        lblPostLocation.text = getValueOrDefult(object.user?.location, defaultValue: "N/A")
         lblPostTime.text = OTLDateConvert.instance.convert(date: object.createdAt ?? "", set: .yyyyMMdd_T_HHmmssZ, getFormat: .mmmDDyyyyAthhmma)
         
         btnSave.title?.text = "\(object.savedsCount ?? 0)"
@@ -151,9 +154,9 @@ class HomeItemCell: AppTableViewCell {
         }
         
         btnLike.title?.text = "\(object.likeCount ?? 0)"
-        btnLike.imageView?.tintColor = object.likeStatus == 1 ? .primaryBlue : .titleGrey
+        btnLike.imageView?.tintColor = object.likeStatus == 1 ? .primaryBlue : .titleGray
         btnDislike.title?.text = "\(object.dislikeCount ?? 0)"
-        btnDislike.imageView?.tintColor = object.dislikeStatus == 1 ? .primaryBlue : .titleGrey
+        btnDislike.imageView?.tintColor = object.dislikeStatus == 1 ? .primaryBlue : .titleGray
         btnComment.title?.text = "\(object.commentsCount ?? 0)"
     }
     
@@ -255,7 +258,38 @@ class HomeItemCell: AppTableViewCell {
         dotMenuView?.hideSelf()
     }
 }
-
+extension HomeItemCell: UIScrollViewDelegate {
+    
+    func animationForOtherImage(index: Int) {
+        UIView.animate(withDuration: 0.1, delay: 0) {[self] in
+            if let cell = collectionPostImage.cellForItem(at: IndexPath(row: index, section: 0)) { // old
+                cell.frame.origin.y = 15
+                cell.frame.size = CGSize(width: collectionPostImage.frame.width - 20, height: collectionPostImage.frame.width - 30)
+            }
+        }
+    }
+    
+    func animationForCurrentImage(index: Int) {
+        UIView.animate(withDuration: 0.1, delay: 0) {[self] in
+            if let cell = collectionPostImage.cellForItem(at: IndexPath(row: index, section: 0)) { // new
+                cell.frame.origin.y = 5
+                cell.frame.size = CGSize(width: collectionPostImage.frame.width - 20, height: collectionPostImage.frame.width - 10)
+            }
+        }
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if scrollView == collectionPostImage {
+            let x = Int(scrollView.contentOffset.x) + 20 + (10 * (object?.images?.count ?? 0))
+            let w = Int(scrollView.bounds.size.width)
+            
+//            animationForOtherImage(index: currentPage)
+            currentPage = Int(x/w)
+//            animationForCurrentImage(index: currentPage)
+        }
+    }
+   
+}
 extension HomeItemCell: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == collectionPostImage {
@@ -305,7 +339,12 @@ extension HomeItemCell: UICollectionViewDelegateFlowLayout, UICollectionViewDele
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == collectionPostImage {
-            return CGSize(width: collectionView.frame.width - 20, height: collectionView.frame.width - 10)
+//            if currentPage == indexPath.row {
+                return CGSize(width: collectionView.frame.width - 15, height: collectionView.frame.width - 10)
+//            }
+//            else {
+//                return CGSize(width: collectionView.frame.width - 20, height: collectionView.frame.width - 30)
+//            }
         }
         else if collectionView == collectionSoapbx,
                 (object?.trendTags?.count ?? 0) > 0{

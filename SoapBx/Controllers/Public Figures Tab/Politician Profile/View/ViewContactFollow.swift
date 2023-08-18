@@ -65,7 +65,7 @@ private var user: PostUser!
     
     func setData(_ user: PostUser){
         self.user = user
-        lblLocation.text = user.location
+        lblLocation.text = getValueOrDefult(user.location, defaultValue: "N/A")
         btnPhoneCall.title?.text = getValueOrDefult(user.phoneNumber, defaultValue: "--- --- ----")
     }
     

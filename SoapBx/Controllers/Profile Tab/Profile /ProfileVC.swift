@@ -217,6 +217,7 @@ extension ProfileVC: OTLBottomTabBarDelegate {
             mackRootView(PublicFiguresVC())
             break
         case .addPost:
+                navigationController?.pushViewController(CreatePostVC(), animated: true)
             break
         case .search:
             mackRootView(SearchVC())

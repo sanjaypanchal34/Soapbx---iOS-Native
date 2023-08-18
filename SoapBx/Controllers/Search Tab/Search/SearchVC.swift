@@ -91,7 +91,7 @@ class SearchVC: UIViewController {
         searchView.backgroundColor = .lightGrey
         searchView.layer.cornerRadius = searchView.frame.height/2
         searchView.imageView?.image = UIImage(named: "ic_search")?.withRenderingMode(.alwaysTemplate)
-        searchView.imageView?.tintColor = .titleGrey
+        searchView.imageView?.tintColor = .titleGray
         
         txtSearch.font = AppFont.regular.font(size: 16)
         txtSearch.addTarget(self, action: #selector(searchEditingChanged(_:)), for: .editingChanged)
@@ -202,11 +202,7 @@ class SearchVC: UIViewController {
             showToast(message: result.message)
             if result.status {
                 vmObject.arrList.remove(at: indexPath.row)
-                if vmObject.arrList.count > 0 {
-                    tblList.deleteRows(at: [indexPath], with: .fade)
-                } else {
-                    tblList.reloadData()
-                }
+                tblList.reloadData()
             }
         }
     }
@@ -221,11 +217,12 @@ class SearchVC: UIViewController {
         }
         guard user?.id != authUser?.user?.id else { return }
         showLoader()
-        vmObject.saveHistory(user: user?.id ?? 0) { result in
+        vmObject.saveHistory(user: user?.id ?? 0) {[self] result in
             hideLoader()
             if result.status {
                 if self.screenType == .fromPublicFigures {
                     if self.vmPublic.arrList.count >= (indexPath.row + 1) {
+                        txtSearch.text = ""
                         self.vmObject.arrList.append(self.vmPublic.arrList[indexPath.row])
                         self.vmPublic.searchString = ""
                         let vc = PoliticianProfileVC()
@@ -235,6 +232,7 @@ class SearchVC: UIViewController {
                 }
                 else if self.screenType == .searchTab {
                     if self.vmObject.arrSearchList.count >= (indexPath.row + 1) {
+                        txtSearch.text = ""
                         self.vmObject.arrList.append(self.vmObject.arrSearchList[indexPath.row])
                         self.vmObject.searchString = ""
                         let vc = ProfileVC()
@@ -306,6 +304,7 @@ extension SearchVC: UITableViewDataSource, UITableViewDelegate  {
             }
         }
         else if screenType == .fromPublicFigures, self.vmPublic.isSearch == false{
+            txtSearch.text = ""
             let vc = PoliticianProfileVC()
             vc.navigation(self.vmObject.arrList[indexPath.row], indexPath: indexPath, delegate: self)
             self.navigationController?.pushViewController(vc, animated: true)
@@ -314,6 +313,7 @@ extension SearchVC: UITableViewDataSource, UITableViewDelegate  {
             if self.vmObject.arrList.contains(where: { user in
                 user.id == self.vmPublic.arrList[indexPath.row].id
             }) {
+                txtSearch.text = ""
                 let vc = PoliticianProfileVC()
                 vc.navigation(self.vmPublic.arrList[indexPath.row], indexPath: indexPath, delegate: self)
                 self.navigationController?.pushViewController(vc, animated: true)
@@ -322,6 +322,7 @@ extension SearchVC: UITableViewDataSource, UITableViewDelegate  {
             }
         }
         else if screenType == .searchTab, self.vmObject.isSearch == false{
+            txtSearch.text = ""
             guard self.vmObject.arrList[indexPath.row].id != authUser?.user?.id else { return }
             let vc = ProfileVC()
             vc.navigateForOtherUser(self.vmObject.arrList[indexPath.row])
@@ -331,6 +332,7 @@ extension SearchVC: UITableViewDataSource, UITableViewDelegate  {
             if self.vmObject.arrList.contains(where: { user in
                 user.id == self.vmObject.arrSearchList[indexPath.row].id
             }) {
+                txtSearch.text = ""
                 guard self.vmObject.arrSearchList[indexPath.row].id != authUser?.user?.id else { return }
                 let vc = ProfileVC()
                 vc.navigateForOtherUser(self.vmObject.arrSearchList[indexPath.row])
@@ -364,6 +366,7 @@ extension SearchVC: OTLBottomTabBarDelegate {
         case .publicFigures:
             mackRootView(PublicFiguresVC())
         case .addPost:
+                navigationController?.pushViewController(CreatePostVC(), animated: true)
             break
         case .search:
             break

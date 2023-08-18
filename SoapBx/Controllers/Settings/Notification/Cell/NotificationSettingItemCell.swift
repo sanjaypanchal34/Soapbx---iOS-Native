@@ -20,7 +20,7 @@ class NotificationSettingItemCell: AppTableViewCell {
         super.awakeFromNib()
         lblTitle.setTheme("")
         switchTogale.onTintColor = .primaryBlue
-        switchTogale.tintColor = .titleGrey
+        switchTogale.tintColor = .titleGray
     }
 
     func setData(_ object: NotificationSettingModel, indexPath: IndexPath, delegate: NotificationSettingDelegate) {

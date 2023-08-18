@@ -24,7 +24,7 @@ class LoginVC: UIViewController {
     
     @IBOutlet private weak var btnContinueGuest: UIButton!
     @IBOutlet private weak var lblNotAMamber: UILabel!
-    @IBOutlet private weak var btnSignUp: UIButton!
+    @IBOutlet private weak var btnSignUp: OTLTextButton!
     
     private let vmObject = LoginViewModel()
     
@@ -39,7 +39,7 @@ class LoginVC: UIViewController {
                           font: .bold,
                           size: 38)
         lblSubtitle.setTheme("Enter your details below",
-                             color: .titleGrey)
+                             color: .titleGray)
         txtEmail.setTheme(placeholder: "Email",
                           leftIcon: UIImage(named: "ic_email"))
         txtEmail.keyboardType = .emailAddress
@@ -52,17 +52,16 @@ class LoginVC: UIViewController {
         
         btnSignin.appButton("Sign in")
         
-        btnContinueGuest.setTheme("Continue as a guest", color: .titleGrey, font: .medium)
+        btnContinueGuest.setTheme("Continue as a guest", color: .titleGray, font: .medium)
         lblNotAMamber.setTheme("Not a member?", size: 16)
-        btnSignUp.setTheme("Sign up now", color: .primaryBlue)
-        txtEmail.text = "sumitk.iih@yopmail.com"
-        txtPassword.text = "sumit@123"
+        btnSignUp.setTheme("Sign up now",color: .primaryBlue, font: .medium, size: 16)
+        
         if let remembe = AuthorizedUser.rememberMe() {
             txtEmail.text = remembe.email
             txtPassword.text = remembe.password
-            imgRemamberMe.image = nil
-            imgRemamberMe.backgroundColor = .primaryBlue
-            imgRemamberMe.layer.cornerRadius = 2
+            imgRemamberMe.image = UIImage(named: "ic_favChecked")?.withRenderingMode(.alwaysTemplate)
+            imgRemamberMe.tintColor = .primaryBlue
+            imgRemamberMe.backgroundColor = .clear
         }
     }
     
@@ -89,14 +88,14 @@ class LoginVC: UIViewController {
     }
     
     @IBAction private func click_IAccept() {
-        if imgRemamberMe.image == nil {
-            imgRemamberMe.image = UIImage(named: "ic_unCheckbox")
+        if imgRemamberMe.image == UIImage(named: "ic_favChecked")?.withRenderingMode(.alwaysTemplate) {
+            imgRemamberMe.image = UIImage(named: "ic_unCheckbox")?.withRenderingMode(.alwaysOriginal)
             imgRemamberMe.backgroundColor = .clear
             imgRemamberMe.layer.cornerRadius = 0
         } else { // selected
-            imgRemamberMe.image = nil
-            imgRemamberMe.backgroundColor = .primaryBlue
-            imgRemamberMe.layer.cornerRadius = 2
+            imgRemamberMe.image = UIImage(named: "ic_favChecked")?.withRenderingMode(.alwaysTemplate)
+            imgRemamberMe.tintColor = .primaryBlue
+            imgRemamberMe.backgroundColor = .clear
         }
     }
     

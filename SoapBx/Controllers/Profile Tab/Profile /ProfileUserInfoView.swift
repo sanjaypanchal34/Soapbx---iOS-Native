@@ -57,6 +57,7 @@ class ProfileUserInfoView: UIView {
         
         lblProfileName.setTheme("", font: .bold,size: 20)
         lblLocation.setTheme("", size: 14)
+        lblLocation.textAlignment = .center
         
         viewMessageFollowBackButtons.backgroundColor = .clear
         btnMessage.setTheme("Message", color: .white, font: .bold, size: 14,background: .primaryBlue)
@@ -109,7 +110,7 @@ class ProfileUserInfoView: UIView {
         btnFollowing.lblTitle.text = "\(user.following ?? 0)"
         btnPoliticians.lblTitle.text = "\(user.politician ?? 0)"
         if user.statusUser == 1 {
-            btnFollow.text = "Requested"
+            btnFollow.text = "Requseted"
             btnFollow.backgroundColor = .primaryBlue
         } else if user.statusUser == 2 {
             btnFollow.text = "Unfollow"

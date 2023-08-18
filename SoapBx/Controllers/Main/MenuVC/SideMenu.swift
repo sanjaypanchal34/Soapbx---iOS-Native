@@ -63,26 +63,31 @@ class SideMenu: UIControl {
         self.backgroundColor = .clear
         UIView.animate(withDuration: 0.5) {
             self.frame.origin.x = 0
-            self.backgroundColor = .black.withAlphaComponent(0.3)
         } completion: { status in
             if status {
                 self.translatesAutoresizingMaskIntoConstraints = false
             }
         }
+        
+        UIView.animate(withDuration: 0.2, delay: 0.4) {
+            self.backgroundColor = .black.withAlphaComponent(0.3)
+        } completion: { status in
+        }
     }
     
     fileprivate func stopAnimation() {
+        self.backgroundColor = .clear
         self.translatesAutoresizingMaskIntoConstraints = true
         self.frame.origin.x = 0
-        self.backgroundColor = .black.withAlphaComponent(0.3)
         UIView.animate(withDuration: 0.5) {
             self.frame.origin.x = self.frame.width
-            self.backgroundColor = .clear
         } completion: { status in
             if status {
                 self.removeFromSuperview()
             }
         }
+        
+        
     }
     
     //

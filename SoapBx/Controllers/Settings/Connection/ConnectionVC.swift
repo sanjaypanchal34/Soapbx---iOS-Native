@@ -129,6 +129,7 @@ class ConnectionVC: UIViewController {
             vmObject.arrList.remove(at: indexPath.row)
             tblList.reloadData()
             lblNoData.isHidden = vmObject.arrList.count > 0
+            showToast(message: result.message)
         }
     }
     
@@ -137,6 +138,7 @@ class ConnectionVC: UIViewController {
         vmProfile.follow(user: vmObject.arrList[indexPath.row].id ?? 0,
                          user: vmObject.arrList[indexPath.row].roleID ?? 3) {[self] result in
             hideLoader()
+            showToast(message: result.message)
             if result.status {
                 click_TabBar(btnUnfollow)
             }
@@ -147,6 +149,7 @@ class ConnectionVC: UIViewController {
         showLoader()
         vmSearch.acceptRequest(user: vmSearch.arrList[indexPath.row].id ?? 0) {[self] result in
             hideLoader()
+            showToast(message: result.message)
             if result.status {
                 vmSearch.arrList.remove(at: indexPath.row)
                 if vmSearch.arrList.count > 0 {
@@ -164,6 +167,7 @@ class ConnectionVC: UIViewController {
         showLoader()
         vmSearch.deleteRequest(user: vmSearch.arrList[indexPath.row].id ?? 0) {[self] result in
             hideLoader()
+            showToast(message: result.message)
             if result.status {
                 vmSearch.arrList.remove(at: indexPath.row)
                 if vmSearch.arrList.count > 0 {

@@ -155,14 +155,14 @@
                                                                     <rect key="frame" x="0.0" y="25.333333333333311" width="353" height="58.666666666666657"/>
                                                                     <subviews>
                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_location" translatesAutoresizingMaskIntoConstraints="NO" id="ZAP-cO-afh">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="15" height="15"/>
+                                                                            <rect key="frame" x="142.66666666666666" y="0.0" width="15" height="15"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" secondItem="ZAP-cO-afh" secondAttribute="height" multiplier="1:1" id="EpZ-Bg-7Q5"/>
                                                                                 <constraint firstAttribute="height" constant="15" id="pdP-7A-ZUF"/>
                                                                             </constraints>
                                                                         </imageView>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label Label Label Label Label Label Label Label Label Label " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VCb-Bs-LaK">
-                                                                            <rect key="frame" x="20" y="0.0" width="333" height="58.666666666666664"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VCb-Bs-LaK">
+                                                                            <rect key="frame" x="162.66666666666666" y="0.0" width="27.666666666666657" height="58.666666666666664"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
@@ -171,11 +171,12 @@
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="bottom" secondItem="VCb-Bs-LaK" secondAttribute="bottom" id="2pC-Te-sPr"/>
-                                                                        <constraint firstItem="ZAP-cO-afh" firstAttribute="leading" secondItem="aJT-Ex-fYd" secondAttribute="leading" id="7Ib-2Z-bze"/>
+                                                                        <constraint firstItem="ZAP-cO-afh" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="aJT-Ex-fYd" secondAttribute="leading" id="7Ib-2Z-bze"/>
                                                                         <constraint firstItem="ZAP-cO-afh" firstAttribute="top" secondItem="aJT-Ex-fYd" secondAttribute="top" id="8JW-qZ-JHE"/>
                                                                         <constraint firstItem="VCb-Bs-LaK" firstAttribute="leading" secondItem="ZAP-cO-afh" secondAttribute="trailing" constant="5" id="Mrx-2J-qVg"/>
                                                                         <constraint firstItem="VCb-Bs-LaK" firstAttribute="top" secondItem="ZAP-cO-afh" secondAttribute="top" id="RIO-MN-t8I"/>
-                                                                        <constraint firstAttribute="trailing" secondItem="VCb-Bs-LaK" secondAttribute="trailing" id="edt-FF-Txi"/>
+                                                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="VCb-Bs-LaK" secondAttribute="trailing" id="edt-FF-Txi"/>
+                                                                        <constraint firstItem="VCb-Bs-LaK" firstAttribute="centerX" secondItem="aJT-Ex-fYd" secondAttribute="centerX" id="o3v-Kx-6JP"/>
                                                                     </constraints>
                                                                 </view>
                                                             </subviews>
@@ -391,10 +392,10 @@
                                             <rect key="frame" x="0.0" y="653.33333333333337" width="393" height="334.66666666666663"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="DTh-YG-SjW">
-                                                    <rect key="frame" x="0.0" y="0.0" width="393" height="65"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="393" height="55"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="65" id="hDb-Ov-5qX"/>
+                                                        <constraint firstAttribute="height" constant="55" id="hDb-Ov-5qX"/>
                                                     </constraints>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vPO-bF-Pgv">
                                                         <size key="itemSize" width="128" height="128"/>
@@ -404,7 +405,7 @@
                                                     </collectionViewFlowLayout>
                                                 </collectionView>
                                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="fTk-oz-JnF">
-                                                    <rect key="frame" x="0.0" y="65" width="393" height="0.0"/>
+                                                    <rect key="frame" x="0.0" y="55" width="393" height="0.0"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" id="a4F-bh-rMq"/>

@@ -74,6 +74,7 @@ class PublicFiguresVC: UIViewController {
         showLoader()
         vmProfile.follow(user: vmObject.arrList[row].id ?? 0, user: vmObject.arrList[row].roleID ?? 3) { result in
             hideLoader()
+            showToast(message: result.message)
             if result.status {
                 self.vmObject.arrList[row].statusPoli = 1
                 if let cell = self.tblList.cellForRow(at: IndexPath(row: row, section: 0)) as? PublicFiguresItemCell {
@@ -87,6 +88,7 @@ class PublicFiguresVC: UIViewController {
         showLoader()
         vmProfile.unfollow(user: vmObject.arrList[row].id ?? 0) { result in
             hideLoader()
+            showToast(message: result.message)
             if result.status {
                 self.vmObject.arrList[row].statusPoli = 0
                 if let cell = self.tblList.cellForRow(at: IndexPath(row: row, section: 0)) as? PublicFiguresItemCell {

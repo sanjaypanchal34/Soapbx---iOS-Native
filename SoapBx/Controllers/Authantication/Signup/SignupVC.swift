@@ -132,7 +132,7 @@ class SignupVC: UIViewController {
         else if validateConfPass.status == false {
             showToast(message: validateConfPass.message)
         }
-        else if imgIAccept.image != nil{
+        else if imgIAccept.image != UIImage(named: "ic_favChecked")?.withRenderingMode(.alwaysTemplate) {
             showToast(message: "please select accept")
         }
         else {
@@ -165,6 +165,7 @@ class SignupVC: UIViewController {
                           email: txtEmail.text,
                           verified: intVerifyType,
                           complition: { result in
+            showToast(message: result.message)
             hideLoader()
             if result.status {
                 let vc = VerificationCodeVC()
@@ -182,8 +183,6 @@ class SignupVC: UIViewController {
                     verified_by: self.intVerifyType
                 ))
                 self.navigationController?.pushViewController(vc, animated: true)
-            } else {
-                showToast(message: result.message)
             }
         })
     }

@@ -240,7 +240,7 @@ enum Webservice
     }
     
     enum Profile: OTLRequestExecuter {
-        case getProfile, updateProfile, deleteAccount, getPoliticianOrUser(String), verifyOTPUpdateProfile, changePassword, notificationStatus, politicianList, unfollowRemoveUser, followPolitician, sendFollowRequest
+        case getProfile, updateProfile, deleteAccount, getPoliticianOrUser(String), verifyOTPUpdateProfile, changePassword, notificationStatus, politicianList, unfollowRemoveUser, followPolitician, sendFollowRequest, cancelRequest
         
         var method: OTLHTTPMethod {
             switch self {
@@ -265,6 +265,7 @@ enum Webservice
                 case .unfollowRemoveUser:       return "unfollowRemoveUser"
                 case .followPolitician:         return "followPolitician"
                 case .sendFollowRequest:        return "sendFollowRequest"
+                case .cancelRequest:            return "cancelRequest"
             }
         }
     }

@@ -34,6 +34,7 @@ class HomeItemCell: AppTableViewCell {
     @IBOutlet private weak var lblPostTitle: UILabel!
     @IBOutlet private weak var txtPostDescription: UITextView!
     @IBOutlet private weak var collectionPostImage: UICollectionView!
+    @IBOutlet private weak var pageCounter: UIPageControl!
     @IBOutlet private weak var collectionSoapbx: UICollectionView!
     @IBOutlet private weak var collectionPolitician: UICollectionView!
     
@@ -83,9 +84,35 @@ class HomeItemCell: AppTableViewCell {
         snappingLayout.snapPosition = .center
         snappingLayout.scrollDirection = .horizontal
         collectionPostImage.collectionViewLayout = snappingLayout
+        collectionPostImage.isPagingEnabled = true
+        collectionPostImage.decelerationRate = .normal
+        collectionPostImage.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
         collectionPostImage.register(["PostImageItemCell"], delegate: self, dataSource: self)
+        let layout1 = OTLTagFlowLayout()
+        layout1.spacing = 0
+        layout1.padding = 0
+        layout1.minimumLineSpacing = 0
+        layout1.scrollDirection = .horizontal
+        layout1.minimumInteritemSpacing = 0
+        layout1.estimatedItemSize = CGSize(width: 140, height: 30)
+        collectionSoapbx.collectionViewLayout = layout1
+        collectionSoapbx.isScrollEnabled = false
         collectionSoapbx.register(["PostItemPoliticalCell"], delegate: self, dataSource: self)
+        let layout2 = OTLTagFlowLayout()
+        layout2.spacing = 0
+        layout2.padding = 0
+        layout2.scrollDirection = .horizontal
+        layout2.minimumLineSpacing = 0
+        layout2.minimumInteritemSpacing = 0
+        layout2.estimatedItemSize = CGSize(width: 140, height: 30)
+        collectionPolitician.collectionViewLayout = layout2
+        collectionPolitician.isScrollEnabled = false
         collectionPolitician.register(["PostItemPoliticalCell"], delegate: self, dataSource: self)
+        
+        pageCounter.pageIndicatorTintColor = .titleGray
+        pageCounter.currentPageIndicatorTintColor = .primaryBlue
+        pageCounter.currentPage = 0
+        pageCounter.numberOfPages = 0
         
         viewActionButtons.layer.cornerRadius = viewActionButtons.frame.height/2
         viewActionButtons.layer.borderWidth = 0.5
@@ -132,9 +159,12 @@ class HomeItemCell: AppTableViewCell {
         lblPostTitle.text = object.title
         txtPostDescription.text = object.description
         
+        pageCounter.isHidden = !((object.images?.count ?? 0) > 1)
+        
         if (object.images?.count ?? 0) > 0 {
             collectionPostImage.isHidden = false
             self.collectionPostImage.reloadData()
+            pageCounter.numberOfPages = object.images?.count ?? 0
         } else {
             collectionPostImage.isHidden = true
         }
@@ -212,15 +242,15 @@ class HomeItemCell: AppTableViewCell {
     }
     
     @IBAction private func click_btnComment() {
-        if authUser?.loginType == .userLogin {
+//        if authUser?.loginType == .userLogin {
             delegate?.homeItemCell(self, didSelectComment: object)
-        } else {
-            showAlert(message: "You must Login to access this feature",buttons: ["Cancel", "Login"]) { alert in
-                if alert.title == "Login" {
-                    mackRootView(LoginVC())
-                }
-            }
-        }
+//        } else {
+//            showAlert(message: "You must Login to access this feature",buttons: ["Cancel", "Login"]) { alert in
+//                if alert.title == "Login" {
+//                    mackRootView(LoginVC())
+//                }
+//            }
+//        }
     }
     
     @IBAction private func click_threeDotMenu() {
@@ -257,38 +287,38 @@ class HomeItemCell: AppTableViewCell {
     public func hideThreeDotMenu(){
         dotMenuView?.hideSelf()
     }
-}
-extension HomeItemCell: UIScrollViewDelegate {
     
-    func animationForOtherImage(index: Int) {
-        UIView.animate(withDuration: 0.1, delay: 0) {[self] in
-            if let cell = collectionPostImage.cellForItem(at: IndexPath(row: index, section: 0)) { // old
-                cell.frame.origin.y = 15
-                cell.frame.size = CGSize(width: collectionPostImage.frame.width - 20, height: collectionPostImage.frame.width - 30)
+    func updateCellsLayout()  {
+        
+        let centerX = collectionPostImage.contentOffset.x + (collectionPostImage.frame.size.width - 10)/2
+        for cell in collectionPostImage.visibleCells {
+            
+            var offsetX = centerX - cell.center.x
+            if offsetX < 0 {
+                offsetX *= -1
             }
+            cell.transform = CGAffineTransform.identity
+            let offsetPercentage = offsetX / (self.bounds.width * 2.9)
+            let scaleX = 1-offsetPercentage
+            cell.transform = CGAffineTransform(scaleX: scaleX, y: scaleX)
         }
     }
     
-    func animationForCurrentImage(index: Int) {
-        UIView.animate(withDuration: 0.1, delay: 0) {[self] in
-            if let cell = collectionPostImage.cellForItem(at: IndexPath(row: index, section: 0)) { // new
-                cell.frame.origin.y = 5
-                cell.frame.size = CGSize(width: collectionPostImage.frame.width - 20, height: collectionPostImage.frame.width - 10)
-            }
-        }
+}
+
+extension HomeItemCell: UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        updateCellsLayout()
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if scrollView == collectionPostImage {
-            let x = Int(scrollView.contentOffset.x) + 20 + (10 * (object?.images?.count ?? 0))
+            let x = Int(scrollView.contentOffset.x) + 20 + (10*(object?.images?.count ?? 0))
             let w = Int(scrollView.bounds.size.width)
-            
-//            animationForOtherImage(index: currentPage)
-            currentPage = Int(x/w)
-//            animationForCurrentImage(index: currentPage)
+            pageCounter.currentPage = Int(x/w)
         }
     }
-   
 }
 extension HomeItemCell: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -339,32 +369,27 @@ extension HomeItemCell: UICollectionViewDelegateFlowLayout, UICollectionViewDele
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == collectionPostImage {
-//            if currentPage == indexPath.row {
-                return CGSize(width: collectionView.frame.width - 15, height: collectionView.frame.width - 10)
-//            }
-//            else {
-//                return CGSize(width: collectionView.frame.width - 20, height: collectionView.frame.width - 30)
-//            }
+                return CGSize(width: collectionView.frame.width, height: collectionView.frame.width)
         }
         else if collectionView == collectionSoapbx,
                 (object?.trendTags?.count ?? 0) > 0{
             let text = object?.trendTags?[indexPath.row].trend?.name ?? ""
-            let width = text.size(OfFont: AppFont.regular.font(size: 16)).width + 20
+            let width = text.size(OfFont: AppFont.regular.font(size: 10)).width + 20
             if width < 55 {
-                return CGSize(width: 55, height: 35)
+                return CGSize(width: 55, height: 30)
             }
             else {
-                return CGSize(width: width, height: 35)
+                return CGSize(width: width, height: 30)
             }
         }else if collectionView == collectionPolitician,
                  (object?.politicianTags?.count ?? 0) > 0{
             let text = object?.politicianTags?[indexPath.row].politician?.name ?? ""
-            let width = text.size(OfFont: AppFont.regular.font(size: 16)).width + 20
+            let width = text.size(OfFont: AppFont.regular.font(size: 10)).width + 20
             if width < 55 {
-                return CGSize(width: 55, height: 35)
+                return CGSize(width: 55, height: 30)
             }
             else {
-                return CGSize(width: width, height: 35)
+                return CGSize(width: width, height: 30)
             }
         }
         
@@ -376,11 +401,11 @@ extension HomeItemCell: UICollectionViewDelegateFlowLayout, UICollectionViewDele
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 5
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
 }
 extension HomeItemCell: UITextViewDelegate {

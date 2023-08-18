@@ -152,6 +152,7 @@ class ProfileVC: UIViewController {
         vmObject.follow(user: vmObject.userObj?.id ?? 0,
                          user: vmObject.userObj?.roleID ?? 3) {[self] result in
             hideLoader()
+            showToast(message: result.message)
             if result.status {
                 vmObject.userObj?.statusUser = 1
                 if let user = vmObject.userObj {
@@ -165,6 +166,7 @@ class ProfileVC: UIViewController {
         showLoader()
         vmObject.unfollow(user: vmObject.userObj?.id ?? 0) {[self] result in
             hideLoader()
+            showToast(message: result.message)
             if result.status {
                 vmObject.userObj?.statusUser = 0
                 if let user = vmObject.userObj {
@@ -178,9 +180,8 @@ class ProfileVC: UIViewController {
         showLoader()
         vmObject.message(user: vmObject.userObj?.id ?? 0) {[self] result in
             hideLoader()
+            showToast(message: result.message)
             if result.status {
-                print(result.message)
-                print(vmObject.uniqueId)
                 let vc = ChatVC()
                 if let obj = vmObject.userObj {
                     vc.userObj = vmObject.userObj
@@ -196,10 +197,24 @@ class ProfileVC: UIViewController {
         showLoader()
         vmLikeDislikeObj.blockPost(post: id) { result in
             hideLoader()
-            SoapBx.showToast(message: result.message)
+            showToast(message: result.message)
             if result.status {
                 self.vmObject.currentPage = 1
                 mackRootView(HomeVC())
+            }
+        }
+    }
+    
+    private func cancelRequest() {
+        showLoader()
+        vmObject.cancelRequest(user: vmObject.userObj?.id ?? 0){[self] result in
+            hideLoader()
+            showToast(message: result.message)
+            if result.status {
+                vmObject.userObj?.statusUser = 0
+                if let object = vmObject.userObj {
+                    viewProfile.updateProfileData(object)
+                }
             }
         }
     }
@@ -255,7 +270,10 @@ extension ProfileVC: ProfileUserInfoDelegate {
     func profileUser(follow user: PostUser) {
         if user.statusUser == 0{
             follow()
-        } else if user.statusUser == 2{
+        } else if user.statusUser == 1{
+            cancelRequest()
+        }
+        else if user.statusUser == 2{
             unfollow()
         }
     }

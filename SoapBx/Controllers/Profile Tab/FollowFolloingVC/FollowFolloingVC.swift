@@ -129,12 +129,10 @@ class FollowFolloingVC: UIViewController {
         showLoader()
         vmProfile.unfollow(user: vmObject.arrList[indexPath.row].id ?? 0, isRemove: isRemove) {[self] result in
             hideLoader()
-            self.vmObject.arrList.remove(at: indexPath.row)
-            if vmObject.arrList.count > 0 {
-                tblList.deleteRows(at: [indexPath], with: .fade)
-            } else {
-                tblList.reloadData()
-            }
+            showToast(message: result.message)
+            vmObject.arrList.remove(at: indexPath.row)
+            tblList.reloadData()
+            
         }
     }
     

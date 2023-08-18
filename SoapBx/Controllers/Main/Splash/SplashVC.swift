@@ -32,8 +32,9 @@ class SplashVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //Hiding objects before app opening
-        goToInitialScreen()
-        return
+        
+        self.goToInitialScreen()
+       return
         
         redBalloon.center.x += view.bounds.width
         blueBalloon.center.x -= view.bounds.width

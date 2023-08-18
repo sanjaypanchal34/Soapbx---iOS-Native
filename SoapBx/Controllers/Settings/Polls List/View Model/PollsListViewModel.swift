@@ -36,6 +36,9 @@ class PollsListViewModel {
     }
     var isPagenationActive: Bool = true
     var totalPage: Int = 0
+    func setPage(_ page: Int) {
+        intPage = page
+    }
   
     
     func getPolls(complition: (ResponseCallBack)? = nil) {

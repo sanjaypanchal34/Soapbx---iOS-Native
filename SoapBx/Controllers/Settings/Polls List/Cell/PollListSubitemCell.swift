@@ -8,6 +8,7 @@
 //
 
 import UIKit
+import OTLContaner
 
 class PollListSubitemCell: AppTableViewCell {
 
@@ -16,8 +17,8 @@ class PollListSubitemCell: AppTableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        viewMain.layer.cornerRadius = lblTitle.frame.height/2
-        viewMain.layer.borderColor = UIColor.black.cgColor
+        viewMain.layer.cornerRadius = viewMain.frame.height/2
+        viewMain.layer.borderColor = UIColor.gray.cgColor
         viewMain.layer.borderWidth = 1
         
         lblTitle.setTheme("", font: .bold, size: 16, lines: 1)
@@ -36,6 +37,7 @@ class PollListSubitemCell: AppTableViewCell {
         if let percent = percent["\(object.id ?? 0)"] as? DoubleCast {
             lblCount.text = "\(percent.stringValue ?? "")%"
         }
+        lblCount.isHidden = (lblCount.text?.isEmptyString ?? false)
     }
     
 }

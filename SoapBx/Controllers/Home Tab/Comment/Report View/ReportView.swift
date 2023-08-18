@@ -44,7 +44,7 @@ class ReportView: UIControl {
     }
     
     @IBAction private func click_btnSubmit() {
-        let validate =  txtReason.text.validateOTP()
+        let validate =  txtReason.text.validateReason()
         if validate.status == false{
             SoapBx.showToast(message: validate.message)
         } else {

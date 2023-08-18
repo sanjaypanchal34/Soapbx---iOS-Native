@@ -281,6 +281,22 @@ class ProfileViewModel {
         }
     }
     
+    func cancelRequest(user id: Int, complition: @escaping (ResponseCallBack)) {
+        let para: JSON = ["request_id": id]
+        Webservice.Profile.cancelRequest.requestWith(parameter: para) { result in
+            switch result {
+                case .fail(let message,let code,_):
+                    complition(CompanComplition(message: message, code: code ?? 111, status: false))
+                case .success(let data):
+                    if data.code == 200 {
+                        complition(CompanComplition(message: data.message, code: data.code, status: true))
+                    } else {
+                        complition(CompanComplition(message: data.message, code: data.code, status: false))
+                    }
+            }
+        }
+    }
+    
     func message(user id: Int, complition: @escaping (ResponseCallBack)) {
         let para: JSON = ["user_id": id, "status_user" : "1"]
         Webservice.Chat.startChat.requestWith(parameter: para) { result in

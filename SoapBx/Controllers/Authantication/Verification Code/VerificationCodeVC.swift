@@ -132,9 +132,6 @@ class VerificationCodeVC: UIViewController {
                 vc.navigateForForgot(otp: self.otpField.text, email: self.vmObject.signupJson?.email ?? "")
                 mackRootView(vc)
             }
-            else {
-                showToast(message: result.message)
-            }
         }
     }
     
@@ -145,9 +142,6 @@ class VerificationCodeVC: UIViewController {
             showToast(message: result.message)
             if result.status {
                 mackRootView(ProfileVC())
-            }
-            else {
-                showToast(message: result.message)
             }
         }
     }
@@ -160,11 +154,7 @@ class VerificationCodeVC: UIViewController {
                           verified: vmObject.signupJson?.verified_by ?? 0,
                           complition: { result in
             hideLoader()
-            if result.status {
-                showToast(message: result.message)
-            } else {
-                showToast(message: result.message)
-            }
+            showToast(message: result.message)
         })
     }
     
@@ -172,11 +162,7 @@ class VerificationCodeVC: UIViewController {
         showLoader()
         vmProfileObject?.updateProfile { result in
             hideLoader()
-            if result.status {
-                showToast(message: result.message)
-            } else {
-                showToast(message: result.message)
-            }
+            showToast(message: result.message)
         }
     }
     

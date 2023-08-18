@@ -219,12 +219,14 @@ class SearchVC: UIViewController {
         showLoader()
         vmObject.saveHistory(user: user?.id ?? 0) {[self] result in
             hideLoader()
-            if result.status {
+//            if result.status {
                 if self.screenType == .fromPublicFigures {
                     if self.vmPublic.arrList.count >= (indexPath.row + 1) {
                         txtSearch.text = ""
-                        self.vmObject.arrList.append(self.vmPublic.arrList[indexPath.row])
                         self.vmPublic.searchString = ""
+                        tblList.reloadData()
+                        
+                        self.vmObject.arrList.append(self.vmPublic.arrList[indexPath.row])
                         let vc = PoliticianProfileVC()
                         vc.navigation(self.vmPublic.arrList[indexPath.row], indexPath: indexPath, delegate: self)
                         self.navigationController?.pushViewController(vc, animated: true)
@@ -233,14 +235,16 @@ class SearchVC: UIViewController {
                 else if self.screenType == .searchTab {
                     if self.vmObject.arrSearchList.count >= (indexPath.row + 1) {
                         txtSearch.text = ""
-                        self.vmObject.arrList.append(self.vmObject.arrSearchList[indexPath.row])
                         self.vmObject.searchString = ""
+                        tblList.reloadData()
+                        
+                        self.vmObject.arrList.append(self.vmObject.arrSearchList[indexPath.row])
                         let vc = ProfileVC()
                         vc.navigateForOtherUser(self.vmObject.arrSearchList[indexPath.row])
                         self.navigationController?.pushViewController(vc, animated: true)
                     }
                 }
-            }
+//            }
         }
     }
 }
@@ -305,6 +309,7 @@ extension SearchVC: UITableViewDataSource, UITableViewDelegate  {
         }
         else if screenType == .fromPublicFigures, self.vmPublic.isSearch == false{
             txtSearch.text = ""
+            self.vmObject.searchString = ""
             let vc = PoliticianProfileVC()
             vc.navigation(self.vmObject.arrList[indexPath.row], indexPath: indexPath, delegate: self)
             self.navigationController?.pushViewController(vc, animated: true)
@@ -314,6 +319,7 @@ extension SearchVC: UITableViewDataSource, UITableViewDelegate  {
                 user.id == self.vmPublic.arrList[indexPath.row].id
             }) {
                 txtSearch.text = ""
+                self.vmObject.searchString = ""
                 let vc = PoliticianProfileVC()
                 vc.navigation(self.vmPublic.arrList[indexPath.row], indexPath: indexPath, delegate: self)
                 self.navigationController?.pushViewController(vc, animated: true)
@@ -323,6 +329,7 @@ extension SearchVC: UITableViewDataSource, UITableViewDelegate  {
         }
         else if screenType == .searchTab, self.vmObject.isSearch == false{
             txtSearch.text = ""
+            self.vmObject.searchString = ""
             guard self.vmObject.arrList[indexPath.row].id != authUser?.user?.id else { return }
             let vc = ProfileVC()
             vc.navigateForOtherUser(self.vmObject.arrList[indexPath.row])
@@ -333,6 +340,7 @@ extension SearchVC: UITableViewDataSource, UITableViewDelegate  {
                 user.id == self.vmObject.arrSearchList[indexPath.row].id
             }) {
                 txtSearch.text = ""
+                self.vmObject.searchString = ""
                 guard self.vmObject.arrSearchList[indexPath.row].id != authUser?.user?.id else { return }
                 let vc = ProfileVC()
                 vc.navigateForOtherUser(self.vmObject.arrSearchList[indexPath.row])

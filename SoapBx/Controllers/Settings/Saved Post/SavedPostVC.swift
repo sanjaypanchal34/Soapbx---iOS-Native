@@ -47,6 +47,7 @@ class SavedPostVC: UIViewController{
         vmObject.getSavedPosts { result in
             hideLoader()
             self.tblList.reloadData()
+            showToast(message: result.message)
         }
     }
     

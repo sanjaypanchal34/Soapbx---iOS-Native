@@ -153,11 +153,10 @@ class ProfileCoverVC: UIViewController {
         showLoader()
         vmObject.register(profile: imgProfile!, cover: imgCover) { result in
             hideLoader()
+            showToast(message: result.message)
             if result.status {
                 let vc = YouInterestedVC()
                 self.navigationController?.pushViewController(vc, animated: true)
-            }else {
-                showToast(message: result.message)
             }
         }
     }

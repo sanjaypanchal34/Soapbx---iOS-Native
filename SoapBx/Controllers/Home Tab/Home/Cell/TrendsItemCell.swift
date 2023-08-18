@@ -14,7 +14,7 @@ struct DummyTrends {
 
 class TrendsItemCell: AppCollectionViewCell {
     
-    static let width: CGFloat = 70
+    static let width: CGFloat = 65
 
     @IBOutlet private weak var viewMain: UIView!
     @IBOutlet private weak var imgIcon: UIImageView!

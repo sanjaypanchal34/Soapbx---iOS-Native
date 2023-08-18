@@ -28,8 +28,7 @@ func mackRootView(_ controller: UIViewController) {
 
 func showToast(message: String) {
     if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-        appDelegate.window?.rootViewController?.view.makeToast(message,
-                                                               image: UIImage(named: "logo_toast"))
+        appDelegate.window?.makeToast(message,image: UIImage(named: "logo_toast"))
     }
 }
 func showAlert( message: String,

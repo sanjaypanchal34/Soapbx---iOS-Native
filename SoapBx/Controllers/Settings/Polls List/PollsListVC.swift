@@ -34,6 +34,10 @@ class PollsListVC: UIViewController {
         
         viewBody.backgroundColor = .lightGrey
         
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(pullupRefresh(_:)), for: .valueChanged)
+        tblList.refreshControl = refreshControl
+        
         tblList.backgroundColor = .lightGrey
         tblList.register(["PollsListItemCell"], delegate: self, dataSource: self)
         updateList()
@@ -43,6 +47,16 @@ class PollsListVC: UIViewController {
     @IBAction private func click_postPoll(_ sender: OTLTextButton) {
         let vc = PostPollsVC()
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc private func pullupRefresh(_ sender: UIRefreshControl) {
+        sender.endRefreshing()
+            for cell in tblList.visibleCells {
+                if let cell = cell as? PollsListItemCell {
+                    cell.removeObserverItem()
+                }
+            }
+        vmObject.setPage(1)
     }
     
     private func updateList() {
@@ -67,6 +81,7 @@ class PollsListVC: UIViewController {
         showLoader()
         vmObject.voteOnPoll(pollId: pollId, optionId: optionId) {[self] (result, json) in
             hideLoader()
+            showToast(message: result.message)
             tblList.reloadData()
             lblNoDataFound.isHidden = vmObject.arrList.count > 0
             vmObject.arrList[indexPath.row].pollPercent = json
@@ -107,6 +122,11 @@ extension PollsListVC: PollsListItemDelegate {
         voteOnPoll(indexPath: cell.indexPath, pollId: poll.id ?? 0, optionId: option.id ?? 0)
     }
     
+    func pollsListItem(_ cell: AppTableViewCell, updateHeight: Void) {
+        self.tblList.beginUpdates()
+        self.tblList.setNeedsDisplay()
+        self.tblList.endUpdates()
+    }
     
 }
 

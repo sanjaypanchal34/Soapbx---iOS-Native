@@ -123,8 +123,9 @@ class TradPostListView: UIView {
     
     private func savePost(row: Int) {
         showLoader()
-        vmLikeDislikeObj.saved(post: vmObject.arrPosts[row]) { result, newObject in
+        vmLikeDislikeObj.saved(post: vmObject.arrPosts[row]) {[self] result, newObject in
             hideLoader()
+            SoapBx.showToast(message: result.message)
             if result.status {
                 if let updatedObj = newObject {
                     self.vmObject.arrPosts[row] = updatedObj
@@ -133,15 +134,13 @@ class TradPostListView: UIView {
                     cell.updateData(self.vmObject.arrPosts[row])
                 }
                 NotificationCenter.default.post(name: .savePostUpdate, object: nil)
-            } else {
-                SoapBx.showToast(message: result.message)
-            }
+            } 
         }
     }
     
     private func likeDislikeonPost(isLike: Bool, row: Int) {
 //        showLoader()
-        vmLikeDislikeObj.likeDislike(post: vmObject.arrPosts[row], isLike: isLike) { result, newObject in
+        vmLikeDislikeObj.likeDislike(post: vmObject.arrPosts[row], isLike: isLike) {[self] result, newObject in
 //            hideLoader()
             if result.status {
                 if let updatedObj = newObject {
@@ -254,12 +253,12 @@ extension TradPostListView: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
+        return UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = TrendsItemCell.width + (vmObject.arrTernds[indexPath.row].name ?? " ").size(OfFont: AppFont.medium.font(size: 18)).width
-        return CGSize(width: width, height: collectionView.frame.height - 20)
+        let width = TrendsItemCell.width + (vmObject.arrTernds[indexPath.row].name ?? " ").size(OfFont: AppFont.medium.font(size: 16)).width
+        return CGSize(width: width, height: collectionView.frame.height - 15)
     }
     
 }

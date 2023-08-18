@@ -134,6 +134,7 @@ class ChatVC: UIViewController , PusherDelegate{
             showLoader()
             vmObject.sendMessage(relationId : relationID, sender: authUser?.user?.id ?? 0, receiver: userObj?.id ?? 0, message: self.txtMessage.text ?? "") { [self] result in
                 hideLoader()
+                showToast(message: result.message)
                 if result.status {
                     self.txtMessage.text = ""
                     print("Message sent Successfully")

@@ -12,6 +12,7 @@ import OTLContaner
 
 protocol PollsListItemDelegate {
     func pollsListItem( _ cell: AppTableViewCell, vote poll: PollModel, option: Option)
+    func pollsListItem( _ cell: AppTableViewCell, updateHeight: Void)
 }
 
 class PollsListItemCell: AppTableViewCell {
@@ -46,6 +47,8 @@ class PollsListItemCell: AppTableViewCell {
                     if let newvalue = change?[.newKey], let newsize  = newvalue as? CGSize{
                         if constCollecTredsHeight != nil {
                             constCollecTredsHeight?.constant = newsize.height
+                            self.layoutIfNeeded()
+                            delegate?.pollsListItem(self, updateHeight: Void())
                         }
                     }
                 }
@@ -64,9 +67,14 @@ class PollsListItemCell: AppTableViewCell {
         lblDateTime.setTheme("", color: .gray, size: 14, lines: 1)
         
         collecTreds.register(["PostItemPoliticalCell"], delegate: self, dataSource: self)
-        let layout = OTLTagFlowLayout()
-        layout.estimatedItemSize = CGSize(width: 120, height: 40)
-        collecTreds.collectionViewLayout = layout
+        let layout1 = OTLTagFlowLayout()
+        layout1.spacing = 0
+        layout1.padding = 0
+        layout1.minimumLineSpacing = 0
+        layout1.scrollDirection = .vertical
+        layout1.minimumInteritemSpacing = 0
+        layout1.estimatedItemSize = CGSize(width: 140, height: 30)
+        collecTreds.collectionViewLayout = layout1
         
         lblQuestion.setTheme("", font: .medium, size: 18)
         
@@ -79,7 +87,9 @@ class PollsListItemCell: AppTableViewCell {
     }
 
     func removeObserverItem() {
-        collecTreds.removeObserver(self, forKeyPath: "contentSize")
+        if collecTreds.observationInfo != nil {
+            collecTreds.removeObserver(self, forKeyPath: "contentSize")
+        }
     }
     
     func setData(_ object: PollModel, delegate:PollsListItemDelegate) {
@@ -128,12 +138,12 @@ extension PollsListItemCell : UICollectionViewDelegate, UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let text = pollsObj?.tag?[indexPath.row].trend?.name ?? ""
-            let width = text.size(OfFont: AppFont.regular.font(size: 14)).width + 20
+            let width = text.size(OfFont: AppFont.regular.font(size: 10)).width + 15
             if width < 55 {
-                return CGSize(width: 55, height: 35)
+                return CGSize(width: 55, height: 30)
             }
             else {
-                return CGSize(width: width, height: 35)
+                return CGSize(width: width, height: 30)
             }
     }
 }

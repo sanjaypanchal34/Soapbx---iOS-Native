@@ -146,7 +146,7 @@ extension String
     
     func validateReason() -> ValidationResult {
         if self.isEmptyString {
-            return (false, "Please enter reason")
+            return (false, "Please enter a reason")
         }else {
             return (true, "")
         }

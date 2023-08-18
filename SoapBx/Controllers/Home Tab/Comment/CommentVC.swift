@@ -71,6 +71,10 @@ class CommentVC: UIViewController {
         tblCommentsList.removeObserver(self, forKeyPath: "contentSize")
     }
     
+    override func viewDidLayoutSubviews() {
+        updateCellsLayout()
+    }
+    
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if(keyPath == "contentSize"){
             if let object = object as? UITableView,
@@ -108,7 +112,25 @@ class CommentVC: UIViewController {
         snappingLayout.scrollDirection = .horizontal
         collectionPostImage.collectionViewLayout = snappingLayout
         collectionPostImage.register(["PostImageItemCell"], delegate: self, dataSource: self)
+        let layout1 = OTLTagFlowLayout()
+        layout1.spacing = 0
+        layout1.padding = 0
+        layout1.minimumLineSpacing = 0
+        layout1.scrollDirection = .horizontal
+        layout1.minimumInteritemSpacing = 0
+        layout1.estimatedItemSize = CGSize(width: 140, height: 30)
+        collectionSoapbx.collectionViewLayout = layout1
+        collectionSoapbx.isScrollEnabled = false
         collectionSoapbx.register(["PostItemPoliticalCell"], delegate: self, dataSource: self)
+        let layout2 = OTLTagFlowLayout()
+        layout2.spacing = 0
+        layout2.padding = 0
+        layout2.scrollDirection = .horizontal
+        layout2.minimumLineSpacing = 0
+        layout2.minimumInteritemSpacing = 0
+        layout2.estimatedItemSize = CGSize(width: 140, height: 30)
+        collectionPolitician.collectionViewLayout = layout2
+        collectionPolitician.isScrollEnabled = false
         collectionPolitician.register(["PostItemPoliticalCell"], delegate: self, dataSource: self)
         
         viewActionButtons.layer.cornerRadius = viewActionButtons.frame.height/2
@@ -192,20 +214,45 @@ class CommentVC: UIViewController {
     }
     
     @IBAction private func click_btnLike() {
-        likeDislikeonPost(isLike: true)
+        if authUser?.loginType == .userLogin {
+            likeDislikeonPost(isLike: true)
+        } else {
+            showAlert(message: "You must Login to access this feature",buttons: ["Cancel", "Login"]) { alert in
+                if alert.title == "Login" {
+                    mackRootView(LoginVC())
+                }
+            }
+        }
+        
     }
     @IBAction private func click_btnDislike() {
-        likeDislikeonPost(isLike: false)
+        if authUser?.loginType == .userLogin {
+            likeDislikeonPost(isLike: false)
+        } else {
+            showAlert(message: "You must Login to access this feature",buttons: ["Cancel", "Login"]) { alert in
+                if alert.title == "Login" {
+                    mackRootView(LoginVC())
+                }
+            }
+        }
+        
     }
     
     @IBAction private func click_btnSendComment() {
-        let validate = txtComment.text?.validateCommentOnPost()
-        
-        if validate?.status == false {
-            showToast(message: validate?.message ?? "")
+        if authUser?.loginType == .userLogin {
+            let validate = txtComment.text?.validateCommentOnPost()
+            if validate?.status == false {
+                showToast(message: validate?.message ?? "")
+            } else {
+                self.view.endEditing(true)
+                self.postComment()
+            }
         } else {
-            self.view.endEditing(true)
-            self.postComment()
+            showAlert(message: "You must Login to access this feature",buttons: ["Cancel", "Login"]) { alert in
+                if alert.title == "Login" {
+                    mackRootView(LoginVC())
+                }
+            }
         }
     }
     
@@ -240,6 +287,7 @@ class CommentVC: UIViewController {
         vmObject.postComment(comment: txtComment.text ?? "") {[self] result in
             hideLoader()
             self.txtComment.text = ""
+            showToast(message: result.message)
             if result.status{
                 self.btnComment.title?.text = "\(self.vmObject.objPost?.commentsCount ?? 0)"
                 self.tblCommentsList.reloadData()
@@ -258,19 +306,35 @@ class CommentVC: UIViewController {
     
     private func likeDislikeonPost(isLike: Bool) {
         vmLikeDislikeObj.likeDislike(post: vmObject.objPost!, isLike: isLike) { result, newObject in
+            showToast(message: result.message)
             if result.status {
                 if let updatedObj = newObject {
                     self.vmObject.objPost = updatedObj
                     self.setData()
                     self.delegate?.comment(didUpdate: updatedObj)
                 }
-            } else {
-                SoapBx.showToast(message: result.message)
             }
         }
     }
+    
 }
 extension CommentVC: UIScrollViewDelegate {
+    func updateCellsLayout()  {
+        
+        let centerX = collectionPostImage.contentOffset.x + (collectionPostImage.frame.size.width - 10)/2
+        for cell in collectionPostImage.visibleCells {
+            
+            var offsetX = centerX - cell.center.x
+            if offsetX < 0 {
+                offsetX *= -1
+            }
+            cell.transform = CGAffineTransform.identity
+            let offsetPercentage = offsetX / (view.bounds.width * 2.9)
+            let scaleX = 1-offsetPercentage
+            cell.transform = CGAffineTransform(scaleX: scaleX, y: scaleX)
+        }
+    }
+    
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if scrollView == collectionPostImage {
             let x = Int(scrollView.contentOffset.x) + 20 + (10*(self.vmObject.objPost?.images?.count ?? 0))
@@ -280,7 +344,9 @@ extension CommentVC: UIScrollViewDelegate {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
+        if scrollView == collectionPostImage {
+            updateCellsLayout()
+        }
     }
 }
 extension CommentVC: UITableViewDataSource, UITableViewDelegate {
@@ -298,9 +364,18 @@ extension CommentVC: UITableViewDataSource, UITableViewDelegate {
 }
 extension CommentVC: CommentItemDelegate{
     func commentItem(_ cell: CommentItemCell, didSelectReport object: CommentModel) {
-        self.view.showReportView(comment: object.id ?? 0) { id, report in
-            self.reportComment(commentId: id, reason: report)
+        if authUser?.loginType == .userLogin {
+            self.view.showReportView(comment: object.id ?? 0) { id, report in
+                self.reportComment(commentId: id, reason: report)
+            }
+        } else {
+            showAlert(message: "You must Login to access this feature",buttons: ["Cancel", "Login"]) { alert in
+                if alert.title == "Login" {
+                    mackRootView(LoginVC())
+                }
+            }
         }
+        
     }
 }
 
@@ -353,22 +428,22 @@ extension CommentVC: UICollectionViewDelegateFlowLayout, UICollectionViewDelegat
         else if collectionView == collectionSoapbx,
                  (self.vmObject.objPost?.trendTags?.count ?? 0) > 0{
             let text = self.vmObject.objPost?.trendTags?[indexPath.row].trend?.name ?? ""
-            let width = text.size(OfFont: AppFont.regular.font(size: 16)).width + 20
+            let width = text.size(OfFont: AppFont.regular.font(size: 12)).width + 20
             if width < 55 {
-                return CGSize(width: 55, height: 35)
+                return CGSize(width: 55, height: 30)
             }
             else {
-                return CGSize(width: width, height: 35)
+                return CGSize(width: width, height: 30)
             }
         }else if collectionView == collectionPolitician,
                  (self.vmObject.objPost?.politicianTags?.count ?? 0) > 0{
             let text = self.vmObject.objPost?.politicianTags?[indexPath.row].politician?.name ?? ""
-            let width = text.size(OfFont: AppFont.regular.font(size: 16)).width + 20
+            let width = text.size(OfFont: AppFont.regular.font(size: 12)).width + 20
             if width < 55 {
-                return CGSize(width: 55, height: 35)
+                return CGSize(width: 55, height: 30)
             }
             else {
-                return CGSize(width: width, height: 35)
+                return CGSize(width: width, height: 30)
             }
         }
         return CGSize()
@@ -384,7 +459,7 @@ extension CommentVC: UICollectionViewDelegateFlowLayout, UICollectionViewDelegat
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        return UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
     }
 }
 extension CommentVC: UITextViewDelegate {

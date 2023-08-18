@@ -135,6 +135,7 @@ class PoliticianProfileVC: UIViewController {
         showLoader()
         vmProfile.follow(user: vmProfile.userObj?.id ?? 0, user: vmProfile.userObj?.roleID ?? 3) { result in
             hideLoader()
+            showToast(message: result.message)
             if result.status {
                 self.vmProfile.userObj?.statusPoli = 1
                 self.setFollowUnfollow()
@@ -147,6 +148,7 @@ class PoliticianProfileVC: UIViewController {
         showLoader()
         vmProfile.unfollow(user: vmProfile.userObj?.id ?? 0) { result in
             hideLoader()
+            showToast(message: result.message)
             if result.status {
                 self.vmProfile.userObj?.statusPoli = 0
                 self.setFollowUnfollow()

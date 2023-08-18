@@ -98,8 +98,8 @@ class PostPollsVC: UIViewController {
         imgProfile.setImage(authUser?.user?.profile_photo_url)
         imgProfile.contentMode = .scaleAspectFill
         lblProfileName.setTheme(authUser?.user?.name ?? "")
-        lblLocation.setTheme(getValueOrDefult(authUser?.user?.location, defaultValue: "N/A"),size: 8)
-        lblTime.setTheme(OTLDateConvert.instance.convert(date: Date(), toString: .mmmDDyyyyAthhmma),size: 12)
+        lblLocation.setTheme(getValueOrDefult(authUser?.user?.location, defaultValue: "N/A"), color: .titleGray, size: 10)
+        lblTime.setTheme(OTLDateConvert.instance.convert(date: Date(), toString: .mmmDDyyyyAthhmma), color: .titleGray, size: 12)
         
         lblTitle.setTheme("Question", color: .primaryBlue, font: .bold)
         txtTitle.placeholder = "What do you want the public to vote on?"
@@ -129,7 +129,12 @@ class PostPollsVC: UIViewController {
         collSoapbxTrends.semanticContentAttribute = .forceLeftToRight
 //        collSoapbxTrends.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
         let layout1 = OTLTagFlowLayout()
-        layout1.estimatedItemSize = CGSize(width: 140, height: 40)
+        layout1.spacing = 0
+        layout1.padding = 0
+        layout1.minimumLineSpacing = 0
+        layout1.scrollDirection = .vertical
+        layout1.minimumInteritemSpacing = 0
+        layout1.estimatedItemSize = CGSize(width: 140, height: 30)
         collSoapbxTrends.collectionViewLayout = layout1
         
         for view in [viewTitle, viewStartDate, viewEndDate] {
@@ -229,12 +234,12 @@ extension PostPollsVC : UICollectionViewDelegate, UICollectionViewDelegateFlowLa
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let text = (vmTrends.arrList[indexPath.row].name ?? "").replacingOccurrences(of: " ", with: "20%")
-            let width = text.size(OfFont: AppFont.regular.font(size: 18)).width
+            let width = text.size(OfFont: AppFont.regular.font(size: 10)).width + 15
         if width < 55 {
-            return CGSize(width: 55, height: 35)
+            return CGSize(width: 55, height: 30)
         }
         else {
-            return CGSize(width: width, height: 35)
+            return CGSize(width: width, height: 30)
         }
     }
     

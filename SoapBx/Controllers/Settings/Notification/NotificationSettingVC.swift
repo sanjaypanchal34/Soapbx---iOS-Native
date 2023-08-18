@@ -56,6 +56,7 @@ class NotificationSettingVC: UIViewController {
         showLoader()
         vmObject.updateNotification(self.arrList[row]) { result in
             hideLoader()
+            showToast(message: result.message)
             if result.status ==  false{
                 var oldNoti = self.arrList[row]
                 oldNoti.isSelected = !oldNoti.isSelected

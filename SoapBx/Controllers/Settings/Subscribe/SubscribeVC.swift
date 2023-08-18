@@ -116,6 +116,7 @@ class SubscribeVC: UIViewController {
         showLoader()
         vmObject.getSubscriptionPlans { result in
             hideLoader()
+            showToast(message: result.message)
             if result.status {
                 self.tblList.reloadData()
             }
@@ -124,6 +125,7 @@ class SubscribeVC: UIViewController {
     
     private func updateSubscriptionPlans() {
         vmObject.updateSubscriptionPlans() { result in
+            showToast(message: result.message)
             if result.status {
                 if self.screenType == .fromRegister {
                     let vc = EnableLocationVC()
@@ -131,9 +133,6 @@ class SubscribeVC: UIViewController {
                 } else {
                     self.navigationController?.popViewController(animated: true)
                 }
-            }
-            else {
-                showToast(message: result.message)
             }
         }
     }

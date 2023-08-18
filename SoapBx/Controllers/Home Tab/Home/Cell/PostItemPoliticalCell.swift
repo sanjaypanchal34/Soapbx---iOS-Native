@@ -23,6 +23,7 @@ class PostItemPoliticalCell: AppCollectionViewCell {
     func setDataSoapbx(_ object: PostTag) {
         viewMain.backgroundColor = .primaryBlue
         lblTitle.text = object.trend?.name
+        lblTitle.font = AppFont.regular.font(size: 10)
         DispatchQueue.main.async {
             self.viewMain.setShadowWithCorner(corner:-1)
         }
@@ -31,21 +32,13 @@ class PostItemPoliticalCell: AppCollectionViewCell {
     func setDataPolitician(_ object: PostTag) {
         viewMain.backgroundColor = .appYellow
         lblTitle.text = object.politician?.name
+        lblTitle.font = AppFont.regular.font(size: 10)
         DispatchQueue.main.async {
             self.viewMain.setShadowWithCorner(corner:-1)
         }
     }
 
     func setCreatePostPolitician(_ object: PostUser) {
-        viewMain.backgroundColor = .primaryBlue
-        lblTitle.font = AppFont.medium.font(size: 14)
-        lblTitle.text = " "+(object.name ?? "")+" "
-        DispatchQueue.main.async {
-            self.viewMain.setShadowWithCorner(corner:-1)
-        }
-    }
-    
-    func setCreatePostPoll(_ object: TrendsModel) {
         viewMain.backgroundColor = .primaryBlue
         lblTitle.font = AppFont.regular.font(size: 12)
         lblTitle.text = " "+(object.name ?? "")+" "
@@ -54,9 +47,18 @@ class PostItemPoliticalCell: AppCollectionViewCell {
         }
     }
     
+    func setCreatePostPoll(_ object: TrendsModel) {
+        viewMain.backgroundColor = .primaryBlue
+        lblTitle.font = AppFont.regular.font(size: 10)
+        lblTitle.text = " "+(object.name ?? "")+" "
+        DispatchQueue.main.async {
+            self.viewMain.setShadowWithCorner(corner:-1)
+        }
+    }
+    
     func setCreatePostTreds(_ object: TrendsModel) {
         viewMain.backgroundColor = .primaryBlue
-        lblTitle.font = AppFont.medium.font(size: 14)
+        lblTitle.font = AppFont.regular.font(size: 12)
         lblTitle.text = " "+(object.name ?? "")+" "
         DispatchQueue.main.async {
             self.viewMain.setShadowWithCorner(corner:-1)
@@ -74,7 +76,7 @@ class PostItemPoliticalCell: AppCollectionViewCell {
             viewMain.layer.borderColor = UIColor.black.cgColor
             lblTitle.textColor = .titleGray
         }
-        lblTitle.font = AppFont.medium.font(size: 14)
+        lblTitle.font = AppFont.regular.font(size: 12)
         lblTitle.text = " "+(object.name ?? "")+" "
         DispatchQueue.main.async {
             self.viewMain.setShadowWithCorner(corner:-1)

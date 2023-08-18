@@ -16121,9 +16121,98 @@
             ]
           },
           {
+            "kind": "Var",
+            "name": "padding",
+            "printedName": "padding",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CGFloat",
+                "printedName": "CoreGraphics.CGFloat",
+                "usr": "s:14CoreFoundation7CGFloatV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11OTLContaner22OTLCollectionLayoutRowC7padding14CoreFoundation7CGFloatVvp",
+            "mangledName": "$s11OTLContaner22OTLCollectionLayoutRowC7padding12CoreGraphics7CGFloatVvp",
+            "moduleName": "OTLContaner",
+            "isOpen": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGFloat",
+                    "printedName": "CoreGraphics.CGFloat",
+                    "usr": "s:14CoreFoundation7CGFloatV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11OTLContaner22OTLCollectionLayoutRowC7padding14CoreFoundation7CGFloatVvg",
+                "mangledName": "$s11OTLContaner22OTLCollectionLayoutRowC7padding12CoreGraphics7CGFloatVvg",
+                "moduleName": "OTLContaner",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGFloat",
+                    "printedName": "CoreGraphics.CGFloat",
+                    "usr": "s:14CoreFoundation7CGFloatV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11OTLContaner22OTLCollectionLayoutRowC7padding14CoreFoundation7CGFloatVvs",
+                "mangledName": "$s11OTLContaner22OTLCollectionLayoutRowC7padding12CoreGraphics7CGFloatVvs",
+                "moduleName": "OTLContaner",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11OTLContaner22OTLCollectionLayoutRowC7padding14CoreFoundation7CGFloatVvM",
+                "mangledName": "$s11OTLContaner22OTLCollectionLayoutRowC7padding12CoreGraphics7CGFloatVvM",
+                "moduleName": "OTLContaner",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
             "kind": "Constructor",
             "name": "init",
-            "printedName": "init(spacing:)",
+            "printedName": "init(spacing:padding:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -16136,11 +16225,17 @@
                 "name": "CGFloat",
                 "printedName": "CoreGraphics.CGFloat",
                 "usr": "s:14CoreFoundation7CGFloatV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CGFloat",
+                "printedName": "CoreGraphics.CGFloat",
+                "usr": "s:14CoreFoundation7CGFloatV"
               }
             ],
             "declKind": "Constructor",
-            "usr": "s:11OTLContaner22OTLCollectionLayoutRowC7spacingAC14CoreFoundation7CGFloatV_tcfc",
-            "mangledName": "$s11OTLContaner22OTLCollectionLayoutRowC7spacingAC12CoreGraphics7CGFloatV_tcfc",
+            "usr": "s:11OTLContaner22OTLCollectionLayoutRowC7spacing7paddingAC14CoreFoundation7CGFloatV_AHtcfc",
+            "mangledName": "$s11OTLContaner22OTLCollectionLayoutRowC7spacing7paddingAC12CoreGraphics7CGFloatV_AHtcfc",
             "moduleName": "OTLContaner",
             "init_kind": "Designated"
           },
@@ -16208,6 +16303,188 @@
         "name": "OTLTagFlowLayout",
         "printedName": "OTLTagFlowLayout",
         "children": [
+          {
+            "kind": "Var",
+            "name": "spacing",
+            "printedName": "spacing",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CGFloat",
+                "printedName": "CoreGraphics.CGFloat",
+                "usr": "s:14CoreFoundation7CGFloatV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11OTLContaner16OTLTagFlowLayoutC7spacing14CoreFoundation7CGFloatVvp",
+            "mangledName": "$s11OTLContaner16OTLTagFlowLayoutC7spacing12CoreGraphics7CGFloatVvp",
+            "moduleName": "OTLContaner",
+            "isOpen": true,
+            "declAttributes": [
+              "Custom",
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGFloat",
+                    "printedName": "CoreGraphics.CGFloat",
+                    "usr": "s:14CoreFoundation7CGFloatV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11OTLContaner16OTLTagFlowLayoutC7spacing14CoreFoundation7CGFloatVvg",
+                "mangledName": "$s11OTLContaner16OTLTagFlowLayoutC7spacing12CoreGraphics7CGFloatVvg",
+                "moduleName": "OTLContaner",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGFloat",
+                    "printedName": "CoreGraphics.CGFloat",
+                    "usr": "s:14CoreFoundation7CGFloatV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11OTLContaner16OTLTagFlowLayoutC7spacing14CoreFoundation7CGFloatVvs",
+                "mangledName": "$s11OTLContaner16OTLTagFlowLayoutC7spacing12CoreGraphics7CGFloatVvs",
+                "moduleName": "OTLContaner",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11OTLContaner16OTLTagFlowLayoutC7spacing14CoreFoundation7CGFloatVvM",
+                "mangledName": "$s11OTLContaner16OTLTagFlowLayoutC7spacing12CoreGraphics7CGFloatVvM",
+                "moduleName": "OTLContaner",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "padding",
+            "printedName": "padding",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CGFloat",
+                "printedName": "CoreGraphics.CGFloat",
+                "usr": "s:14CoreFoundation7CGFloatV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11OTLContaner16OTLTagFlowLayoutC7padding14CoreFoundation7CGFloatVvp",
+            "mangledName": "$s11OTLContaner16OTLTagFlowLayoutC7padding12CoreGraphics7CGFloatVvp",
+            "moduleName": "OTLContaner",
+            "isOpen": true,
+            "declAttributes": [
+              "Custom",
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGFloat",
+                    "printedName": "CoreGraphics.CGFloat",
+                    "usr": "s:14CoreFoundation7CGFloatV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11OTLContaner16OTLTagFlowLayoutC7padding14CoreFoundation7CGFloatVvg",
+                "mangledName": "$s11OTLContaner16OTLTagFlowLayoutC7padding12CoreGraphics7CGFloatVvg",
+                "moduleName": "OTLContaner",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGFloat",
+                    "printedName": "CoreGraphics.CGFloat",
+                    "usr": "s:14CoreFoundation7CGFloatV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11OTLContaner16OTLTagFlowLayoutC7padding14CoreFoundation7CGFloatVvs",
+                "mangledName": "$s11OTLContaner16OTLTagFlowLayoutC7padding12CoreGraphics7CGFloatVvs",
+                "moduleName": "OTLContaner",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11OTLContaner16OTLTagFlowLayoutC7padding14CoreFoundation7CGFloatVvM",
+                "mangledName": "$s11OTLContaner16OTLTagFlowLayoutC7padding12CoreGraphics7CGFloatVvM",
+                "moduleName": "OTLContaner",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
           {
             "kind": "Function",
             "name": "layoutAttributesForElements",
@@ -48939,6 +49216,27 @@
       "offset": 331,
       "length": 1,
       "value": "0"
+    },
+    {
+      "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCollectionLayout.swift",
+      "kind": "IntegerLiteral",
+      "offset": 360,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCollectionLayout.swift",
+      "kind": "FloatLiteral",
+      "offset": 988,
+      "length": 3,
+      "value": "5.0"
+    },
+    {
+      "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLCollectionLayout.swift",
+      "kind": "FloatLiteral",
+      "offset": 1025,
+      "length": 3,
+      "value": "5.0"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLBottomSheetAlert.swift",

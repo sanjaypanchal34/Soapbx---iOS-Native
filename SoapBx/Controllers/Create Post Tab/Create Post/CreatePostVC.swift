@@ -119,7 +119,7 @@ class CreatePostVC: UIViewController {
         imgProfile.setImage(authUser?.user?.profile_photo_url)
         imgProfile.contentMode = .scaleAspectFill
         lblProfileName.setTheme(authUser?.user?.name ?? "")
-        lblLocation.setTheme(authUser?.user?.location ?? "",size: 10)
+        lblLocation.setTheme(getValueOrDefult(authUser?.user?.location, defaultValue: "N/A"),size: 10)
         lblTime.setTheme("",size: 12)
         lblTime.text = OTLDateConvert.instance.convert(date: Date(), toString: .mmmDDyyyyAthhmma)
         
@@ -358,6 +358,7 @@ extension CreatePostVC : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == collImage,
            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PostImageItemCell", for: indexPath) as? PostImageItemCell{
+            cell.clipsToBounds = false
             if vmObject.arrImages.count < vmObject.maxImage {
                 if indexPath.row < vmObject.arrImages.count{
                     cell.setDataCreatePostImage(vmObject.arrImages[indexPath.row], indexPath: indexPath, delegate: self)

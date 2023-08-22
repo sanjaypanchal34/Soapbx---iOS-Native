@@ -15,7 +15,8 @@ protocol PostImageItemDelegate {
 class PostImageItemCell: AppCollectionViewCell {
 
     @IBOutlet private weak  var imagePost: UIImageView!
-    @IBOutlet private weak  var btnCancel: OTLImageButton!
+    @IBOutlet private weak  var imgCancel: UIImageView!
+    @IBOutlet private weak  var btnCancel: UIControl!
     
     var delegate: PostImageItemDelegate?
     
@@ -23,6 +24,7 @@ class PostImageItemCell: AppCollectionViewCell {
         super.awakeFromNib()
         imagePost.layer.cornerRadius = 5
         btnCancel.isHidden = true
+        btnCancel.backgroundColor = .clear
     }
 
     func setData(_ object: PostImage, indexPath: IndexPath) {
@@ -36,12 +38,10 @@ class PostImageItemCell: AppCollectionViewCell {
         self.indexPath = indexPath
         self.delegate = delegate
         btnCancel.isHidden = false
-        btnCancel.image = UIImage(named: "cross_icon")?.withRenderingMode(.alwaysTemplate)
-        btnCancel.contentMode = .scaleAspectFill
-        btnCancel.padding = UIEdgeInsets(top: -5, left: 15, bottom: 0, right: 0)
-        btnCancel.tintColor = .titleRed
-        btnCancel.height = 15
-        btnCancel.backgroundColor = .clear
+        imgCancel.image = UIImage(named: "cross_icon")?.withRenderingMode(.alwaysTemplate)
+        imgCancel.tintColor = .titleRed
+        imgCancel.backgroundColor = .clear
+        
         imagePost.backgroundColor = .primaryBlue
         imagePost.contentMode = .scaleAspectFill
         if let imageURL = object.imageURL {

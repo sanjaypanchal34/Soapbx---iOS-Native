@@ -17,6 +17,7 @@ protocol HomeItemCellDelegate {
     func homeItemCell(_ cell: HomeItemCell, didSelectComment object: PostModel?)
     func homeItemCell(_ cell: HomeItemCell, willOpenDotMenu object: PostModel?)
     func homeItemCell(_ cell: HomeItemCell, didSelectDotMenu: ThreeDotItemModel,  object: PostModel?)
+    func homeItemCell(_ cell:HomeItemCell, didUpdateTable: Void)
 }
 
 class HomeItemCell: AppTableViewCell {
@@ -36,7 +37,10 @@ class HomeItemCell: AppTableViewCell {
     @IBOutlet private weak var collectionPostImage: UICollectionView!
     @IBOutlet private weak var pageCounter: UIPageControl!
     @IBOutlet private weak var collectionSoapbx: UICollectionView!
+    @IBOutlet private weak var constCollSoapbxTrends: NSLayoutConstraint!
     @IBOutlet private weak var collectionPolitician: UICollectionView!
+    @IBOutlet private weak var constCollPolitician: NSLayoutConstraint!
+    
     
     @IBOutlet private weak var viewActionButtons: UIView!
     @IBOutlet private weak var btnLike: OTLPTButton!
@@ -53,6 +57,46 @@ class HomeItemCell: AppTableViewCell {
         super.awakeFromNib()
         self.setupUI()
     }
+    
+    func addCellObserver() {
+        collectionPolitician.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
+        collectionSoapbx.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
+    }
+    func removeCellObserver() {
+        if collectionPolitician.observationInfo != nil {
+            collectionPolitician.removeObserver(self, forKeyPath: "contentSize")
+        }
+        if collectionSoapbx.observationInfo != nil {
+            collectionSoapbx.removeObserver(self, forKeyPath: "contentSize")
+        }
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if(keyPath == "contentSize"){
+            if let object = object as? UICollectionView{
+                if object == collectionPolitician {
+                    if let newvalue = change?[.newKey], let newsize  = newvalue as? CGSize{
+                        if constCollPolitician != nil {
+                                constCollPolitician?.constant = newsize.height
+                            delegate?.homeItemCell(self, didUpdateTable: Void())
+                            collectionPolitician.updateFocusIfNeeded()
+                            collectionPolitician.layoutIfNeeded()
+                        }
+                    }
+                } else if  object == collectionSoapbx{
+                    if let newvalue = change?[.newKey], let newsize  = newvalue as? CGSize{
+                        if constCollSoapbxTrends != nil {
+                                constCollSoapbxTrends?.constant = newsize.height
+                            delegate?.homeItemCell(self, didUpdateTable: Void())
+                            collectionSoapbx.updateFocusIfNeeded()
+                            collectionSoapbx.layoutIfNeeded()
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
     
     private func setupUI(){
         viewMain.layer.cornerRadius = 10
@@ -80,8 +124,7 @@ class HomeItemCell: AppTableViewCell {
         txtPostDescription.linkTextAttributes = [.foregroundColor:UIColor.primaryBlue]
         txtPostDescription.delegate = self
         
-        let snappingLayout = SnappingLayout()
-        snappingLayout.snapPosition = .center
+        let snappingLayout = UICollectionViewFlowLayout()
         snappingLayout.scrollDirection = .horizontal
         collectionPostImage.collectionViewLayout = snappingLayout
         collectionPostImage.isPagingEnabled = true
@@ -92,7 +135,7 @@ class HomeItemCell: AppTableViewCell {
         layout1.spacing = 0
         layout1.padding = 0
         layout1.minimumLineSpacing = 0
-        layout1.scrollDirection = .horizontal
+        layout1.scrollDirection = .vertical
         layout1.minimumInteritemSpacing = 0
         layout1.estimatedItemSize = CGSize(width: 140, height: 30)
         collectionSoapbx.collectionViewLayout = layout1
@@ -101,7 +144,7 @@ class HomeItemCell: AppTableViewCell {
         let layout2 = OTLTagFlowLayout()
         layout2.spacing = 0
         layout2.padding = 0
-        layout2.scrollDirection = .horizontal
+        layout2.scrollDirection = .vertical
         layout2.minimumLineSpacing = 0
         layout2.minimumInteritemSpacing = 0
         layout2.estimatedItemSize = CGSize(width: 140, height: 30)
@@ -146,6 +189,8 @@ class HomeItemCell: AppTableViewCell {
     }
     
     func updateData(_ object: PostModel){
+        removeCellObserver()
+        addCellObserver()
         self.object = object
         self.indexPath = indexPath
         imgProfile.setImage(object.user?.profilePhotoURL)
@@ -186,23 +231,23 @@ class HomeItemCell: AppTableViewCell {
         btnLike.title?.text = "\(object.likeCount ?? 0)"
         btnLike.imageView?.tintColor = object.likeStatus == 1 ? .primaryBlue : .titleGray
         btnDislike.title?.text = "\(object.dislikeCount ?? 0)"
-        btnDislike.imageView?.tintColor = object.dislikeStatus == 1 ? .primaryBlue : .titleGray
+        btnDislike.imageView?.tintColor = object.dislikeStatus == 1 ? .titleRed : .titleGray
         btnComment.title?.text = "\(object.commentsCount ?? 0)"
     }
     
         //Actions
     @IBAction private func click_btnProfileActio() {
-        if authUser?.loginType == .userLogin {
+//        if authUser?.loginType == .userLogin {
             if authUser?.user?.id != object?.user?.id {
                 delegate?.homeItemCell(self, didSelectProfile: object)
             }
-        } else {
-            showAlert(message: "You must Login to access this feature",buttons: ["Cancel", "Login"]) { alert in
-                if alert.title == "Login" {
-                    mackRootView(LoginVC())
-                }
-            }
-        }
+//        } else {
+//            showAlert(message: "You must Login to access this feature",buttons: ["Cancel", "Login"]) { alert in
+//                if alert.title == "Login" {
+//                    mackRootView(LoginVC())
+//                }
+//            }
+//        }
     }
     
     @IBAction private func click_btnSave() {
@@ -290,10 +335,11 @@ class HomeItemCell: AppTableViewCell {
     
     func updateCellsLayout()  {
         
-        let centerX = collectionPostImage.contentOffset.x + (collectionPostImage.frame.size.width - 10)/2
+        let centerX = collectionPostImage.contentOffset.x + (collectionPostImage.frame.size.width )/2
         for cell in collectionPostImage.visibleCells {
             
             var offsetX = centerX - cell.center.x
+            print("\(offsetX) = \(centerX) - \(cell.center.x)")
             if offsetX < 0 {
                 offsetX *= -1
             }
@@ -307,7 +353,7 @@ class HomeItemCell: AppTableViewCell {
 }
 
 extension HomeItemCell: UIScrollViewDelegate {
-    
+
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         updateCellsLayout()
     }

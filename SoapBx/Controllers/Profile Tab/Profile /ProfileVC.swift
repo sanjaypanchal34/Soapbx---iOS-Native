@@ -83,7 +83,7 @@ class ProfileVC: UIViewController {
             btnNotification.isHidden = true
             btnManu.isHidden = true
         }
-        var refreshControl = UIRefreshControl()
+        let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(pullupRefresh(_:)), for: .valueChanged)
         scrollBody.refreshControl = refreshControl
         scrollBody.delegate = self
@@ -100,7 +100,15 @@ class ProfileVC: UIViewController {
     }
     
     @IBAction private func click_menu() {
-        showSideMenu()
+        if authUser?.loginType == .userLogin {
+            showSideMenu()
+        } else {
+            showAlert(message: "You must Login to access this feature",buttons: ["Cancel", "Login"]) { alert in
+                if alert.title == "Login" {
+                    mackRootView(LoginVC())
+                }
+            }
+        }
     }
     
     @objc private func updateList() {

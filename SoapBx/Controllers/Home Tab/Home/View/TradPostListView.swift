@@ -37,6 +37,15 @@ class TradPostListView: UIView {
     }
     func removeHeightListener() {
         tblList.removeObserver(self, forKeyPath: "contentSize")
+        removeCellObserver()
+    }
+    
+    func removeCellObserver(){
+        for cell in tblList.visibleCells {
+            if let cell = cell as? HomeItemCell {
+                cell.removeCellObserver()
+            }
+        }
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -115,9 +124,12 @@ class TradPostListView: UIView {
     private func getHomePost() {
         showLoader()
         vmObject.getPost { result in
-            hideLoader()
             self.tblList.reloadData()
             self.collectionTrends.reloadData()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                hideLoader()
+                self.tblList.reloadData()
+            })
         }
     }
     
@@ -142,6 +154,7 @@ class TradPostListView: UIView {
 //        showLoader()
         vmLikeDislikeObj.likeDislike(post: vmObject.arrPosts[row], isLike: isLike) {[self] result, newObject in
 //            hideLoader()
+            SoapBx.showToast(message: result.message)
             if result.status {
                 if let updatedObj = newObject {
                     self.vmObject.arrPosts[row] = updatedObj
@@ -149,8 +162,6 @@ class TradPostListView: UIView {
                 if let cell = self.tblList.cellForRow(at: IndexPath(row: row, section: 0)) as? HomeItemCell{
                     cell.updateData(self.vmObject.arrPosts[row])
                 }
-            } else {
-                SoapBx.showToast(message: result.message)
             }
         }
     }
@@ -215,6 +226,12 @@ extension TradPostListView: UITableViewDataSource, UITableViewDelegate {
             if (indexPath.row + 1) >= (vmObject.arrPosts.count - 3){
                 self.paginationManage()
             }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if let cell = cell as? HomeItemCell {
+            cell.removeCellObserver()
         }
     }
 }
@@ -351,6 +368,12 @@ extension TradPostListView: HomeItemCellDelegate{
                 break;
             default: break;
         }
+    }
+    
+    func homeItemCell(_ cell: HomeItemCell, didUpdateTable: Void) {
+//        self.tblList.beginUpdates()
+//        self.tblList.setNeedsDisplay()
+//        self.tblList.endUpdates()
     }
 }
 extension TradPostListView: CommentDelegate {

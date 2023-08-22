@@ -27,7 +27,7 @@ class PollListSubitemCell: AppTableViewCell {
         lblCount.setTheme("", size: 16, lines: 1)
     }
 
-    func setTitle(_ object: Option, percent: JSON) {
+    func setTitle(_ object: Option, percent: JSON, isShowPercent: Bool = false) {
         lblTitle.text = object.option
         viewMain.backgroundColor = object.selectStatus == 1 ? .primaryBlue : .white
         lblTitle.textColor = object.selectStatus == 1 ? .white : .black
@@ -38,6 +38,8 @@ class PollListSubitemCell: AppTableViewCell {
             lblCount.text = "\(percent.stringValue ?? "")%"
         }
         lblCount.isHidden = (lblCount.text?.isEmptyString ?? false)
+        
+        lblCount.isHidden = !isShowPercent
     }
     
 }

@@ -154,7 +154,7 @@ extension FollowFolloingVC: UITableViewDataSource, UITableViewDelegate {
             else if vmObject.currentTabIndex == .politicians {
                 cell.setDataPoliticians(self.vmObject.arrList[indexPath.row], indexPath: indexPath, delegate: self)
             }
-            if screenType != .profileTab {
+            if screenType != .profileTab || authUser?.loginType != .userLogin {
                 cell.hideButtonsForOtherUser()
             }
             return cell

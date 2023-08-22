@@ -34,7 +34,26 @@ class PollsListItemCell: AppTableViewCell {
     
     private var pollsObj: PollModel?
     private var delegate:PollsListItemDelegate?
-    
+    private var isPercentageShow : Bool  {
+        get {
+            if let poll = pollsObj, (poll.pollPercent?.count ?? 0) > 0{
+                let isOption = poll.pollPercent?.compactMap({ (key: String, value: DoubleCast) in
+                    if (Double(value.stringValue ?? "0") ?? 0) > 0 {
+                        return true
+                    }
+                    return nil
+                })
+                if (isOption?.count ?? 0) > 0 {
+                    return true
+                }
+                else {
+                    return false
+                }
+            } else {
+                return false
+            }
+        }
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         setupUI()
@@ -171,7 +190,11 @@ extension PollsListItemCell : UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "PollListSubitemCell") as? PollListSubitemCell {
             if let obj = pollsObj?.options?[indexPath.row] {
-                cell.setTitle(obj, percent: pollsObj?.pollPercent ?? [:])
+                if isPercentageShow {
+                    cell.setTitle(obj, percent: pollsObj?.pollPercent ?? [:], isShowPercent: isPercentageShow)
+                } else {
+                    cell.setTitle(obj, percent: pollsObj?.pollPercent ?? [:])
+                }
             }
             return cell
         }

@@ -87,7 +87,11 @@ class PollsListVC: UIViewController {
             vmObject.arrList[indexPath.row].pollPercent = json
             vmObject.arrList[indexPath.row].options = vmObject.arrList[indexPath.row].options?.compactMap({ (option) in
                 var copy = option
-                copy.selectStatus = option.id == optionId ? 1 : 0
+                if option.id == optionId , copy.selectStatus == 1{
+                    copy.selectStatus = 0
+                } else {
+                    copy.selectStatus = option.id == optionId ? 1 : 0
+                }
                 return copy
             })
             

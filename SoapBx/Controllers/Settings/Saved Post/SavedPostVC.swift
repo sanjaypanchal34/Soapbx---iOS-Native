@@ -45,9 +45,12 @@ class SavedPostVC: UIViewController{
     private func getSavedPosts() {
         showLoader()
         vmObject.getSavedPosts { result in
-            hideLoader()
             self.tblList.reloadData()
             showToast(message: result.message)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                self.tblList.reloadData()
+                hideLoader()
+            })
         }
     }
     
@@ -138,6 +141,12 @@ extension SavedPostVC: UITableViewDataSource, UITableViewDelegate {
     }
 }
 extension SavedPostVC: HomeItemCellDelegate{
+    func homeItemCell(_ cell: HomeItemCell, didUpdateTable: Void) {
+//        self.tblList.beginUpdates()
+//        self.tblList.setNeedsDisplay()
+//        self.tblList.endUpdates()
+    }
+    
     
     func homeItemCell(_ cell: HomeItemCell, didSelect object: PostModel?) {
         if let obj = object {

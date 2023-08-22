@@ -192,9 +192,10 @@ extension SideMenu: UITableViewDelegate {
                             hideLoader()
                             if result.status {
                                 mackRootView(LoginVC())
-                            } else {
-                                SoapBx.showToast(message: result.message)
                             }
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4, execute: {
+                                SoapBx.showToast(message: result.message)
+                            })
                         }
                     }
                     else {

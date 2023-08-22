@@ -219,6 +219,7 @@ class SearchVC: UIViewController {
         showLoader()
         vmObject.saveHistory(user: user?.id ?? 0) {[self] result in
             hideLoader()
+            showToast(message: result.message)
 //            if result.status {
                 if self.screenType == .fromPublicFigures {
                     if self.vmPublic.arrList.count >= (indexPath.row + 1) {

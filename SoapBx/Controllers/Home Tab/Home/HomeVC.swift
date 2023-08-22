@@ -29,6 +29,10 @@ class HomeVC: UIViewController {
         super.viewWillAppear(animated)
         bottomTab.selectedTab = .home
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        viewTradPost.removeCellObserver()
+    }
 
     private func setupUI() {
         btnMessage.image = UIImage(named: "ic_sendRed")

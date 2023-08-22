@@ -177,19 +177,39 @@ class ProfileUserInfoView: UIView {
     }
     
     @IBAction private func click_btnMessage() {
-        delegate?.profileUserMessage(message: userObj!)
+        if authUser?.loginType == .userLogin {
+            delegate?.profileUserMessage(message: userObj!)
+        } else {
+            showAlert(message: "You must Login to access this feature",buttons: ["Cancel", "Login"]) { alert in
+                if alert.title == "Login" {
+                    mackRootView(LoginVC())
+                }
+            }
+        }
     }
     
     @IBAction private func click_btnFollow() {
-        delegate?.profileUser(follow: userObj!)
-//        let vc = ChatVC()
-//        rootViewController?.pushViewController(vc, animated: true)
+        if authUser?.loginType == .userLogin {
+            delegate?.profileUser(follow: userObj!)
+        } else {
+            showAlert(message: "You must Login to access this feature",buttons: ["Cancel", "Login"]) { alert in
+                if alert.title == "Login" {
+                    mackRootView(LoginVC())
+                }
+            }
+        }
     }
     
     @IBAction private func click_btnBlock() {
-        delegate?.profileUser(block: userObj!)
-//        let vc = ChatVC()
-//        rootViewController?.pushViewController(vc, animated: true)
+        if authUser?.loginType == .userLogin {
+            delegate?.profileUser(block: userObj!)
+        } else {
+            showAlert(message: "You must Login to access this feature",buttons: ["Cancel", "Login"]) { alert in
+                if alert.title == "Login" {
+                    mackRootView(LoginVC())
+                }
+            }
+        }
     }
     
     @IBAction private func click_createPost() {

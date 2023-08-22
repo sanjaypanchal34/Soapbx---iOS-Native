@@ -1864,10 +1864,16 @@
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SoapBx/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "SoapBx would like to access camera for upload profile and post";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "SoapBx would like to access location for show post near by your location ";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "SoapBx would like to access location for show post near by your location ";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "SoapBx would like to access location for show post near by your location ";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "SoapBx would like to access photos for upload profile and post";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1892,6 +1898,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Q3V62YN77S;
@@ -1901,10 +1908,16 @@
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SoapBx/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "SoapBx would like to access camera for upload profile and post";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "SoapBx would like to access location for show post near by your location ";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "SoapBx would like to access location for show post near by your location ";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "SoapBx would like to access location for show post near by your location ";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "SoapBx would like to access photos for upload profile and post";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1913,6 +1926,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.operators.technolab.SoapBx;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;

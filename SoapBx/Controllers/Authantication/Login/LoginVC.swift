@@ -117,7 +117,7 @@ class LoginVC: UIViewController {
                        complition:  {[self] result in
             hideLoader()
             if result.status{
-                if imgRemamberMe.image == nil {
+                if imgRemamberMe.image == UIImage(named: "ic_favChecked")?.withRenderingMode(.alwaysTemplate) {
                     AuthorizedUser.updateRememberMe(email: txtEmail.text, password: txtPassword.text)
                 }
                 
@@ -133,10 +133,10 @@ class LoginVC: UIViewController {
                 else {
                     mackRootView(HomeVC())
                 }
-            } else {
-                showToast(message: result.message)
             }
-            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4, execute: {
+                showToast(message: result.message)
+            })
         })
     }
 }

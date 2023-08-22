@@ -369,6 +369,8 @@
                 <outlet property="collectionPolitician" destination="nO4-cz-Dbb" id="Xbo-3K-6gu"/>
                 <outlet property="collectionPostImage" destination="7S9-TX-mib" id="3U7-hj-jNZ"/>
                 <outlet property="collectionSoapbx" destination="Db3-00-KwW" id="7Lw-Ed-Xij"/>
+                <outlet property="constCollPolitician" destination="Q60-Jh-dQc" id="2VU-iR-tpj"/>
+                <outlet property="constCollSoapbxTrends" destination="Q1a-BA-2fr" id="gMW-Pi-rn6"/>
                 <outlet property="imgProfile" destination="UcJ-Vo-AvS" id="cc3-jd-Uvz"/>
                 <outlet property="lblPostLocation" destination="qxk-AL-VTH" id="8Ab-Ke-y6w"/>
                 <outlet property="lblPostTime" destination="jzm-kO-UgO" id="HBh-ML-MWO"/>

@@ -107,7 +107,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j9a-HJ-DGG">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j9a-HJ-DGG">
                                                     <rect key="frame" x="0.0" y="18" width="125" height="20.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -129,7 +129,7 @@
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="C40-JC-vBO" secondAttribute="trailing" id="4wF-zT-zs3"/>
                                         <constraint firstItem="aSr-1q-0Bt" firstAttribute="centerY" secondItem="Kr4-45-w3L" secondAttribute="centerY" id="69s-Ve-McH"/>
-                                        <constraint firstItem="C40-JC-vBO" firstAttribute="leading" relation="lessThanOrEqual" secondItem="aSr-1q-0Bt" secondAttribute="trailing" constant="10" id="FCb-5k-RjE"/>
+                                        <constraint firstItem="C40-JC-vBO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="aSr-1q-0Bt" secondAttribute="trailing" constant="10" id="FCb-5k-RjE"/>
                                         <constraint firstItem="aSr-1q-0Bt" firstAttribute="leading" secondItem="Kr4-45-w3L" secondAttribute="trailing" constant="10" id="PL4-Qp-xza"/>
                                         <constraint firstItem="Kr4-45-w3L" firstAttribute="leading" secondItem="lnL-76-U6n" secondAttribute="leading" id="WBv-u6-ROp"/>
                                         <constraint firstAttribute="bottom" secondItem="Kr4-45-w3L" secondAttribute="bottom" id="ZyD-qx-RoG"/>

@@ -33,7 +33,9 @@ class CommentVC: UIViewController {
     @IBOutlet private weak var txtPostDescription: UITextView!
     @IBOutlet private weak var collectionPostImage: UICollectionView!
     @IBOutlet private weak var collectionSoapbx: UICollectionView!
+    @IBOutlet private weak var constCollSoapbxTrends: NSLayoutConstraint!
     @IBOutlet private weak var collectionPolitician: UICollectionView!
+    @IBOutlet private weak var constCollPolitician: NSLayoutConstraint!
     
     @IBOutlet private weak var viewActionButtons: UIView!
     @IBOutlet private weak var btnLike: OTLPTButton!
@@ -66,9 +68,17 @@ class CommentVC: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         tblCommentsList.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
+        collectionPolitician.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
+        collectionSoapbx.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
     }
     override func viewWillDisappear(_ animated: Bool) {
         tblCommentsList.removeObserver(self, forKeyPath: "contentSize")
+        if collectionPolitician.observationInfo != nil {
+            collectionPolitician.removeObserver(self, forKeyPath: "contentSize")
+        }
+        if collectionSoapbx.observationInfo != nil {
+            collectionSoapbx.removeObserver(self, forKeyPath: "contentSize")
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -82,6 +92,21 @@ class CommentVC: UIViewController {
                 if let newvalue = change?[.newKey], let newsize  = newvalue as? CGSize{
                     if constCommentsListHeight != nil {
                         constCommentsListHeight?.constant = newsize.height
+                    }
+                }
+            }
+            else if let object = object as? UICollectionView {
+                if object == collectionPolitician {
+                    if let newvalue = change?[.newKey], let newsize  = newvalue as? CGSize{
+                        if collectionPolitician != nil {
+                            constCollPolitician?.constant = newsize.height
+                        }
+                    }
+                } else if  object == collectionSoapbx{
+                    if let newvalue = change?[.newKey], let newsize  = newvalue as? CGSize{
+                        if constCollSoapbxTrends != nil {
+                            constCollSoapbxTrends?.constant = newsize.height
+                        }
                     }
                 }
             }
@@ -107,8 +132,7 @@ class CommentVC: UIViewController {
         txtPostDescription.linkTextAttributes = [.foregroundColor:UIColor.primaryBlue]
         txtPostDescription.delegate = self
         
-        let snappingLayout = SnappingLayout()
-        snappingLayout.snapPosition = .center
+        let snappingLayout = UICollectionViewFlowLayout()
         snappingLayout.scrollDirection = .horizontal
         collectionPostImage.collectionViewLayout = snappingLayout
         collectionPostImage.register(["PostImageItemCell"], delegate: self, dataSource: self)
@@ -116,7 +140,7 @@ class CommentVC: UIViewController {
         layout1.spacing = 0
         layout1.padding = 0
         layout1.minimumLineSpacing = 0
-        layout1.scrollDirection = .horizontal
+        layout1.scrollDirection = .vertical
         layout1.minimumInteritemSpacing = 0
         layout1.estimatedItemSize = CGSize(width: 140, height: 30)
         collectionSoapbx.collectionViewLayout = layout1
@@ -125,7 +149,7 @@ class CommentVC: UIViewController {
         let layout2 = OTLTagFlowLayout()
         layout2.spacing = 0
         layout2.padding = 0
-        layout2.scrollDirection = .horizontal
+        layout2.scrollDirection = .vertical
         layout2.minimumLineSpacing = 0
         layout2.minimumInteritemSpacing = 0
         layout2.estimatedItemSize = CGSize(width: 140, height: 30)
@@ -204,7 +228,7 @@ class CommentVC: UIViewController {
         btnLike.title?.text = "\(object?.likeCount ?? 0)"
         btnLike.imageView?.tintColor = object?.likeStatus == 1 ? .primaryBlue : .titleGray
         btnDislike.title?.text = "\(object?.dislikeCount ?? 0)"
-        btnDislike.imageView?.tintColor = object?.dislikeStatus == 1 ? .primaryBlue : .titleGray
+        btnDislike.imageView?.tintColor = object?.dislikeStatus == 1 ? .titleRed : .titleGray
         btnComment.title?.text = "\(object?.commentsCount ?? 0)"
     }
     
@@ -423,7 +447,7 @@ extension CommentVC: UICollectionViewDataSource{
 extension CommentVC: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == collectionPostImage {
-            return CGSize(width: collectionView.frame.width - 15, height: collectionView.frame.width - 10)
+            return CGSize(width: collectionView.frame.width , height: collectionView.frame.width )
         }
         else if collectionView == collectionSoapbx,
                  (self.vmObject.objPost?.trendTags?.count ?? 0) > 0{
@@ -459,7 +483,7 @@ extension CommentVC: UICollectionViewDelegateFlowLayout, UICollectionViewDelegat
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
 }
 extension CommentVC: UITextViewDelegate {

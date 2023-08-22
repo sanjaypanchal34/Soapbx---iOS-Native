@@ -52,9 +52,9 @@ public class OTLWebserviceConfiguration {
     public var bodyKey: String = "data"
     
      public init() {
-        privateBaseURL = OTLApplicationStatusType(development: "http://164.90.178.223:9179/api/",
+        privateBaseURL = OTLApplicationStatusType(development: "http://164.90.178.223/api/",
                                                   live: "https://soapbx.net/api/",
-                                                  local: "http://164.90.178.223:9179/api/")
+                                                  local: "http://164.90.178.223/api/")
         self.header = [:]
          #if DEBUG
             appState = .live

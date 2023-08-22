@@ -18,6 +18,7 @@ class PollsListVC: UIViewController {
     @IBOutlet private weak var tblList: UITableView!
     
     private let vmObject = PollsListViewModel()
+    private let currentDate = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -109,7 +110,7 @@ extension PollsListVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "PollsListItemCell") as? PollsListItemCell {
             cell.indexPath = indexPath
-            cell.setData(vmObject.arrList[indexPath.row], delegate: self)
+            cell.setData(vmObject.arrList[indexPath.row], date: currentDate, delegate: self)
             return cell
         }
         return UITableViewCell()

@@ -139,7 +139,8 @@ class ProfileUserInfoView: UIView {
     }
     
     @IBAction private func click_editProfile() {
-        rootViewController.pushViewController(EditProfileVC(), animated: true)
+        rootViewController.pushViewController(ProfileCoverVC(), animated: true)
+//        rootViewController.pushViewController(EditProfileVC(), animated: true)
     }
     
     @IBAction private func click_deleteAccount() {

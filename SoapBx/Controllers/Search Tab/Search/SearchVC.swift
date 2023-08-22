@@ -46,14 +46,22 @@ class SearchVC: UIViewController {
         super.viewDidLoad()
         setupUI()
         
-        if screenType == .fromCreatePost{
-            getPoliticians()
-        }
-        else if screenType == .fromPublicFigures {
-            userSearchHistory()
-        }
-        else {
-            userSearchHistory()
+        if authUser?.loginType == .userLogin {
+            if screenType == .fromCreatePost{
+                getPoliticians()
+            }
+            else if screenType == .fromPublicFigures {
+                userSearchHistory()
+            }
+            else {
+                userSearchHistory()
+            }
+        } else {
+            showAlert(message: "You must Login to access this feature",buttons: ["Login"]) { alert in
+                if alert.title == "Login" {
+                    mackRootView(LoginVC())
+                }
+            }
         }
     }
     

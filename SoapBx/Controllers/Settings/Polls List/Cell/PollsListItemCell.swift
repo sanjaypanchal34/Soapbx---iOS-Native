@@ -111,7 +111,7 @@ class PollsListItemCell: AppTableViewCell {
         }
     }
     
-    func setData(_ object: PollModel, delegate:PollsListItemDelegate) {
+    func setData(_ object: PollModel, date: Date, delegate:PollsListItemDelegate) {
         self.pollsObj = object
         self.delegate = delegate
         
@@ -130,7 +130,7 @@ class PollsListItemCell: AppTableViewCell {
         lblVote.text = "\(object.votesCount ?? 0) Vote"
         if let endDate = object.endDate {
             let dateObj = OTLDateConvert.instance.convert(string: endDate, toDate: .yyyyMMdd_HHmm)
-            lblTimeLeft.text = OTLDateConvert.instance.getDateDiff(startDate: dateObj, end: Date(), subString: "Left")
+            lblTimeLeft.text = OTLDateConvert.instance.getDateDiff(startDate: dateObj, end: date, subString: "Left")
         }
         
     }

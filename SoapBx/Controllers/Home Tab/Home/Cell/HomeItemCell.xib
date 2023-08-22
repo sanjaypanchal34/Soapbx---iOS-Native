@@ -66,6 +66,7 @@
                                             <constraint firstAttribute="bottom" secondItem="agF-eH-ZgS" secondAttribute="bottom" constant="10" id="UZC-HQ-xUt"/>
                                             <constraint firstItem="agF-eH-ZgS" firstAttribute="top" secondItem="UcJ-Vo-AvS" secondAttribute="top" constant="5" id="bXr-lS-GxZ"/>
                                             <constraint firstItem="UcJ-Vo-AvS" firstAttribute="leading" secondItem="2qu-tr-aOb" secondAttribute="leading" constant="10" id="fEU-5v-Bf1"/>
+                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="UcJ-Vo-AvS" secondAttribute="bottom" constant="10" id="umf-8J-iq8"/>
                                         </constraints>
                                         <connections>
                                             <action selector="click_btnProfileActio" destination="KGk-i7-Jjw" eventType="touchUpInside" id="vK4-IU-FNO"/>

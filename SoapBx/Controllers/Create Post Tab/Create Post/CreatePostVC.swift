@@ -124,7 +124,7 @@ class CreatePostVC: UIViewController {
         lblTime.text = OTLDateConvert.instance.convert(date: Date(), toString: .mmmDDyyyyAthhmma)
         
         lblTitle.setTheme("Add Title", color: .primaryBlue, font: .bold)
-        txtTitle.placeholder = "What is your post aboit?"
+        txtTitle.placeholder = "What is your post about?"
         txtTitle.font = AppFont.regular.font(size: 18)
         txtTitle.maxLength = 50
         

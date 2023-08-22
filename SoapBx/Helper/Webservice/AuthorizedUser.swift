@@ -71,6 +71,7 @@ class AuthorizedUser {
             UserDefaults.standard.removeObject(forKey: OTLAppKey.isGuestUser)
             UserDefaults.standard.synchronize()
             authUser = nil
+          OTLWebserviceConfiguration.instance.header = ["Accept":"application/json"]
 //            loginType = .guestLogin
       }
 

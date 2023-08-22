@@ -77,6 +77,8 @@ extension String
     func validatePhone() -> ValidationResult {
         if self.isEmptyString {
             return (false, "Please enter phone number")
+        } else if self.count < 8 || self.count > 14  {
+            return (false, "Please enter valid phone number")
         } else if !self.validateWith(RX: .phoneNo)  {
             return (false, "Please enter valid phone number")
         } else {

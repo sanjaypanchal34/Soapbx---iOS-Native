@@ -87,6 +87,9 @@ class TradPostListView: UIView {
     func updatePostObject(posts: [PostModel]) {
         vmObject.arrPosts = posts
         tblList.reloadData()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+            self.tblList.reloadData()
+        })
     }
     
     func updateTerndsObject(ternds: [TrendsModel]) {

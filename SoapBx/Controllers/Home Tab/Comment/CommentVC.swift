@@ -117,7 +117,7 @@ class CommentVC: UIViewController {
         viewHeader.lblTitle.setHeader("")
         
         imgProfile.layer.cornerRadius = imgProfile.frame.height/2
-        lblProfileName.setTheme("", size: 18)
+        lblProfileName.setTheme("", size: 18, lines: 1)
         lblPostLocation.setTheme("",size: 12)
         lblPostTime.setTheme("", size: 12)
         

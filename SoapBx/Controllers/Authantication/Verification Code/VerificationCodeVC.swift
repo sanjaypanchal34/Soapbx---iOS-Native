@@ -113,11 +113,10 @@ class VerificationCodeVC: UIViewController {
         showLoader()
         vmObject.registerWithVerify(complition: { result in
             hideLoader()
+            showToast(message: result.message)
             if result.status {
                 let vc = ProfileCoverVC()
                 self.navigationController?.pushViewController(vc, animated: true)
-            } else {
-                showToast(message: result.message)
             }
         })
     }

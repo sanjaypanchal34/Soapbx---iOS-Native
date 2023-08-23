@@ -31,7 +31,7 @@ class CommentItemCell: AppTableViewCell {
         imgProfile.image = UIImage(named: "profileOne")
         imgProfile.layer.cornerRadius = imgProfile.frame.height/2
         imgProfile.contentMode = .scaleAspectFill
-        lblProfileName.setTheme("Robert Watson",size: 14)
+        lblProfileName.setTheme("Robert Watson",size: 14, lines: 1)
         lblComment.setTheme("Comment",size: 12)
         btnReport.setTheme("Report",color: .titleRed,size: 11)
     }

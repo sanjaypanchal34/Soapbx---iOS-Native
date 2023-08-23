@@ -67,7 +67,7 @@ class PoliticianProfileVC: UIViewController {
         imgProfile.contentMode = .scaleAspectFill
         imgProfile.layer.cornerRadius = imgProfile.frame.height/2
         
-        lblProfileName.setTheme("", font: .bold,size: 20)
+        lblProfileName.setTheme("", font: .bold,size: 20, lines: 1)
         lblLocation.setTheme("", size: 14)
         
         btnFollow.setTheme("Follow", color: .white, font: .bold, size: 14, background: .titleRed)

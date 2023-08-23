@@ -49,7 +49,7 @@ class SideMenu: UIControl {
         imgProfile.contentMode = .scaleAspectFill
         imgProfile.layer.cornerRadius = imgProfile.frame.height/2
         
-        lblProfileName.setTheme(authUser?.user?.name ?? "", size: 22, lines: 2)
+        lblProfileName.setTheme(authUser?.user?.name ?? "", size: 22, lines: 1)
         lblViewProfile.setTheme("View Profile", size: 14)
         
         tblList.register(["MenuItemCell"], delegate: self, dataSource: self)

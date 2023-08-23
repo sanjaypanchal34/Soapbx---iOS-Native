@@ -17,7 +17,8 @@ class ProfileCoverVC: UIViewController {
     @IBOutlet private weak var viewAddCover: OTLDashedView!
     @IBOutlet private weak var viewButtonAddCover: UIView!
     @IBOutlet private weak var lblAddCover: UILabel!
-    
+    @IBOutlet private weak var btnRemoveCover: OTLImageButton!
+    @IBOutlet private weak var btnRemoveProfile: OTLImageButton!
     @IBOutlet private weak var btnProfile: OTLImageButton!
     
     @IBOutlet private weak var btnNext: OTLTextButton!
@@ -28,13 +29,15 @@ class ProfileCoverVC: UIViewController {
     private let imagePicker = UIImagePickerController()
     private var imgProfile: UIImage? = nil {
         didSet {
-            btnProfile.image = imgProfile
+            btnRemoveProfile.isHidden = imgProfile == nil
+            btnProfile.image = imgProfile == nil ? UIImage(named: "ic_addPhoto")?.withRenderingMode(.alwaysOriginal) : imgProfile
         }
     }
     private var imgCover: UIImage? = nil {
         didSet {
             imgCoverView.image = imgCover
-            viewButtonAddCover.isHidden = true
+            viewButtonAddCover.isHidden = imgCover != nil
+            btnRemoveCover.isHidden = imgCover == nil
         }
     }
     private var isProfile = true
@@ -74,8 +77,20 @@ class ProfileCoverVC: UIViewController {
         
         btnNext.appButton("Next")
         
-        lblDescription.setTheme("Add a profile picture so that you and your friend can identifv each other", color: .titleBlack)
+        lblDescription.setTheme("Add a profile picture so that you and your friend can indentify each other", color: .titleBlack)
         lblNotes.setTheme("*Cover photo is optional and can be added later.", color: .titleGray)
+        
+        btnRemoveProfile.image = UIImage(named: "ic_cross")
+        btnRemoveProfile.isHidden = true
+        btnRemoveProfile.addTarget(self, action: #selector(click_btnRemoveProfile), for: .touchUpInside)
+        btnRemoveProfile.backgroundColor = .clear
+        btnRemoveProfile.height = 15
+        
+        btnRemoveCover.image = UIImage(named: "ic_cross")
+        btnRemoveCover.isHidden = true
+        btnRemoveCover.addTarget(self, action: #selector(click_btnRemoveCover), for: .touchUpInside)
+        btnRemoveCover.backgroundColor = .clear
+        btnRemoveCover.height = 15
     }
     
     //Actions
@@ -87,7 +102,15 @@ class ProfileCoverVC: UIViewController {
         }
     }
     
-    @IBAction private func click_btnProfile() {
+    @objc private func click_btnRemoveProfile() {
+        imgProfile = nil
+    }
+    
+    @objc private func click_btnRemoveCover() {
+        imgCover = nil
+    }
+    
+    @objc private func click_btnProfile() {
         PHPhotoLibrary.execute(controller: self, onAccessHasBeenGranted: {
             DispatchQueue.main.async {
                 let camera = OTLAlertModel(title: "Camera", id: 0)
@@ -106,7 +129,8 @@ class ProfileCoverVC: UIViewController {
         })
         
     }
-    @IBAction private func click_btnCover() {
+    
+    @objc private func click_btnCover() {
         PHPhotoLibrary.execute(controller: self, onAccessHasBeenGranted: {
             DispatchQueue.main.async {
                 let camera = OTLAlertModel(title: "Camera", id: 0)

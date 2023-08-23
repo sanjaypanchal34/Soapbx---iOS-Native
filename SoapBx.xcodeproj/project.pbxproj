@@ -163,6 +163,9 @@
 		84A2A5A72A8F27F200387118 /* SnappingLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A5A62A8F27F200387118 /* SnappingLayout.swift */; };
 		84A2A5CA2A9001D500387118 /* OTLContaner.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A2A5C82A9001CD00387118 /* OTLContaner.xcframework */; };
 		84A2A5CB2A9001D500387118 /* OTLContaner.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84A2A5C82A9001CD00387118 /* OTLContaner.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		84A2A6202A96701F00387118 /* PaymentDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A61E2A96701F00387118 /* PaymentDetailsVC.swift */; };
+		84A2A6212A96701F00387118 /* PaymentDetailsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A2A61F2A96701F00387118 /* PaymentDetailsVC.xib */; };
+		84A2A6242A96710600387118 /* PaymentDetailsVIewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A6232A96710600387118 /* PaymentDetailsVIewModel.swift */; };
 		84ADF9F52A7B7596005D3E9D /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ADF9F42A7B7596005D3E9D /* ChangePasswordViewModel.swift */; };
 		84B1D5232A74D06E0051558B /* YouInterestedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B1D5222A74D06E0051558B /* YouInterestedViewModel.swift */; };
 		84B1D5292A74D3110051558B /* YouInterestedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B1D5282A74D3110051558B /* YouInterestedModel.swift */; };
@@ -359,6 +362,9 @@
 		84A2A59F2A8E83B600387118 /* PollListSubitemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PollListSubitemCell.xib; sourceTree = "<group>"; };
 		84A2A5A62A8F27F200387118 /* SnappingLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnappingLayout.swift; sourceTree = "<group>"; };
 		84A2A5C82A9001CD00387118 /* OTLContaner.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = OTLContaner.xcframework; sourceTree = "<group>"; };
+		84A2A61E2A96701F00387118 /* PaymentDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDetailsVC.swift; sourceTree = "<group>"; };
+		84A2A61F2A96701F00387118 /* PaymentDetailsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentDetailsVC.xib; sourceTree = "<group>"; };
+		84A2A6232A96710600387118 /* PaymentDetailsVIewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDetailsVIewModel.swift; sourceTree = "<group>"; };
 		84ADF9F42A7B7596005D3E9D /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewModel.swift; sourceTree = "<group>"; };
 		84B1D5222A74D06E0051558B /* YouInterestedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouInterestedViewModel.swift; sourceTree = "<group>"; };
 		84B1D5282A74D3110051558B /* YouInterestedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouInterestedModel.swift; sourceTree = "<group>"; };
@@ -688,6 +694,7 @@
 		047DB0832A596D2D003DFE41 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				84A2A61D2A96700A00387118 /* Payment Details */,
 				044C01C62A6BF43E00E79AD2 /* Post Polls */,
 				044C01BE2A6BF3F400E79AD2 /* Polls List */,
 				04749C282A69881600A67A96 /* Connection */,
@@ -1225,6 +1232,24 @@
 			path = "View Model";
 			sourceTree = "<group>";
 		};
+		84A2A61D2A96700A00387118 /* Payment Details */ = {
+			isa = PBXGroup;
+			children = (
+				84A2A6222A9670EE00387118 /* View Model */,
+				84A2A61E2A96701F00387118 /* PaymentDetailsVC.swift */,
+				84A2A61F2A96701F00387118 /* PaymentDetailsVC.xib */,
+			);
+			path = "Payment Details";
+			sourceTree = "<group>";
+		};
+		84A2A6222A9670EE00387118 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				84A2A6232A96710600387118 /* PaymentDetailsVIewModel.swift */,
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
 		84A94A3F2A7ACCFE00E36A9F /* View Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1525,6 +1550,7 @@
 				049AE19C2A6C22A8001FAA65 /* NotificationListVC.xib in Resources */,
 				0442A55D2A57191500661988 /* ProfileCoverVC.xib in Resources */,
 				047E11B42A5AC47700B7CC05 /* PostItemPoliticalCell.xib in Resources */,
+				84A2A6212A96701F00387118 /* PaymentDetailsVC.xib in Resources */,
 				04A169112A6D41360024EA7F /* ChatVC.xib in Resources */,
 				047E119D2A59C2A300B7CC05 /* EnableLocationVC.xib in Resources */,
 				047DB0882A596D4E003DFE41 /* SubscribeVC.xib in Resources */,
@@ -1679,6 +1705,7 @@
 				1F280DCE2A8D3DE100273DD2 /* ChatRCell.swift in Sources */,
 				04DA4A312A67B1E100AF540B /* SettingModel.swift in Sources */,
 				043E266A2A5C64E300695C2D /* PublicFiguresItemCell.swift in Sources */,
+				84A2A6242A96710600387118 /* PaymentDetailsVIewModel.swift in Sources */,
 				04A979772A702E4F002724E7 /* SignupViewModel.swift in Sources */,
 				04A169102A6D41360024EA7F /* ChatVC.swift in Sources */,
 				84CC5AA32A7F910600B88B0A /* SuggestFeatureViewModel.swift in Sources */,
@@ -1697,6 +1724,7 @@
 				04CA0E0F2A6435290043C530 /* CreatePostVC.swift in Sources */,
 				047604FC2A6BD36C00ED9AA6 /* Toast.swift in Sources */,
 				84A2A5212A86929900387118 /* ViewBasicDetails.swift in Sources */,
+				84A2A6202A96701F00387118 /* PaymentDetailsVC.swift in Sources */,
 				049D774E2A71384500A848F9 /* OTLConfiguration.swift in Sources */,
 				047DB0772A5950D3003DFE41 /* VerificationCodeVC.swift in Sources */,
 				04DA4A422A67BF5C00AF540B /* InviteFriendsVC.swift in Sources */,

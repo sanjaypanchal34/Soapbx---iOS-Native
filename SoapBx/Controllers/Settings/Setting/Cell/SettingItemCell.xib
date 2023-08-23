@@ -19,10 +19,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JfN-Un-0KI">
-                        <rect key="frame" x="20" y="5" width="280" height="45"/>
+                        <rect key="frame" x="20" y="0.0" width="280" height="45"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="piY-g1-cEt">
-                                <rect key="frame" x="0.0" y="5" width="260" height="35"/>
+                                <rect key="frame" x="0.0" y="12.333333333333334" width="260" height="20.333333333333329"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -39,7 +39,6 @@
                         <constraints>
                             <constraint firstItem="piY-g1-cEt" firstAttribute="leading" secondItem="JfN-Un-0KI" secondAttribute="leading" id="14g-q6-oJZ"/>
                             <constraint firstItem="piY-g1-cEt" firstAttribute="centerY" secondItem="JfN-Un-0KI" secondAttribute="centerY" id="1rk-zs-ANX"/>
-                            <constraint firstItem="piY-g1-cEt" firstAttribute="top" secondItem="JfN-Un-0KI" secondAttribute="top" constant="5" id="2xo-yR-360"/>
                             <constraint firstItem="4sS-9J-gbo" firstAttribute="centerY" secondItem="JfN-Un-0KI" secondAttribute="centerY" id="CSb-wn-De2"/>
                             <constraint firstItem="4sS-9J-gbo" firstAttribute="leading" secondItem="piY-g1-cEt" secondAttribute="trailing" constant="5" id="jpO-fY-19g"/>
                             <constraint firstAttribute="height" constant="45" id="mYE-qM-POt"/>
@@ -47,7 +46,7 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CCA-1L-bUe">
-                        <rect key="frame" x="20" y="49" width="280" height="1"/>
+                        <rect key="frame" x="20" y="44" width="280" height="1"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="9JV-rU-7Y9"/>
@@ -57,9 +56,9 @@
                 <constraints>
                     <constraint firstItem="CCA-1L-bUe" firstAttribute="leading" secondItem="JfN-Un-0KI" secondAttribute="leading" id="PJm-iJ-ZjC"/>
                     <constraint firstItem="JfN-Un-0KI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="h2W-kK-Q8o"/>
-                    <constraint firstAttribute="bottom" secondItem="JfN-Un-0KI" secondAttribute="bottom" constant="5" id="mKt-rK-yz1"/>
+                    <constraint firstAttribute="bottom" secondItem="JfN-Un-0KI" secondAttribute="bottom" id="mKt-rK-yz1"/>
                     <constraint firstAttribute="trailing" secondItem="JfN-Un-0KI" secondAttribute="trailing" constant="20" id="nIa-Z2-pRO"/>
-                    <constraint firstItem="JfN-Un-0KI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="spL-LD-l8u"/>
+                    <constraint firstItem="JfN-Un-0KI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="spL-LD-l8u"/>
                     <constraint firstItem="CCA-1L-bUe" firstAttribute="bottom" secondItem="JfN-Un-0KI" secondAttribute="bottom" id="vea-c5-2kb"/>
                     <constraint firstItem="CCA-1L-bUe" firstAttribute="trailing" secondItem="JfN-Un-0KI" secondAttribute="trailing" id="wpj-pI-TBg"/>
                 </constraints>

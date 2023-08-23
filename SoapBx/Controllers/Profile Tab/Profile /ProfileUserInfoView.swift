@@ -55,8 +55,8 @@ class ProfileUserInfoView: UIView {
         btnDeleteAccunt.setTitle("Delete Account", for: .normal)
         btnDeleteAccunt.setTitleColor(.titleRed, for: .normal)
         
-        lblProfileName.setTheme("", font: .bold,size: 20)
-        lblLocation.setTheme("", size: 14)
+        lblProfileName.setTheme("", font: .bold,size: 20, lines: 1)
+        lblLocation.setTheme("", size: 14, lines: 3)
         lblLocation.textAlignment = .center
         
         viewMessageFollowBackButtons.backgroundColor = .clear
@@ -139,8 +139,8 @@ class ProfileUserInfoView: UIView {
     }
     
     @IBAction private func click_editProfile() {
-        rootViewController.pushViewController(ProfileCoverVC(), animated: true)
-//        rootViewController.pushViewController(EditProfileVC(), animated: true)
+//        rootViewController.pushViewController(ProfileCoverVC(), animated: true)
+        rootViewController.pushViewController(EditProfileVC(), animated: true)
     }
     
     @IBAction private func click_deleteAccount() {

@@ -83,7 +83,7 @@
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         </tableView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wkm-P8-BlL">
-                            <rect key="frame" x="176" y="346.66666666666669" width="41.333333333333343" height="21"/>
+                            <rect key="frame" x="176" y="50" width="41.333333333333343" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -91,13 +91,13 @@
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
+                        <constraint firstItem="Wkm-P8-BlL" firstAttribute="top" secondItem="WX4-mz-u9g" secondAttribute="top" constant="50" id="1ir-cC-47P"/>
                         <constraint firstItem="Wkm-P8-BlL" firstAttribute="centerX" secondItem="WX4-mz-u9g" secondAttribute="centerX" id="3UV-HP-jpo"/>
                         <constraint firstAttribute="trailing" secondItem="nIk-d9-Xfh" secondAttribute="trailing" id="3V9-o2-7uB"/>
                         <constraint firstItem="nIk-d9-Xfh" firstAttribute="top" secondItem="WX4-mz-u9g" secondAttribute="top" id="6jm-x7-jpw"/>
                         <constraint firstAttribute="bottom" secondItem="nIk-d9-Xfh" secondAttribute="bottom" id="VB6-Dn-o20"/>
                         <constraint firstItem="Wkm-P8-BlL" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="WX4-mz-u9g" secondAttribute="leading" constant="20" id="chk-UL-D8o"/>
                         <constraint firstItem="nIk-d9-Xfh" firstAttribute="leading" secondItem="WX4-mz-u9g" secondAttribute="leading" id="oaF-Sw-J7k"/>
-                        <constraint firstItem="Wkm-P8-BlL" firstAttribute="centerY" secondItem="WX4-mz-u9g" secondAttribute="centerY" id="yv9-eH-1AS"/>
                     </constraints>
                 </view>
             </subviews>

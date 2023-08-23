@@ -116,7 +116,7 @@ class SubscribeVC: UIViewController {
         showLoader()
         vmObject.getSubscriptionPlans { result in
             hideLoader()
-            showToast(message: result.message)
+//            showToast(message: result.message)
             if result.status {
                 self.tblList.reloadData()
             }

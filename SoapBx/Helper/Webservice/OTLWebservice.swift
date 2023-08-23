@@ -118,7 +118,7 @@ enum Webservice
     }
     
     enum Settings: OTLRequestExecuter {
-        case getTrends, chooseTrends, getSubscriptionPlans, chooseSubscription, saveHistory(String), getSavedPosts, getUserTrends, feedback, addPoll, getPolls, voteOnPoll, getBockedUser, unfollowedAccounts, unblockUser(String), acceptRequest, deleteRequest(String)
+        case getTrends, chooseTrends, getSubscriptionPlans, chooseSubscription, saveHistory(String), getSavedPosts, getUserTrends, feedback, addPoll, getPolls, voteOnPoll, getBockedUser, unfollowedAccounts, unblockUser(String), acceptRequest, deleteRequest(String), previousTransactions
         
         var method: OTLHTTPMethod {
             switch self {
@@ -132,6 +132,7 @@ enum Webservice
                 case .unfollowedAccounts:   return .get
                 case .unblockUser:          return .get
                 case .deleteRequest:        return .get
+                case .previousTransactions: return .get
                 default: return .post
             }
         }
@@ -154,6 +155,7 @@ enum Webservice
                 case .unblockUser(let id):  return "unblockUser/\(id)"
                 case .acceptRequest:        return "acceptRequest"
                 case .deleteRequest(let id):    return "deleteRequest/\(id)"
+                case .previousTransactions: return "previousTransactions"
             }
         }
     }

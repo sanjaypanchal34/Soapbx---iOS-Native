@@ -39,7 +39,7 @@ class PublicFiguresItemCell: AppTableViewCell {
         imgProfile.layer.cornerRadius = imgProfile.frame.height/2
         imgProfile.image = UIImage(named: "Logo")
         
-        lblProfileName.setTheme("Todd Young",font: .semibold)
+        lblProfileName.setTheme("Todd Young",font: .semibold, lines: 1)
         lblLocation.setTheme("185 Dirksen Sente Office Building", size: 14, lines: 3)
         
         btnAction.backgroundColor = .titleRed

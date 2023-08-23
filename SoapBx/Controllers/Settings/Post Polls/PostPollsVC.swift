@@ -97,7 +97,7 @@ class PostPollsVC: UIViewController {
         imgProfile.layer.cornerRadius = imgProfile.frame.height/2
         imgProfile.setImage(authUser?.user?.profile_photo_url)
         imgProfile.contentMode = .scaleAspectFill
-        lblProfileName.setTheme(authUser?.user?.name ?? "")
+        lblProfileName.setTheme(authUser?.user?.name ?? "", lines: 1)
         lblLocation.setTheme(getValueOrDefult(authUser?.user?.location, defaultValue: "N/A"), color: .titleGray, size: 10)
         lblTime.setTheme(OTLDateConvert.instance.convert(date: Date(), toString: .mmmDDyyyyAthhmma), color: .titleGray, size: 12)
         

@@ -26,7 +26,7 @@ class SearchItemCell: AppTableViewCell {
         viewMain.backgroundColor = .clear
         imgProfile.image = UIImage(named: "Logo")
         imgProfile.layer.cornerRadius = imgProfile.frame.height / 2
-        lblProfileName.setTheme("Todd Young", font: .semibold)
+        lblProfileName.setTheme("Todd Young", font: .semibold, lines: 1)
         btnCancel.tintColor = .titleGray
     }
 

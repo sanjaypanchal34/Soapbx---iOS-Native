@@ -9,6 +9,7 @@
 
 import UIKit
 import OTLContaner
+import SwiftyStoreKit
 
 enum SubscribeScreenType {
     case fromRegister, fromSetting
@@ -93,15 +94,56 @@ class SubscribeVC: UIViewController {
     
     @IBAction private func click_btnNext() {
         let object = vmObject.arrSubsciption.compactMap{ obj in
-            return obj.isSelected ? true : nil
+            return obj.isSelected ? obj : nil
         }
         
-        if object.count > 0 {
-            updateSubscriptionPlans()
+        let type: Int = (object.first?.type)!
+        var productId: String = ""
+        if type == 2 {
+            if object.count > 0 {
+                updateSubscriptionPlans()
+            } else {
+                showToast(message: "Please select subscription plan")
+            }
         } else {
-            showToast(message: "Please select subscription plan")
+            let sId: Int = (object.first?.id)!
+            if sId == 2 {
+                productId = "premium_1_month"
+            } else if sId == 3  {
+                productId = "premium_6_month"
+            } else if sId == 4  {
+                productId = "premium_12_month"
+            }
+            
+            SwiftyStoreKit.purchaseProduct(productId, quantity: 1, atomically: false) { result in
+                switch result {
+                case .success(let product):
+                    if product.needsFinishTransaction {
+                        SwiftyStoreKit.finishTransaction(product.transaction)
+                    }
+                    print("Purchase Success: \(product.productId)")
+                    if self.screenType == .fromRegister {
+                        let vc = EnableLocationVC()
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    } else {
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                case .error(let error):
+                    switch error.code {
+                    case .unknown: print("Unknown error. Please contact support")
+                    case .clientInvalid: print("Not allowed to make the payment")
+                    case .paymentCancelled: break
+                    case .paymentInvalid: print("The purchase identifier was invalid")
+                    case .paymentNotAllowed: print("The device is not allowed to make the payment")
+                    case .storeProductNotAvailable: print("The product is not available in the current storefront")
+                    case .cloudServicePermissionDenied: print("Access to cloud service information is not allowed")
+                    case .cloudServiceNetworkConnectionFailed: print("Could not connect to the network")
+                    case .cloudServiceRevoked: print("User has revoked permission to use this cloud service")
+                    default: print((error as NSError).localizedDescription)
+                    }
+                }
+            }
         }
-        
     }
     
     @IBAction private func click_btnSupport() {

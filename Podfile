@@ -9,5 +9,6 @@ target 'SoapBx' do
 # pod 'SDWebImageWebPCoder', '~> 0.11.0'
  pod 'Alamofire', '~> 5.7.1'
  pod 'PusherSwift', '~> 8.0.0'
+ pod 'SwiftyStoreKit'
  
 end

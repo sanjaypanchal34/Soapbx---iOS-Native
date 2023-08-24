@@ -131,6 +131,7 @@ class PostPollsVC: UIViewController {
         let layout1 = OTLTagFlowLayout()
         layout1.spacing = 0
         layout1.padding = 0
+//        layout1.snapPosition = .left
         layout1.minimumLineSpacing = 0
         layout1.scrollDirection = .vertical
         layout1.minimumInteritemSpacing = 0

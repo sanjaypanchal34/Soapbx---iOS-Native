@@ -95,6 +95,7 @@ class TradPostListView: UIView {
     func updateTerndsObject(ternds: [TrendsModel]) {
         vmObject.arrTernds = ternds
         collectionTrends.reloadData()
+        
     }
     
     @objc private func updateList() {
@@ -115,6 +116,9 @@ class TradPostListView: UIView {
             hideLoader()
             self.tblList.reloadData()
             self.collectionTrends.reloadData()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                self.tblList.reloadData()
+            })
         }
     }
     

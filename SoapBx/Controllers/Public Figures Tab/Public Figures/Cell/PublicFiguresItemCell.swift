@@ -193,6 +193,7 @@ class PublicFiguresItemCell: AppTableViewCell {
         btnRemove.isHidden = true
         
         imgHorizantalDot.isHidden = false
+        
     }
     
     @IBAction private func click_btnAction() {

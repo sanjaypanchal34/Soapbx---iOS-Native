@@ -77,7 +77,8 @@ class PostItemPoliticalCell: AppCollectionViewCell {
             lblTitle.textColor = .titleGray
         }
         lblTitle.font = AppFont.regular.font(size: 12)
-        lblTitle.text = " "+(object.name ?? "")+" "
+        lblTitle.text = object.name ?? ""
+        lblTitle.numberOfLines = 2
         DispatchQueue.main.async {
             self.viewMain.setShadowWithCorner(corner:-1)
         }

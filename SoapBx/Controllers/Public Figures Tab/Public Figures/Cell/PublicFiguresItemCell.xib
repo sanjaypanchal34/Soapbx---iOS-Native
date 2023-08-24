@@ -102,9 +102,9 @@
                                         </connections>
                                     </view>
                                     <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_horizontalDots" translatesAutoresizingMaskIntoConstraints="NO" id="adN-xu-Mog">
-                                        <rect key="frame" x="160" y="0.0" width="35" height="35"/>
+                                        <rect key="frame" x="160" y="35.000000000000007" width="0.0" height="0.0"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="UnU-8g-t3p"/>
+                                            <constraint firstAttribute="height" constant="25" id="UnU-8g-t3p"/>
                                             <constraint firstAttribute="width" secondItem="adN-xu-Mog" secondAttribute="height" multiplier="1:1" id="oMa-Yi-qhU"/>
                                         </constraints>
                                     </imageView>

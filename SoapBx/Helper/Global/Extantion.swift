@@ -295,7 +295,7 @@ extension NSNotification.Name{
 extension String {
     func addLocalizableString() -> String {
 //        let lang = UserDefaults.standard.string(forKey: AppConstants.LANGUAGE) ?? "en"
-        let lang = "fr" ?? "en"
+        let lang = "en"
         let path = Bundle.main.path(forResource: lang, ofType: "lproj")
         let bundle = Bundle(path: path!)
         return NSLocalizedString(self, tableName: nil, bundle: bundle!, value: "", comment: "")

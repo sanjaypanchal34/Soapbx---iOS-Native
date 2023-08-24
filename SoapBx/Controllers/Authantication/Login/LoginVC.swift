@@ -35,28 +35,28 @@ class LoginVC: UIViewController {
     }
     
     private func setupUI() {
-        lblTitle.setTheme("Sign in to Soapbx",
+        lblTitle.setTheme(LocalStrings.LOGIN_TITLE.rawValue.addLocalizableString(),
                           font: .bold,
                           size: 38)
-        lblSubtitle.setTheme("Enter your details below",
+        lblSubtitle.setTheme(LocalStrings.LOGIN_SUBTITLE.rawValue.addLocalizableString(),
                              color: .titleGray)
-        txtEmail.setTheme(placeholder: "Email",
+        txtEmail.setTheme(placeholder: LocalStrings.P_EMAIL.rawValue.addLocalizableString(),
                           leftIcon: UIImage(named: "ic_email"))
         txtEmail.keyboardType = .emailAddress
         
-        txtPassword.setTheme(placeholder: "Password")
+        txtPassword.setTheme(placeholder: LocalStrings.P_PASSWORD.rawValue.addLocalizableString())
         
-        lblRemamberMe.setTheme("Remember me")
+        lblRemamberMe.setTheme(LocalStrings.BTN_REMEMBER.rawValue.addLocalizableString())
         
-        btnForgotPasswrod.setTheme("Forgot Password?", color: .titleRed)
+        btnForgotPasswrod.setTheme(LocalStrings.BTN_FORGOT_PASS.rawValue.addLocalizableString(), color: .titleRed)
         
-        btnSignin.appButton("Sign in")
+        btnSignin.appButton(LocalStrings.BTN_SIGNIN.rawValue.addLocalizableString())
         
-        btnContinueGuest.setTheme("Continue as a guest", color: .titleGray, font: .medium)
-        lblNotAMamber.setTheme("Not a member?", size: 16)
-        btnSignUp.setTheme("Sign up now",color: .primaryBlue, font: .medium, size: 16)
-        txtEmail.text = "sumitk.iih@yopmail.com"
-        txtPassword.text = "sumit@123"
+        btnContinueGuest.setTheme(LocalStrings.BTN_GUEST.rawValue.addLocalizableString(), color: .titleGray, font: .medium)
+        lblNotAMamber.setTheme(LocalStrings.LBL_NOT_MEMBER.rawValue.addLocalizableString(), size: 16)
+        btnSignUp.setTheme(LocalStrings.BTN_SIGNUP.rawValue.addLocalizableString(),color: .primaryBlue, font: .medium, size: 16)
+//        txtEmail.text = "sumitk.iih@yopmail.com"
+//        txtPassword.text = "sumit@123"
         if let remembe = AuthorizedUser.rememberMe() {
             txtEmail.text = remembe.email
             txtPassword.text = remembe.password

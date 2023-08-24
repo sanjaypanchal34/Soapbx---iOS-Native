@@ -6,4 +6,17 @@
   
 */
 
-"SIGN_IN_TEXT" = "Sign in to Soapbx French";
+// LOGIN SCREENS
+
+"login_title" = "Sign in to Soapbx";
+"login_subtitle" = "Enter your details below";
+"btn_remember" = "Remember me";
+"btn_forgot_pass" = "Forgot Password?";
+"btn_signin" = "Sign in";
+"btn_guest" = "Continue as a guest";
+"btn_signup" = "Sign up now";
+"lbl_not_member" = "Not a member?";
+
+//PLACE HOLDERS
+"p_email" = "Email";
+"p_password" = "Password";

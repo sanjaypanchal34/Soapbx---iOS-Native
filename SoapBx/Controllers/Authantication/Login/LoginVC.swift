@@ -55,7 +55,8 @@ class LoginVC: UIViewController {
         btnContinueGuest.setTheme("Continue as a guest", color: .titleGray, font: .medium)
         lblNotAMamber.setTheme("Not a member?", size: 16)
         btnSignUp.setTheme("Sign up now",color: .primaryBlue, font: .medium, size: 16)
-        
+        txtEmail.text = "sumitk.iih@yopmail.com"
+        txtPassword.text = "sumit@123"
         if let remembe = AuthorizedUser.rememberMe() {
             txtEmail.text = remembe.email
             txtPassword.text = remembe.password

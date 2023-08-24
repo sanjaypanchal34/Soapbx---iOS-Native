@@ -17,6 +17,7 @@ struct OTLAppKey {
     static let loginUser = "OTL_loginUser"
     static let isGuestUser = "OTL_isGuestUser"
     static let RememberMe = "OTL_RememberMe"
+    static let Language = "OTL_Langauage"
 }
 
 enum UserLoginType{

@@ -147,6 +147,11 @@
 		1F280DCC2A8D3DE100273DD2 /* ChatSCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F280DC82A8D3DE100273DD2 /* ChatSCell.xib */; };
 		1F280DCD2A8D3DE100273DD2 /* ChatSCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F280DC92A8D3DE100273DD2 /* ChatSCell.swift */; };
 		1F280DCE2A8D3DE100273DD2 /* ChatRCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F280DCA2A8D3DE100273DD2 /* ChatRCell.swift */; };
+		1FB870D42A97B7A80021F08F /* ChangeLanguageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB870D22A97B7A80021F08F /* ChangeLanguageVC.swift */; };
+		1FB870D52A97B7A80021F08F /* ChangeLanguageVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FB870D32A97B7A80021F08F /* ChangeLanguageVC.xib */; };
+		1FB870D82A97B7C50021F08F /* LanguageItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB870D62A97B7C50021F08F /* LanguageItemCell.swift */; };
+		1FB870D92A97B7C50021F08F /* LanguageItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FB870D72A97B7C50021F08F /* LanguageItemCell.xib */; };
+		1FB870DC2A97B88B0021F08F /* ChangeLangModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB870DB2A97B88A0021F08F /* ChangeLangModel.swift */; };
 		84255FE02A84EC5700D6170A /* PublicFiguresViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84255FDF2A84EC5700D6170A /* PublicFiguresViewModel.swift */; };
 		84A2A51D2A866F0F00387118 /* PoliticianProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A51B2A866F0F00387118 /* PoliticianProfileVC.swift */; };
 		84A2A51E2A866F0F00387118 /* PoliticianProfileVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A2A51C2A866F0F00387118 /* PoliticianProfileVC.xib */; };
@@ -342,7 +347,6 @@
 		04F896CE2A738B4700636B2F /* ProfileCoverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoverViewModel.swift; sourceTree = "<group>"; };
 		1888BB2F2A9730F900B735C9 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1888BB302A97312400B735C9 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
-		1888BB312A97312F00B735C9 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1888BB322A97314600B735C9 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		1888BB332A9738E700B735C9 /* LocalizationStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationStrings.swift; sourceTree = "<group>"; };
 		1F280DC22A8CD99200273DD2 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
@@ -351,6 +355,12 @@
 		1F280DC82A8D3DE100273DD2 /* ChatSCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatSCell.xib; sourceTree = "<group>"; };
 		1F280DC92A8D3DE100273DD2 /* ChatSCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatSCell.swift; sourceTree = "<group>"; };
 		1F280DCA2A8D3DE100273DD2 /* ChatRCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRCell.swift; sourceTree = "<group>"; };
+		1FB870D22A97B7A80021F08F /* ChangeLanguageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLanguageVC.swift; sourceTree = "<group>"; };
+		1FB870D32A97B7A80021F08F /* ChangeLanguageVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangeLanguageVC.xib; sourceTree = "<group>"; };
+		1FB870D62A97B7C50021F08F /* LanguageItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageItemCell.swift; sourceTree = "<group>"; };
+		1FB870D72A97B7C50021F08F /* LanguageItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LanguageItemCell.xib; sourceTree = "<group>"; };
+		1FB870DB2A97B88A0021F08F /* ChangeLangModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeLangModel.swift; sourceTree = "<group>"; };
+		1FB870DD2A97BD290021F08F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6606E9F1F3155B6AB15CD78B /* Pods-SoapBx.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoapBx.release.xcconfig"; path = "Target Support Files/Pods-SoapBx/Pods-SoapBx.release.xcconfig"; sourceTree = "<group>"; };
 		84255FDF2A84EC5700D6170A /* PublicFiguresViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicFiguresViewModel.swift; sourceTree = "<group>"; };
 		84A2A51B2A866F0F00387118 /* PoliticianProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoliticianProfileVC.swift; sourceTree = "<group>"; };
@@ -700,6 +710,7 @@
 		047DB0832A596D2D003DFE41 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				1FB870D02A97B7920021F08F /* ChangeLanguage */,
 				84A2A61D2A96700A00387118 /* Payment Details */,
 				044C01C62A6BF43E00E79AD2 /* Post Polls */,
 				044C01BE2A6BF3F400E79AD2 /* Polls List */,
@@ -1168,6 +1179,34 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		1FB870D02A97B7920021F08F /* ChangeLanguage */ = {
+			isa = PBXGroup;
+			children = (
+				1FB870DA2A97B8750021F08F /* Model */,
+				1FB870D12A97B7920021F08F /* Cells */,
+				1FB870D22A97B7A80021F08F /* ChangeLanguageVC.swift */,
+				1FB870D32A97B7A80021F08F /* ChangeLanguageVC.xib */,
+			);
+			path = ChangeLanguage;
+			sourceTree = "<group>";
+		};
+		1FB870D12A97B7920021F08F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				1FB870D62A97B7C50021F08F /* LanguageItemCell.swift */,
+				1FB870D72A97B7C50021F08F /* LanguageItemCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		1FB870DA2A97B8750021F08F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1FB870DB2A97B88A0021F08F /* ChangeLangModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		84255FDE2A84EC4500D6170A /* View Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1493,8 +1532,8 @@
 				Base,
 				fr,
 				es,
-				de,
 				"pt-PT",
+				de,
 			);
 			mainGroup = 049D88722A52D5D500876D27;
 			productRefGroup = 049D887C2A52D5D500876D27 /* Products */;
@@ -1537,6 +1576,7 @@
 				84A2A5A12A8E83B600387118 /* PollListSubitemCell.xib in Resources */,
 				043E26722A5C6EC900695C2D /* SearchVC.xib in Resources */,
 				047E11A32A59C81200B7CC05 /* HomeVC.xib in Resources */,
+				1FB870D52A97B7A80021F08F /* ChangeLanguageVC.xib in Resources */,
 				04DA4A432A67BF5C00AF540B /* InviteFriendsVC.xib in Resources */,
 				047DB07D2A595FED003DFE41 /* YouInterestedVC.xib in Resources */,
 				047DB08D2A596F6F003DFE41 /* SubscriptionNotesItemCell.xib in Resources */,
@@ -1571,6 +1611,7 @@
 				04CA0E102A6435290043C530 /* CreatePostVC.xib in Resources */,
 				049AE1A62A6C28A8001FAA65 /* NotificationListItemCell.xib in Resources */,
 				04A979802A703D69002724E7 /* LocationItemCell.xib in Resources */,
+				1FB870D92A97B7C50021F08F /* LanguageItemCell.xib in Resources */,
 				047DB0782A5950D3003DFE41 /* VerificationCodeVC.xib in Resources */,
 				047E11B02A5AB16000B7CC05 /* PostImageItemCell.xib in Resources */,
 				044C01D32A6C029200E79AD2 /* PostPollsItemCell.xib in Resources */,
@@ -1718,12 +1759,15 @@
 				04DA4A312A67B1E100AF540B /* SettingModel.swift in Sources */,
 				043E266A2A5C64E300695C2D /* PublicFiguresItemCell.swift in Sources */,
 				84A2A6242A96710600387118 /* PaymentDetailsVIewModel.swift in Sources */,
+				1FB870D42A97B7A80021F08F /* ChangeLanguageVC.swift in Sources */,
 				04A979772A702E4F002724E7 /* SignupViewModel.swift in Sources */,
 				04A169102A6D41360024EA7F /* ChatVC.swift in Sources */,
 				84CC5AA32A7F910600B88B0A /* SuggestFeatureViewModel.swift in Sources */,
 				84CC5AA62A7FB1CC00B88B0A /* EditProfileViewModel.swift in Sources */,
 				046D86A72A65AC4700D0312B /* MenuItemCell.swift in Sources */,
+				1FB870DC2A97B88B0021F08F /* ChangeLangModel.swift in Sources */,
 				04DA4A2D2A67B0B400AF540B /* SettingItemCell.swift in Sources */,
+				1FB870D82A97B7C50021F08F /* LanguageItemCell.swift in Sources */,
 				84B1D5232A74D06E0051558B /* YouInterestedViewModel.swift in Sources */,
 				047E11AF2A5AB16000B7CC05 /* PostImageItemCell.swift in Sources */,
 				047E11AB2A5A8F9A00B7CC05 /* HomeItemCell.swift in Sources */,
@@ -1769,8 +1813,8 @@
 				049D88AD2A52DA4B00876D27 /* en */,
 				1888BB2F2A9730F900B735C9 /* fr */,
 				1888BB302A97312400B735C9 /* es */,
-				1888BB312A97312F00B735C9 /* de */,
 				1888BB322A97314600B735C9 /* pt-PT */,
+				1FB870DD2A97BD290021F08F /* de */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

@@ -25,6 +25,7 @@ class SettingVC: UIViewController {
         SettingModel(title: "Feedback"),
         SettingModel(title: "Change Password"),
         SettingModel(title: "Payment Details"),
+        SettingModel(title: "Change Language"),
     ]
     
     
@@ -89,6 +90,10 @@ extension SettingVC: UITableViewDataSource, UITableViewDelegate {
                 let vc = PaymentDetailsVC()
                 navigationController?.pushViewController(vc, animated: true)
                 break
+        case "Change Language":
+            let vc = ChangeLanguageVC()
+            navigationController?.pushViewController(vc, animated: true)
+            break
             default:
                 break
         }

@@ -21,6 +21,9 @@ class MenuItemCell: AppTableViewCell {
 
     func setData(_ object: MenuModel) {
         imgIcon.image = UIImage(named: object.icon)
+        imgIcon.contentMode = .left
+        imgIcon.tintColor = .clear
+        imgIcon.backgroundColor = .clear
         lblTitle.text = object.title
         lblTitle.textColor = object.isSelected ? .primaryBlue : .titleBlack
         viewMain.backgroundColor = object.isSelected ? .primaryBlue.withAlphaComponent(0.2) : .white

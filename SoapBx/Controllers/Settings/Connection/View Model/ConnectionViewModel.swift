@@ -148,6 +148,15 @@ class ConnectionViewModel {
                                             print("[TradPostListViewModel] getHomePost response posts try Catch : \(error)")
                                         }
                                     }
+                                    if let politician = obj["user"] as? JSON {
+                                        do {
+                                            let politicianData = try JSONSerialization.data(withJSONObject: politician)
+                                            let politicianModel = try JSONDecoder().decode(PostUser.self, from: politicianData)
+                                            self.arrList.append(politicianModel)
+                                        } catch{
+                                            print("[TradPostListViewModel] getHomePost response posts try Catch : \(error)")
+                                        }
+                                    }
                                 }
                             }
                             

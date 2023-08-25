@@ -19,17 +19,17 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BJU-se-4VP">
-                        <rect key="frame" x="10" y="5" width="300" height="35"/>
+                        <rect key="frame" x="10" y="5" width="300" height="40"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_home" translatesAutoresizingMaskIntoConstraints="NO" id="MZP-ul-e3y">
-                                <rect key="frame" x="15" y="8" width="19" height="19"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_home" translatesAutoresizingMaskIntoConstraints="NO" id="MZP-ul-e3y">
+                                <rect key="frame" x="15" y="10.666666666666664" width="19" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="19" id="qrk-qi-7W4"/>
                                     <constraint firstAttribute="width" secondItem="MZP-ul-e3y" secondAttribute="height" multiplier="1:1" id="zKm-SV-rd3"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FjW-zd-KtT">
-                                <rect key="frame" x="49" y="7.3333333333333339" width="241" height="20.333333333333329"/>
+                                <rect key="frame" x="49" y="9.9999999999999982" width="241" height="20.333333333333329"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -37,7 +37,7 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="35" id="1Kv-uv-G66"/>
+                            <constraint firstAttribute="height" constant="40" id="1Kv-uv-G66"/>
                             <constraint firstItem="MZP-ul-e3y" firstAttribute="centerY" secondItem="BJU-se-4VP" secondAttribute="centerY" id="GfU-ej-emP"/>
                             <constraint firstItem="FjW-zd-KtT" firstAttribute="leading" secondItem="MZP-ul-e3y" secondAttribute="trailing" constant="15" id="Mp5-ky-37c"/>
                             <constraint firstItem="FjW-zd-KtT" firstAttribute="centerY" secondItem="BJU-se-4VP" secondAttribute="centerY" id="Upe-sX-t94"/>

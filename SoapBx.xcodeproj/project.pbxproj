@@ -183,7 +183,8 @@
 		84B1D5972A780E750051558B /* ReportView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84B1D5962A780E750051558B /* ReportView.xib */; };
 		84B1D59B2A7815F80051558B /* LikeDislikeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B1D59A2A7815F80051558B /* LikeDislikeViewModel.swift */; };
 		84B1D5E02A79782B0051558B /* SavedPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B1D5DF2A79782B0051558B /* SavedPostViewModel.swift */; };
-		84B4881C2A98AA6F00B5FFD4 /* OTLContaner.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B4881B2A98AA6F00B5FFD4 /* OTLContaner.xcframework */; };
+		84B4881D2A98E34100B5FFD4 /* OTLContaner.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B4881B2A98AA6F00B5FFD4 /* OTLContaner.xcframework */; };
+		84B4881E2A98E34100B5FFD4 /* OTLContaner.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84B4881B2A98AA6F00B5FFD4 /* OTLContaner.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		84C67FBA2A816033000B7503 /* UserNotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C67FB92A816033000B7503 /* UserNotificationModel.swift */; };
 		84C67FC12A840BD3000B7503 /* PollsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C67FC02A840BD3000B7503 /* PollsViewModel.swift */; };
 		84CC5AA02A7F735500B88B0A /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CC5A9F2A7F735500B88B0A /* ProfileViewModel.swift */; };
@@ -201,6 +202,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				84B4881E2A98E34100B5FFD4 /* OTLContaner.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -409,7 +411,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A2AF6D6F88FA4790A2B1DBB1 /* Pods_SoapBx.framework in Frameworks */,
-				84B4881C2A98AA6F00B5FFD4 /* OTLContaner.xcframework in Frameworks */,
+				84B4881D2A98E34100B5FFD4 /* OTLContaner.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

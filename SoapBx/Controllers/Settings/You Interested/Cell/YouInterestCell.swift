@@ -1,13 +1,15 @@
 //
-//  YouInterestedItemCell.swift
-//  SoapBx
 //
-//  Created by Mac on 08/07/23.
+// YouInterestCell.swift
+// SoapBx
 //
+// Created by Arvind Kanjariya on 25/08/23
+//
+        
 
 import UIKit
 
-class YouInterestedItemCell: UICollectionViewCell {
+class YouInterestCell: UITableViewCell {
 
     @IBOutlet private weak var imgIcon: UIImageView!
     @IBOutlet private weak var viewSelectdIcon: UIView!
@@ -18,8 +20,7 @@ class YouInterestedItemCell: UICollectionViewCell {
         super.awakeFromNib()
         
         lblTitle.textColor = .titleBlack
-        lblTitle.setTheme("")
-        lblTitle.textAlignment = .center
+        lblTitle.textAlignment = .left
         imgIcon.backgroundColor = .gray
         imgSelectdIcon.backgroundColor = .clear
         imgSelectdIcon.image = UIImage(named: "ic_favChecked")
@@ -30,11 +31,6 @@ class YouInterestedItemCell: UICollectionViewCell {
         self.imgIcon.setImage(object.imageURL)
         lblTitle.text = object.name
         viewSelectdIcon.isHidden = !isSelcted
-        
-        DispatchQueue.main.async {
-            self.imgIcon.layer.cornerRadius = self.imgIcon.frame.width/2
-            self.viewSelectdIcon.layer.cornerRadius = self.viewSelectdIcon.frame.width/2
-        }
     }
-
+    
 }

@@ -57,8 +57,6 @@
 		047DB0782A5950D3003DFE41 /* VerificationCodeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047DB0762A5950D3003DFE41 /* VerificationCodeVC.xib */; };
 		047DB07C2A595FED003DFE41 /* YouInterestedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047DB07A2A595FED003DFE41 /* YouInterestedVC.swift */; };
 		047DB07D2A595FED003DFE41 /* YouInterestedVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047DB07B2A595FED003DFE41 /* YouInterestedVC.xib */; };
-		047DB0812A5960FB003DFE41 /* YouInterestedItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047DB07F2A5960FB003DFE41 /* YouInterestedItemCell.swift */; };
-		047DB0822A5960FB003DFE41 /* YouInterestedItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047DB0802A5960FB003DFE41 /* YouInterestedItemCell.xib */; };
 		047DB0872A596D4E003DFE41 /* SubscribeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047DB0852A596D4E003DFE41 /* SubscribeVC.swift */; };
 		047DB0882A596D4E003DFE41 /* SubscribeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047DB0862A596D4E003DFE41 /* SubscribeVC.xib */; };
 		047DB08C2A596F6F003DFE41 /* SubscriptionNotesItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047DB08A2A596F6F003DFE41 /* SubscriptionNotesItemCell.swift */; };
@@ -147,6 +145,8 @@
 		1F280DCC2A8D3DE100273DD2 /* ChatSCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F280DC82A8D3DE100273DD2 /* ChatSCell.xib */; };
 		1F280DCD2A8D3DE100273DD2 /* ChatSCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F280DC92A8D3DE100273DD2 /* ChatSCell.swift */; };
 		1F280DCE2A8D3DE100273DD2 /* ChatRCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F280DCA2A8D3DE100273DD2 /* ChatRCell.swift */; };
+		1F94A2742A98C31200C4D98A /* YouInterestCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F94A2722A98C31200C4D98A /* YouInterestCell.xib */; };
+		1F94A2752A98C31200C4D98A /* YouInterestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F94A2732A98C31200C4D98A /* YouInterestCell.swift */; };
 		1FB870D42A97B7A80021F08F /* ChangeLanguageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB870D22A97B7A80021F08F /* ChangeLanguageVC.swift */; };
 		1FB870D52A97B7A80021F08F /* ChangeLanguageVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FB870D32A97B7A80021F08F /* ChangeLanguageVC.xib */; };
 		1FB870D82A97B7C50021F08F /* LanguageItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB870D62A97B7C50021F08F /* LanguageItemCell.swift */; };
@@ -258,8 +258,6 @@
 		047DB0762A5950D3003DFE41 /* VerificationCodeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VerificationCodeVC.xib; sourceTree = "<group>"; };
 		047DB07A2A595FED003DFE41 /* YouInterestedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouInterestedVC.swift; sourceTree = "<group>"; };
 		047DB07B2A595FED003DFE41 /* YouInterestedVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YouInterestedVC.xib; sourceTree = "<group>"; };
-		047DB07F2A5960FB003DFE41 /* YouInterestedItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouInterestedItemCell.swift; sourceTree = "<group>"; };
-		047DB0802A5960FB003DFE41 /* YouInterestedItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YouInterestedItemCell.xib; sourceTree = "<group>"; };
 		047DB0852A596D4E003DFE41 /* SubscribeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeVC.swift; sourceTree = "<group>"; };
 		047DB0862A596D4E003DFE41 /* SubscribeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubscribeVC.xib; sourceTree = "<group>"; };
 		047DB08A2A596F6F003DFE41 /* SubscriptionNotesItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionNotesItemCell.swift; sourceTree = "<group>"; };
@@ -353,6 +351,8 @@
 		1F280DC82A8D3DE100273DD2 /* ChatSCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatSCell.xib; sourceTree = "<group>"; };
 		1F280DC92A8D3DE100273DD2 /* ChatSCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatSCell.swift; sourceTree = "<group>"; };
 		1F280DCA2A8D3DE100273DD2 /* ChatRCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRCell.swift; sourceTree = "<group>"; };
+		1F94A2722A98C31200C4D98A /* YouInterestCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YouInterestCell.xib; sourceTree = "<group>"; };
+		1F94A2732A98C31200C4D98A /* YouInterestCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouInterestCell.swift; sourceTree = "<group>"; };
 		1FB870D22A97B7A80021F08F /* ChangeLanguageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLanguageVC.swift; sourceTree = "<group>"; };
 		1FB870D32A97B7A80021F08F /* ChangeLanguageVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangeLanguageVC.xib; sourceTree = "<group>"; };
 		1FB870D62A97B7C50021F08F /* LanguageItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageItemCell.swift; sourceTree = "<group>"; };
@@ -699,8 +699,8 @@
 		047DB07E2A5960D2003DFE41 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				047DB07F2A5960FB003DFE41 /* YouInterestedItemCell.swift */,
-				047DB0802A5960FB003DFE41 /* YouInterestedItemCell.xib */,
+				1F94A2732A98C31200C4D98A /* YouInterestCell.swift */,
+				1F94A2722A98C31200C4D98A /* YouInterestCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1583,7 +1583,6 @@
 				84A2A59D2A8E810000387118 /* PollsListItemCell.xib in Resources */,
 				047CACC52A56843900A64779 /* ForgotPasswrodVC.xib in Resources */,
 				049D88AC2A52DA4B00876D27 /* Localizable.strings in Resources */,
-				047DB0822A5960FB003DFE41 /* YouInterestedItemCell.xib in Resources */,
 				046D86AF2A65B51500D0312B /* SideMenu.xib in Resources */,
 				04749C2F2A6989DD00A67A96 /* ConnectionVC.xib in Resources */,
 				049B09F62A717F42008ADEF2 /* LocationSearchVC.xib in Resources */,
@@ -1599,6 +1598,7 @@
 				049AE19C2A6C22A8001FAA65 /* NotificationListVC.xib in Resources */,
 				0442A55D2A57191500661988 /* ProfileCoverVC.xib in Resources */,
 				047E11B42A5AC47700B7CC05 /* PostItemPoliticalCell.xib in Resources */,
+				1F94A2742A98C31200C4D98A /* YouInterestCell.xib in Resources */,
 				84A2A6212A96701F00387118 /* PaymentDetailsVC.xib in Resources */,
 				04A169112A6D41360024EA7F /* ChatVC.xib in Resources */,
 				047E119D2A59C2A300B7CC05 /* EnableLocationVC.xib in Resources */,
@@ -1710,11 +1710,11 @@
 				047E119C2A59C2A300B7CC05 /* EnableLocationVC.swift in Sources */,
 				0459B58B2A680CC10096802C /* NotificationSettingVC.swift in Sources */,
 				047DB0872A596D4E003DFE41 /* SubscribeVC.swift in Sources */,
+				1F94A2752A98C31200C4D98A /* YouInterestCell.swift in Sources */,
 				84B1D5292A74D3110051558B /* YouInterestedModel.swift in Sources */,
 				04CA0DFE2A6403B20043C530 /* ThreeDotItemCell.swift in Sources */,
 				049AE1A52A6C28A8001FAA65 /* NotificationListItemCell.swift in Sources */,
 				1F280DC32A8CD99200273DD2 /* ChatViewModel.swift in Sources */,
-				047DB0812A5960FB003DFE41 /* YouInterestedItemCell.swift in Sources */,
 				0459B5942A680DFA0096802C /* NotificationSettingModel.swift in Sources */,
 				84A2A5362A87E81500387118 /* FollowFolloingViewModel.swift in Sources */,
 				046D86AB2A65ADF400D0312B /* MenuModel.swift in Sources */,

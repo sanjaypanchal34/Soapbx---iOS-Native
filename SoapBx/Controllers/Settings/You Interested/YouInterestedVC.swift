@@ -20,7 +20,7 @@ class YouInterestedVC: UIViewController {
     
     @IBOutlet private weak var viewHeader: OTLHeader!
     @IBOutlet private weak var lblTitle: UILabel!
-    @IBOutlet private weak var collInterested: UICollectionView!
+    @IBOutlet private weak var tblList: UITableView!
     @IBOutlet private weak var btnNext: OTLTextButton!
     
     private let vmObject = YouInterestedViewModel()
@@ -50,9 +50,7 @@ class YouInterestedVC: UIViewController {
         lblTitle.setTheme(screenType == .fromSignup ? "What are you interested in?" : "",
                           font: .bold,
                           size: 38)
-        collInterested.register(["YouInterestedItemCell"], delegate: self, dataSource: self)
-        collInterested.delegate = self
-        collInterested.dataSource = self
+        tblList.register(["YouInterestCell"], delegate: self, dataSource: self)
         
         btnNext.appButton("Next")
         switch screenType {
@@ -67,7 +65,7 @@ class YouInterestedVC: UIViewController {
                 lblTitle.text = "Choose Relevant Trends"
         }
         
-        collInterested.reloadData()
+        tblList.reloadData()
     }
     
     //Actions
@@ -97,7 +95,7 @@ class YouInterestedVC: UIViewController {
         vmObject.getUserTrends { result in
             hideLoader()
             if result.status {
-                self.collInterested.reloadData()
+                self.tblList.reloadData()
             }
         }
     }
@@ -110,7 +108,7 @@ class YouInterestedVC: UIViewController {
                 if self.screenType == .fromSetting {
                     self.getUserTrends()
                 } else {
-                    self.collInterested.reloadData()
+                    self.tblList.reloadData()
                 }
             }
         }
@@ -132,23 +130,21 @@ class YouInterestedVC: UIViewController {
         }
     }
 }
-extension YouInterestedVC : UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+
+extension YouInterestedVC: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return vmObject.arrList.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "YouInterestedItemCell", for: indexPath) as? YouInterestedItemCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "YouInterestCell") as? YouInterestCell {
             cell.setData(vmObject.arrList[indexPath.row],isSelcted: vmObject.arrSelectedId.contains(vmObject.arrList[indexPath.row].id ?? 0))
             return cell
         }
-        return UICollectionViewCell()
+        return UITableViewCell()
     }
     
-}
-extension YouInterestedVC : UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if vmObject.arrSelectedId.contains(vmObject.arrList[indexPath.row].id ?? 0) {
             vmObject.arrSelectedId = vmObject.arrSelectedId.filter { id in
                 if id != (vmObject.arrList[indexPath.row].id ?? 0) {
@@ -164,21 +160,7 @@ extension YouInterestedVC : UICollectionViewDelegate {
             }
             
         }
-        collectionView.reloadData()
-    }
-}
-extension YouInterestedVC : UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 10
+        tblList.reloadData()
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 10
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (Int(collectionView.frame.width) / 3) - 20
-        return CGSize(width: width, height: width + 30)
-    }
 }

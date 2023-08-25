@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,8 +12,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YouInterestedVC" customModule="SoapBx" customModuleProvider="target">
             <connections>
                 <outlet property="btnNext" destination="ddx-TJ-hrA" id="A1o-Ga-bYo"/>
-                <outlet property="collInterested" destination="UNl-O3-4ht" id="41K-N7-0fT"/>
                 <outlet property="lblTitle" destination="Ay5-Xc-rGY" id="ZfK-Cc-MXJ"/>
+                <outlet property="tblList" destination="efU-sk-zRi" id="GPS-1I-foO"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewHeader" destination="JDi-I6-uBp" id="H1d-aS-tEL"/>
             </connections>
@@ -63,16 +63,10 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="UNl-O3-4ht">
-                            <rect key="frame" x="20" y="88" width="350" height="535"/>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="efU-sk-zRi">
+                            <rect key="frame" x="0.0" y="83" width="390" height="540"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3So-bc-API">
-                                <size key="itemSize" width="128" height="128"/>
-                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                            </collectionViewFlowLayout>
-                        </collectionView>
+                        </tableView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ddx-TJ-hrA" customClass="OTLTextButton" customModule="OTLContaner">
                             <rect key="frame" x="20" y="643" width="350" height="55"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -87,15 +81,15 @@
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="Ay5-Xc-rGY" secondAttribute="trailing" constant="20" id="A1h-PF-HvW"/>
-                        <constraint firstItem="UNl-O3-4ht" firstAttribute="trailing" secondItem="Ay5-Xc-rGY" secondAttribute="trailing" id="Mbs-FT-tCw"/>
+                        <constraint firstItem="efU-sk-zRi" firstAttribute="leading" secondItem="7ev-7f-Rok" secondAttribute="leading" id="HYq-km-L0a"/>
                         <constraint firstItem="Ay5-Xc-rGY" firstAttribute="leading" secondItem="7ev-7f-Rok" secondAttribute="leading" constant="20" id="Txs-PO-vKC"/>
                         <constraint firstAttribute="bottom" secondItem="ddx-TJ-hrA" secondAttribute="bottom" constant="20" id="WYW-bV-n2c"/>
-                        <constraint firstItem="ddx-TJ-hrA" firstAttribute="top" secondItem="UNl-O3-4ht" secondAttribute="bottom" constant="20" id="edX-uO-2Ew"/>
+                        <constraint firstItem="ddx-TJ-hrA" firstAttribute="top" secondItem="efU-sk-zRi" secondAttribute="bottom" constant="20" id="btC-kY-MxO"/>
+                        <constraint firstItem="efU-sk-zRi" firstAttribute="top" secondItem="Ay5-Xc-rGY" secondAttribute="bottom" constant="15" id="eYf-4M-bmq"/>
+                        <constraint firstAttribute="trailing" secondItem="efU-sk-zRi" secondAttribute="trailing" id="iu4-EA-CG7"/>
                         <constraint firstAttribute="trailing" secondItem="ddx-TJ-hrA" secondAttribute="trailing" constant="20" id="kPD-7I-GW1"/>
                         <constraint firstItem="Ay5-Xc-rGY" firstAttribute="top" secondItem="7ev-7f-Rok" secondAttribute="top" constant="20" id="kxF-wl-q5y"/>
                         <constraint firstItem="ddx-TJ-hrA" firstAttribute="leading" secondItem="7ev-7f-Rok" secondAttribute="leading" constant="20" id="nkq-as-wEJ"/>
-                        <constraint firstItem="UNl-O3-4ht" firstAttribute="leading" secondItem="Ay5-Xc-rGY" secondAttribute="leading" id="oXC-iH-rJX"/>
-                        <constraint firstItem="UNl-O3-4ht" firstAttribute="top" secondItem="Ay5-Xc-rGY" secondAttribute="bottom" constant="20" id="tUB-DM-xD1"/>
                     </constraints>
                 </view>
             </subviews>

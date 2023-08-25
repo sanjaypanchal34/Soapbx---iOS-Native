@@ -196,7 +196,7 @@ class CommentVC: UIViewController {
         imgProfile.setImage(object?.user?.profilePhotoURL)
         lblProfileName.text = object?.user?.name
         lblPostLocation.text = getValueOrDefult(object?.user?.location, defaultValue: "N/A")
-        lblPostTime.text = OTLDateConvert.instance.convert(date: object?.createdAt ?? "", set: .yyyyMMdd_T_HHmmssZ, getFormat: .mmmDDyyyyAthhmma)
+        lblPostTime.text = OTLDateConvert.instance.convert(date: object?.createdAt ?? "", set: .yyyyMMdd_T_HHmmssDotssZ, getFormat: .mmmDDyyyyAthhmma)
                 
         lblPostTitle.text = object?.title
         txtPostDescription.text = object?.description

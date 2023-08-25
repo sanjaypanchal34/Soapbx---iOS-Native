@@ -183,8 +183,9 @@
 		84B1D5972A780E750051558B /* ReportView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84B1D5962A780E750051558B /* ReportView.xib */; };
 		84B1D59B2A7815F80051558B /* LikeDislikeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B1D59A2A7815F80051558B /* LikeDislikeViewModel.swift */; };
 		84B1D5E02A79782B0051558B /* SavedPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B1D5DF2A79782B0051558B /* SavedPostViewModel.swift */; };
-		84B4881D2A98E34100B5FFD4 /* OTLContaner.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B4881B2A98AA6F00B5FFD4 /* OTLContaner.xcframework */; };
-		84B4881E2A98E34100B5FFD4 /* OTLContaner.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84B4881B2A98AA6F00B5FFD4 /* OTLContaner.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		84B4881C2A98AA6F00B5FFD4 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		84B488312A98FF8500B5FFD4 /* OTLContaner.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B4882F2A98FF7F00B5FFD4 /* OTLContaner.xcframework */; };
+		84B488322A98FF8500B5FFD4 /* OTLContaner.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84B4882F2A98FF7F00B5FFD4 /* OTLContaner.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		84C67FBA2A816033000B7503 /* UserNotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C67FB92A816033000B7503 /* UserNotificationModel.swift */; };
 		84C67FC12A840BD3000B7503 /* PollsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C67FC02A840BD3000B7503 /* PollsViewModel.swift */; };
 		84CC5AA02A7F735500B88B0A /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CC5A9F2A7F735500B88B0A /* ProfileViewModel.swift */; };
@@ -202,7 +203,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				84B4881E2A98E34100B5FFD4 /* OTLContaner.xcframework in Embed Frameworks */,
+				84B488322A98FF8500B5FFD4 /* OTLContaner.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -393,7 +394,7 @@
 		84B1D5962A780E750051558B /* ReportView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReportView.xib; sourceTree = "<group>"; };
 		84B1D59A2A7815F80051558B /* LikeDislikeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeDislikeViewModel.swift; sourceTree = "<group>"; };
 		84B1D5DF2A79782B0051558B /* SavedPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedPostViewModel.swift; sourceTree = "<group>"; };
-		84B4881B2A98AA6F00B5FFD4 /* OTLContaner.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = OTLContaner.xcframework; sourceTree = "<group>"; };
+		84B4882F2A98FF7F00B5FFD4 /* OTLContaner.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = OTLContaner.xcframework; sourceTree = "<group>"; };
 		84C67FB92A816033000B7503 /* UserNotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationModel.swift; sourceTree = "<group>"; };
 		84C67FC02A840BD3000B7503 /* PollsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollsViewModel.swift; sourceTree = "<group>"; };
 		84CC5A9F2A7F735500B88B0A /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
@@ -411,7 +412,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A2AF6D6F88FA4790A2B1DBB1 /* Pods_SoapBx.framework in Frameworks */,
-				84B4881D2A98E34100B5FFD4 /* OTLContaner.xcframework in Frameworks */,
+				84B488312A98FF8500B5FFD4 /* OTLContaner.xcframework in Frameworks */,
+				84B4881C2A98AA6F00B5FFD4 /* (null) in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1002,7 +1004,7 @@
 		049D88AF2A52DD2800876D27 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
-				84B4881B2A98AA6F00B5FFD4 /* OTLContaner.xcframework */,
+				84B4882F2A98FF7F00B5FFD4 /* OTLContaner.xcframework */,
 			);
 			path = Framework;
 			sourceTree = "<group>";
@@ -1945,11 +1947,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = L63F7HLTNK;
+				DEVELOPMENT_TEAM = 8Y8B2SUA43;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SoapBx/Framework",
@@ -1972,10 +1972,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = in.fortytwo42.iAMConsumer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ultimaplayerhq.ultimaplayerhq;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "SDK Consumer App Development Profile";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -1992,11 +1991,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = L63F7HLTNK;
+				DEVELOPMENT_TEAM = 8Y8B2SUA43;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SoapBx/Framework",
@@ -2019,10 +2016,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = in.fortytwo42.iAMConsumer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ultimaplayerhq.ultimaplayerhq;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "SDK Consumer App Development Profile";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;

@@ -400,6 +400,7 @@ public enum OTLDateTimeFormat {
   case hhmma, hhmm, HHmm
   case ddMMyyyy_hhmma, yyyyMMdd_hhmma, yyyyMMdd_HHmm
   case yyyyMMdd_T_HHmmssZ
+  case yyyyMMdd_T_HHmmssDotssZ
   case mmmDDyyyyAthhmma
   case other(Swift.String)
   public var string: Swift.String {

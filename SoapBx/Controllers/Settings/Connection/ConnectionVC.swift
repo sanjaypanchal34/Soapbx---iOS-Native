@@ -199,7 +199,7 @@ extension ConnectionVC: UITableViewDataSource, UITableViewDelegate {
                 if vmObject.selectedTab == .blocked {
                     cell.setDataUnblock(self.vmObject.arrList[indexPath.row], indexPath: indexPath, delegate: self)
                 } else {
-                    cell.setDataFollowing(self.vmObject.arrList[indexPath.row], indexPath: indexPath, delegate: self)
+                    cell.setDataUnfollow(self.vmObject.arrList[indexPath.row], indexPath: indexPath, delegate: self)
                 }
             }
             else if screenType == .fromFriends {

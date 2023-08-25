@@ -105,8 +105,8 @@ class PublicFiguresItemCell: AppTableViewCell {
         btnAction.isHidden = false
         btnAction.text = "Follow"
         btnAction.textColor = .white
-        btnAction.backgroundColor = .primaryBlue
-        btnAction.layer.borderColor = UIColor.primaryBlue.cgColor
+        btnAction.backgroundColor = .green
+        btnAction.layer.borderColor = UIColor.green.cgColor
         
         btnRemove.isHidden = false
         btnRemove.text = "Remove"
@@ -159,6 +159,22 @@ class PublicFiguresItemCell: AppTableViewCell {
         imgHorizantalDot.isHidden = true
     }
     
+    func setDataUnfollow(_ user: PostUser, indexPath: IndexPath , delegate:PublicFiguresItemDelegate) {
+        updateUserData(user)
+        self.indexPath = indexPath
+        self.delegate = delegate
+        
+        btnAction.isHidden = false
+        btnAction.text = "Follow"
+        btnAction.textColor = .white
+        btnAction.backgroundColor = .titleRed
+        btnAction.layer.borderColor = UIColor.titleRed.cgColor
+        
+        btnRemove.isHidden = true
+        imgHorizantalDot.isHidden = true
+    }
+    
+    
     func setDataFriend(_ user: PostUser, indexPath: IndexPath , delegate:PublicFiguresItemDelegate) {
         updateUserData(user)
         self.indexPath = indexPath
@@ -167,8 +183,8 @@ class PublicFiguresItemCell: AppTableViewCell {
         btnAction.isHidden = false
         btnAction.text = "Confirm"
         btnAction.textColor = .white
-        btnAction.backgroundColor = .primaryBlue
-        btnAction.layer.borderColor = UIColor.primaryBlue.cgColor
+        btnAction.backgroundColor = .green
+        btnAction.layer.borderColor = UIColor.green.cgColor
         
         btnRemove.isHidden = false
         btnRemove.text = "Delete"

@@ -196,7 +196,7 @@ class HomeItemCell: AppTableViewCell {
         imgProfile.setImage(object.user?.profilePhotoURL)
         lblProfileName.text = object.user?.name
         lblPostLocation.text = getValueOrDefult(object.user?.location, defaultValue: "N/A")
-        lblPostTime.text = OTLDateConvert.instance.convert(date: object.createdAt ?? "", set: .yyyyMMdd_T_HHmmssZ, getFormat: .mmmDDyyyyAthhmma)
+        lblPostTime.text = OTLDateConvert.instance.convert(date: object.createdAt ?? "", set: .yyyyMMdd_T_HHmmssDotssZ, getFormat: .mmmDDyyyyAthhmma)
         
         btnSave.title?.text = "\(object.savedsCount ?? 0)"
         btnSave.imageView?.image = object.saveStatus == 1 ? UIImage(named: "ic_redSave") : UIImage(named: "ic_save")

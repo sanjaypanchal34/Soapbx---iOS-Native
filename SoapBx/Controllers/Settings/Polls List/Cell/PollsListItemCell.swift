@@ -123,7 +123,7 @@ class PollsListItemCell: AppTableViewCell {
         
         imgProfile.setImage(object.user?.profilePhotoURL)
         lblProfileName.text = object.user?.name
-        lblDateTime.text = OTLDateConvert.instance.convert(date: object.createdAt ?? "", set: .yyyyMMdd_T_HHmmssZ, getFormat: .mmmDDyyyyAthhmma)
+        lblDateTime.text = OTLDateConvert.instance.convert(date: object.createdAt ?? "", set: .yyyyMMdd_T_HHmmssDotssZ, getFormat: .mmmDDyyyyAthhmma)
         
         lblQuestion.text = object.question ?? ""
         

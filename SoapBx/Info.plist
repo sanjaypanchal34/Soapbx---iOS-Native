@@ -10,17 +10,5 @@
 		<string>SFProDisplay-Semibold.ttf</string>
 		<string></string>
 	</array>
-    <key>UIUserInterfaceStyle</key>
-    <string>Light</string>
-	<key>NSCameraUsageDescription</key>
-	<string>$(PRODUCT_NAME) would like to access camera for upload profile and post</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>$(PRODUCT_NAME) would like to access photos for upload profile and post</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>$(PRODUCT_NAME) would like to access location for show post near by your location </string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>$(PRODUCT_NAME) would like to access location for show post near by your location </string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>$(PRODUCT_NAME) would like to access location for show post near by your location </string>
 </dict>
 </plist>

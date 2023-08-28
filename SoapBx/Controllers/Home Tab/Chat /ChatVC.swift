@@ -101,7 +101,7 @@ class ChatVC: UIViewController , PusherDelegate{
         viewMessage.backgroundColor = .lightGrey
         viewMessage.layer.cornerRadius = 10
         viewMessage.layer.borderWidth = 1
-        viewMessage.layer.borderColor = UIColor.titleGrey.cgColor
+        viewMessage.layer.borderColor = UIColor.titleGray.cgColor
         
         btnAddMedia.image = UIImage(named: "ic_paymentAdd")
         btnAddMedia.height = 25

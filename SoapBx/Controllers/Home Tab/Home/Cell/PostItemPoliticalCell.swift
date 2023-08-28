@@ -56,15 +56,6 @@ class PostItemPoliticalCell: AppCollectionViewCell {
         }
     }
     
-    func setCreatePostPoll(_ object: TrendsModel) {
-        viewMain.backgroundColor = .primaryBlue
-        lblTitle.font = AppFont.regular.font(size: 12)
-        lblTitle.text = " "+(object.name ?? "")+" "
-        DispatchQueue.main.async {
-            self.viewMain.setShadowWithCorner(corner:-1)
-        }
-    }
-    
     func setCreatePostTreds(_ object: TrendsModel) {
         viewMain.backgroundColor = .primaryBlue
         lblTitle.font = AppFont.regular.font(size: 12)

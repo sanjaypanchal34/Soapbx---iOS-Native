@@ -57,7 +57,7 @@ public class OTLWebserviceConfiguration {
                                                   local: "https://164.90.178.223/api/")
         self.header = [:]
          #if DEBUG
-            appState = .development
+            appState = .live
          #else
             appState = .live
          #endif

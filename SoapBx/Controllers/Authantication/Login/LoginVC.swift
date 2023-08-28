@@ -55,8 +55,13 @@ class LoginVC: UIViewController {
         btnContinueGuest.setTheme(LocalStrings.BTN_GUEST.rawValue.addLocalizableString(), color: .titleGray, font: .medium)
         lblNotAMamber.setTheme(LocalStrings.LBL_NOT_MEMBER.rawValue.addLocalizableString(), size: 16)
         btnSignUp.setTheme(LocalStrings.BTN_SIGNUP.rawValue.addLocalizableString(),color: .primaryBlue, font: .medium, size: 16)
-        txtEmail.text = "sumitk.iih@yopmail.com"
-        txtPassword.text = "sumit@123"
+        // STAGING
+//        txtEmail.text = "sumitk.iih@yopmail.com"
+//        txtPassword.text = "sumit@123"
+        //LIVE
+//        txtEmail.text = "hemanshu.iihglobal@gmail.com"
+//        txtPassword.text = "Password@1"
+        
         if let remembe = AuthorizedUser.rememberMe() {
             txtEmail.text = remembe.email
             txtPassword.text = remembe.password

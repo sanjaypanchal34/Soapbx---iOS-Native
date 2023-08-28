@@ -114,8 +114,9 @@ class SubscribeVC: UIViewController {
             } else if sId == 4  {
                 productId = "premium_12_month"
             }
-            
+            showLoader()
             SwiftyStoreKit.purchaseProduct(productId, quantity: 1, atomically: false) { result in
+                hideLoader()
                 switch result {
                 case .success(let product):
                     if product.needsFinishTransaction {

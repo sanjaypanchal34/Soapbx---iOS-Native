@@ -15,6 +15,7 @@ protocol HomeItemCellDelegate {
     func homeItemCell(_ cell: HomeItemCell, didSelectLike object: PostModel?)
     func homeItemCell(_ cell: HomeItemCell, didSelectDislike object: PostModel?)
     func homeItemCell(_ cell: HomeItemCell, didSelectComment object: PostModel?)
+    func homeItemCell(_ cell: HomeItemCell, didSelectShare object: PostModel?)
     func homeItemCell(_ cell: HomeItemCell, willOpenDotMenu object: PostModel?)
     func homeItemCell(_ cell: HomeItemCell, didSelectDotMenu: ThreeDotItemModel,  object: PostModel?)
     func homeItemCell(_ cell:HomeItemCell, didUpdateTable: Void)
@@ -41,11 +42,18 @@ class HomeItemCell: AppTableViewCell {
     @IBOutlet private weak var collectionPolitician: UICollectionView!
     @IBOutlet private weak var constCollPolitician: NSLayoutConstraint!
     
+    @IBOutlet private weak var lblPTitle: UILabel!
+    @IBOutlet private weak var lblPDesc: UILabel!
+    @IBOutlet private weak var btnDate: UIButton!
     
+    @IBOutlet private weak var viewPostImage: UIView!
+    @IBOutlet private weak var viewPostDetails: UIView!
+    @IBOutlet private weak var stackViewDetail: UIStackView!
     @IBOutlet private weak var viewActionButtons: UIView!
     @IBOutlet private weak var btnLike: OTLPTButton!
     @IBOutlet private weak var btnDislike: OTLPTButton!
     @IBOutlet private weak var btnComment: OTLPTButton!
+    @IBOutlet private weak var btnShare: OTLPTButton!
     
         //private
     private var object: PostModel?
@@ -109,10 +117,15 @@ class HomeItemCell: AppTableViewCell {
         btnSave.title?.setTheme("0", size: 14)
         btnSave.imageView?.image = UIImage(named: "ic_save")
         
-        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapView(_:)))
+        let tapGestureRecognizerShare = UITapGestureRecognizer(target: self, action: #selector(didShareTap(_:)))
+        viewPostDetails.addGestureRecognizer(tapGestureRecognizer)
+        btnShare.addGestureRecognizer(tapGestureRecognizerShare)
         btnDotMenu.image = UIImage(named:"ic_dots")
         
         lblPostTitle.setTheme("", color: .primaryBlue, font: .semibold, lines: 5)
+        lblPTitle.setTheme("", color: .white, font: .regular, size: 14, lines: 2)
+        lblPDesc.setTheme("", color: .white, font: .regular, size: 10, lines: 3)
         txtPostDescription.text = ""
         txtPostDescription.font = AppFont.regular.font(size: 14)
             //        txtPostDescription.translatesAutoresizingMaskIntoConstraints = true
@@ -169,6 +182,9 @@ class HomeItemCell: AppTableViewCell {
         btnComment.title?.setTheme("0", size: 14)
         btnComment.imageView?.image = UIImage(named: "ic_comments_grey")
         
+        btnShare.title?.setTheme("Share", size: 14)
+        btnShare.imageView?.image = UIImage(named: "ic_share")
+        
     }
     
     func setData(_ object: PostModel, indexPath: IndexPath, delegate:HomeItemCellDelegate, isDotOptionsVisible: Bool = false, screenType: TradPostListViewType){
@@ -204,14 +220,41 @@ class HomeItemCell: AppTableViewCell {
         lblPostTitle.text = object.title
         txtPostDescription.text = object.description
         
+        lblPTitle.text = object.title
+        lblPDesc.text = ""
+        lblPDesc.sizeToFit()
+        lblPDesc.text = object.description
+        lblPDesc.sizeToFit()
+        let numberOfLines = self.lblPDesc.numberOfVisibleLines
+        if numberOfLines > 2 {
+            let readmoreFont = UIFont(name: "Helvetica-Oblique", size: 11.0)
+            let readmoreFontColor = UIColor.white
+                self.lblPDesc.addTrailing(with: "... ", moreText: "read more", moreTextFont: readmoreFont!, moreTextColor: readmoreFontColor)
+        }
+          
+
+        
+        let dateString = OTLDateConvert.instance.convert(date: object.createdAt ?? "", set: .yyyyMMdd_T_HHmmssDotssZ, getFormat: .mmmDDyyyyAthhmma)
+        btnDate.setTitle(dateString, for: .normal)
+        
         pageCounter.isHidden = !((object.images?.count ?? 0) > 1)
         
         if (object.images?.count ?? 0) > 0 {
             collectionPostImage.isHidden = false
+            viewPostImage.isHidden = false
+            stackViewDetail.isHidden = true
+            lblPostTime.isHidden = true
+            txtPostDescription.isHidden = true
+            lblPostTitle.isHidden = true
             self.collectionPostImage.reloadData()
             pageCounter.numberOfPages = object.images?.count ?? 0
         } else {
             collectionPostImage.isHidden = true
+            viewPostImage.isHidden = true
+            stackViewDetail.isHidden = false
+            lblPostTime.isHidden = false
+            txtPostDescription.isHidden = false
+            lblPostTitle.isHidden = false
         }
         
         if (object.trendTags?.count ?? 0) > 0 {
@@ -233,6 +276,7 @@ class HomeItemCell: AppTableViewCell {
         btnDislike.title?.text = "\(object.dislikeCount ?? 0)"
         btnDislike.imageView?.tintColor = object.dislikeStatus == 1 ? .titleRed : .titleGray
         btnComment.title?.text = "\(object.commentsCount ?? 0)"
+        btnShare.title?.text = "Share"
     }
     
         //Actions
@@ -296,6 +340,14 @@ class HomeItemCell: AppTableViewCell {
 //                }
 //            }
 //        }
+    }
+    
+    @objc func didShareTap(_ sender: UITapGestureRecognizer) {
+        delegate?.homeItemCell(self, didSelectShare: object)
+    }
+    
+    @objc func didTapView(_ sender: UITapGestureRecognizer) {
+        delegate?.homeItemCell(self, didSelect: object)
     }
     
     @IBAction private func click_threeDotMenu() {
@@ -463,3 +515,55 @@ extension HomeItemCell: UITextViewDelegate {
         return false
     }
 }
+
+extension UILabel {
+
+    var numberOfVisibleLines: Int {
+           let textSize = CGSize(width: CGFloat(self.frame.size.width), height: CGFloat(MAXFLOAT))
+           let rHeight: Int = lroundf(Float(self.sizeThatFits(textSize).height))
+           let charSize: Int = lroundf(Float(self.font.pointSize))
+           return rHeight / charSize
+       }
+    
+        func addTrailing(with trailingText: String, moreText: String, moreTextFont: UIFont, moreTextColor: UIColor) {
+            let readMoreText: String = trailingText + moreText
+
+            let lengthForVisibleString: Int = self.vissibleTextLength
+            let mutableString: String = self.text!
+            let trimmedString: String? = (mutableString as NSString).replacingCharacters(in: NSRange(location: lengthForVisibleString, length: ((self.text?.count)! - lengthForVisibleString)), with: "")
+            let readMoreLength: Int = (readMoreText.count)
+            let trimmedForReadMore: String = (trimmedString! as NSString).replacingCharacters(in: NSRange(location: ((trimmedString?.count ?? 0) - readMoreLength), length: readMoreLength), with: "") + trailingText
+            let answerAttributed = NSMutableAttributedString(string: trimmedForReadMore, attributes: [NSAttributedString.Key.font: self.font])
+            let readMoreAttributed = NSMutableAttributedString(string: moreText, attributes: [NSAttributedString.Key.font: moreTextFont, NSAttributedString.Key.foregroundColor: moreTextColor])
+            answerAttributed.append(readMoreAttributed)
+            self.attributedText = answerAttributed
+        }
+
+        var vissibleTextLength: Int {
+            let font: UIFont = self.font
+            let mode: NSLineBreakMode = self.lineBreakMode
+            let labelWidth: CGFloat = self.frame.size.width
+            let labelHeight: CGFloat = self.frame.size.height
+            let sizeConstraint = CGSize(width: labelWidth, height: CGFloat.greatestFiniteMagnitude)
+
+            let attributes: [AnyHashable: Any] = [NSAttributedString.Key.font: font]
+            let attributedText = NSAttributedString(string: self.text!, attributes: attributes as? [NSAttributedString.Key : Any])
+            let boundingRect: CGRect = attributedText.boundingRect(with: sizeConstraint, options: .usesLineFragmentOrigin, context: nil)
+
+            if boundingRect.size.height > labelHeight {
+                var index: Int = 0
+                var prev: Int = 0
+                let characterSet = CharacterSet.whitespacesAndNewlines
+                repeat {
+                    prev = index
+                    if mode == NSLineBreakMode.byCharWrapping {
+                        index += 1
+                    } else {
+                        index = (self.text! as NSString).rangeOfCharacter(from: characterSet, options: [], range: NSRange(location: index + 1, length: self.text!.count - index - 1)).location
+                    }
+                } while index != NSNotFound && index < self.text!.count && (self.text! as NSString).substring(to: index).boundingRect(with: sizeConstraint, options: .usesLineFragmentOrigin, attributes: attributes as? [NSAttributedString.Key : Any], context: nil).size.height <= labelHeight
+                return prev
+            }
+            return self.text!.count
+        }
+    }

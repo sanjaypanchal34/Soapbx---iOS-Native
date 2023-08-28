@@ -323,6 +323,18 @@ extension TradPostListView: HomeItemCellDelegate{
         }
     }
     
+    func homeItemCell(_ cell: HomeItemCell, didSelectShare object: PostModel?) {
+        showLoader()
+        let text = "soapbx://home/\(object?.id ?? 0)"
+        let textToShare = [ text ]
+        let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self // so that iPads won't crash
+        activityViewController.excludedActivityTypes = [ .airDrop, .postToFacebook, .message, .mail]
+        rootViewController.present(activityViewController, animated: true, completion: {
+            hideLoader()
+        })
+    }
+    
     func homeItemCell(_ cell: HomeItemCell, willOpenDotMenu object: PostModel?) {
         if let indexPath = dotMenuIndexPath{
             if let cell = tblList.cellForRow(at: indexPath) as? HomeItemCell{

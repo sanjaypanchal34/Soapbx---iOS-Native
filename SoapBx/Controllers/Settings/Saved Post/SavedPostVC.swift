@@ -177,6 +177,15 @@ extension SavedPostVC: HomeItemCellDelegate{
         likeDislikeonPost(isLike: false, row: cell.indexPath.row)
     }
     
+    func homeItemCell(_ cell: HomeItemCell, didSelectShare object: PostModel?) {
+        let text = "soapbx://home/\(object?.id ?? 0)"
+        let textToShare = [ text ]
+        let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
+        activityViewController.excludedActivityTypes = [ .airDrop, .postToFacebook, .message, .mail]
+        navigationController?.present(activityViewController, animated: true, completion: nil)
+    }
+    
     func homeItemCell(_ cell: HomeItemCell, didSelectComment object: PostModel?) {
         if let obj = object {
             let vc = CommentVC()

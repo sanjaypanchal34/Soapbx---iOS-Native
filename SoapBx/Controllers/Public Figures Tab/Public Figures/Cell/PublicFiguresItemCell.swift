@@ -105,8 +105,19 @@ class PublicFiguresItemCell: AppTableViewCell {
         btnAction.isHidden = false
         btnAction.text = "Follow"
         btnAction.textColor = .white
-        btnAction.backgroundColor = .green
-        btnAction.layer.borderColor = UIColor.green.cgColor
+        btnAction.backgroundColor = .primaryBlue
+        btnAction.layer.borderColor = UIColor.primaryBlue.cgColor
+        
+        if user.statusUser == 1 {
+            btnAction.text = "Requseted"
+            btnAction.backgroundColor = .primaryBlue
+        } else if user.statusUser == 2 {
+            btnAction.isHidden = true
+        } else {
+            btnAction.text = "Follow"
+            btnAction.backgroundColor = .primaryBlue
+            btnAction.layer.borderColor = UIColor.primaryBlue.cgColor
+        }
         
         btnRemove.isHidden = false
         btnRemove.text = "Remove"
@@ -121,9 +132,9 @@ class PublicFiguresItemCell: AppTableViewCell {
         
         btnAction.isHidden = false
         btnAction.text = "Unfollow"
-        btnAction.textColor = .titleBlack
-        btnAction.backgroundColor = .white
-        btnAction.layer.borderColor = UIColor.primaryBlue.cgColor
+        btnAction.textColor = .white
+        btnAction.backgroundColor = .titleRed
+        btnAction.layer.borderColor = UIColor.titleRed.cgColor
         
         btnRemove.isHidden = true
         imgHorizantalDot.isHidden = true
@@ -136,9 +147,9 @@ class PublicFiguresItemCell: AppTableViewCell {
         
         btnAction.isHidden = false
         btnAction.text = "Unfollow"
-        btnAction.textColor = .titleBlack
-        btnAction.backgroundColor = .white
-        btnAction.layer.borderColor = UIColor.primaryBlue.cgColor
+        btnAction.textColor = .white
+        btnAction.backgroundColor = .titleRed
+        btnAction.layer.borderColor = UIColor.titleRed.cgColor
         
         btnRemove.isHidden = true
         imgHorizantalDot.isHidden = true
@@ -173,7 +184,6 @@ class PublicFiguresItemCell: AppTableViewCell {
         btnRemove.isHidden = true
         imgHorizantalDot.isHidden = true
     }
-    
     
     func setDataFriend(_ user: PostUser, indexPath: IndexPath , delegate:PublicFiguresItemDelegate) {
         updateUserData(user)

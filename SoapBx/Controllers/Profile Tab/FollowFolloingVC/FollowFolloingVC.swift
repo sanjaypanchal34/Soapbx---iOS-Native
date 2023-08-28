@@ -24,6 +24,7 @@ class FollowFolloingVC: UIViewController {
     @IBOutlet private weak var tblList: UITableView!
     @IBOutlet private weak var lblNodata: UILabel!
     
+    private var refreshControl:UIRefreshControl!
     private let vmObject = FollowFolloingViewModel()
     private let vmProfile = ProfileViewModel()
     private var screenType = ProfileScreenType.profileTab
@@ -71,7 +72,7 @@ class FollowFolloingVC: UIViewController {
             click_btnPoliticians()
         }
         
-        var refreshControl = UIRefreshControl()
+        refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(pullupRefresh(_:)), for: .valueChanged)
         tblList.refreshControl = refreshControl
         
@@ -136,7 +137,28 @@ class FollowFolloingVC: UIViewController {
         }
     }
     
+    private func follow(user id: Int, roleID: Int) {
+        showLoader()
+        vmProfile.follow(user: id,
+                        user: roleID) {[self] result in
+            hideLoader()
+            showToast(message: result.message)
+            if result.status {
+                pullupRefresh(refreshControl)
+            }
+        }
+    }
     
+    private func cancelRequest(user id: Int) {
+        showLoader()
+        vmProfile.cancelRequest(user: id){[self] result in
+            hideLoader()
+            showToast(message: result.message)
+            if result.status {
+                pullupRefresh(refreshControl)
+            }
+        }
+    }
 }
 extension FollowFolloingVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -180,6 +202,11 @@ extension FollowFolloingVC: UITableViewDataSource, UITableViewDelegate {
 extension FollowFolloingVC: PublicFiguresItemDelegate {
     func publicFigures(_ cell: PublicFiguresItemCell, didSelectActionButton object: PostUser) {
         if vmObject.currentTabIndex == .followers {
+            if object.statusUser == 0 {
+                follow(user: object.id ?? 0, roleID: object.roleID ?? 0)
+            } else if object.statusUser == 1 {
+                cancelRequest(user: object.id ?? 0)
+            }
         }
         else if vmObject.currentTabIndex == .following {
             unfollowRemoveUser(indexPath: cell.indexPath)

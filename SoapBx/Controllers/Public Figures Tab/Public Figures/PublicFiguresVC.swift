@@ -36,7 +36,7 @@ class PublicFiguresVC: UIViewController {
         bottomTab.setTabTheme()
         bottomTab.delegate = self
         
-        viewHeader.lblTitle.setHeader("Public Figures")
+        viewHeader.lblTitle.setHeader(LocalStrings.SEARCH_P_FIGURE.rawValue.addLocalizableString())
         
         searchView.backgroundColor = .lightGrey
         searchView.layer.cornerRadius = searchView.frame.height/2
@@ -127,8 +127,8 @@ extension PublicFiguresVC: UITableViewDataSource, UITableViewDelegate {
                 navigationController?.pushViewController(vc, animated: true)
             }
         } else {
-            showAlert(message: "You must Login to access this feature",buttons: ["Cancel", "Login"]) { alert in
-                if alert.title == "Login" {
+            showAlert(message: LocalStrings.SEARCH_ALERT.rawValue.addLocalizableString(),buttons: [LocalStrings.C_CANCEL.rawValue.addLocalizableString(), LocalStrings.C_LOGIN.rawValue.addLocalizableString()]) { alert in
+                if alert.title == LocalStrings.C_LOGIN.rawValue.addLocalizableString() {
                     mackRootView(LoginVC())
                 }
             }
@@ -169,8 +169,8 @@ extension PublicFiguresVC: OTLBottomTabBarDelegate {
                     }
                 } else {
                     bottomTab.selectedTab = .publicFigures
-                    showAlert(message: "You must Login to access this feature",buttons: ["Cancel", "Login"]) { alert in
-                        if alert.title == "Login" {
+                    showAlert(message: LocalStrings.SEARCH_ALERT.rawValue.addLocalizableString(),buttons: [LocalStrings.C_CANCEL.rawValue.addLocalizableString(), LocalStrings.C_LOGIN.rawValue.addLocalizableString()]) { alert in
+                        if alert.title == LocalStrings.C_LOGIN.rawValue.addLocalizableString() {
                             mackRootView(LoginVC())
                         }
                     }
@@ -184,8 +184,8 @@ extension PublicFiguresVC: OTLBottomTabBarDelegate {
                     }
                 } else {
                     bottomTab.selectedTab = .publicFigures
-                    showAlert(message: "You must Login to access this feature",buttons: ["Cancel", "Login"]) { alert in
-                        if alert.title == "Login" {
+                    showAlert(message: LocalStrings.SEARCH_ALERT.rawValue.addLocalizableString(),buttons: [LocalStrings.C_CANCEL.rawValue.addLocalizableString(), LocalStrings.C_LOGIN.rawValue.addLocalizableString()]) { alert in
+                        if alert.title == LocalStrings.C_LOGIN.rawValue.addLocalizableString() {
                             mackRootView(LoginVC())
                         }
                     }
@@ -198,8 +198,8 @@ extension PublicFiguresVC: OTLBottomTabBarDelegate {
                     }
                 } else {
                     bottomTab.selectedTab = .publicFigures
-                    showAlert(message: "You must Login to access this feature",buttons: ["Cancel", "Login"]) { alert in
-                        if alert.title == "Login" {
+                    showAlert(message: LocalStrings.SEARCH_ALERT.rawValue.addLocalizableString(),buttons: [LocalStrings.C_CANCEL.rawValue.addLocalizableString(), LocalStrings.C_LOGIN.rawValue.addLocalizableString()]) { alert in
+                        if alert.title == LocalStrings.C_LOGIN.rawValue.addLocalizableString() {
                             mackRootView(LoginVC())
                         }
                     }

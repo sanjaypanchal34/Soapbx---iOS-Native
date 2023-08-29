@@ -19,19 +19,19 @@ class SideMenu: UIControl {
     @IBOutlet private weak var tblList:UITableView!
     
     private var arrMenu = [
-        MenuModel(icon: "ic_upgrade", title: "Support Soapbx"),
-        MenuModel(icon: "ic_blog", title: "Blogs"),
-        MenuModel(icon: "ic_home", title: "Home", isSelected: true),
-        MenuModel(icon: "ic_poll", title: "Polls"),
-        MenuModel(icon: "ic_friends", title: "Friends"),
-        MenuModel(icon: "insurance", title: "Connections"),
-        MenuModel(icon: "ic_upgrade", title: "Upgrade your Plan"),
-        MenuModel(icon: "ic_settings", title: "Settings"),
-        MenuModel(icon: "faq", title: "FAQs"),
-        MenuModel(icon: "ic_help", title: "About Soapbx"),
-        MenuModel(icon: "accept", title: "Terms of Service"),
-        MenuModel(icon: "insurance", title: "Privacy Policy"),
-        MenuModel(icon: "logout", title: "Logout"),
+        MenuModel(icon: "ic_upgrade", title: LocalStrings.S_SUPPORT.rawValue.addLocalizableString()),
+        MenuModel(icon: "ic_blog", title: LocalStrings.S_BLOG.rawValue.addLocalizableString()),
+        MenuModel(icon: "ic_home", title: LocalStrings.S_HOME.rawValue.addLocalizableString(), isSelected: true),
+        MenuModel(icon: "ic_poll", title: LocalStrings.S_POLL.rawValue.addLocalizableString()),
+        MenuModel(icon: "ic_friends", title: LocalStrings.S_FRIEND.rawValue.addLocalizableString()),
+        MenuModel(icon: "insurance", title: LocalStrings.S_CONNECTION.rawValue.addLocalizableString()),
+        MenuModel(icon: "ic_upgrade", title: LocalStrings.S_UPGRADE.rawValue.addLocalizableString()),
+        MenuModel(icon: "ic_settings", title: LocalStrings.S_SETTING.rawValue.addLocalizableString()),
+        MenuModel(icon: "faq", title: LocalStrings.S_FAQ.rawValue.addLocalizableString()),
+        MenuModel(icon: "ic_help", title: LocalStrings.S_ABOUT.rawValue.addLocalizableString()),
+        MenuModel(icon: "accept", title: LocalStrings.S_TERMS.rawValue.addLocalizableString()),
+        MenuModel(icon: "insurance", title: LocalStrings.S_PRIVACY.rawValue.addLocalizableString()),
+        MenuModel(icon: "logout", title: LocalStrings.S_LOGOUT.rawValue.addLocalizableString()),
     ]
     fileprivate var complition:(()->())?
     
@@ -117,73 +117,73 @@ extension SideMenu: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         stopAnimation()
         switch arrMenu[indexPath.row].title {
-        case "Support Soapbx":
+        case LocalStrings.S_SUPPORT.rawValue.addLocalizableString():
                 let url = URL(string: "https://soapbx.net/donate_mobile?auth_token=\(authUser?.user?.auth_token ?? "")")!
             if UIApplication.shared.canOpenURL(url) {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             }
             break
-        case "Blogs":
+        case LocalStrings.S_BLOG.rawValue.addLocalizableString():
             let url = URL(string: "https://soapbx.net/blog")!
             if UIApplication.shared.canOpenURL(url) {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             }
             break
-        case "Home":
+        case LocalStrings.S_HOME.rawValue.addLocalizableString():
                 if ((rootViewController.topViewController as? HomeVC) != nil) {
                     
                 } else {
                     mackRootView(HomeVC())
                 }
             break
-        case "Polls":
+        case LocalStrings.S_POLL.rawValue.addLocalizableString():
             let vc = PollsListVC()
             rootViewController.pushViewController(vc, animated: true)
             break
-        case "Friends":
+        case LocalStrings.S_FRIEND.rawValue.addLocalizableString():
             let vc = ConnectionVC()
             vc.screenType = .fromFriends
             rootViewController.pushViewController(vc, animated: true)
             break
-        case "Connections":
+        case LocalStrings.S_CONNECTION.rawValue.addLocalizableString():
             let vc = ConnectionVC()
             rootViewController.pushViewController(vc, animated: true)
             break
-        case "Upgrade your Plan":
+        case LocalStrings.S_UPGRADE.rawValue.addLocalizableString():
             let vc = SubscribeVC()
             vc.screenType = .fromSetting
             rootViewController.pushViewController(vc, animated: true)
             break
-        case "Settings":
+        case LocalStrings.S_SETTING.rawValue.addLocalizableString():
             let vc = SettingVC()
             rootViewController.pushViewController(vc, animated: true)
             break
-        case "FAQs":
+        case LocalStrings.S_FAQ.rawValue.addLocalizableString():
             let vc = CMSPageVC()
             vc.screenType = .faq
             rootViewController.pushViewController(vc, animated: true)
             break
-        case "About Soapbx":
+        case LocalStrings.S_ABOUT.rawValue.addLocalizableString():
             let vc = CMSPageVC()
             vc.screenType = .about
             rootViewController.pushViewController(vc, animated: true)
             break
-        case "Terms of Service":
+        case LocalStrings.S_TERMS.rawValue.addLocalizableString():
             let vc = CMSPageVC()
             vc.screenType = .termsCondition
             rootViewController.pushViewController(vc, animated: true)
             
             break
-        case "Privacy Policy":
+        case LocalStrings.S_PRIVACY.rawValue.addLocalizableString():
             let vc = CMSPageVC()
             vc.screenType = .policy
             rootViewController.pushViewController(vc, animated: true)
             
             break
-        case "Logout":
-            let cancel = OTLAlertModel(title: "Cancel", id: 0)
-            let okay = OTLAlertModel(title: "Okay", id: 1, style: .destructive)
-            showAlert(message: "Are you sure you want to logout?",  buttons: [cancel,okay]) { alert in
+        case LocalStrings.S_LOGOUT.rawValue.addLocalizableString():
+            let cancel = OTLAlertModel(title: LocalStrings.C_CANCEL.rawValue.addLocalizableString(), id: 0)
+            let okay = OTLAlertModel(title: LocalStrings.C_OK.rawValue.addLocalizableString(), id: 1, style: .destructive)
+            showAlert(message: LocalStrings.A_LOGOUT.rawValue.addLocalizableString(),  buttons: [cancel,okay]) { alert in
                 if alert.id == 1 {
                     if authUser?.loginType == .userLogin {
                         let vmObject = LoginViewModel()

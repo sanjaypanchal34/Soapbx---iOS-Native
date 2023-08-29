@@ -6,6 +6,28 @@
   
 */
 
+// COMMON
+"c_ok" = "Okay";
+"c_cancel" = "Cancel";
+
+//ALERT
+"a_logout" = "Are you sure you want to logout?";
+
+// SIDE MENU
+"s_support" = "Support Soapbx";
+"s_blog" = "Blogs";
+"s_home" = "Home";
+"s_poll" = "Polls";
+"s_friend" = "Friends";
+"s_connection" = "Connections";
+"s_upgrade" = "Upgrade your Plan";
+"s_setting" = "Settings";
+"s_faq" = "FAQs";
+"s_about" = "About Soapbx";
+"s_terms" = "Terms of Service";
+"s_privacy" = "Privacy Policy";
+"s_logout" = "Logout";
+
 // LOGIN SCREENS
 
 "login_title" = "Sign in to Soapbx";

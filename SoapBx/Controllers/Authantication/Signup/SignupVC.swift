@@ -48,43 +48,43 @@ class SignupVC: UIViewController {
     private func setupUI() {
         btnBack.emptyTitle()
         
-        lblTitle.setTheme("Sign up for Soapbx",
+        lblTitle.setTheme(LocalStrings.SIGNUP_TITLE.rawValue.addLocalizableString(),
                           font: .bold,
                           size: 38)
-        lblSubtitle.setTheme("Enter our details below",
+        lblSubtitle.setTheme(LocalStrings.SIGNUP_STITLE.rawValue.addLocalizableString(),
                              color: .titleGray)
         
-        txtFirstName.setTheme(placeholder: "First name",
+        txtFirstName.setTheme(placeholder: LocalStrings.SIGNUP_P_FNAME.rawValue.addLocalizableString(),
                           leftIcon: UIImage(named: "ic_user"))
-        txtLastName.setTheme(placeholder: "Last name",
+        txtLastName.setTheme(placeholder: LocalStrings.SIGNUP_P_LNAME.rawValue.addLocalizableString(),
                              leftIcon: UIImage(named: "ic_user"))
-        txtPhoneNo.setTheme(placeholder: "Phone Number",
+        txtPhoneNo.setTheme(placeholder: LocalStrings.SIGNUP_P_PNUMBER.rawValue.addLocalizableString(),
                           leftIcon: UIImage(named: "ic_phone"))
         txtPhoneNo.keyboardType = .phonePad
         
-        txtEmail.setTheme(placeholder: "Email",
+        txtEmail.setTheme(placeholder: LocalStrings.SIGNUP_P_EMAIL.rawValue.addLocalizableString(),
                           leftIcon: UIImage(named: "ic_email"))
         txtEmail.keyboardType = .emailAddress
         
-        txtPassword.setTheme(placeholder: "Password")
-        txtConfPassword.setTheme(placeholder: "Confirm Password")
-        txtLocation.setTheme(placeholder: "Location",
+        txtPassword.setTheme(placeholder: LocalStrings.SIGNUP_P_PASSWORD.rawValue.addLocalizableString())
+        txtConfPassword.setTheme(placeholder: LocalStrings.SIGNUP_P_CPASSWORD.rawValue.addLocalizableString())
+        txtLocation.setTheme(placeholder:LocalStrings.SIGNUP_P_LOCATION.rawValue.addLocalizableString(),
                              leftIcon: UIImage(named: "ic_location_grey"))
         txtLocation.delegate = self
         
-        lblVerifyEmail.setTheme("Verify via Email", size: 14)
-        lblVerifyPhone.setTheme("Verify via Number", size: 14)
+        lblVerifyEmail.setTheme(LocalStrings.SIGNUP_VERIFY_EMAIL.rawValue.addLocalizableString(), size: 14)
+        lblVerifyPhone.setTheme(LocalStrings.SIGNUP_VERIFY_NUMBER.rawValue.addLocalizableString(), size: 14)
         for view in [viewVerifyEmail, viewVerifyPhone] {
             view?.layer.cornerRadius = 10
             view?.layer.borderWidth = 1
             view?.layer.borderColor = UIColor.lightGray.cgColor
         }
         
-        lblIAccept.setTheme("I Accept")
-        btnSignUp.appButton("Sign up")
+        lblIAccept.setTheme(LocalStrings.SIGNUP_ACCEPT.rawValue.addLocalizableString())
+        btnSignUp.appButton(LocalStrings.SIGNUP_SIGNUP.rawValue.addLocalizableString())
         
-        lblAlreadyAMamber.setTheme("Already a member?")
-        btnSignIn.setTheme("Sign in now",color: .primaryBlue, font: .medium, size: 16)
+        lblAlreadyAMamber.setTheme(LocalStrings.SIGNUP_ALREADY_MEMEBER.rawValue.addLocalizableString())
+        btnSignIn.setTheme(LocalStrings.SIGNUP_SIGN_IN.rawValue.addLocalizableString(),color: .primaryBlue, font: .medium, size: 16)
         
         click_verifyVia(viewVerifyEmail)
     }
@@ -133,7 +133,7 @@ class SignupVC: UIViewController {
             showToast(message: validateConfPass.message)
         }
         else if imgIAccept.image != UIImage(named: "ic_favChecked")?.withRenderingMode(.alwaysTemplate) {
-            showToast(message: "please select accept")
+            showToast(message:LocalStrings.SIGNUP_ALERT.rawValue.addLocalizableString())
         }
         else {
             register()

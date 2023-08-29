@@ -54,14 +54,14 @@ class VerificationCodeVC: UIViewController {
     
     //MARK: - Setup view
     private func setupUI() {
-        lblTitle.setTheme("Verification code",
+        lblTitle.setTheme(LocalStrings.V_TITLE.rawValue.addLocalizableString(),
                           font: .bold,
                           size: 40)
         var displayString = vmObject.signupJson?.email ?? ""
-        var discription = "Please type the verification code sent to your email"
+        var discription = LocalStrings.V_DESC_EMAIL.rawValue.addLocalizableString()
         if self.vmObject.signupJson?.verified_by == 1{ // phone verify
             displayString = "+" + (self.vmObject.signupJson?.country_code ?? "1") + (self.vmObject.signupJson?.phone_number ?? "")
-            discription = "Please type the verification code sent to your phone number"
+            discription = LocalStrings.V_DESC_PHONE.rawValue.addLocalizableString()
         }
         let attributesMain = NSMutableAttributedString(string: "\(discription) \(displayString)")
         let rang = attributesMain.mutableString.range(of: displayString)
@@ -71,8 +71,8 @@ class VerificationCodeVC: UIViewController {
         
         otpField.setOTPTheme()
         otpField.delegate = self
-        btnResend.setTheme("Resend", color: .primaryBlue, font: .medium)
-        btnNext.appButton(screenType == .fromUpdateProfile ? "Verify" : "Next")
+        btnResend.setTheme(LocalStrings.C_RESEND.rawValue.addLocalizableString(), color: .primaryBlue, font: .medium)
+        btnNext.appButton(screenType == .fromUpdateProfile ? LocalStrings.V_VERIFY.rawValue.addLocalizableString() : LocalStrings.C_NEXT.rawValue.addLocalizableString())
         
         btnResend.isHidden = false
     }

@@ -49,11 +49,11 @@ class ProfileCoverVC: UIViewController {
     }
     
     private func setupUI() {
-        lblTitle.setTheme("Set Profile Picture and Cover Photo",
+        lblTitle.setTheme(LocalStrings.P_COVER_TITLE.rawValue.addLocalizableString(),
                           font: .bold,
                           size: 40)
         
-        lblAddCover.setTheme("Add cover phote\n(Optional)", color: .titleGray, font: .regular, size: 12)
+        lblAddCover.setTheme(LocalStrings.P_COVER_ADD.rawValue.addLocalizableString(), color: .titleGray, font: .regular, size: 12)
         
         viewAddCover.addTarget(self, action: #selector(click_btnCover), for: .touchUpInside)
         
@@ -75,10 +75,10 @@ class ProfileCoverVC: UIViewController {
         viewAddCover.dashLength = 4
         viewAddCover.betweenDashesSpace = 4
         
-        btnNext.appButton("Next")
+        btnNext.appButton(LocalStrings.C_NEXT.rawValue.addLocalizableString())
         
-        lblDescription.setTheme("Add a profile picture so that you and your friend can indentify each other", color: .titleBlack)
-        lblNotes.setTheme("*Cover photo is optional and can be added later.", color: .titleGray)
+        lblDescription.setTheme(LocalStrings.P_COVER_DESC.rawValue.addLocalizableString(), color: .titleBlack)
+        lblNotes.setTheme(LocalStrings.P_COVER_NOTE.rawValue.addLocalizableString(), color: .titleGray)
         
         btnRemoveProfile.image = UIImage(named: "ic_cross")
         btnRemoveProfile.isHidden = true
@@ -96,7 +96,7 @@ class ProfileCoverVC: UIViewController {
     //Actions
     @IBAction private func click_btnNext() {
         if imgProfile == nil {
-            showToast(message: "Select profile photo.")
+            showToast(message: LocalStrings.P_COVER_ALERT.rawValue.addLocalizableString())
         } else {
             uploadProfile()
         }
@@ -113,11 +113,11 @@ class ProfileCoverVC: UIViewController {
     @objc private func click_btnProfile() {
         PHPhotoLibrary.execute(controller: self, onAccessHasBeenGranted: {
             DispatchQueue.main.async {
-                let camera = OTLAlertModel(title: "Camera", id: 0)
-                let gallary = OTLAlertModel(title: "Gallary", id: 1)
-                let cancel = OTLAlertModel(title: "Cancel", id: 2, style: .destructive)
+                let camera = OTLAlertModel(title: LocalStrings.C_CAMERA.rawValue.addLocalizableString(), id: 0)
+                let gallary = OTLAlertModel(title: LocalStrings.C_GALLERY.rawValue.addLocalizableString(), id: 1)
+                let cancel = OTLAlertModel(title: LocalStrings.C_CANCEL.rawValue.addLocalizableString(), id: 2, style: .destructive)
                 
-                showAlert(title: "Media Type", message: "", buttons: [camera, gallary, cancel]) { alert in
+                showAlert(title: LocalStrings.C_MEDIA_TYPE.rawValue.addLocalizableString(), message: "", buttons: [camera, gallary, cancel]) { alert in
                     self.isProfile = true
                     if alert.id == 0 {
                         self.openCamera()
@@ -133,11 +133,11 @@ class ProfileCoverVC: UIViewController {
     @objc private func click_btnCover() {
         PHPhotoLibrary.execute(controller: self, onAccessHasBeenGranted: {
             DispatchQueue.main.async {
-                let camera = OTLAlertModel(title: "Camera", id: 0)
-                let gallary = OTLAlertModel(title: "Gallary", id: 1)
-                let cancel = OTLAlertModel(title: "Cancel", id: 2, style: .destructive)
+                let camera = OTLAlertModel(title: LocalStrings.C_CAMERA.rawValue.addLocalizableString(), id: 0)
+                let gallary = OTLAlertModel(title: LocalStrings.C_GALLERY.rawValue.addLocalizableString(), id: 1)
+                let cancel = OTLAlertModel(title: LocalStrings.C_CANCEL.rawValue.addLocalizableString(), id: 2, style: .destructive)
                 
-                showAlert(title: "Media Type", message: "", buttons: [camera, gallary, cancel]) { alert in
+                showAlert(title: LocalStrings.C_MEDIA_TYPE.rawValue.addLocalizableString(), message: "", buttons: [camera, gallary, cancel]) { alert in
                     self.isProfile = false
                     if alert.id == 0 {
                         self.openCamera()

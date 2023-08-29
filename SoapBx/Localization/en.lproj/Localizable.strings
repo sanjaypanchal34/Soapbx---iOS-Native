@@ -9,6 +9,12 @@
 // COMMON
 "c_ok" = "Okay";
 "c_cancel" = "Cancel";
+"c_done" = "Done";
+"c_resend" = "Resend";
+"c_next" = "Next";
+"c_camera" = "Camera";
+"c_gallery" = "Gallery";
+"c_media_type" = "Media Type";
 
 //ALERT
 "a_logout" = "Are you sure you want to logout?";
@@ -39,6 +45,43 @@
 "btn_signup" = "Sign up now";
 "lbl_not_member" = "Not a member?";
 
+// VERIFICATION CODE
+"v_title" = "Verification code";
+"v_desc_email" = "Please type the verification code sent to your email";
+"v_desc_phone" = "Please type the verification code sent to your phone number";
+"v_verify" = "Verify";
+
+// PROFILE COVER
+"p_cover_title" = "Set Profile Picture and Cover Photo";
+"p_cover_add" = "Add cover photo\n(Optional)";
+"p_cover_desc" = "Add a profile picture so that you and your friend can indentify each other";
+"p_cover_note" = "*Cover photo is optional and can be added later.";
+"p_cover_alert" = "Select profile photo.";
+
+// FORGOT PASSWORD
+"f_pass_title" = "Forgot password?";
+"f_pass_stitle" = "Please enter your email / phone number to reset your account password";
+"f_pass_placeholder" = "Email / Phone Number";
+
+//SIGNUP
+"signup_title" = "Sign up for Soapbx";
+"signup_stitle" = "Enter our details below";
+"signup_p_fname" = "First name";
+"signup_p_lname" = "Last name";
+"signup_p_pnumber" = "Phone Number";
+"signup_p_email" = "Email";
+"signup_p_password" = "Password";
+"signup_p_cpassword" = "Confirm Password";
+"signup_p_location" = "Location";
+"signup_verify_email" = "Verify via Email";
+"signup_verify_number" = "Verify via Number";
+"signup_accept" = "I Accept";
+"signup_signup" = "Sign up";
+"signup_already_memeber" = "Already a member?";
+"signup_sign_in" = "Sign in now";
+"signup_alert" = "Please select accept";
+
 //PLACE HOLDERS
 "p_email" = "Email";
 "p_password" = "Password";
+"p_location" = "Search location....";

@@ -30,17 +30,17 @@ class ForgotPasswrodVC: UIViewController {
     }
     
     private func setupUI() {
-        lblTitle.setTheme("Forgot password?",
+        lblTitle.setTheme(LocalStrings.F_PASS_TITLE.rawValue.addLocalizableString(),
                           font: .bold,
                           size: 38)
-        lblSubtitle.setTheme("Please enter your email / phone number to reset your account password",
+        lblSubtitle.setTheme(LocalStrings.F_PASS_STITLE.rawValue.addLocalizableString(),
                              color: .titleGray)
         
-        txtEmail.setTheme(placeholder: "Email / Phone Number",
+        txtEmail.setTheme(placeholder:LocalStrings.F_PASS_PLACEHOLDER.rawValue.addLocalizableString(),
                           leftIcon: UIImage(named: "ic_email"))
         txtEmail.keyboardType = .emailAddress
         
-        btnNext.appButton("Next")
+        btnNext.appButton(LocalStrings.C_NEXT.rawValue.addLocalizableString())
 
     }
     

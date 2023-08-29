@@ -35,13 +35,13 @@ class LocationSearchVC: UIViewController {
     private func setupUI(){
         self.view.backgroundColor = .black.withAlphaComponent(0.3)
         
-        txtSearch.placeholder = "Search location...."
+        txtSearch.placeholder = LocalStrings.P_LOCATION.rawValue.addLocalizableString()
         txtSearch.font = AppFont.regular.font(size: 16)
         txtSearch.delegate = self
         txtSearch.clearButtonMode = .whileEditing
         
-        btnCancel.setTheme("Cancel", color: .titleBlack, size: 16)
-        btnDone.setTheme("Done", color: .primaryBlue, font: .bold, size: 16)
+        btnCancel.setTheme(LocalStrings.C_CANCEL.rawValue.addLocalizableString(), color: .titleBlack, size: 16)
+        btnDone.setTheme(LocalStrings.C_DONE.rawValue.addLocalizableString(), color: .primaryBlue, font: .bold, size: 16)
         
         tblSearch.register(["LocationItemCell"], delegate: self, dataSource: self)
     }

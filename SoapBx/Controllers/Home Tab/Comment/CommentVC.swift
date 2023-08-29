@@ -177,7 +177,7 @@ class CommentVC: UIViewController {
         tblCommentsList.register(["CommentItemCell"], delegate: self, dataSource: self)
         tblCommentsList.isScrollEnabled = false
         
-        txtComment.placeholder = "Enter Your Comment Here"
+        txtComment.placeholder = LocalStrings.COMMENT_ENTER.rawValue.addLocalizableString()
         viewCommentText.layer.cornerRadius = 10
         viewCommentText.layer.borderWidth = 1
         viewCommentText.layer.borderColor = UIColor.lightGrey.cgColor
@@ -241,25 +241,24 @@ class CommentVC: UIViewController {
         if authUser?.loginType == .userLogin {
             likeDislikeonPost(isLike: true)
         } else {
-            showAlert(message: "You must Login to access this feature",buttons: ["Cancel", "Login"]) { alert in
-                if alert.title == "Login" {
+            showAlert(message: LocalStrings.SEARCH_ALERT.rawValue.addLocalizableString(),buttons: [LocalStrings.C_CANCEL.rawValue.addLocalizableString(), LocalStrings.C_LOGIN.rawValue.addLocalizableString()]) { alert in
+                if alert.title == LocalStrings.C_LOGIN.rawValue.addLocalizableString() {
                     mackRootView(LoginVC())
                 }
             }
         }
-        
     }
+    
     @IBAction private func click_btnDislike() {
         if authUser?.loginType == .userLogin {
             likeDislikeonPost(isLike: false)
         } else {
-            showAlert(message: "You must Login to access this feature",buttons: ["Cancel", "Login"]) { alert in
-                if alert.title == "Login" {
+            showAlert(message: LocalStrings.SEARCH_ALERT.rawValue.addLocalizableString(),buttons: [LocalStrings.C_CANCEL.rawValue.addLocalizableString(), LocalStrings.C_LOGIN.rawValue.addLocalizableString()]) { alert in
+                if alert.title == LocalStrings.C_LOGIN.rawValue.addLocalizableString() {
                     mackRootView(LoginVC())
                 }
             }
         }
-        
     }
     
     @IBAction private func click_btnSendComment() {
@@ -272,8 +271,8 @@ class CommentVC: UIViewController {
                 self.postComment()
             }
         } else {
-            showAlert(message: "You must Login to access this feature",buttons: ["Cancel", "Login"]) { alert in
-                if alert.title == "Login" {
+            showAlert(message: LocalStrings.SEARCH_ALERT.rawValue.addLocalizableString(),buttons: [LocalStrings.C_CANCEL.rawValue.addLocalizableString(), LocalStrings.C_LOGIN.rawValue.addLocalizableString()]) { alert in
+                if alert.title == LocalStrings.C_LOGIN.rawValue.addLocalizableString() {
                     mackRootView(LoginVC())
                 }
             }
@@ -393,8 +392,8 @@ extension CommentVC: CommentItemDelegate{
                 self.reportComment(commentId: id, reason: report)
             }
         } else {
-            showAlert(message: "You must Login to access this feature",buttons: ["Cancel", "Login"]) { alert in
-                if alert.title == "Login" {
+            showAlert(message: LocalStrings.SEARCH_ALERT.rawValue.addLocalizableString(),buttons: [LocalStrings.C_CANCEL.rawValue.addLocalizableString(), LocalStrings.C_LOGIN.rawValue.addLocalizableString()]) { alert in
+                if alert.title == LocalStrings.C_LOGIN.rawValue.addLocalizableString() {
                     mackRootView(LoginVC())
                 }
             }
@@ -437,8 +436,6 @@ extension CommentVC: UICollectionViewDataSource{
                 cell.setDataPolitician(obj)
                 return cell
             }
-            
-            
         }
         return UICollectionViewCell()
     }

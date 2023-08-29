@@ -20,15 +20,15 @@ enum ThreeDotItem {
     
     var title: String {
         switch self {
-        case .openProfile:  return "Open User Profile"
-        case .hidePost(let profileName):  return "Hide Post by \(profileName)"
-        case .share:    return "Share"
-        case .report:   return "Report"
-        case .edit: return "Edit Post"
-        case .delete:   return "Delete Post"
-        case .clearChat: return "Clear Chat"
-        case .starredMessage: return "Starred Messages"
-        case .block:  return "Block"
+        case .openProfile:  return LocalStrings.DOT_OPEN.rawValue.addLocalizableString()
+        case .hidePost(let profileName):  return String(format: "%@%@", LocalStrings.DOT_HIDE.rawValue.addLocalizableString(), profileName)
+        case .share:    return LocalStrings.DOT_SHARE.rawValue.addLocalizableString()
+        case .report:   return LocalStrings.DOT_REPORT.rawValue.addLocalizableString()
+        case .edit: return LocalStrings.DOT_EDIT.rawValue.addLocalizableString()
+        case .delete:   return LocalStrings.DOT_DELETE.rawValue.addLocalizableString()
+        case .clearChat: return LocalStrings.DOT_CLEAR.rawValue.addLocalizableString()
+        case .starredMessage: return LocalStrings.DOT_STAR.rawValue.addLocalizableString()
+        case .block:  return LocalStrings.DOT_BLOCK.rawValue.addLocalizableString()
         }
     }
 }

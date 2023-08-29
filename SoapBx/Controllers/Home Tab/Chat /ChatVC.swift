@@ -128,18 +128,18 @@ class ChatVC: UIViewController , PusherDelegate{
         }
     }
     @IBAction private func click_btnAddMedia() {
-        let camera = OTLAlertModel(title: "Camera", id: 0)
-        let gellary = OTLAlertModel(title: "Gellary", id: 1)
-        let cancel = OTLAlertModel(title: "Cancel", id: 2)
+        let camera = OTLAlertModel(title: LocalStrings.C_CAMERA.rawValue.addLocalizableString(), id: 0)
+        let gellary = OTLAlertModel(title: LocalStrings.C_GALLERY.rawValue.addLocalizableString(), id: 1)
+        let cancel = OTLAlertModel(title: LocalStrings.C_CANCEL.rawValue.addLocalizableString(), id: 2)
         
-        showAlert(message: "Media Type", buttons: [camera, gellary, cancel])
+        showAlert(message: LocalStrings.C_MEDIA_TYPE.rawValue.addLocalizableString(), buttons: [camera, gellary, cancel])
     }
+    
     @IBAction private func click_btnSendMessage() {
         if self.txtMessage.text?.count ?? 0 > 0 {
             vmObject.sendMessage(relationId : relationID, sender: authUser?.user?.id ?? 0, receiver: userObj?.id ?? 0, message: self.txtMessage.text ?? "") { [self] result in
                 if result.status {
                     self.txtMessage.text = ""
-                    print("Message sent Successfully")
                 }
             }
         }
@@ -248,7 +248,6 @@ extension ChatVC: UITableViewDataSource, UITableViewDelegate  {
 
     func getChannelName() -> String {
         return String(format: "%@%d", channel_id, self.uniqueID )
-        //ls.message.44080_ls.private.18659
     }
 }
 

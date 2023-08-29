@@ -30,11 +30,13 @@ enum LocalStrings: String {
     case C_BLOCK = "c_block"
     case C_REQUESTED = "c_requested"
     case C_NO_DATA = "c_no_data"
+    case C_SUBMIT = "c_submit"
     
     //ALERT
     case A_LOGOUT = "a_logout"
     case A_DELETE_IMAGE = "a_delete_image"
     case A_DELETE_ACCOUNT = "a_delete_account"
+    case A_DELETE_POST = "a_delete_post"
     
     //SIDE MENU
     case S_SUPPORT = "s_support"
@@ -154,6 +156,34 @@ enum LocalStrings: String {
     case PROFILE_DELETE = "profile_delete"
     case PROFILE_MESSAGE = "profile_message"
     case PROFILE_VOCIE = "profile_vocie"
+    
+    //CHAT
+    case CHAT_REQUEST = "chat_request"
+    case CHAT_NO_DATA = "chat_no_data"
+    
+    //NOTIFICATIONS
+    case NOTI_TITLE = "noti_title"
+    case NOTI_NO_DATA = "noti_no_data"
+    
+    // REPORT
+    case REPORT_WRITE = "report_write"
+    case REPORT_REASON = "report_reason"
+    case REPORT_TITLE = "report_title"
+    
+    //COMMENT
+    case COMMENT = "comment"
+    case COMMENT_ENTER = "comment_enter"
+    
+    //THREE DOT
+    case DOT_OPEN = "dot_open"
+    case DOT_HIDE = "dot_hide"
+    case DOT_SHARE = "dot_share"
+    case DOT_REPORT = "dot_report"
+    case DOT_EDIT = "dot_edit"
+    case DOT_DELETE = "dot_delete"
+    case DOT_CLEAR = "dot_clear"
+    case DOT_STAR = "dot_star"
+    case DOT_BLOCK = "dot_block"
     
     //FOLLOW
     case F_FOLLOW = "f_follow"

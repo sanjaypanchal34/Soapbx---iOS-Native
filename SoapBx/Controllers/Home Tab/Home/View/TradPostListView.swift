@@ -379,8 +379,8 @@ extension TradPostListView: HomeItemCellDelegate{
                 }
                 break;
             case .delete:
-                showAlert(message: "Are you sure you want to delete this post?", buttons: ["Cancel", "Delete"]) { alert in
-                    if alert.title == "Delete" {
+                showAlert(message: LocalStrings.A_DELETE_POST.rawValue.addLocalizableString(), buttons: [LocalStrings.C_CANCEL.rawValue.addLocalizableString(), LocalStrings.C_DELETE.rawValue.addLocalizableString()]) { alert in
+                    if alert.title == LocalStrings.C_DELETE.rawValue.addLocalizableString() {
                         self.deletePost(post: object?.id ?? 0, row: cell.indexPath.row)
                     }
                 }

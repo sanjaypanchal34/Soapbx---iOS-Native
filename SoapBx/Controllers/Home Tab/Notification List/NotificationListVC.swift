@@ -23,9 +23,9 @@ class NotificationListVC: UIViewController {
     }
 
     private func setupUI() {
-        viewHeader.lblTitle.setHeader("Notifications")
+        viewHeader.lblTitle.setHeader(LocalStrings.NOTI_TITLE.rawValue.addLocalizableString())
         
-        lblNoDataFound.noDataTitle("No Polls Found")
+        lblNoDataFound.noDataTitle(LocalStrings.NOTI_NO_DATA.rawValue.addLocalizableString())
         lblNoDataFound.isHidden = true
         
         tblList.register(["NotificationListItemCell"], delegate: self, dataSource: self)

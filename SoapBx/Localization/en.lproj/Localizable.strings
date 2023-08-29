@@ -28,11 +28,13 @@
 "c_block" = "Block";
 "c_requested" = "Requested";
 "c_no_data" = "No Data Found";
+"c_submit" = "Submit";
 
 //ALERT
 "a_logout" = "Are you sure you want to logout?";
 "a_delete_image" = "Are you sure you want to delete this image?";
 "a_delete_account" = "Are you sure you want to delete this account?";
+"a_delete_post" = "Are you sure you want to delete this post?";
 
 // SIDE MENU
 "s_support" = "Support Soapbx";
@@ -153,6 +155,34 @@
 "profile_delete" = "Delete Account";
 "profile_message" = "Message";
 "profile_vocie" = "What do you want to voice today?";
+
+//CHAT
+"chat_request" = "Message Requests";
+"chat_no_data" = "No Chats Found";
+
+//NOTIFICATIONS
+"noti_title" = "Notifications";
+"noti_no_data" = "No Polls Found";
+
+// REPORT
+"report_write" = "Write reason to report a";
+"report_reason" = "Reason";
+"report_title" = "Report";
+
+//COMMENT
+"comment" = "Comment";
+"comment_enter" = "Enter Your Comment Here";
+
+//THREE DOT
+"dot_open" = "Open User Profile";
+"dot_hide" = "Hide Post by ";
+"dot_share" = "Share";
+"dot_report" = "Report";
+"dot_edit" = "Edit Post";
+"dot_delete" = "Delete Post";
+"dot_clear" = "Clear Chat";
+"dot_star" = "Starred Messages";
+"dot_block" = "Block";
 
 //FOLLOW
 "f_follow" = "Followers";

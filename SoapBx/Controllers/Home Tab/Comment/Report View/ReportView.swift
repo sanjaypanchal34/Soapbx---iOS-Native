@@ -31,14 +31,14 @@ class ReportView: UIControl {
         viewBody.backgroundColor = .white
         viewBody.layer.cornerRadius = 10
         
-        lblTitle.setHeader("Reason")
-        lblPlaceholder.setTheme("Write reason to report a", color: .titleGray, size: 18)
+        lblTitle.setHeader(LocalStrings.REPORT_REASON.rawValue.addLocalizableString())
+        lblPlaceholder.setTheme(LocalStrings.REPORT_WRITE.rawValue.addLocalizableString(), color: .titleGray, size: 18)
         txtReason.setCornerRadius(border: 1, color: .lightGray, corner: 10)
         txtReason.font = AppFont.regular.font(size: 18)
         txtReason.delegate = self
         txtReason.text = ""
         
-        btnSubmit.appButton("Submit")
+        btnSubmit.appButton(LocalStrings.C_SUBMIT.rawValue.addLocalizableString())
         
         self.addTarget(self, action: #selector(dissmis), for: .touchUpInside)
     }

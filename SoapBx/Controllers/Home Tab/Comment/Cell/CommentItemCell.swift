@@ -32,8 +32,8 @@ class CommentItemCell: AppTableViewCell {
         imgProfile.layer.cornerRadius = imgProfile.frame.height/2
         imgProfile.contentMode = .scaleAspectFill
         lblProfileName.setTheme("Robert Watson",size: 14, lines: 1)
-        lblComment.setTheme("Comment",size: 12)
-        btnReport.setTheme("Report",color: .titleRed,size: 11)
+        lblComment.setTheme(LocalStrings.COMMENT.rawValue.addLocalizableString(),size: 12)
+        btnReport.setTheme(LocalStrings.REPORT_TITLE.rawValue.addLocalizableString(),color: .titleRed,size: 11)
     }
     
     func setData(_ object: CommentModel, indexPath: IndexPath, delegate:CommentItemDelegate) {

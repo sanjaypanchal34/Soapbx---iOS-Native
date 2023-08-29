@@ -182,7 +182,7 @@ class HomeItemCell: AppTableViewCell {
         btnComment.title?.setTheme("0", size: 14)
         btnComment.imageView?.image = UIImage(named: "ic_comments_grey")
         
-        btnShare.title?.setTheme("Share", size: 14)
+        btnShare.title?.setTheme(LocalStrings.DOT_SHARE.rawValue.addLocalizableString(), size: 14)
         btnShare.imageView?.image = UIImage(named: "ic_share")
         
     }
@@ -276,7 +276,7 @@ class HomeItemCell: AppTableViewCell {
         btnDislike.title?.text = "\(object.dislikeCount ?? 0)"
         btnDislike.imageView?.tintColor = object.dislikeStatus == 1 ? .titleRed : .titleGray
         btnComment.title?.text = "\(object.commentsCount ?? 0)"
-        btnShare.title?.text = "Share"
+        btnShare.title?.text = LocalStrings.DOT_SHARE.rawValue.addLocalizableString()
     }
     
         //Actions
@@ -298,8 +298,8 @@ class HomeItemCell: AppTableViewCell {
         if authUser?.loginType == .userLogin {
             delegate?.homeItemCell(self, didSelectSave: object)
         } else {
-            showAlert(message: "You must Login to access this feature",buttons: ["Cancel", "Login"]) { alert in
-                if alert.title == "Login" {
+            showAlert(message: LocalStrings.SEARCH_ALERT.rawValue.addLocalizableString(),buttons: [LocalStrings.C_CANCEL.rawValue.addLocalizableString(), LocalStrings.C_LOGIN.rawValue.addLocalizableString()]) { alert in
+                if alert.title == LocalStrings.C_LOGIN.rawValue.addLocalizableString() {
                     mackRootView(LoginVC())
                 }
             }
@@ -310,8 +310,8 @@ class HomeItemCell: AppTableViewCell {
         if authUser?.loginType == .userLogin {
             delegate?.homeItemCell(self, didSelectLike: object)
         } else {
-            showAlert(message: "You must Login to access this feature",buttons: ["Cancel", "Login"]) { alert in
-                if alert.title == "Login" {
+            showAlert(message: LocalStrings.SEARCH_ALERT.rawValue.addLocalizableString(),buttons: [LocalStrings.C_CANCEL.rawValue.addLocalizableString(), LocalStrings.C_LOGIN.rawValue.addLocalizableString()]) { alert in
+                if alert.title == LocalStrings.C_LOGIN.rawValue.addLocalizableString() {
                     mackRootView(LoginVC())
                 }
             }
@@ -322,8 +322,8 @@ class HomeItemCell: AppTableViewCell {
         if authUser?.loginType == .userLogin {
             delegate?.homeItemCell(self, didSelectDislike: object)
         } else {
-            showAlert(message: "You must Login to access this feature",buttons: ["Cancel", "Login"]) { alert in
-                if alert.title == "Login" {
+            showAlert(message: LocalStrings.SEARCH_ALERT.rawValue.addLocalizableString(),buttons: [LocalStrings.C_CANCEL.rawValue.addLocalizableString(), LocalStrings.C_LOGIN.rawValue.addLocalizableString()]) { alert in
+                if alert.title == LocalStrings.C_LOGIN.rawValue.addLocalizableString() {
                     mackRootView(LoginVC())
                 }
             }
@@ -373,8 +373,8 @@ class HomeItemCell: AppTableViewCell {
                 self.delegate?.homeItemCell(self, didSelectDotMenu: obj, object: self.object)
             }
         } else {
-            showAlert(message: "You must Login to access this feature",buttons: ["Cancel", "Login"]) { alert in
-                if alert.title == "Login" {
+            showAlert(message: LocalStrings.SEARCH_ALERT.rawValue.addLocalizableString(),buttons: [LocalStrings.C_CANCEL.rawValue.addLocalizableString(), LocalStrings.C_LOGIN.rawValue.addLocalizableString()]) { alert in
+                if alert.title == LocalStrings.C_LOGIN.rawValue.addLocalizableString() {
                     mackRootView(LoginVC())
                 }
             }

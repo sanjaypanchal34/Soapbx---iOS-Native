@@ -53,8 +53,8 @@ class HomeVC: UIViewController {
                 showSideMenu()
             }
         } else {
-            showAlert(message: "You must Login to access this feature",buttons: ["Cancel", "Login"]) { alert in
-                if alert.title == "Login" {
+            showAlert(message: LocalStrings.SEARCH_ALERT.rawValue.addLocalizableString(),buttons: [LocalStrings.C_CANCEL.rawValue.addLocalizableString(), LocalStrings.C_LOGIN.rawValue.addLocalizableString()]) { alert in
+                if alert.title == LocalStrings.C_LOGIN.rawValue.addLocalizableString() {
                     mackRootView(LoginVC())
                 }
             }
@@ -69,8 +69,8 @@ class HomeVC: UIViewController {
                 navigationController?.pushViewController(vc, animated: true)
             }
         } else {
-            showAlert(message: "You must Login to access this feature",buttons: ["Cancel", "Login"]) { alert in
-                if alert.title == "Login" {
+            showAlert(message: LocalStrings.SEARCH_ALERT.rawValue.addLocalizableString(),buttons: [LocalStrings.C_CANCEL.rawValue.addLocalizableString(), LocalStrings.C_LOGIN.rawValue.addLocalizableString()]) { alert in
+                if alert.title == LocalStrings.C_LOGIN.rawValue.addLocalizableString() {
                     mackRootView(LoginVC())
                 }
             }
@@ -83,8 +83,8 @@ class HomeVC: UIViewController {
                 navigationController?.pushViewController(vc, animated: true)
             }
         } else {
-            showAlert(message: "You must Login to access this feature",buttons: ["Cancel", "Login"]) { alert in
-                if alert.title == "Login" {
+            showAlert(message: LocalStrings.SEARCH_ALERT.rawValue.addLocalizableString(),buttons: [LocalStrings.C_CANCEL.rawValue.addLocalizableString(), LocalStrings.C_LOGIN.rawValue.addLocalizableString()]) { alert in
+                if alert.title == LocalStrings.C_LOGIN.rawValue.addLocalizableString() {
                     mackRootView(LoginVC())
                 }
             }
@@ -108,8 +108,8 @@ extension HomeVC: OTLBottomTabBarDelegate {
                     }
                 } else {
                     bottomTab.selectedTab = .home
-                    showAlert(message: "You must Login to access this feature",buttons: ["Cancel", "Login"]) { alert in
-                        if alert.title == "Login" {
+                    showAlert(message: LocalStrings.SEARCH_ALERT.rawValue.addLocalizableString(),buttons: [LocalStrings.C_CANCEL.rawValue.addLocalizableString(), LocalStrings.C_LOGIN.rawValue.addLocalizableString()]) { alert in
+                        if alert.title == LocalStrings.C_LOGIN.rawValue.addLocalizableString() {
                             mackRootView(LoginVC())
                         }
                     }
@@ -123,8 +123,8 @@ extension HomeVC: OTLBottomTabBarDelegate {
                     }
                 } else {
                     bottomTab.selectedTab = .home
-                    showAlert(message: "You must Login to access this feature",buttons: ["Cancel", "Login"]) { alert in
-                        if alert.title == "Login" {
+                    showAlert(message: LocalStrings.SEARCH_ALERT.rawValue.addLocalizableString(),buttons: [LocalStrings.C_CANCEL.rawValue.addLocalizableString(), LocalStrings.C_LOGIN.rawValue.addLocalizableString()]) { alert in
+                        if alert.title == LocalStrings.C_LOGIN.rawValue.addLocalizableString() {
                             mackRootView(LoginVC())
                         }
                     }
@@ -137,8 +137,8 @@ extension HomeVC: OTLBottomTabBarDelegate {
                     }
                 } else {
                     bottomTab.selectedTab = .home
-                    showAlert(message: "You must Login to access this feature",buttons: ["Cancel", "Login"]) { alert in
-                        if alert.title == "Login" {
+                    showAlert(message: LocalStrings.SEARCH_ALERT.rawValue.addLocalizableString(),buttons: [LocalStrings.C_CANCEL.rawValue.addLocalizableString(), LocalStrings.C_LOGIN.rawValue.addLocalizableString()]) { alert in
+                        if alert.title == LocalStrings.C_LOGIN.rawValue.addLocalizableString() {
                             mackRootView(LoginVC())
                         }
                     }

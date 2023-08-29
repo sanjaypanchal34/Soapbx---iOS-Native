@@ -27,7 +27,7 @@ class MessageListVC: UIViewController {
 
     private func setupUI() {
         
-        viewHeader.lblTitle.setHeader("Search")
+        viewHeader.lblTitle.setHeader(LocalStrings.SEARCH_TITLE.rawValue.addLocalizableString())
         
         searchView.backgroundColor = .lightGrey
         searchView.layer.cornerRadius = searchView.frame.height/2
@@ -35,10 +35,10 @@ class MessageListVC: UIViewController {
         searchView.imageView?.tintColor = .titleBlack
         txtSearch.font = AppFont.regular.font(size: 16)
         
-        btnMessageRequest.setTheme("Message Requests", color: .primaryBlue, size: 10)
+        btnMessageRequest.setTheme(LocalStrings.CHAT_REQUEST.rawValue.addLocalizableString(), color: .primaryBlue, size: 10)
         
 //        tblList.register(["SearchItemCell"], delegate: self, dataSource: self)
-        lblNoData.noDataTitle("No Chats Found")
+        lblNoData.noDataTitle(LocalStrings.CHAT_NO_DATA.rawValue.addLocalizableString())
     }
 
     //

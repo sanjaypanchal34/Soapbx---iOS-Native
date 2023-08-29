@@ -29,7 +29,7 @@ class SavedPostVC: UIViewController{
     }
 
     private func setupUI() {
-        viewHeader.lblTitle.setHeader("Saved Post")
+        viewHeader.lblTitle.setHeader(LocalStrings.SAVED_TITLE.rawValue.addLocalizableString())
         viewBody.backgroundColor = .lightGrey
         tblList.register(["HomeItemCell"], delegate: self, dataSource: self)
         NotificationCenter.default.addObserver(self, selector: #selector(savePostUpdate), name: .savePostUpdate, object: nil)
@@ -234,8 +234,8 @@ extension SavedPostVC: HomeItemCellDelegate{
                 }
                 break;
             case .delete:
-                showAlert(message: "Are you sure you want to delete this post?", buttons: ["Cancel", "Delete"]) { alert in
-                    if alert.title == "Delete" {
+                showAlert(message: LocalStrings.A_DELETE_POST.rawValue.addLocalizableString(), buttons: [LocalStrings.C_CANCEL.rawValue.addLocalizableString(), LocalStrings.C_DELETE.rawValue.addLocalizableString()]) { alert in
+                    if alert.title == LocalStrings.C_DELETE.rawValue.addLocalizableString() {
                         self.deletePost(post: object?.id ?? 0, row: cell.indexPath.row)
                     }
                 }

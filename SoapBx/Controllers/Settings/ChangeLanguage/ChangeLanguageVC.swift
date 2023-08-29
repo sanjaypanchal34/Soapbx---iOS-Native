@@ -17,11 +17,11 @@ class ChangeLanguageVC: UIViewController {
     
         // private
     private var arrLanguage = [
-        ChangeLangModel(title: "English", value: "en"),
-        ChangeLangModel(title: "Spanish", value: "es"),
-        ChangeLangModel(title: "French", value: "fr"),
-        ChangeLangModel(title: "German", value: "de"),
-        ChangeLangModel(title: "Portuguese", value: "pt-PT"),
+        ChangeLangModel(title: LocalStrings.LANG_ENG.rawValue.addLocalizableString(), value: "en"),
+        ChangeLangModel(title: LocalStrings.LANG_SPANISH.rawValue.addLocalizableString(), value: "es"),
+        ChangeLangModel(title: LocalStrings.LANG_FRENCH.rawValue.addLocalizableString(), value: "fr"),
+        ChangeLangModel(title: LocalStrings.LANG_GERMAN.rawValue.addLocalizableString(), value: "de"),
+        ChangeLangModel(title: LocalStrings.LANG_PORTUGULE.rawValue.addLocalizableString(), value: "pt-PT"),
     ]
     
     
@@ -31,7 +31,7 @@ class ChangeLanguageVC: UIViewController {
     }
     
     private func setupUI() {
-        viewHeader.lblTitle.setHeader("Language")
+        viewHeader.lblTitle.setHeader(LocalStrings.LANG_TITLE.rawValue.addLocalizableString())
         
         tblList.register(["LanguageItemCell"], delegate: self, dataSource: self)
     }
@@ -51,11 +51,11 @@ extension ChangeLanguageVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cancel = OTLAlertModel(title: "Cancel", id: 0)
-        let okay = OTLAlertModel(title: "Okay", id: 1, style: .destructive)
-        showAlert(message: "Are you sure you want to change language?",  buttons: [cancel,okay]) { alert in
+        let cancel = OTLAlertModel(title: LocalStrings.C_CANCEL.rawValue.addLocalizableString(), id: 0)
+        let okay = OTLAlertModel(title: LocalStrings.C_OK.rawValue.addLocalizableString(), id: 1, style: .destructive)
+        showAlert(message: LocalStrings.A_CHANGE_LANG.rawValue.addLocalizableString(),  buttons: [cancel,okay]) { alert in
             if alert.id == 1 {
-                SoapBx.showToast(message: "Language change successfully!!!")
+                SoapBx.showToast(message: LocalStrings.LANG_ALERT.rawValue.addLocalizableString())
                 UserDefaults.standard.set(self.arrLanguage[indexPath.row].value, forKey: OTLAppKey.Language)
                   UserDefaults.standard.synchronize()
                 mackRootView(HomeVC())

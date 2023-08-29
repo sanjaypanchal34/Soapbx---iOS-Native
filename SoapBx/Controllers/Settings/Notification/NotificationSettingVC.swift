@@ -17,10 +17,10 @@ class NotificationSettingVC: UIViewController {
     @IBOutlet private weak var tblList: UITableView!
     
     private var arrList = [
-        NotificationSettingModel(id: 1, title: "Push Notification", isSelected: false),
-        NotificationSettingModel(id: 2, title: "Direct Notification", isSelected: false),
-        NotificationSettingModel(id: 3, title: "Posts", isSelected: false),
-        NotificationSettingModel(id: 4, title: "New Connection", isSelected: false),
+        NotificationSettingModel(id: 1, title: LocalStrings.N_PUSH.rawValue.addLocalizableString(), isSelected: false),
+        NotificationSettingModel(id: 2, title: LocalStrings.N_DIRECT.rawValue.addLocalizableString(), isSelected: false),
+        NotificationSettingModel(id: 3, title: LocalStrings.N_POST.rawValue.addLocalizableString(), isSelected: false),
+        NotificationSettingModel(id: 4, title: LocalStrings.N_NEW.rawValue.addLocalizableString(), isSelected: false),
     ]
     private let vmObject = ProfileViewModel()
     
@@ -32,7 +32,7 @@ class NotificationSettingVC: UIViewController {
     }
 
     private func setupUI() {
-        viewHeader.lblTitle.setHeader("Saved Post")
+        viewHeader.lblTitle.setHeader(LocalStrings.N_TITLE.rawValue.addLocalizableString())
         
         tblList.register(["NotificationSettingItemCell"], delegate: self, dataSource: self)
     }

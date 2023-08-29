@@ -29,9 +29,9 @@ class PaymentDetailsVC: UIViewController {
     }
     
     private func setupUI() {
-        viewHeader.lblTitle.setHeader("Payment Details")
+        viewHeader.lblTitle.setHeader(LocalStrings.PAYMENT_TITLE.rawValue.addLocalizableString())
         
-        lblNoDataFound.noDataTitle("No Data Found")
+        lblNoDataFound.noDataTitle(LocalStrings.C_NO_DATA.rawValue.addLocalizableString())
         
         viewBody.backgroundColor = .white
         

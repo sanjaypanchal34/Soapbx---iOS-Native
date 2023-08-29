@@ -101,30 +101,30 @@ class PostPollsVC: UIViewController {
         lblLocation.setTheme(getValueOrDefult(authUser?.user?.location, defaultValue: "N/A"), color: .titleGray, size: 10)
         lblTime.setTheme(OTLDateConvert.instance.convert(date: Date(), toString: .mmmDDyyyyAthhmma), color: .titleGray, size: 12)
         
-        lblTitle.setTheme("Question", color: .primaryBlue, font: .bold)
-        txtTitle.placeholder = "What do you want the public to vote on?"
+        lblTitle.setTheme(LocalStrings.POLL_QUESTION.rawValue.addLocalizableString(), color: .primaryBlue, font: .bold)
+        txtTitle.placeholder = LocalStrings.POLL_QUESTION_P.rawValue.addLocalizableString()
         txtTitle.font = AppFont.regular.font(size: 16)
         
-        lblStartDate.setTheme("Start Date", color: .primaryBlue, font: .bold)
-        txtStartDate.placeholder = "What do you want your poll to be open for voting?"
+        lblStartDate.setTheme(LocalStrings.POLL_START_DATE.rawValue.addLocalizableString(), color: .primaryBlue, font: .bold)
+        txtStartDate.placeholder = LocalStrings.POLL_START_DATE_P.rawValue.addLocalizableString()
         txtStartDate.font = AppFont.regular.font(size: 16)
         txtStartDate.minDate = Date()
         txtStartDate.datePickerMode = .dateAndTime
         txtStartDate.formate = .yyyyMMdd_hhmma
         txtStartDate.datetimeDelegate = self
         
-        lblEndDate.setTheme("End Date", color: .primaryBlue, font: .bold)
-        txtEndDate.placeholder = "What do you want your poll to be closed from voting?"
+        lblEndDate.setTheme(LocalStrings.POLL_END_DATE.rawValue.addLocalizableString(), color: .primaryBlue, font: .bold)
+        txtEndDate.placeholder = LocalStrings.POLL_END_DATE_P.rawValue.addLocalizableString()
         txtEndDate.font = AppFont.regular.font(size: 16)
         txtEndDate.datePickerMode = .dateAndTime
         txtEndDate.formate = .yyyyMMdd_hhmma
         txtEndDate.isUserInteractionEnabled = false
         
         tblOptions.register(["PostPollsItemCell"], delegate: self, dataSource: self)
-        btnAddOptions.setTheme("+ Add Option", font: .semibold)
+        btnAddOptions.setTheme(LocalStrings.POLL_ADD_OPTION.rawValue.addLocalizableString(), font: .semibold)
         btnAddOptions.textAlignment = .right
         
-        lblSoapbxTrends.setTheme("Soapbx trends", color: .primaryBlue, font: .bold)
+        lblSoapbxTrends.setTheme(LocalStrings.C_POST_ADD_TREND.rawValue.addLocalizableString(), color: .primaryBlue, font: .bold)
         collSoapbxTrends.register(["PostItemPoliticalCell"], delegate: self, dataSource: self)
         collSoapbxTrends.semanticContentAttribute = .forceLeftToRight
 //        collSoapbxTrends.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
@@ -145,7 +145,7 @@ class PostPollsVC: UIViewController {
             view?.layer.borderColor = UIColor.lightGrey.cgColor
         }
         
-        btnPost.appButton(screenType == .update ? "Update" : "Post")
+        btnPost.appButton(screenType == .update ? LocalStrings.C_POST_UPDATE.rawValue.addLocalizableString() : LocalStrings.C_POST.rawValue.addLocalizableString())
         updateButtonOnAddItem()
     }
     
@@ -303,6 +303,4 @@ extension PostPollsVC : PostPollsItemDelegate {
         vmObject.arrOptions.remove(at: cell.indexPath.row)
         tblOptions.reloadData()
     }
-    
-    
 }

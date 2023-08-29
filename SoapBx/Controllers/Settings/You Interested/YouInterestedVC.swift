@@ -47,22 +47,22 @@ class YouInterestedVC: UIViewController {
     private func setupUI() {
         viewHeader.btnBack.isHidden = screenType == .fromSignup
         
-        lblTitle.setTheme(screenType == .fromSignup ? "What are you interested in?" : "",
+        lblTitle.setTheme(screenType == .fromSignup ? LocalStrings.Y_TITLE.rawValue.addLocalizableString() : "",
                           font: .bold,
                           size: 38)
         tblList.register(["YouInterestCell"], delegate: self, dataSource: self)
         
-        btnNext.appButton("Next")
+        btnNext.appButton(LocalStrings.Y_NEXT.rawValue.addLocalizableString())
         switch screenType {
             case .fromSignup:
-                btnNext.text = "Next"
-                lblTitle.text = "What are you interested in?"
+                btnNext.text = LocalStrings.Y_NEXT.rawValue.addLocalizableString()
+                lblTitle.text = LocalStrings.Y_TITLE.rawValue.addLocalizableString()
             case .fromSetting:
-                btnNext.text = "Update"
-                lblTitle.text = "What are you interested in?"
+                btnNext.text = LocalStrings.C_POST_UPDATE.rawValue.addLocalizableString()
+                lblTitle.text = LocalStrings.Y_TITLE.rawValue.addLocalizableString()
             case .fromCreatePost:
-                btnNext.text = "Done"
-                lblTitle.text = "Choose Relevant Trends"
+                btnNext.text = LocalStrings.C_DONE.rawValue.addLocalizableString()
+                lblTitle.text = LocalStrings.Y_TITLE_2.rawValue.addLocalizableString()
         }
         
         tblList.reloadData()
@@ -71,7 +71,7 @@ class YouInterestedVC: UIViewController {
     //Actions
     @IBAction private func click_btnNext() {
         if vmObject.arrSelectedId.count == 0, screenType != .fromCreatePost {
-            showToast(message: "Please select atleast one trend")
+            showToast(message: LocalStrings.Y_MSG.rawValue.addLocalizableString())
         } else {
             if screenType == .fromCreatePost {
                 let array = vmObject.arrList.compactMap { element in

@@ -40,20 +40,20 @@ class ConnectionVC: UIViewController {
     }
 
     private func setupUI() {
-        viewHeader.lblTitle.setHeader(screenType == .fromConnection ? "Connections" : "Friends")
+        viewHeader.lblTitle.setHeader(screenType == .fromConnection ? LocalStrings.CONNECTIONS.rawValue.addLocalizableString() : LocalStrings.CONN_FRIEND.rawValue.addLocalizableString())
         
         viewTabaction.layer.cornerRadius = 10
         viewTabaction.clipsToBounds = true
         
-        btnBlock.setTheme(screenType == .fromConnection ? "Blocked account" : "Request",
+        btnBlock.setTheme(screenType == .fromConnection ? LocalStrings.CONN_BLOCK.rawValue.addLocalizableString() : LocalStrings.CONN_REQUEST.rawValue.addLocalizableString(),
                           color: .white,
                           font: .semibold)
         
-        btnUnfollow.setTheme(screenType == .fromConnection ? "Unfollowed account" : "My Friends",
+        btnUnfollow.setTheme(screenType == .fromConnection ? LocalStrings.CONN_UNFOLLOW_ACCOUNT.rawValue.addLocalizableString() : LocalStrings.CONN_MY_FRIEND.rawValue.addLocalizableString(),
                              color: .white,
                              font: .semibold)
         tblList.register(["PublicFiguresItemCell"], delegate: self, dataSource: self)
-        lblNoData.noDataTitle("No Data Found")
+        lblNoData.noDataTitle(LocalStrings.C_NO_DATA.rawValue.addLocalizableString())
         
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(pullupRefresh(_:)), for: .valueChanged)
@@ -179,8 +179,8 @@ class ConnectionVC: UIViewController {
             }
         }
     }
-    
 }
+
 extension ConnectionVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if screenType == .fromConnection{

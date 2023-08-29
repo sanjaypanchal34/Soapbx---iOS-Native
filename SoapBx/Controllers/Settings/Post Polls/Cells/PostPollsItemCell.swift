@@ -32,19 +32,19 @@ class PostPollsItemCell: AppTableViewCell {
         btnDelete.type = .independent
         btnDelete.height = 15
         btnDelete.width = 12
-        lblTitle.setTheme("Option", color: .primaryBlue, font: .bold)
+        lblTitle.setTheme(LocalStrings.POLL_OPTION.rawValue.addLocalizableString(), color: .primaryBlue, font: .bold)
         viewMain.backgroundColor = .white
         viewMain.layer.cornerRadius = 10
         viewMain.layer.borderWidth = 1
         viewMain.layer.borderColor = UIColor.lightGrey.cgColor
         txtTitle.addTarget(self, action: #selector(editingDidEnd), for: .editingDidEnd)
-        txtTitle.placeholder = "Write down a response that the public can select."
+        txtTitle.placeholder = LocalStrings.POLL_PLACE_HOLDER.rawValue.addLocalizableString()
         txtTitle.font = AppFont.regular.font(size: 16)
     }
 
     func setData(text: String, isLastIndex: Bool, delegate: PostPollsItemDelegate) {
         txtTitle.text = text
-        lblTitle.text = "Option \(indexPath.row + 1)"
+        lblTitle.text = String(format: "%@ %d", LocalStrings.POLL_OPTION.rawValue.addLocalizableString(), (indexPath.row + 1))
         self.delegate = delegate
         btnDelete.isHidden = !isLastIndex
     }

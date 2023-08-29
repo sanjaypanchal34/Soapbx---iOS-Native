@@ -28,7 +28,7 @@ class InviteFriendsVC: UIViewController {
     }
     
     private func setupUI() {
-        headerView.lblTitle.setHeader("Invite Friends")
+        headerView.lblTitle.setHeader(LocalStrings.I_TITLE.rawValue.addLocalizableString())
         strReferCode = authUser?.user?.referral_code ?? ""
         
         
@@ -40,7 +40,7 @@ class InviteFriendsVC: UIViewController {
         btnCopy.height = 20
         btnCopy.addTarget(self, action: #selector(click_btnCopy), for: .touchUpInside)
         
-        btnInvite.appButton("Invite")
+        btnInvite.appButton(LocalStrings.I_BUTTON.rawValue.addLocalizableString())
         btnInvite.addTarget(self, action: #selector(click_btnInvite), for: .touchUpInside)
     }
     

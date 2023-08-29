@@ -31,12 +31,14 @@ enum LocalStrings: String {
     case C_REQUESTED = "c_requested"
     case C_NO_DATA = "c_no_data"
     case C_SUBMIT = "c_submit"
+    case C_OPEN = "c_open"
     
     //ALERT
     case A_LOGOUT = "a_logout"
     case A_DELETE_IMAGE = "a_delete_image"
     case A_DELETE_ACCOUNT = "a_delete_account"
     case A_DELETE_POST = "a_delete_post"
+    case A_CHANGE_LANG = "a_change_lang"
     
     //SIDE MENU
     case S_SUPPORT = "s_support"
@@ -194,4 +196,105 @@ enum LocalStrings: String {
     case P_EMAIL = "p_email"
     case P_PASSWORD = "p_password"
     case P_LOCATION = "p_location"
+    
+    // LANGUAGE
+    case LANG_ENG = "lang_eng"
+    case LANG_SPANISH = "lang_spanish"
+    case LANG_FRENCH = "lang_french"
+    case LANG_GERMAN = "lang_german"
+    case LANG_PORTUGULE = "lang_portugule"
+    case LANG_TITLE = "lang_title"
+    case LANG_ALERT = "lang_alert"
+    
+    // PAYMENT
+    case PAYMENT_TITLE = "payment_title"
+    
+    // POST POLL
+    case POLL_OPTION = "poll_option"
+    case POLL_PLACE_HOLDER = "poll_place_holder"
+    case POLL_QUESTION = "poll_question"
+    case POLL_QUESTION_P = "poll_question_p"
+    case POLL_END_DATE = "poll_end_date"
+    case POLL_END_DATE_P = "poll_end_date_p"
+    case POLL_START_DATE = "poll_start_date"
+    case POLL_START_DATE_P = "poll_start_date_p"
+    case POLL_ADD_OPTION = "poll_add_option"
+    case POLL_NO_DATA = "poll_no_data"
+    case POLL_TITLE = "poll_title"
+    
+    //CONNECTIONS
+    case CONNECTIONS = "connections"
+    case CONN_FRIEND = "conn_friend"
+    case CONN_BLOCK = "conn_block"
+    case CONN_REQUEST = "conn_request"
+    case CONN_UNFOLLOW_ACCOUNT = "conn_unfollow_account"
+    case CONN_MY_FRIEND = "conn_my_friend"
+    
+    //CMS
+    case FAQ = "faq"
+    case ABOUT = "about"
+    case TERMS = "terms"
+    case PRIVACY = "privacy"
+    
+    //NOTIFICATION
+    case N_PUSH = "n_push"
+    case N_DIRECT = "n_direct"
+    case N_POST = "n_post"
+    case N_NEW = "n_new"
+    case N_TITLE = "n_title"
+    
+    //CHANGE PASSWORD
+    case CP_TITLE = "cp_title"
+    case CP_OLD = "cp_old"
+    case CP_NEW = "cp_new"
+    case CP_CNEW = "cp_cnew"
+    
+    // SUGGEST
+    case S_TITLE = "s_title"
+    case S_TITLE_FEEDBACK = "s_title_feedback"
+    case S_PROFILE = "s_profile"
+    case S_EMAIL = "s_email"
+    case S_LOCATION = "s_location"
+    case S_PNUMBER = "s_pnumber"
+    case S_WHAT_IN_MIND = "s_what_in_mind"
+    case S_SEND = "s_send"
+    
+    // SAVED POST
+    case SAVED_TITLE = "saved_title"
+    
+    // INVITE FRIEND
+    case I_TITLE = "i_title"
+    case I_BUTTON = "i_button"
+    
+    // ENABLE LOCATION
+    case E_TITLE = "e_title"
+    case E_MESSAGE = "e_message"
+    case E_DESC = "e_desc"
+    case E_ENABLE = "e_enable"
+    case E_SKIP = "e_skip"
+    case E_NOT_DETERMINE = "e_not_determine"
+    
+    // SUBSCRIBE
+    case SUB_TITLE = "sub_title"
+    case SUB_TITLE_SETTING = "sub_title_setting"
+    case SUB_B_NEXT = "sub_b_next"
+    case SUB_B_UPGRADE = "sub_b_upgrade"
+    case SUB_B_SUPPORT = "sub_b_support"
+    case SUB_MSG = "sub_msg"
+    case SUB_ITEM_BLOG = "sub_item_blog"
+    case SUB_ITEM_CONDUCT = "sub_item_conduct"
+    case SUB_ITEM_PRIORITY = "sub_item_priority"
+    case SUB_ITEM_CHOOSE = "sub_item_choose"
+    case SUB_ITEM_SOAPBX = "sub_item_soapbx"
+    case SUB_ITEM_FEATURE = "sub_item_feature"
+    case SUB_ITEM_REWARD = "sub_item_reward"
+    case SUB_ITEM_INVITE = "sub_item_invite"
+    case SUB_ITEM_F_BLOG = "sub_item_f_blog"
+    case SUB_ITEM_F_POLL = "sub_item_f_poll"
+    
+    // YOU INTREST
+    case Y_TITLE = "y_title"
+    case Y_TITLE_2 = "y_title_2"
+    case Y_NEXT = "y_next"
+    case Y_MSG = "y_msg"
 }

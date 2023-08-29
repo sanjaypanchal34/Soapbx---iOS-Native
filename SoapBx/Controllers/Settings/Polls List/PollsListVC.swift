@@ -28,10 +28,10 @@ class PollsListVC: UIViewController {
     }
 
     private func setupUI() {
-        viewHeader.lblTitle.setHeader("Poll")
+        viewHeader.lblTitle.setHeader(LocalStrings.POLL_TITLE.rawValue.addLocalizableString())
         btnPostPolls.image = UIImage(named: "ic_paymentAdd")
         
-        lblNoDataFound.noDataTitle("No Polls Found")
+        lblNoDataFound.noDataTitle(LocalStrings.POLL_NO_DATA.rawValue.addLocalizableString())
         
         viewBody.backgroundColor = .lightGrey
         
@@ -132,7 +132,4 @@ extension PollsListVC: PollsListItemDelegate {
         self.tblList.setNeedsDisplay()
         self.tblList.endUpdates()
     }
-    
 }
-
-

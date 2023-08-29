@@ -16,15 +16,15 @@ enum SubscribeScreenType {
     
     var title: String {
         switch self {
-        case .fromRegister: return "Subscribe on Soapbx"
-        case .fromSetting: return "Upgrade Subscription plan"
+        case .fromRegister: return LocalStrings.SUB_TITLE.rawValue.addLocalizableString()
+        case .fromSetting: return LocalStrings.SUB_TITLE_SETTING.rawValue.addLocalizableString()
         }
     }
     
     var buttonTitle: String {
         switch self {
-        case .fromRegister: return "Next"
-        case .fromSetting: return "Upgrade"
+        case .fromRegister: return LocalStrings.SUB_B_NEXT.rawValue.addLocalizableString()
+        case .fromSetting: return LocalStrings.SUB_B_UPGRADE.rawValue.addLocalizableString()
         }
     }
 }
@@ -82,7 +82,7 @@ class SubscribeVC: UIViewController {
         viewHeader.btnBack.isHidden = screenType == .fromRegister
         
         btnSupport.backgroundColor = .primaryBlue
-        btnSupport.title?.setTheme("Support Soapbx", color: .white)
+        btnSupport.title?.setTheme(LocalStrings.SUB_B_SUPPORT.rawValue.addLocalizableString(), color: .white)
         btnSupport.imageView?.image = UIImage(named: "ic_crown")
         btnSupport.layer.cornerRadius = 10
         btnSupport.isHidden = screenType == .fromRegister ? true : false
@@ -103,7 +103,7 @@ class SubscribeVC: UIViewController {
             if object.count > 0 {
                 updateSubscriptionPlans()
             } else {
-                showToast(message: "Please select subscription plan")
+                showToast(message: LocalStrings.SUB_MSG.rawValue.addLocalizableString())
             }
         } else {
             let sId: Int = (object.first?.id)!

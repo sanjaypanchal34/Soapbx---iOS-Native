@@ -37,22 +37,22 @@ class SuggestFeatureVC: UIViewController {
 
     private func setupUI() {
  
-        viewHeader.lblTitle.setHeader(screenType == .feedback ? "Feedback" : "Suggest Feature")
+        viewHeader.lblTitle.setHeader(screenType == .feedback ? LocalStrings.S_TITLE_FEEDBACK.rawValue.addLocalizableString() : LocalStrings.S_TITLE.rawValue.addLocalizableString())
         
-        txtProfileName.setTheme(placeholder: "Profile Name")
-        txtEmail.setTheme(placeholder: "Email")
-        txtLocation.setTheme(placeholder: "Location")
-        txtPhoneNo.setTheme(placeholder: "Phone Number")
+        txtProfileName.setTheme(placeholder: LocalStrings.S_PROFILE.rawValue.addLocalizableString())
+        txtEmail.setTheme(placeholder: LocalStrings.S_EMAIL.rawValue.addLocalizableString())
+        txtLocation.setTheme(placeholder: LocalStrings.S_LOCATION.rawValue.addLocalizableString())
+        txtPhoneNo.setTheme(placeholder: LocalStrings.S_PNUMBER.rawValue.addLocalizableString())
         
         viewComment.backgroundColor = .white
         viewComment.layer.cornerRadius = 10
         viewComment.layer.borderWidth = 1
         viewComment.layer.borderColor = UIColor.lightGrey.cgColor
-        lblCommentPlaceholder.setTheme("What is on your mind?", color: .titleGray, size: 18)
+        lblCommentPlaceholder.setTheme(LocalStrings.S_WHAT_IN_MIND.rawValue.addLocalizableString(), color: .titleGray, size: 18)
         txtComment.font = AppFont.regular.font(size: 18)
         txtComment.delegate = self
         
-        btnUpdate.appButton("Send")
+        btnUpdate.appButton(LocalStrings.S_SEND.rawValue.addLocalizableString())
         setData()
     }
     

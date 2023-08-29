@@ -14,10 +14,10 @@ enum CMSPageScreenType {
     
     var title:String {
         switch self {
-        case .faq: return "FAQ"
-        case .about: return "About Soapbx"
-        case .termsCondition: return "Terms of Service"
-        case .policy: return "Privacy Policy"
+        case .faq: return LocalStrings.FAQ.rawValue.addLocalizableString()
+        case .about: return LocalStrings.ABOUT.rawValue.addLocalizableString()
+        case .termsCondition: return LocalStrings.TERMS.rawValue.addLocalizableString()
+        case .policy: return LocalStrings.PRIVACY.rawValue.addLocalizableString()
         }
     }
     

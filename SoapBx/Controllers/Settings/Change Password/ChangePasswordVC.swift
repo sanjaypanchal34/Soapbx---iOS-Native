@@ -38,13 +38,13 @@ class ChangePasswordVC: UIViewController {
 
     private func setupUI() {
  
-        viewHeader.lblTitle.setHeader("Change Password")
+        viewHeader.lblTitle.setHeader(LocalStrings.CP_TITLE.rawValue.addLocalizableString())
         
-        txtOldPassword.setTheme(placeholder: "Old Password")
-        txtNewPassword.setTheme(placeholder: "New Password")
-        txtConfPassword.setTheme(placeholder: "Confirm Password")
+        txtOldPassword.setTheme(placeholder: LocalStrings.CP_OLD.rawValue.addLocalizableString())
+        txtNewPassword.setTheme(placeholder: LocalStrings.CP_NEW.rawValue.addLocalizableString())
+        txtConfPassword.setTheme(placeholder: LocalStrings.CP_CNEW.rawValue.addLocalizableString())
         
-        btnUpdate.appButton("Update")
+        btnUpdate.appButton(LocalStrings.C_POST_UPDATE.rawValue.addLocalizableString())
         
         if screenType == .fromForgotPassword {
             txtOldPassword.isHidden = true

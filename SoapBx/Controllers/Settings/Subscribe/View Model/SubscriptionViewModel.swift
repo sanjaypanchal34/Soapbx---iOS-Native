@@ -12,16 +12,16 @@ import Foundation
 class SubscriptionViewModel {
     
     var arrSubscribeNote = [
-        SubscribeNotesModel(title: "Blog and Report", freemium: "1/Month", premium: "1/Day",canSymbol: false),
-        SubscribeNotesModel(title: "Conduct Polls", freemium: "1", premium: "1/Week",canSymbol: false),
-        SubscribeNotesModel(title: "Priority Support", freemium: "n", premium: "y"),
-        SubscribeNotesModel(title: "Choose Trends", freemium: "y", premium: "y"),
-        SubscribeNotesModel(title: "Soapbx Initiatives", freemium: "n", premium: "y"),
-        SubscribeNotesModel(title: "Featured Member", freemium: "n", premium: "y"),
-        SubscribeNotesModel(title: "Rewards", freemium: "n", premium: "y"),
-        SubscribeNotesModel(title: "Invite Friends", freemium: "y", premium: "y"),
-        SubscribeNotesModel(title: "Featured Blog", freemium: "y", premium: "y"),
-        SubscribeNotesModel(title: "Featured Poll", freemium: "n", premium: "y"),
+        SubscribeNotesModel(title: LocalStrings.SUB_ITEM_BLOG.rawValue.addLocalizableString(), freemium: "1/Month", premium: "1/Day",canSymbol: false),
+        SubscribeNotesModel(title: LocalStrings.SUB_ITEM_CONDUCT.rawValue.addLocalizableString(), freemium: "1", premium: "1/Week",canSymbol: false),
+        SubscribeNotesModel(title: LocalStrings.SUB_ITEM_PRIORITY.rawValue.addLocalizableString(), freemium: "n", premium: "y"),
+        SubscribeNotesModel(title: LocalStrings.SUB_ITEM_CHOOSE.rawValue.addLocalizableString(), freemium: "y", premium: "y"),
+        SubscribeNotesModel(title: LocalStrings.SUB_ITEM_SOAPBX.rawValue.addLocalizableString(), freemium: "n", premium: "y"),
+        SubscribeNotesModel(title: LocalStrings.SUB_ITEM_FEATURE.rawValue.addLocalizableString(), freemium: "n", premium: "y"),
+        SubscribeNotesModel(title: LocalStrings.SUB_ITEM_REWARD.rawValue.addLocalizableString(), freemium: "n", premium: "y"),
+        SubscribeNotesModel(title: LocalStrings.SUB_ITEM_INVITE.rawValue.addLocalizableString(), freemium: "y", premium: "y"),
+        SubscribeNotesModel(title: LocalStrings.SUB_ITEM_BLOG.rawValue.addLocalizableString(), freemium: "y", premium: "y"),
+        SubscribeNotesModel(title: LocalStrings.SUB_ITEM_F_POLL.rawValue.addLocalizableString(), freemium: "n", premium: "y"),
     ]
     
     var arrSubsciption: [SubscribeModel] = []

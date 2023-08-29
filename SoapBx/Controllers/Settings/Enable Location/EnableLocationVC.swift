@@ -24,7 +24,7 @@ class EnableLocationVC: UIViewController  {
         didSet {
             if oldValue.isEmptyString {
                 
-                showToast(message: "Yor current location is \(placeName)")
+                showToast(message: String(format: "%@%@", LocalStrings.E_MESSAGE.rawValue.addLocalizableString(), placeName))
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     mackRootView(HomeVC())
                     hideLoader()
@@ -48,14 +48,14 @@ class EnableLocationVC: UIViewController  {
 
     //MARK: - Setup view
     private func setupUI() {
-        lblTitle.setTheme("Enable location",
+        lblTitle.setTheme(LocalStrings.E_TITLE.rawValue.addLocalizableString(),
                           font: .bold,
                           size: 40)
         
-        lblDescription.setTheme("We want to access your location only to provide a better experience by helping you finding your exact location.", color: .titleGray, font: .regular, size: 14)
+        lblDescription.setTheme(LocalStrings.E_DESC.rawValue.addLocalizableString(), color: .titleGray, font: .regular, size: 14)
         
-        btnNext.appButton("Enable")
-        btnSkip.setTheme("Skip for now", color: .titleGray)
+        btnNext.appButton(LocalStrings.E_ENABLE.rawValue.addLocalizableString())
+        btnSkip.setTheme(LocalStrings.E_SKIP.rawValue.addLocalizableString(), color: .titleGray)
         
     }
     
@@ -70,16 +70,11 @@ class EnableLocationVC: UIViewController  {
                 case .authorizedAlways, .authorizedWhenInUse:
                     locationManager?.startUpdatingLocation()
                     locationManager?.startMonitoringSignificantLocationChanges()
-
-                    print("Authorize.")
-                    
                     break
                     
                 case .notDetermined:
-                    
-                    print("Not determined.")
-                    showAlert(message: "Please Allow Location for get near by post. open settings and allow location", buttons:["Open", "Cancel"]) { alert in
-                        if alert.title == "Open" {
+                    showAlert(message: LocalStrings.E_NOT_DETERMINE.rawValue.addLocalizableString(), buttons:[LocalStrings.C_OPEN.rawValue.addLocalizableString(), LocalStrings.C_CANCEL.rawValue.addLocalizableString()]) { alert in
+                        if alert.title == LocalStrings.C_OPEN.rawValue.addLocalizableString() {
                             if let url = URL(string:UIApplication.openSettingsURLString)
                             {
                                 if UIApplication.shared.canOpenURL(url) {
@@ -91,10 +86,8 @@ class EnableLocationVC: UIViewController  {
                     break
                     
                 case .restricted:
-                    
-                    print("Restricted.")
-                    showAlert(message: "Please Allow Location for get near by post. open settings and allow location", buttons:["Open", "Cancel"]) { alert in
-                        if alert.title == "Open" {
+                    showAlert(message: LocalStrings.E_NOT_DETERMINE.rawValue.addLocalizableString(), buttons:[LocalStrings.C_OPEN.rawValue.addLocalizableString(), LocalStrings.C_CANCEL.rawValue.addLocalizableString()]) { alert in
+                        if alert.title == LocalStrings.C_OPEN.rawValue.addLocalizableString() {
                             if let url = URL(string:UIApplication.openSettingsURLString)
                             {
                                 if UIApplication.shared.canOpenURL(url) {
@@ -107,8 +100,8 @@ class EnableLocationVC: UIViewController  {
                     
                 case .denied:
                     locationManager?.requestWhenInUseAuthorization()
-                    showAlert(message: "Please Allow Location for get near by post. open settings and allow location", buttons:["Open", "Cancel"]) { alert in
-                        if alert.title == "Open" {
+                    showAlert(message: LocalStrings.E_NOT_DETERMINE.rawValue.addLocalizableString(), buttons:[LocalStrings.C_OPEN.rawValue.addLocalizableString(), LocalStrings.C_CANCEL.rawValue.addLocalizableString()]) { alert in
+                        if alert.title == LocalStrings.C_OPEN.rawValue.addLocalizableString() {
                             if let url = URL(string:UIApplication.openSettingsURLString)
                             {
                                 if UIApplication.shared.canOpenURL(url) {
@@ -117,7 +110,6 @@ class EnableLocationVC: UIViewController  {
                             }
                         }
                     }
-                    print("Denied.")
                 default:
                     break
                     

@@ -8,6 +8,8 @@
 
 // COMMON
 "c_ok" = "Okay";
+"c_yes" = "Yes";
+"c_no" = "No";
 "c_cancel" = "Cancel";
 "c_done" = "Done";
 "c_resend" = "Resend";
@@ -23,10 +25,14 @@
 "c_delete" = "Delete";
 "c_remove" = "Remove";
 "c_unblock" = "Unblock";
+"c_block" = "Block";
 "c_requested" = "Requested";
+"c_no_data" = "No Data Found";
 
 //ALERT
 "a_logout" = "Are you sure you want to logout?";
+"a_delete_image" = "Are you sure you want to delete this image?";
+"a_delete_account" = "Are you sure you want to delete this account?";
 
 // SIDE MENU
 "s_support" = "Support Soapbx";
@@ -127,6 +133,31 @@
 "p_basic_in_office" = "In Office:";
 "p_basic_senior" = "Seniority:";
 "p_basic_senate" = "Senate Class:";
+
+// CREATE POST
+"c_post_create" = "Create Post";
+"c_post_edit" = "Edit Post";
+"c_post_add_title" = "Add Title";
+"c_post_about" = "What is your post about?";
+"c_post_desc" = "Add Description";
+"c_post_mind" = "What is on your mind?";
+"c_post_add_image" = "Add Image";
+"c_post_add_politician" = "Politician Involved";
+"c_post_add_trend" = "Soapbx trends";
+"c_post" = "Post";
+"c_post_update" = "Update";
+
+//PROFILE
+"profile_edit" = "Edit Profile";
+"profile" = "Profile";
+"profile_delete" = "Delete Account";
+"profile_message" = "Message";
+"profile_vocie" = "What do you want to voice today?";
+
+//FOLLOW
+"f_follow" = "Followers";
+"f_following" = "Following";
+"f_politician" = "Politicians";
 
 //PLACE HOLDERS
 "p_email" = "Email";

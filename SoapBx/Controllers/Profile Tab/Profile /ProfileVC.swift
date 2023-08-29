@@ -71,7 +71,7 @@ class ProfileVC: UIViewController {
         viewTradPost.regiter(viewType: screenType == .fromOtherUserProfile ? .fromOtherUserProfile : .fromProfile, delegate: self)
         
         if screenType == .profileTab {
-            viewHeader.lblTitle.setHeader("Profile")
+            viewHeader.lblTitle.setHeader(LocalStrings.PROFILE.rawValue.addLocalizableString())
             viewHeader.btnBack.isHidden = true
             btnNotification.isHidden = false
             btnManu.isHidden = false
@@ -103,8 +103,8 @@ class ProfileVC: UIViewController {
         if authUser?.loginType == .userLogin {
             showSideMenu()
         } else {
-            showAlert(message: "You must Login to access this feature",buttons: ["Cancel", "Login"]) { alert in
-                if alert.title == "Login" {
+            showAlert(message: LocalStrings.SEARCH_ALERT.rawValue.addLocalizableString(),buttons: [LocalStrings.C_CANCEL.rawValue.addLocalizableString(), LocalStrings.C_LOGIN.rawValue.addLocalizableString()]) { alert in
+                if alert.title == LocalStrings.C_LOGIN.rawValue.addLocalizableString() {
                     mackRootView(LoginVC())
                 }
             }

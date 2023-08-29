@@ -10,6 +10,8 @@ import Foundation
 enum LocalStrings: String {
     //COMMON
     case C_OK = "c_ok"
+    case C_YES = "c_yes"
+    case C_NO = "c_no"
     case C_CANCEL = "c_cancel"
     case C_DONE = "c_done"
     case C_RESEND = "c_resend"
@@ -25,10 +27,14 @@ enum LocalStrings: String {
     case C_DELETE = "c_delete"
     case C_REMOVE = "c_remove"
     case C_UNBLOCK = "c_unblock"
+    case C_BLOCK = "c_block"
     case C_REQUESTED = "c_requested"
+    case C_NO_DATA = "c_no_data"
     
     //ALERT
     case A_LOGOUT = "a_logout"
+    case A_DELETE_IMAGE = "a_delete_image"
+    case A_DELETE_ACCOUNT = "a_delete_account"
     
     //SIDE MENU
     case S_SUPPORT = "s_support"
@@ -128,6 +134,31 @@ enum LocalStrings: String {
     case P_BASIC_IN_OFFICE = "p_basic_in_office"
     case P_BASIC_SENIOR = "p_basic_senior"
     case P_BASIC_SENATE = "p_basic_senate"
+    
+    // CREATE POST
+    case C_POST_CREATE = "c_post_create"
+    case C_POST_EDIT = "c_post_edit"
+    case C_POST_ADD_TITLE = "c_post_add_title"
+    case C_POST_ABOUT = "c_post_about"
+    case C_POST_DESC = "c_post_desc"
+    case C_POST_MIND = "c_post_mind"
+    case C_POST_ADD_IMAGE = "c_post_add_image"
+    case C_POST_ADD_POLITICIAN = "c_post_add_politician"
+    case C_POST_ADD_TREND = "c_post_add_trend"
+    case C_POST = "c_post"
+    case C_POST_UPDATE = "c_post_update"
+    
+    //PROFILE
+    case PROFILE_EDIT = "profile_edit"
+    case PROFILE = "profile"
+    case PROFILE_DELETE = "profile_delete"
+    case PROFILE_MESSAGE = "profile_message"
+    case PROFILE_VOCIE = "profile_vocie"
+    
+    //FOLLOW
+    case F_FOLLOW = "f_follow"
+    case F_FOLLOWING = "f_following"
+    case F_POLITICIAN = "f_politician"
     
     // PLACE HOLDERS
     case P_EMAIL = "p_email"

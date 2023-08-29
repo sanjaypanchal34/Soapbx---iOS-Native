@@ -113,7 +113,7 @@ class CreatePostVC: UIViewController {
     
     
     private func setupUI() {
-        viewHeader.lblTitle.setHeader(screenType == .editPost ? "Edit Post" : "Create Post")
+        viewHeader.lblTitle.setHeader(screenType == .editPost ? LocalStrings.C_POST_EDIT.rawValue.addLocalizableString() : LocalStrings.C_POST_CREATE.rawValue.addLocalizableString())
         
         imgProfile.layer.cornerRadius = imgProfile.frame.height/2
         imgProfile.setImage(authUser?.user?.profile_photo_url)
@@ -123,30 +123,30 @@ class CreatePostVC: UIViewController {
         lblTime.setTheme("",size: 12)
         lblTime.text = OTLDateConvert.instance.convert(date: Date(), toString: .mmmDDyyyyAthhmma)
         
-        lblTitle.setTheme("Add Title", color: .primaryBlue, font: .bold)
-        txtTitle.placeholder = "What is your post about?"
+        lblTitle.setTheme(LocalStrings.C_POST_ADD_TITLE.rawValue.addLocalizableString(), color: .primaryBlue, font: .bold)
+        txtTitle.placeholder = LocalStrings.C_POST_ABOUT.rawValue.addLocalizableString()
         txtTitle.font = AppFont.regular.font(size: 18)
         txtTitle.maxLength = 50
         
-        lblDescription.setTheme("Add Description", color: .primaryBlue, font: .bold)
-        lblDescriptionPlaceholder.setTheme("What is on your mind?", color: .titleGray, size: 18)
+        lblDescription.setTheme(LocalStrings.C_POST_DESC.rawValue.addLocalizableString(), color: .primaryBlue, font: .bold)
+        lblDescriptionPlaceholder.setTheme(LocalStrings.C_POST_MIND.rawValue.addLocalizableString(), color: .titleGray, size: 18)
         txtDescription.font = AppFont.regular.font(size: 18)
         txtDescription.delegate = self
         
-        lblImage.setTheme("Add Image", color: .primaryBlue, font: .bold)
+        lblImage.setTheme(LocalStrings.C_POST_ADD_IMAGE.rawValue.addLocalizableString(), color: .primaryBlue, font: .bold)
         collImage.register(["PostImageItemCell"], delegate: self, dataSource: self)
         let layoutForImage = UICollectionViewFlowLayout()
         layoutForImage.scrollDirection = .horizontal
         collImage.collectionViewLayout = layoutForImage
         
-        lblPolitician.setTheme("Politician Involved", color: .primaryBlue, font: .bold)
+        lblPolitician.setTheme(LocalStrings.C_POST_ADD_POLITICIAN.rawValue.addLocalizableString(), color: .primaryBlue, font: .bold)
         collPolitician.register(["PostItemPoliticalCell"], delegate: self, dataSource: self)
         let layout = OTLTagFlowLayout()
         layout.estimatedItemSize = CGSize(width: 140, height: 40)
         collPolitician.collectionViewLayout = layout
 //        collPolitician.collectionViewLayout = politicianFlowLayout
         
-        lblSoapbxTrends.setTheme("Soapbx trends", color: .primaryBlue, font: .bold)
+        lblSoapbxTrends.setTheme(LocalStrings.C_POST_ADD_TREND.rawValue.addLocalizableString(), color: .primaryBlue, font: .bold)
         collSoapbxTrends.register(["PostItemPoliticalCell"], delegate: self, dataSource: self)
         let layout1 = OTLTagFlowLayout()
         layout1.estimatedItemSize = CGSize(width: 140, height: 40)
@@ -159,9 +159,9 @@ class CreatePostVC: UIViewController {
             view?.layer.borderColor = UIColor.lightGrey.cgColor
         }
         
-        btnPost.appButton("Post")
+        btnPost.appButton(LocalStrings.C_POST.rawValue.addLocalizableString())
         if screenType == .editPost {
-            btnPost.text = "Update"
+            btnPost.text = LocalStrings.C_POST_UPDATE.rawValue.addLocalizableString()
             txtTitle.text = vmObject.postObj?.title
             txtDescription.text = vmObject.postObj?.description
             lblDescriptionPlaceholder.isHidden = (vmObject.postObj?.description?.count ?? 0) > 0
@@ -193,11 +193,11 @@ class CreatePostVC: UIViewController {
     private func addImageAlert() {
         PHPhotoLibrary.execute(controller: self, onAccessHasBeenGranted: {
             DispatchQueue.main.async {
-                let camera = OTLAlertModel(title: "Camera", id: 0)
-                let gallary = OTLAlertModel(title: "Gallary", id: 1)
-                let cancel = OTLAlertModel(title: "Cancel", id: 2, style: .destructive)
+                let camera = OTLAlertModel(title: LocalStrings.C_CAMERA.rawValue.addLocalizableString(), id: 0)
+                let gallary = OTLAlertModel(title: LocalStrings.C_GALLERY.rawValue.addLocalizableString(), id: 1)
+                let cancel = OTLAlertModel(title: LocalStrings.C_CANCEL.rawValue.addLocalizableString(), id: 2, style: .destructive)
                 
-                showAlert(title: "Media Type", message: "", buttons: [camera, gallary, cancel]) { alert in
+                showAlert(title: LocalStrings.C_MEDIA_TYPE.rawValue.addLocalizableString(), message: "", buttons: [camera, gallary, cancel]) { alert in
                     if alert.id == 0 {
                         self.openCamera()
                     } else if alert.id == 1 {
@@ -429,8 +429,8 @@ extension CreatePostVC:  UIImagePickerControllerDelegate , UINavigationControlle
 }
 extension CreatePostVC: PostImageItemDelegate {
     func postImageItem(_ cell: PostImageItemCell, didSelectDelete: Void) {
-        showAlert(message: "Are you sure you want to delete this image?", buttons: ["Yes", "No"]) { alert in
-            if alert.title == "Yes" {
+        showAlert(message: LocalStrings.A_DELETE_IMAGE.rawValue.addLocalizableString(), buttons: [LocalStrings.C_YES.rawValue.addLocalizableString(), LocalStrings.C_NO.rawValue.addLocalizableString()]) { alert in
+            if alert.title == LocalStrings.C_YES.rawValue.addLocalizableString() {
                 if self.screenType == .editPost {
                     if let id = self.vmObject.arrImages[cell.indexPath.row].id {
                         self.deleteImage(image: id)

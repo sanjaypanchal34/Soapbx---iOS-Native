@@ -50,9 +50,9 @@ class ProfileUserInfoView: UIView {
         imgProfile.contentMode = .scaleAspectFill
         imgProfile.layer.cornerRadius = imgProfile.frame.height/2
         
-        btnEditProfile.setTitle("Edit Profile", for: .normal)
+        btnEditProfile.setTitle(LocalStrings.PROFILE_EDIT.rawValue.addLocalizableString(), for: .normal)
         btnEditProfile.setTitleColor(.primaryBlue, for: .normal)
-        btnDeleteAccunt.setTitle("Delete Account", for: .normal)
+        btnDeleteAccunt.setTitle(LocalStrings.PROFILE_DELETE.rawValue.addLocalizableString(), for: .normal)
         btnDeleteAccunt.setTitleColor(.titleRed, for: .normal)
         
         lblProfileName.setTheme("", font: .bold,size: 20, lines: 1)
@@ -60,26 +60,26 @@ class ProfileUserInfoView: UIView {
         lblLocation.textAlignment = .center
         
         viewMessageFollowBackButtons.backgroundColor = .clear
-        btnMessage.setTheme("Message", color: .white, font: .bold, size: 14,background: .primaryBlue)
+        btnMessage.setTheme(LocalStrings.PROFILE_MESSAGE.rawValue.addLocalizableString(), color: .white, font: .bold, size: 14,background: .primaryBlue)
         btnMessage.layer.cornerRadius = 5
-        btnFollow.setTheme("Follow", color: .white, font: .bold, size: 14,background: .titleRed)
+        btnFollow.setTheme(LocalStrings.C_FOLLOW.rawValue.addLocalizableString(), color: .white, font: .bold, size: 14,background: .titleRed)
         btnFollow.layer.cornerRadius = 5
-        btnBlock.setTheme("Block", color: .white, font: .bold, size: 14,background: .primaryBlue)
+        btnBlock.setTheme(LocalStrings.C_BLOCK.rawValue.addLocalizableString(), color: .white, font: .bold, size: 14,background: .primaryBlue)
         btnBlock.layer.cornerRadius = 5
         
         
         btnFollowers.lblTitle.setTheme("0", color: .primaryBlue, font: .bold, size: 18)
-        btnFollowers.lblDescription.setTheme("Followers", size: 14)
+        btnFollowers.lblDescription.setTheme(LocalStrings.F_FOLLOW.rawValue.addLocalizableString(), size: 14)
         btnFollowing.lblTitle.setTheme("0", color: .primaryBlue, font: .bold, size: 18)
-        btnFollowing.lblDescription.setTheme("Following", size: 14)
+        btnFollowing.lblDescription.setTheme(LocalStrings.F_FOLLOWING.rawValue.addLocalizableString(), size: 14)
         btnPoliticians.lblTitle.setTheme("0", color: .primaryBlue, font: .bold, size: 18)
-        btnPoliticians.lblDescription.setTheme("Politicians", size: 14)
+        btnPoliticians.lblDescription.setTheme(LocalStrings.F_POLITICIAN.rawValue.addLocalizableString(), size: 14)
         
         
         btnVoiceToday.imageView?.image = UIImage(named: "")
         btnVoiceToday.imageView?.contentMode = .scaleAspectFill
         btnVoiceToday.imageView?.layer.cornerRadius = (btnVoiceToday.imageView?.frame.height ?? 0)/2
-        btnVoiceToday.title?.setTheme("What do you want to voice today?", color: .lightGrey)
+        btnVoiceToday.title?.setTheme(LocalStrings.PROFILE_VOCIE.rawValue.addLocalizableString(), color: .lightGrey)
         btnVoiceToday.layer.cornerRadius = btnVoiceToday.frame.height/2
         btnVoiceToday.layer.borderWidth = 1
         btnVoiceToday.layer.borderColor = UIColor.lightGrey.cgColor
@@ -110,13 +110,13 @@ class ProfileUserInfoView: UIView {
         btnFollowing.lblTitle.text = "\(user.following ?? 0)"
         btnPoliticians.lblTitle.text = "\(user.politician ?? 0)"
         if user.statusUser == 1 {
-            btnFollow.text = "Requseted"
+            btnFollow.text = LocalStrings.C_REQUESTED.rawValue.addLocalizableString()
             btnFollow.backgroundColor = .primaryBlue
         } else if user.statusUser == 2 {
-            btnFollow.text = "Unfollow"
+            btnFollow.text = LocalStrings.C_UNFOLLOW.rawValue.addLocalizableString()
             btnFollow.backgroundColor = .primaryBlue
         } else {
-            btnFollow.text = "Follow"
+            btnFollow.text = LocalStrings.C_FOLLOW.rawValue.addLocalizableString()
             btnFollow.backgroundColor = .titleRed
         }
         btnVoiceToday.imageView?.setImage(user.profilePhotoURL)
@@ -144,10 +144,10 @@ class ProfileUserInfoView: UIView {
     }
     
     @IBAction private func click_deleteAccount() {
-        showAlert(message: "Are you sure you want to delete this account?",
+        showAlert(message: LocalStrings.A_DELETE_ACCOUNT.rawValue.addLocalizableString(),
                   buttons: [
-                    OTLAlertModel(title: "Cancel", id: 0),
-                    OTLAlertModel(title: "Delete", id: 1, style: .destructive),
+                    OTLAlertModel(title: LocalStrings.C_CANCEL.rawValue.addLocalizableString(), id: 0),
+                    OTLAlertModel(title: LocalStrings.C_DELETE.rawValue.addLocalizableString(), id: 1, style: .destructive),
                   ]) { alert in
                       if alert.id == 1 {
                           mackRootView(LoginVC())
@@ -181,8 +181,8 @@ class ProfileUserInfoView: UIView {
         if authUser?.loginType == .userLogin {
             delegate?.profileUserMessage(message: userObj!)
         } else {
-            showAlert(message: "You must Login to access this feature",buttons: ["Cancel", "Login"]) { alert in
-                if alert.title == "Login" {
+            showAlert(message: LocalStrings.SEARCH_ALERT.rawValue.addLocalizableString(),buttons: [LocalStrings.C_CANCEL.rawValue.addLocalizableString(), LocalStrings.C_LOGIN.rawValue.addLocalizableString()]) { alert in
+                if alert.title == LocalStrings.C_LOGIN.rawValue.addLocalizableString() {
                     mackRootView(LoginVC())
                 }
             }
@@ -193,8 +193,8 @@ class ProfileUserInfoView: UIView {
         if authUser?.loginType == .userLogin {
             delegate?.profileUser(follow: userObj!)
         } else {
-            showAlert(message: "You must Login to access this feature",buttons: ["Cancel", "Login"]) { alert in
-                if alert.title == "Login" {
+            showAlert(message: LocalStrings.SEARCH_ALERT.rawValue.addLocalizableString(),buttons: [LocalStrings.C_CANCEL.rawValue.addLocalizableString(), LocalStrings.C_LOGIN.rawValue.addLocalizableString()]) { alert in
+                if alert.title == LocalStrings.C_LOGIN.rawValue.addLocalizableString() {
                     mackRootView(LoginVC())
                 }
             }
@@ -205,8 +205,8 @@ class ProfileUserInfoView: UIView {
         if authUser?.loginType == .userLogin {
             delegate?.profileUser(block: userObj!)
         } else {
-            showAlert(message: "You must Login to access this feature",buttons: ["Cancel", "Login"]) { alert in
-                if alert.title == "Login" {
+            showAlert(message: LocalStrings.SEARCH_ALERT.rawValue.addLocalizableString(),buttons: [LocalStrings.C_CANCEL.rawValue.addLocalizableString(), LocalStrings.C_LOGIN.rawValue.addLocalizableString()]) { alert in
+                if alert.title == LocalStrings.C_LOGIN.rawValue.addLocalizableString() {
                     mackRootView(LoginVC())
                 }
             }

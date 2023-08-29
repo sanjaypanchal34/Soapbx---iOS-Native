@@ -50,16 +50,16 @@ class FollowFolloingVC: UIViewController {
         
         viewButtons.backgroundColor = .lightGrey
         viewButtons.layer.cornerRadius = 10
-        btnFollowers.setTheme("Followers")
+        btnFollowers.setTheme(LocalStrings.F_FOLLOW.rawValue.addLocalizableString())
         btnFollowers.layer.cornerRadius = 10
-        btnFollowing.setTheme("Following")
+        btnFollowing.setTheme(LocalStrings.F_FOLLOWING.rawValue.addLocalizableString())
         btnFollowing.layer.cornerRadius = 10
-        btnPoliticians.setTheme("Politicians")
+        btnPoliticians.setTheme(LocalStrings.F_POLITICIAN.rawValue.addLocalizableString())
         btnPoliticians.layer.cornerRadius = 10
         
         tblList.register(["PublicFiguresItemCell"], delegate: self, dataSource: self)
         
-        lblNodata.setTheme("No Data Found",font: .bold, size: 22)
+        lblNodata.setTheme(LocalStrings.C_NO_DATA.rawValue.addLocalizableString(),font: .bold, size: 22)
         lblNodata.isHidden = true
         
         if vmObject.currentTabIndex == .followers {

@@ -49,7 +49,7 @@ class EditProfileVC: UIViewController {
     }
 
     private func setupUI() {
-        viewHeader.lblTitle.setHeader("Edit Profile")
+        viewHeader.lblTitle.setHeader(LocalStrings.PROFILE_EDIT.rawValue.addLocalizableString())
         
         viewBody.backgroundColor = .white
         
@@ -67,20 +67,20 @@ class EditProfileVC: UIViewController {
         btnProfile.height = btnProfile.frame.height
         
         
-        txtFirstName.setTheme(placeholder: "First name",
+        txtFirstName.setTheme(placeholder: LocalStrings.SIGNUP_P_FNAME.rawValue.addLocalizableString(),
                           leftIcon: UIImage(named: "ic_user"))
-        txtLastName.setTheme(placeholder: "Last name",
+        txtLastName.setTheme(placeholder: LocalStrings.SIGNUP_P_LNAME.rawValue.addLocalizableString(),
                              leftIcon: UIImage(named: "ic_user"))
-        txtPhoneNo.setTheme(placeholder: "Phone Number",
+        txtPhoneNo.setTheme(placeholder: LocalStrings.SIGNUP_P_PNUMBER.rawValue.addLocalizableString(),
                           leftIcon: UIImage(named: "ic_phone"))
-        txtEmail.setTheme(placeholder: "Email",
+        txtEmail.setTheme(placeholder: LocalStrings.SIGNUP_P_EMAIL.rawValue.addLocalizableString(),
                           leftIcon: UIImage(named: "ic_email"))
         txtEmail.isUserInteractionEnabled = false
-        txtLocation.setTheme(placeholder: "Location",
+        txtLocation.setTheme(placeholder: LocalStrings.SIGNUP_P_LOCATION.rawValue.addLocalizableString(),
                              leftIcon: UIImage(named: "ic_location_grey"))
         txtLocation.delegate = self
         
-        btnUpdate.appButton("Update")
+        btnUpdate.appButton(LocalStrings.C_POST_UPDATE.rawValue.addLocalizableString())
         setData()
     }
 

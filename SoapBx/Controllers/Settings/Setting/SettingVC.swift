@@ -17,15 +17,15 @@ class SettingVC: UIViewController {
     
         // private
     private var arrSettings = [
-        SettingModel(title: "Invite Friends"),
-        SettingModel(title: "Manage Your Trends"),
-        SettingModel(title: "Saved Post"),
-        SettingModel(title: "Suggest a Feature"),
-        SettingModel(title: "Notification"),
-        SettingModel(title: "Feedback"),
-        SettingModel(title: "Change Password"),
-        SettingModel(title: "Payment Details"),
-        SettingModel(title: "Change Language"),
+        SettingModel(title: LocalStrings.SETTING_I_INVITE.rawValue.addLocalizableString()),
+        SettingModel(title: LocalStrings.SETTING_I_MANAGE.rawValue.addLocalizableString()),
+        SettingModel(title: LocalStrings.SETTING_I_SAVED.rawValue.addLocalizableString()),
+        SettingModel(title: LocalStrings.SETTING_I_SUGGEST.rawValue.addLocalizableString()),
+        SettingModel(title: LocalStrings.SETTING_I_NOTIFICATION.rawValue.addLocalizableString()),
+        SettingModel(title: LocalStrings.SETTING_I_FEEDBACK.rawValue.addLocalizableString()),
+        SettingModel(title: LocalStrings.SETTING_I_CPASSWORD.rawValue.addLocalizableString()),
+        SettingModel(title: LocalStrings.SETTING_I_PAYMENT.rawValue.addLocalizableString()),
+        SettingModel(title: LocalStrings.SETTING_I_CLANGUAGE.rawValue.addLocalizableString()),
     ]
     
     
@@ -35,7 +35,7 @@ class SettingVC: UIViewController {
     }
     
     private func setupUI() {
-        viewHeader.lblTitle.setHeader("Settings")
+        viewHeader.lblTitle.setHeader(LocalStrings.SETTING_TITLE.rawValue.addLocalizableString())
         
         tblList.register(["SettingItemCell"], delegate: self, dataSource: self)
     }

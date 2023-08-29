@@ -297,4 +297,16 @@ enum LocalStrings: String {
     case Y_TITLE_2 = "y_title_2"
     case Y_NEXT = "y_next"
     case Y_MSG = "y_msg"
+    
+    // SETTINGS
+    case SETTING_TITLE = "setting_title"
+    case SETTING_I_INVITE = "setting_i_invite"
+    case SETTING_I_MANAGE = "setting_i_manage"
+    case SETTING_I_SAVED = "setting_i_saved"
+    case SETTING_I_SUGGEST = "setting_i_suggest"
+    case SETTING_I_NOTIFICATION = "setting_i_notification"
+    case SETTING_I_FEEDBACK = "setting_i_feedback"
+    case SETTING_I_CPASSWORD = "setting_i_cpassword"
+    case SETTING_I_PAYMENT = "setting_i_payment"
+    case SETTING_I_CLANGUAGE = "setting_i_clanguage"
 }

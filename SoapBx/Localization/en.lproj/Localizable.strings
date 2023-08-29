@@ -5,7 +5,7 @@
   Created by Mac on 03/07/23.
   
 */
-
+// ENGLISH
 // COMMON
 "c_ok" = "Okay";
 "c_yes" = "Yes";
@@ -296,3 +296,15 @@
 "y_title_2" = "Choose Relevant Trends";
 "y_next" = "Next";
 "y_msg" = "Please select atleast one trend";
+
+// SETTINGS
+"setting_title" = "Settings";
+"setting_i_invite" = "Invite Friends";
+"setting_i_manage" = "Manage Your Trends";
+"setting_i_saved" = "Saved Post";
+"setting_i_suggest" = "Suggest a Feature";
+"setting_i_notification" = "Notification";
+"setting_i_feedback" = "Feedback";
+"setting_i_cpassword" = "Change Password";
+"setting_i_payment" = "Payment Details";
+"setting_i_clanguage" = "Change Language";

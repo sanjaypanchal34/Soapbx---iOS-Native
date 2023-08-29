@@ -44,7 +44,7 @@ class PublicFiguresItemCell: AppTableViewCell {
         
         btnAction.backgroundColor = .titleRed
         btnAction.layer.cornerRadius = 5
-        btnAction.setTheme("Follow", color: .white)
+        btnAction.setTheme(LocalStrings.C_FOLLOW.rawValue.addLocalizableString(), color: .white)
         btnAction.layer.borderWidth = 1
         btnAction.layer.borderColor = UIColor.titleRed.cgColor
         
@@ -52,7 +52,7 @@ class PublicFiguresItemCell: AppTableViewCell {
         btnRemove.layer.cornerRadius = 5
         btnRemove.layer.borderWidth = 1
         btnRemove.layer.borderColor = UIColor.primaryBlue.cgColor
-        btnRemove.setTheme("Remove")
+        btnRemove.setTheme(LocalStrings.C_REMOVE.rawValue.addLocalizableString())
         
         imgHorizantalDot.isHidden = true
     }
@@ -74,11 +74,11 @@ class PublicFiguresItemCell: AppTableViewCell {
     func updateDate(_ user: PostUser) {
         updateUserData(user)
         if user.statusPoli == 1 {
-            btnAction.text = "Following"
+            btnAction.text = LocalStrings.C_FOLLOWING.rawValue.addLocalizableString()
             btnAction.backgroundColor = .green
             btnAction.layer.borderColor = UIColor.green.cgColor
         } else {
-            btnAction.text = "Follow"
+            btnAction.text = LocalStrings.C_FOLLOW.rawValue.addLocalizableString()
             btnAction.backgroundColor = .titleRed
             btnAction.layer.borderColor = UIColor.titleRed.cgColor
         }
@@ -103,24 +103,24 @@ class PublicFiguresItemCell: AppTableViewCell {
         
         
         btnAction.isHidden = false
-        btnAction.text = "Follow"
+        btnAction.text = LocalStrings.C_FOLLOW.rawValue.addLocalizableString()
         btnAction.textColor = .white
         btnAction.backgroundColor = .primaryBlue
         btnAction.layer.borderColor = UIColor.primaryBlue.cgColor
         
         if user.statusUser == 1 {
-            btnAction.text = "Requseted"
+            btnAction.text = LocalStrings.C_REQUESTED.rawValue.addLocalizableString()
             btnAction.backgroundColor = .primaryBlue
         } else if user.statusUser == 2 {
             btnAction.isHidden = true
         } else {
-            btnAction.text = "Follow"
+            btnAction.text = LocalStrings.C_FOLLOW.rawValue.addLocalizableString()
             btnAction.backgroundColor = .primaryBlue
             btnAction.layer.borderColor = UIColor.primaryBlue.cgColor
         }
         
         btnRemove.isHidden = false
-        btnRemove.text = "Remove"
+        btnRemove.text = LocalStrings.C_REMOVE.rawValue.addLocalizableString()
         btnRemove.textColor = .titleBlack
         btnRemove.backgroundColor = .white
         btnRemove.layer.borderColor = UIColor.primaryBlue.cgColor
@@ -131,7 +131,7 @@ class PublicFiguresItemCell: AppTableViewCell {
         self.delegate = delegate
         
         btnAction.isHidden = false
-        btnAction.text = "Unfollow"
+        btnAction.text = LocalStrings.C_UNFOLLOW.rawValue.addLocalizableString()
         btnAction.textColor = .white
         btnAction.backgroundColor = .titleRed
         btnAction.layer.borderColor = UIColor.titleRed.cgColor
@@ -146,7 +146,7 @@ class PublicFiguresItemCell: AppTableViewCell {
         self.delegate = delegate
         
         btnAction.isHidden = false
-        btnAction.text = "Unfollow"
+        btnAction.text = LocalStrings.C_UNFOLLOW.rawValue.addLocalizableString()
         btnAction.textColor = .white
         btnAction.backgroundColor = .titleRed
         btnAction.layer.borderColor = UIColor.titleRed.cgColor
@@ -161,7 +161,7 @@ class PublicFiguresItemCell: AppTableViewCell {
         self.delegate = delegate
         
         btnAction.isHidden = false
-        btnAction.text = "Unblock"
+        btnAction.text = LocalStrings.C_UNBLOCK.rawValue.addLocalizableString()
         btnAction.textColor = .white
         btnAction.backgroundColor = .primaryBlue
         btnAction.layer.borderColor = UIColor.primaryBlue.cgColor
@@ -176,7 +176,7 @@ class PublicFiguresItemCell: AppTableViewCell {
         self.delegate = delegate
         
         btnAction.isHidden = false
-        btnAction.text = "Follow"
+        btnAction.text = LocalStrings.C_FOLLOW.rawValue.addLocalizableString()
         btnAction.textColor = .white
         btnAction.backgroundColor = .titleRed
         btnAction.layer.borderColor = UIColor.titleRed.cgColor
@@ -191,13 +191,13 @@ class PublicFiguresItemCell: AppTableViewCell {
         self.delegate = delegate
         
         btnAction.isHidden = false
-        btnAction.text = "Confirm"
+        btnAction.text = LocalStrings.C_CONFIRM.rawValue.addLocalizableString()
         btnAction.textColor = .white
         btnAction.backgroundColor = .green
         btnAction.layer.borderColor = UIColor.green.cgColor
         
         btnRemove.isHidden = false
-        btnRemove.text = "Delete"
+        btnRemove.text = LocalStrings.C_DELETE.rawValue.addLocalizableString()
         btnRemove.textColor = .white
         btnRemove.backgroundColor = .titleRed
         btnRemove.layer.borderColor = UIColor.titleRed.cgColor
@@ -228,8 +228,8 @@ class PublicFiguresItemCell: AppTableViewCell {
                 delegate?.publicFigures(self, didSelectActionButton: user)
             }
         } else {
-            showAlert(message: "You must Login to access this feature",buttons: ["Cancel", "Login"]) { alert in
-                if alert.title == "Login" {
+            showAlert(message: LocalStrings.SEARCH_ALERT.rawValue.addLocalizableString(),buttons: [LocalStrings.C_CANCEL.rawValue.addLocalizableString(), LocalStrings.C_LOGIN.rawValue.addLocalizableString()]) { alert in
+                if alert.title == LocalStrings.C_LOGIN.rawValue.addLocalizableString() {
                     mackRootView(LoginVC())
                 }
             }
@@ -242,8 +242,8 @@ class PublicFiguresItemCell: AppTableViewCell {
                 delegate?.publicFigures(self, didSelectAction2Button: user)
             }
         } else {
-            showAlert(message: "You must Login to access this feature",buttons: ["Cancel", "Login"]) { alert in
-                if alert.title == "Login" {
+            showAlert(message: LocalStrings.SEARCH_ALERT.rawValue.addLocalizableString(),buttons: [LocalStrings.C_CANCEL.rawValue.addLocalizableString(), LocalStrings.C_LOGIN.rawValue.addLocalizableString()]) { alert in
+                if alert.title == LocalStrings.C_LOGIN.rawValue.addLocalizableString() {
                     mackRootView(LoginVC())
                 }
             }

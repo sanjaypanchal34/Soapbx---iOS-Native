@@ -48,15 +48,15 @@ class ViewPoliticianScorecard: UIView {
     private func setupUI() {
         self.layer.cornerRadius = 10
         
-        lblViewTitle.setTheme("Politician Scorecard", font: .bold,size: 20)
+        lblViewTitle.setTheme(LocalStrings.POLI_SCORE_TITLE.rawValue.addLocalizableString(), font: .bold,size: 20)
         
-        lblTotalVotes.setTheme("Total Votes",font: .bold, size: 14)
+        lblTotalVotes.setTheme(LocalStrings.POLI_SCORE_VOTE.rawValue.addLocalizableString(),font: .bold, size: 14)
         lblTotalVotesValue.setTheme("0", color: .primaryBlue, font: .bold, size: 14)
         
-        lblMissedVotes.setTheme("Missed Votes",font: .bold, size: 14)
+        lblMissedVotes.setTheme(LocalStrings.POLI_SCORE_MISS_VOTE.rawValue.addLocalizableString(),font: .bold, size: 14)
         lblMissedVotesValue.setTheme("0", color: .primaryBlue, font: .bold, size: 14)
         
-        lblTotalPresent.setTheme("Total Present",font: .bold, size: 14)
+        lblTotalPresent.setTheme(LocalStrings.POLI_SCORE_PRESENT.rawValue.addLocalizableString(),font: .bold, size: 14)
         lblTotalPresentValue.setTheme("0", color: .primaryBlue, font: .bold, size: 14)
         
         for view in [viewTotalVotes, viewMissedVotes, viewTotalPresent] {
@@ -64,19 +64,19 @@ class ViewPoliticianScorecard: UIView {
             view?.setIn4SideShadow()
         }
         
-        lblMissedVotesPercentage.setTheme("Missed Votes Percentage",font: .bold, size: 14)
+        lblMissedVotesPercentage.setTheme(LocalStrings.POLI_SCORE_MISS_VOTE_PERCENTAGE.rawValue.addLocalizableString(),font: .bold, size: 14)
         lblMissedVotesPercentageValue.setTheme("(0.0%)", color: .primaryBlue, font: .bold, size: 14)
         progMissedVotesPercentage.progress = 0
         progMissedVotesPercentage.trackTintColor = .lightGrey
         progMissedVotesPercentage.progressTintColor = .primaryBlue
         
-        lblVotesWithPartyPercentage.setTheme("Votes With Party Percentage",font: .bold, size: 14)
+        lblVotesWithPartyPercentage.setTheme(LocalStrings.POLI_SCORE_PARTY_PERCENTAGE.rawValue.addLocalizableString(),font: .bold, size: 14)
         lblVotesWithPartyPercentageValue.setTheme("(0.0%)", color: .primaryBlue, font: .bold, size: 14)
         progVotesWithPartyPercentage.progress = 0
         progVotesWithPartyPercentage.trackTintColor = .lightGrey
         progVotesWithPartyPercentage.progressTintColor = .green
         
-        lblVotesAgainstPartyPercentage.setTheme("Votes Against Party Percentage",font: .bold, size: 14)
+        lblVotesAgainstPartyPercentage.setTheme(LocalStrings.POLI_SCORE_AGAINST_PARTY_PERCENTAGE.rawValue.addLocalizableString(),font: .bold, size: 14)
         lblVotesAgainstPartyPercentageVlaue.setTheme("(0.0%)", color: .primaryBlue, font: .bold, size: 14)
         progVotesAgainstPartyPercentage.progress = 0
         progVotesAgainstPartyPercentage.trackTintColor = .lightGrey

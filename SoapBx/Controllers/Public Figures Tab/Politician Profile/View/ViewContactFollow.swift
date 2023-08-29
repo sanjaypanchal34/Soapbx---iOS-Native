@@ -37,7 +37,7 @@ private var user: PostUser!
     private func setupUI() {
         self.layer.cornerRadius = 10
         
-        lblFollow.setTheme("Follow", font: .medium)
+        lblFollow.setTheme(LocalStrings.C_FOLLOW.rawValue.addLocalizableString(), font: .medium)
         btnFacebook.image = UIImage(named: "facebook_icon")
         btnFacebook.height = btnFacebook.frame.height
         btnTwitter.image = UIImage(named: "twitter_icon")
@@ -45,13 +45,13 @@ private var user: PostUser!
         btnYoutube.image = UIImage(named: "youtube_icon")
         btnYoutube.height = btnYoutube.frame.height
         
-        btnWebsite.setTheme("Website", color: .white,background: .primaryBlue)
+        btnWebsite.setTheme(LocalStrings.CONTACT_WEBSITE.rawValue.addLocalizableString(), color: .white,background: .primaryBlue)
         btnWebsite.layer.cornerRadius = 8
         
-        btnContactForm.setTheme("Contact-Form", color: .white,background: .primaryBlue)
+        btnContactForm.setTheme(LocalStrings.CONTACT_FORM.rawValue.addLocalizableString(), color: .white,background: .primaryBlue)
         btnContactForm.layer.cornerRadius = 8
         
-        lblContact.setTheme("Contact", font: .medium)
+        lblContact.setTheme(LocalStrings.CONTACT.rawValue.addLocalizableString(), font: .medium)
         lblLocation.setTheme("", size: 14)
         
         btnPhoneCall.title?.setTheme("")
@@ -74,7 +74,7 @@ private var user: PostUser!
             if UIApplication.shared.canOpenURL(url) {
                 UIApplication.shared.open(url)
             } else {
-                SoapBx.showToast(message: "Not able to open facebook")
+                SoapBx.showToast(message: LocalStrings.ALERT_FACEBOOK.rawValue.addLocalizableString())
             }
         }
     }
@@ -83,7 +83,7 @@ private var user: PostUser!
             if UIApplication.shared.canOpenURL(url) {
                 UIApplication.shared.open(url)
             } else {
-                SoapBx.showToast(message: "Not able to open twitter")
+                SoapBx.showToast(message: LocalStrings.ALERT_TWITTER.rawValue.addLocalizableString())
             }
         }
     }
@@ -92,7 +92,7 @@ private var user: PostUser!
             if UIApplication.shared.canOpenURL(url) {
                 UIApplication.shared.open(url)
             } else {
-                SoapBx.showToast(message: "Not able to open youtube")
+                SoapBx.showToast(message: LocalStrings.ALERT_YOUTUBE.rawValue.addLocalizableString())
             }
         }
     }
@@ -102,7 +102,7 @@ private var user: PostUser!
             if UIApplication.shared.canOpenURL(url) {
                 UIApplication.shared.open(url)
             } else {
-                SoapBx.showToast(message: "Not able to open youtube")
+                SoapBx.showToast(message: LocalStrings.ALERT_WEBSITE.rawValue.addLocalizableString())
             }
         }
     }
@@ -112,7 +112,7 @@ private var user: PostUser!
             if UIApplication.shared.canOpenURL(url) {
                 UIApplication.shared.open(url)
             } else {
-                SoapBx.showToast(message: "Not able to open youtube")
+                SoapBx.showToast(message: LocalStrings.ALERT_CONTACT_FORM.rawValue.addLocalizableString())
             }
         }
     }

@@ -15,6 +15,15 @@
 "c_camera" = "Camera";
 "c_gallery" = "Gallery";
 "c_media_type" = "Media Type";
+"c_login" = "Login";
+"c_follow" = "Follow";
+"c_unfollow" = "Unfollow";
+"c_following" = "Following";
+"c_confirm" = "Confirm";
+"c_delete" = "Delete";
+"c_remove" = "Remove";
+"c_unblock" = "Unblock";
+"c_requested" = "Requested";
 
 //ALERT
 "a_logout" = "Are you sure you want to logout?";
@@ -80,6 +89,44 @@
 "signup_already_memeber" = "Already a member?";
 "signup_sign_in" = "Sign in now";
 "signup_alert" = "Please select accept";
+
+//SEARCH
+"search_alert" = "You must Login to access this feature";
+"search_title" = "Search";
+"search_p_figure" = "Public Figures";
+
+//POLITICIAN
+"poli_elected" = "Elected in";
+"poli_voter" = "Voters";
+"poli_party" = "Party";
+"poli_score_title" = "Politician Scorecard";
+"poli_score_vote" = "Total Votes";
+"poli_score_miss_vote" = "Missed Votes";
+"poli_score_miss_vote_percentage" = "Missed Votes Percentage";
+"poli_score_party_percentage" = "Votes With Party Percentage";
+"poli_score_against_party_percentage" = "Votes Against Party Percentage";
+"poli_score_present" = "Total Present";
+
+//POLITICIAN CONTACT
+"contact_website" = "Website";
+"contact_form" = "Contact-Form";
+"contact" = "Contact";
+"alert_facebook" = "Not able to open facebook";
+"alert_twitter" = "Not able to open twitter";
+"alert_youtube" = "Not able to open youtube";
+"alert_website" = "Not able to open website";
+"alert_contact_form" = "Not able to open contact form";
+
+//POLITICIAN BASIC DETAIL
+"p_basic_header" = "Basic Details";
+"p_basic_title" = "Title:";
+"p_basic_l_role" = "Leadership Role:";
+"p_basic_state" = "State:";
+"p_basic_state_rank" = "State Rank:";
+"p_basic_dob" = "Date of Birth:";
+"p_basic_in_office" = "In Office:";
+"p_basic_senior" = "Seniority:";
+"p_basic_senate" = "Senate Class:";
 
 //PLACE HOLDERS
 "p_email" = "Email";

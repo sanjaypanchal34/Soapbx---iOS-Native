@@ -39,23 +39,23 @@ class ViewBasicDetails: UIView {
     private func setupUI() {
         self.layer.cornerRadius = 10
         
-        lblViewTitle.setTheme("Basic Details", font: .bold,size: 20)
+        lblViewTitle.setTheme(LocalStrings.P_BASIC_HEADER.rawValue.addLocalizableString(), font: .bold,size: 20)
         
-        lblTitle.setTheme("Title:", font: .semibold)
+        lblTitle.setTheme(LocalStrings.P_BASIC_TITLE.rawValue.addLocalizableString(), font: .semibold)
         lblTitleValue.setTheme("", color: .primaryBlue, font: .semibold)
-        lblLeadership.setTheme("Leadership Role:", font: .semibold)
+        lblLeadership.setTheme(LocalStrings.P_BASIC_L_ROLE.rawValue.addLocalizableString(), font: .semibold)
         lblLeadershipValue.setTheme("", color: .primaryBlue, font: .semibold)
-        lblState.setTheme("State:", font: .semibold)
+        lblState.setTheme(LocalStrings.P_BASIC_STATE.rawValue.addLocalizableString(), font: .semibold)
         lblStateValue.setTheme("", color: .primaryBlue, font: .semibold)
-        lblStateRank.setTheme("State Rank:", font: .semibold)
+        lblStateRank.setTheme(LocalStrings.P_BASIC_STATE_RANK.rawValue.addLocalizableString(), font: .semibold)
         lblStateRankValue.setTheme("", color: .primaryBlue, font: .semibold)
-        lblDOB.setTheme("Date of Birth:", font: .semibold)
+        lblDOB.setTheme(LocalStrings.P_BASIC_DOB.rawValue.addLocalizableString(), font: .semibold)
         lblDOBValue.setTheme("", color: .primaryBlue, font: .semibold)
-        lblInOffice.setTheme("In Office:", font: .semibold)
+        lblInOffice.setTheme(LocalStrings.P_BASIC_IN_OFFICE.rawValue.addLocalizableString(), font: .semibold)
         lblInOfficeValue.setTheme("", color: .primaryBlue, font: .semibold)
-        lblSeniority.setTheme("Seniority:", font: .semibold)
+        lblSeniority.setTheme(LocalStrings.P_BASIC_SENIOR.rawValue.addLocalizableString(), font: .semibold)
         lblSeniorityValue.setTheme("", color: .primaryBlue, font: .semibold)
-        lblSenateClass.setTheme("Senate Class:", font: .semibold)
+        lblSenateClass.setTheme(LocalStrings.P_BASIC_SENATE.rawValue.addLocalizableString(), font: .semibold)
         lblSenateClassValue.setTheme("", color: .primaryBlue, font: .semibold)
     }
     

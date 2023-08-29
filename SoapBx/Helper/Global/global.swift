@@ -39,7 +39,7 @@ func showAlert( message: String,
 }
 
 func showAlert( message: String,
-                buttons: [String] = ["Okay"],
+                buttons: [String] = [LocalStrings.C_OK.rawValue.addLocalizableString()],
                 style: UIAlertController.Style = .alert,
                 complition: ((OTLAlertModel)->())? = nil) {
     let arrButtons = buttons.enumerated().map({ element in

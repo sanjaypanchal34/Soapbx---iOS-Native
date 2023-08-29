@@ -70,15 +70,15 @@ class PoliticianProfileVC: UIViewController {
         lblProfileName.setTheme("", font: .bold,size: 20, lines: 1)
         lblLocation.setTheme("", size: 14)
         
-        btnFollow.setTheme("Follow", color: .white, font: .bold, size: 14, background: .titleRed)
+        btnFollow.setTheme(LocalStrings.C_FOLLOW.rawValue.addLocalizableString(), color: .white, font: .bold, size: 14, background: .titleRed)
         btnFollow.layer.cornerRadius = 5
         
         btnElectedIn.lblTitle.setTheme("--", color: .primaryBlue, font: .bold, size: 18)
-        btnElectedIn.lblDescription.setTheme("Elected in", size: 14)
+        btnElectedIn.lblDescription.setTheme(LocalStrings.POLI_ELECTED.rawValue.addLocalizableString(), size: 14)
                 btnVoters.lblTitle.setTheme("--", color: .primaryBlue, font: .bold, size: 18)
-                btnVoters.lblDescription.setTheme("Voters", size: 14)
+                btnVoters.lblDescription.setTheme(LocalStrings.POLI_VOTER.rawValue.addLocalizableString(), size: 14)
         btnParty.lblTitle.setTheme("--", color: .primaryBlue, font: .bold, size: 18)
-        btnParty.lblDescription.setTheme("Party", size: 14)
+        btnParty.lblDescription.setTheme(LocalStrings.POLI_PARTY.rawValue.addLocalizableString(), size: 14)
         
         viewInfo.backgroundColor = .lightGrey
         
@@ -104,10 +104,10 @@ class PoliticianProfileVC: UIViewController {
     
     private func setFollowUnfollow() {
         if (vmProfile.userObj?.statusPoli ?? 0) == 1 {
-            btnFollow.text = "Following"
+            btnFollow.text = LocalStrings.C_FOLLOWING.rawValue.addLocalizableString()
             btnFollow.backgroundColor = .green
         } else {
-            btnFollow.text = "Follow"
+            btnFollow.text = LocalStrings.C_FOLLOW.rawValue.addLocalizableString()
             btnFollow.backgroundColor = .titleRed
         }
     }

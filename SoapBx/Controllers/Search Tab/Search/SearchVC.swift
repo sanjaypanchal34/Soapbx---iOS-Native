@@ -57,8 +57,8 @@ class SearchVC: UIViewController {
                 userSearchHistory()
             }
         } else {
-            showAlert(message: "You must Login to access this feature",buttons: ["Login"]) { alert in
-                if alert.title == "Login" {
+            showAlert(message: LocalStrings.SEARCH_ALERT.rawValue.addLocalizableString(),buttons: [LocalStrings.C_LOGIN.rawValue.addLocalizableString()]) { alert in
+                if alert.title == LocalStrings.C_LOGIN.rawValue.addLocalizableString() {
                     mackRootView(LoginVC())
                 }
             }
@@ -94,7 +94,7 @@ class SearchVC: UIViewController {
         bottomTab.setTabTheme()
         bottomTab.delegate = self
         
-        viewHeader.lblTitle.setHeader("Search")
+        viewHeader.lblTitle.setHeader(LocalStrings.SEARCH_TITLE.rawValue.addLocalizableString())
         
         searchView.backgroundColor = .lightGrey
         searchView.layer.cornerRadius = searchView.frame.height/2
@@ -108,10 +108,10 @@ class SearchVC: UIViewController {
         tblList.register(["SearchItemCell"], delegate: self, dataSource: self)
         viewBottomButton.isHidden = true
         
-        btnDone.appButton("Done")
+        btnDone.appButton(LocalStrings.C_DONE.rawValue.addLocalizableString())
         
         if screenType == .fromCreatePost {
-            viewHeader.lblTitle.text = "Public Figures"
+            viewHeader.lblTitle.text = LocalStrings.SEARCH_P_FIGURE.rawValue.addLocalizableString()
             viewBottomButton.isHidden = false
         }
         updateList()

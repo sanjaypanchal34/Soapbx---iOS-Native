@@ -242,13 +242,14 @@ enum Webservice
     }
     
     enum Profile: OTLRequestExecuter {
-        case getProfile, updateProfile, deleteAccount, getPoliticianOrUser(String), verifyOTPUpdateProfile, changePassword, notificationStatus, politicianList, unfollowRemoveUser, followPolitician, sendFollowRequest, cancelRequest
+        case getProfile, updateProfile, deleteAccount, getPoliticianOrUser(String), verifyOTPUpdateProfile, changePassword, notificationStatus, politicianList, unfollowRemoveUser, followPolitician, sendFollowRequest, cancelRequest, notificationList
         
         var method: OTLHTTPMethod {
             switch self {
                 case .getProfile:               return .get
                 case .getPoliticianOrUser:      return .get
                 case .politicianList:            return .get
+            case .notificationList:     return .get
                 default: return .post
             }
         }
@@ -268,6 +269,7 @@ enum Webservice
                 case .followPolitician:         return "followPolitician"
                 case .sendFollowRequest:        return "sendFollowRequest"
                 case .cancelRequest:            return "cancelRequest"
+                case .notificationList:            return "notificationList"
             }
         }
     }

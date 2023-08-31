@@ -152,6 +152,8 @@
 		1FB870D82A97B7C50021F08F /* LanguageItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB870D62A97B7C50021F08F /* LanguageItemCell.swift */; };
 		1FB870D92A97B7C50021F08F /* LanguageItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FB870D72A97B7C50021F08F /* LanguageItemCell.xib */; };
 		1FB870DC2A97B88B0021F08F /* ChangeLangModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB870DB2A97B88A0021F08F /* ChangeLangModel.swift */; };
+		1FBADD4D2AA0A598001A2EC0 /* NotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBADD4C2AA0A598001A2EC0 /* NotificationViewModel.swift */; };
+		1FBADD4F2AA0A5E8001A2EC0 /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBADD4E2AA0A5E8001A2EC0 /* NotificationModel.swift */; };
 		84255FE02A84EC5700D6170A /* PublicFiguresViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84255FDF2A84EC5700D6170A /* PublicFiguresViewModel.swift */; };
 		84A2A51D2A866F0F00387118 /* PoliticianProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A51B2A866F0F00387118 /* PoliticianProfileVC.swift */; };
 		84A2A51E2A866F0F00387118 /* PoliticianProfileVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A2A51C2A866F0F00387118 /* PoliticianProfileVC.xib */; };
@@ -362,6 +364,9 @@
 		1FB870D72A97B7C50021F08F /* LanguageItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LanguageItemCell.xib; sourceTree = "<group>"; };
 		1FB870DB2A97B88A0021F08F /* ChangeLangModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeLangModel.swift; sourceTree = "<group>"; };
 		1FB870DD2A97BD290021F08F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1FBADD4A2AA09831001A2EC0 /* SoapBx.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SoapBx.entitlements; sourceTree = "<group>"; };
+		1FBADD4C2AA0A598001A2EC0 /* NotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewModel.swift; sourceTree = "<group>"; };
+		1FBADD4E2AA0A5E8001A2EC0 /* NotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
 		6606E9F1F3155B6AB15CD78B /* Pods-SoapBx.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoapBx.release.xcconfig"; path = "Target Support Files/Pods-SoapBx/Pods-SoapBx.release.xcconfig"; sourceTree = "<group>"; };
 		84255FDF2A84EC5700D6170A /* PublicFiguresViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicFiguresViewModel.swift; sourceTree = "<group>"; };
 		84A2A51B2A866F0F00387118 /* PoliticianProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoliticianProfileVC.swift; sourceTree = "<group>"; };
@@ -848,6 +853,7 @@
 		049AE1952A6C227F001FAA65 /* Notification List */ = {
 			isa = PBXGroup;
 			children = (
+				1FBADD4B2AA0A587001A2EC0 /* ViewModel */,
 				049AE1A22A6C288E001FAA65 /* Cell */,
 				049AE1992A6C22A8001FAA65 /* NotificationListVC.swift */,
 				049AE19A2A6C22A8001FAA65 /* NotificationListVC.xib */,
@@ -904,6 +910,7 @@
 		049D887D2A52D5D500876D27 /* SoapBx */ = {
 			isa = PBXGroup;
 			children = (
+				1FBADD4A2AA09831001A2EC0 /* SoapBx.entitlements */,
 				049618D62A5411FC0037001B /* Helper */,
 				049D88AF2A52DD2800876D27 /* Framework */,
 				049D88A92A52DA2A00876D27 /* Localization */,
@@ -1207,6 +1214,15 @@
 				1FB870DB2A97B88A0021F08F /* ChangeLangModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		1FBADD4B2AA0A587001A2EC0 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1FBADD4C2AA0A598001A2EC0 /* NotificationViewModel.swift */,
+				1FBADD4E2AA0A5E8001A2EC0 /* NotificationModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		84255FDE2A84EC4500D6170A /* View Model */ = {
@@ -1707,11 +1723,13 @@
 				047DB0942A59756F003DFE41 /* SubscribeNotesModel.swift in Sources */,
 				84A2A59C2A8E810000387118 /* PollsListItemCell.swift in Sources */,
 				84255FE02A84EC5700D6170A /* PublicFiguresViewModel.swift in Sources */,
+				1FBADD4F2AA0A5E8001A2EC0 /* NotificationModel.swift in Sources */,
 				84A2A5A02A8E83B600387118 /* PollListSubitemCell.swift in Sources */,
 				047CACC42A56843900A64779 /* ForgotPasswrodVC.swift in Sources */,
 				040759C02A55D35F00318462 /* SignupVC.swift in Sources */,
 				0439B7412A60612100B74568 /* CommentItemCell.swift in Sources */,
 				047E119C2A59C2A300B7CC05 /* EnableLocationVC.swift in Sources */,
+				1FBADD4D2AA0A598001A2EC0 /* NotificationViewModel.swift in Sources */,
 				0459B58B2A680CC10096802C /* NotificationSettingVC.swift in Sources */,
 				047DB0872A596D4E003DFE41 /* SubscribeVC.swift in Sources */,
 				1F94A2752A98C31200C4D98A /* YouInterestCell.swift in Sources */,
@@ -1946,6 +1964,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SoapBx/SoapBx.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1956,11 +1975,11 @@
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SoapBx/Info.plist;
-				INFOPLIST_KEY_NSCameraUsageDescription = "$(PRODUCT_NAME) would like to access camera for upload profile and post";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "$(PRODUCT_NAME) would like to access location for show post near by your location ";
-				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "$(PRODUCT_NAME) would like to access location for show post near by your location ";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "$(PRODUCT_NAME) would like to access location for show post near by your location ";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "$(PRODUCT_NAME) would like to access photos for upload profile and post";
+				INFOPLIST_KEY_NSCameraUsageDescription = "SoapBx would like to access camera for upload profile and post";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "SoapBx would like to access location for show post near by your location ";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "SoapBx would like to access location for show post near by your location ";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "SoapBx would like to access location for show post near by your location ";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "SoapBx would like to access photos for upload profile and post";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -1990,6 +2009,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SoapBx/SoapBx.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -2000,11 +2020,11 @@
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SoapBx/Info.plist;
-				INFOPLIST_KEY_NSCameraUsageDescription = "$(PRODUCT_NAME) would like to access camera for upload profile and post";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "$(PRODUCT_NAME) would like to access location for show post near by your location ";
-				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "$(PRODUCT_NAME) would like to access location for show post near by your location ";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "$(PRODUCT_NAME) would like to access location for show post near by your location ";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "$(PRODUCT_NAME) would like to access photos for upload profile and post";
+				INFOPLIST_KEY_NSCameraUsageDescription = "SoapBx would like to access camera for upload profile and post";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "SoapBx would like to access location for show post near by your location ";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "SoapBx would like to access location for show post near by your location ";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "SoapBx would like to access location for show post near by your location ";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "SoapBx would like to access photos for upload profile and post";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

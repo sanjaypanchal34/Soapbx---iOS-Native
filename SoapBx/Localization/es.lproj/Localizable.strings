@@ -6,305 +6,306 @@
   
 */
 // SPANISH
-// COMMON
-"c_ok" = "Okay";
-"c_yes" = "Yes";
+// COMÚN
+"c_ok" = "OK";
+"c_yes" = "Sí";
 "c_no" = "No";
-"c_cancel" = "Cancel";
-"c_done" = "Done";
-"c_resend" = "Resend";
-"c_next" = "Next";
-"c_camera" = "Camera";
-"c_gallery" = "Gallery";
-"c_media_type" = "Media Type";
-"c_login" = "Login";
-"c_follow" = "Follow";
-"c_unfollow" = "Unfollow";
-"c_following" = "Following";
-"c_confirm" = "Confirm";
-"c_delete" = "Delete";
-"c_remove" = "Remove";
-"c_unblock" = "Unblock";
-"c_block" = "Block";
-"c_requested" = "Requested";
-"c_no_data" = "No Data Found";
-"c_submit" = "Submit";
-"c_open" = "Open";
+"c_cancel" = "Cancelar";
+"c_done" = "Hecho";
+"c_resend" = "Reenviar";
+"c_next" = "Siguiente";
+"c_camera" = "Cámara";
+"c_gallery" = "Galería";
+"c_media_type" = "Tipo de Medios";
+"c_login" = "Iniciar sesión";
+"c_follow" = "Seguir";
+"c_unfollow" = "Dejar de seguir";
+"c_following" = "Siguiendo";
+"c_confirm" = "Confirmar";
+"c_delete" = "Eliminar";
+"c_remove" = "Eliminar";
+"c_unblock" = "Desbloquear";
+"c_block" = "Bloquear";
+"c_requested" = "Solicitado";
+"c_no_data" = "No se encontraron datos";
+"c_submit" = "Enviar";
+"c_open" = "Abrir";
 
-//ALERT
-"a_logout" = "Are you sure you want to logout?";
-"a_delete_image" = "Are you sure you want to delete this image?";
-"a_delete_account" = "Are you sure you want to delete this account?";
-"a_delete_post" = "Are you sure you want to delete this post?";
-"a_change_lang" = "Are you sure you want to change language?";
+// ALERTAS
+"a_logout" = "¿Estás seguro de que quieres cerrar sesión?";
+"a_delete_image" = "¿Estás seguro de que quieres eliminar esta imagen?";
+"a_delete_account" = "¿Estás seguro de que quieres eliminar esta cuenta?";
+"a_delete_post" = "¿Estás seguro de que quieres eliminar esta publicación?";
+"a_change_lang" = "¿Estás seguro de que quieres cambiar el idioma?";
 
-// SIDE MENU
-"s_support" = "Support Soapbx";
+// MENÚ LATERAL
+"s_support" = "Apoyar a Soapbx";
 "s_blog" = "Blogs";
-"s_home" = "Home";
-"s_poll" = "Polls";
-"s_friend" = "Friends";
-"s_connection" = "Connections";
-"s_upgrade" = "Upgrade your Plan";
-"s_setting" = "Settings";
-"s_faq" = "FAQs";
-"s_about" = "About Soapbx";
-"s_terms" = "Terms of Service";
-"s_privacy" = "Privacy Policy";
-"s_logout" = "Logout";
+"s_home" = "Inicio";
+"s_poll" = "Encuestas";
+"s_friend" = "Amigos";
+"s_connection" = "Conexiones";
+"s_upgrade" = "Actualiza tu Plan";
+"s_setting" = "Configuración";
+"s_faq" = "Preguntas frecuentes";
+"s_about" = "Acerca de Soapbx";
+"s_terms" = "Términos de Servicio";
+"s_privacy" = "Política de Privacidad";
+"s_logout" = "Cerrar sesión";
 
-// LOGIN SCREENS
+// PANTALLAS DE INICIO DE SESIÓN
 
-"login_title" = "Sign in to Soapbx";
-"login_subtitle" = "Enter your details below";
-"btn_remember" = "Remember me";
-"btn_forgot_pass" = "Forgot Password?";
-"btn_signin" = "Sign in";
-"btn_guest" = "Continue as a guest";
-"btn_signup" = "Sign up now";
-"lbl_not_member" = "Not a member?";
+"login_title" = "Iniciar sesión en Soapbx";
+"login_subtitle" = "Ingresa tus datos a continuación";
+"btn_remember" = "Recuérdame";
+"btn_forgot_pass" = "¿Olvidaste tu contraseña?";
+"btn_signin" = "Iniciar sesión";
+"btn_guest" = "Continuar como invitado";
+"btn_signup" = "Regístrate ahora";
+"lbl_not_member" = "¿No eres miembro?";
 
-// VERIFICATION CODE
-"v_title" = "Verification code";
-"v_desc_email" = "Please type the verification code sent to your email";
-"v_desc_phone" = "Please type the verification code sent to your phone number";
-"v_verify" = "Verify";
+// CÓDIGO DE VERIFICACIÓN
+"v_title" = "Código de verificación";
+"v_desc_email" = "Ingresa el código de verificación enviado a tu correo electrónico";
+"v_desc_phone" = "Ingresa el código de verificación enviado a tu número de teléfono";
+"v_verify" = "Verificar";
 
-// PROFILE COVER
-"p_cover_title" = "Set Profile Picture and Cover Photo";
-"p_cover_add" = "Add cover photo\n(Optional)";
-"p_cover_desc" = "Add a profile picture so that you and your friend can indentify each other";
-"p_cover_note" = "*Cover photo is optional and can be added later.";
-"p_cover_alert" = "Select profile photo.";
+// PORTADA DEL PERFIL
+"p_cover_title" = "Establecer Foto de Perfil y Foto de Portada";
+"p_cover_add" = "Agregar foto de portada\n(Opcional)";
+"p_cover_desc" = "Agrega una foto de perfil para que tú y tus amigos puedan identificarse";
+"p_cover_note" = "*La foto de portada es opcional y se puede agregar más tarde.";
+"p_cover_alert" = "Selecciona la foto de perfil.";
 
-// FORGOT PASSWORD
-"f_pass_title" = "Forgot password?";
-"f_pass_stitle" = "Please enter your email / phone number to reset your account password";
-"f_pass_placeholder" = "Email / Phone Number";
+// CONTRASEÑA OLVIDADA
+"f_pass_title" = "¿Contraseña olvidada?";
+"f_pass_stitle" = "Por favor, ingresa tu correo electrónico / número de teléfono para restablecer la contraseña de tu cuenta";
+"f_pass_placeholder" = "Correo electrónico / Número de Teléfono";
 
-//SIGNUP
-"signup_title" = "Sign up for Soapbx";
-"signup_stitle" = "Enter our details below";
-"signup_p_fname" = "First name";
-"signup_p_lname" = "Last name";
-"signup_p_pnumber" = "Phone Number";
-"signup_p_email" = "Email";
-"signup_p_password" = "Password";
-"signup_p_cpassword" = "Confirm Password";
-"signup_p_location" = "Location";
-"signup_verify_email" = "Verify via Email";
-"signup_verify_number" = "Verify via Number";
-"signup_accept" = "I Accept";
-"signup_signup" = "Sign up";
-"signup_already_memeber" = "Already a member?";
-"signup_sign_in" = "Sign in now";
-"signup_alert" = "Please select accept";
+// REGISTRO
+"signup_title" = "Regístrate en Soapbx";
+"signup_stitle" = "Ingresa tus datos a continuación";
+"signup_p_fname" = "Nombre";
+"signup_p_lname" = "Apellido";
+"signup_p_pnumber" = "Número de Teléfono";
+"signup_p_email" = "Correo Electrónico";
+"signup_p_password" = "Contraseña";
+"signup_p_cpassword" = "Confirmar Contraseña";
+"signup_p_location" = "Ubicación";
+"signup_verify_email" = "Verificar por Correo Electrónico";
+"signup_verify_number" = "Verificar por Número";
+"signup_accept" = "Acepto";
+"signup_signup" = "Registrarse";
+"signup_already_member" = "¿Ya eres miembro?";
+"signup_sign_in" = "Iniciar sesión ahora";
+"signup_alert" = "Por favor, acepta";
 
-//SEARCH
-"search_alert" = "You must Login to access this feature";
-"search_title" = "Search";
-"search_p_figure" = "Public Figures";
+// BÚSQUEDA
+"search_alert" = "Debes iniciar sesión para acceder a esta función";
+"search_title" = "Buscar";
+"search_p_figure" = "Figuras Públicas";
 
-//POLITICIAN
-"poli_elected" = "Elected in";
-"poli_voter" = "Voters";
-"poli_party" = "Party";
-"poli_score_title" = "Politician Scorecard";
-"poli_score_vote" = "Total Votes";
-"poli_score_miss_vote" = "Missed Votes";
-"poli_score_miss_vote_percentage" = "Missed Votes Percentage";
-"poli_score_party_percentage" = "Votes With Party Percentage";
-"poli_score_against_party_percentage" = "Votes Against Party Percentage";
-"poli_score_present" = "Total Present";
+// POLÍTICOS
+"poli_elected" = "Elegido en";
+"poli_voter" = "Votantes";
+"poli_party" = "Partido";
+"poli_score_title" = "Boleta de Puntuación del Político";
+"poli_score_vote" = "Votos Totales";
+"poli_score_miss_vote" = "Votos Perdidos";
+"poli_score_miss_vote_percentage" = "Porcentaje de Votos Perdidos";
+"poli_score_party_percentage" = "Porcentaje de Votos con el Partido";
+"poli_score_against_party_percentage" = "Porcentaje de Votos Contra el Partido";
+"poli_score_present" = "Total de Presentes";
 
-//POLITICIAN CONTACT
-"contact_website" = "Website";
-"contact_form" = "Contact-Form";
-"contact" = "Contact";
-"alert_facebook" = "Not able to open facebook";
-"alert_twitter" = "Not able to open twitter";
-"alert_youtube" = "Not able to open youtube";
-"alert_website" = "Not able to open website";
-"alert_contact_form" = "Not able to open contact form";
+// CONTACTO DE POLÍTICO
+"contact_website" = "Sitio web";
+"contact_form" = "Formulario de Contacto";
+"contact" = "Contacto";
+"alert_facebook" = "No se puede abrir Facebook";
+"alert_twitter" = "No se puede abrir Twitter";
+"alert_youtube" = "No se puede abrir YouTube";
+"alert_website" = "No se puede abrir el sitio web";
+"alert_contact_form" = "No se puede abrir el formulario de contacto";
 
-//POLITICIAN BASIC DETAIL
-"p_basic_header" = "Basic Details";
-"p_basic_title" = "Title:";
-"p_basic_l_role" = "Leadership Role:";
-"p_basic_state" = "State:";
-"p_basic_state_rank" = "State Rank:";
-"p_basic_dob" = "Date of Birth:";
-"p_basic_in_office" = "In Office:";
-"p_basic_senior" = "Seniority:";
-"p_basic_senate" = "Senate Class:";
+// DETALLE BÁSICO DEL POLÍTICO
+"p_basic_header" = "Detalles Básicos";
+"p_basic_title" = "Título:";
+"p_basic_l_role" = "Cargo de Liderazgo:";
+"p_basic_state" = "Estado:";
+"p_basic_state_rank" = "Rango Estatal:";
+"p_basic_dob" = "Fecha de Nacimiento:";
+"p_basic_in_office" = "En el Cargo:";
+"p_basic_senior" = "Antigüedad:";
+"p_basic_senate" = "Clase del Senado:";
 
-// CREATE POST
-"c_post_create" = "Create Post";
-"c_post_edit" = "Edit Post";
-"c_post_add_title" = "Add Title";
-"c_post_about" = "What is your post about?";
-"c_post_desc" = "Add Description";
-"c_post_mind" = "What is on your mind?";
-"c_post_add_image" = "Add Image";
-"c_post_add_politician" = "Politician Involved";
-"c_post_add_trend" = "Soapbx trends";
-"c_post" = "Post";
-"c_post_update" = "Update";
+// CREAR PUBLICACIÓN
+"c_post_create" = "Crear Publicación";
+"c_post_edit" = "Editar Publicación";
+"c_post_add_title" = "Agregar Título";
+"c_post_about" = "¿De qué trata tu publicación?";
+"c_post_desc" = "Agregar Descripción";
+"c_post_mind" = "¿Qué tienes en mente?";
+"c_post_add_image" = "Agregar Imagen";
+"c_post_add_politician" = "Político Involucrado";
+"c_post_add_trend" = "Tendencias de Soapbx";
+"c_post" = "Publicar";
+"c_post_update" = "Actualizar";
 
-//PROFILE
-"profile_edit" = "Edit Profile";
-"profile" = "Profile";
-"profile_delete" = "Delete Account";
-"profile_message" = "Message";
-"profile_vocie" = "What do you want to voice today?";
+// PERFIL
+"profile_edit" = "Editar Perfil";
+"profile" = "Perfil";
+"profile_delete" = "Eliminar Cuenta";
+"profile_message" = "Mensaje";
+"profile_voice" = "¿Qué quieres expresar hoy?";
 
-//CHAT
-"chat_request" = "Message Requests";
-"chat_no_data" = "No Chats Found";
+// CHAT
+"chat_request" = "Solicitudes de Mensaje";
+"chat_no_data" = "No se encontraron Conversaciones";
 
-//NOTIFICATIONS
-"noti_title" = "Notifications";
-"noti_no_data" = "No Polls Found";
+// NOTIFICACIONES
+"noti_title" = "Notificaciones";
+"noti_no_data" = "No se encontraron Encuestas";
 
-// REPORT
-"report_write" = "Write reason to report a";
-"report_reason" = "Reason";
-"report_title" = "Report";
+// INFORME
+"report_write" = "Escribe el motivo para reportar un";
+"report_reason" = "Motivo";
+"report_title" = "Informe";
 
-//COMMENT
-"comment" = "Comment";
-"comment_enter" = "Enter Your Comment Here";
+// COMENTARIO
+"comment" = "Comentario";
+"comment_enter" = "Ingresa tu Comentario Aquí";
 
-//THREE DOT
-"dot_open" = "Open User Profile";
-"dot_hide" = "Hide Post by ";
-"dot_share" = "Share";
-"dot_report" = "Report";
-"dot_edit" = "Edit Post";
-"dot_delete" = "Delete Post";
-"dot_clear" = "Clear Chat";
-"dot_star" = "Starred Messages";
-"dot_block" = "Block";
+// TRES PUNTOS
+"dot_open" = "Abrir Perfil de Usuario";
+"dot_hide" = "Ocultar Publicación de ";
+"dot_share" = "Compartir";
+"dot_report" = "Reportar";
+"dot_edit" = "Editar Publicación";
+"dot_delete" = "Eliminar Publicación";
+"dot_clear" = "Limpiar Chat";
+"dot_star" = "Mensajes Destacados";
+"dot_block" = "Bloquear";
 
-//FOLLOW
-"f_follow" = "Followers";
-"f_following" = "Following";
-"f_politician" = "Politicians";
+// SEGUIR
+"f_follow" = "Seguidores";
+"f_following" = "Siguiendo";
+"f_politician" = "Políticos";
 
-//PLACE HOLDERS
-"p_email" = "Email";
-"p_password" = "Password";
-"p_location" = "Search location....";
+// MARCADORES DE LUGAR
+"p_email" = "Correo Electrónico";
+"p_password" = "Contraseña";
+"p_location" = "Buscar ubicación...";
 
-// LANGUAGE
-"lang_eng" = "English";
-"lang_spanish" = "Spanish";
-"lang_french" = "French";
-"lang_german" = "German";
-"lang_portugule" = "Portuguese";
-"lang_title" = "Languages";
-"lang_alert" = "Language change successfully!!!";
+// IDIOMA
+"lang_eng" = "Inglés";
+"lang_spanish" = "Español";
+"lang_french" = "Francés";
+"lang_german" = "Alemán";
+"lang_portugule" = "Portugués";
+"lang_title" = "Idiomas";
+"lang_alert" = "¡Idioma cambiado con éxito!!!";
 
-// PAYMENT
-"payment_title" = "Payment Details";
+// PAGO
+"payment_title" = "Detalles de Pago";
 
-// POST POLL
-"poll_option" = "Option";
-"poll_place_holder" = "Write down a response that the public can select.";
-"poll_question" = "Question";
-"poll_question_p" = "What do you want the public to vote on?";
-"poll_end_date" = "End Date";
-"poll_end_date_p" = "What do you want your poll to be closed from voting?";
-"poll_start_date" = "Start Date";
-"poll_start_date_p" = "What do you want your poll to be open for voting?";
-"poll_add_option" = "+ Add Option";
-"poll_no_data" = "No Polls Found";
-"poll_title" = "Poll";
+// ENCUESTA DE PUBLICACIÓN
+"poll_option" = "Opción";
+"poll_place_holder" = "Escribe una respuesta que el público pueda seleccionar.";
+"poll_question" = "Pregunta";
+"poll_question_p" = "¿Sobre qué quieres que el público vote?";
+"poll_end_date" = "Fecha de Finalización";
+"poll_end_date_p" = "¿Cuándo quieres cerrar la votación de tu encuesta?";
+"poll_start_date" = "Fecha de Inicio";
+"poll_start_date_p" = "¿Cuándo quieres abrir la votación de tu encuesta?";
+"poll_add_option" = "+ Agregar Opción";
+"poll_no_data" = "No se encontraron Encuestas";
+"poll_title" = "Encuesta";
 
-//CONNECTIONS
-"connections" = "Connections";
-"conn_friend" = "Friends";
-"conn_block" = "Blocked account";
-"conn_request" = "Request";
-"conn_unfollow_account" = "Unfollowed account";
-"conn_my_friend" = "My Friends";
+// CONEXIONES
+"connections" = "Conexiones";
+"conn_friend" = "Amigos";
+"conn_block" = "Cuenta Bloqueada";
+"conn_request" = "Solicitud";
+"conn_unfollow_account" = "Cuenta Dejó de Seguir";
+"conn_my_friend" = "Mis Amigos";
 
-//CMS
-"faq" = "FAQ";
-"about" = "About Soapbx";
-"terms" = "Terms of Service";
-"privacy" = "Privacy Policy";
+// CMS
+"faq" = "Preguntas Frecuentes";
+"about" = "Acerca de Soapbx";
+"terms" = "Términos de Servicio";
+"privacy" = "Política de Privacidad";
 
-//NOTIFICATION
-"n_push" = "Push Notification";
-"n_direct" = "Direct Notification";
-"n_post" = "Posts";
-"n_new" = "New Connection";
-"n_title" = "Notifications";
+// NOTIFICACIÓN
+"n_push" = "Notificación por Push";
+"n_direct" = "Notificación Directa";
+"n_post" = "Publicaciones";
+"n_new" = "Nueva Conexión";
+"n_title" = "Notificaciones";
 
-//CHANGE PASSWORD
-"cp_title" = "Change Password";
-"cp_old" = "Old Password";
-"cp_new" = "New Password";
-"cp_cnew" = "Confirm Password";
+// CAMBIAR CONTRASEÑA
+"cp_title" = "Cambiar Contraseña";
+"cp_old" = "Contraseña Antigua";
+"cp_new" = "Contraseña Nueva";
+"cp_cnew" = "Confirmar Contraseña Nueva";
 
-// SUGGEST
-"s_title" = "Suggest Feature";
-"s_title_feedback" = "Feedback";
-"s_profile" = "Profile Name";
-"s_email" = "Email";
-"s_location" = "Location";
-"s_pnumber" = "Phone Number";
-"s_what_in_mind" = "What is on your mind?";
-"s_send" = "Send";
+// SUGERIR
+"s_title" = "Sugerir Función";
+"s_title_feedback" = "Comentarios";
+"s_profile" = "Nombre de Perfil";
+"s_email" = "Correo Electrónico";
+"s_location" = "Ubicación";
+"s_pnumber" = "Número de Teléfono";
+"s_what_in_mind" = "¿Qué tienes en mente?";
+"s_send" = "Enviar";
 
-// SAVED POST
-"saved_title" = "Saved Post";
+// PUBLICACIONES GUARDADAS
+"saved_title" = "Publicaciones Guardadas";
 
-// INVITE FRIEND
-"i_title" = "Invite Friends";
-"i_button" = "Invite";
+// INVITAR A UN AMIGO
+"i_title" = "Invitar a Amigos";
+"i_button" = "Invitar";
 
-// ENABLE LOCATION
-"e_title" = "Enable location";
-"e_message" = "Yor current location is ";
-"e_desc" = "We want to access your location only to provide a better experience by helping you finding your exact location.";
-"e_enable" = "Enable";
-"e_skip" = "Skip for now";
-"e_not_determine" = "Please Allow Location for get near by post. open settings and allow location";
+// HABILITAR LA UBICACIÓN
+"e_title" = "Habilitar Ubicación";
+"e_message" = "Tu ubicación actual es ";
+"e_desc" = "Queremos acceder a tu ubicación solo para brindar una experiencia mejor, ayudándote a encontrar tu ubicación exacta.";
+"e_enable" = "Habilitar";
+"e_skip" = "Omitir por ahora";
+"e_not_determine" = "Por favor, permite la Ubicación para obtener publicaciones cercanas. Abre la configuración y permite la ubicación";
 
-// SUBSCRIBE
-"sub_title" = "Subscribe on Soapbx";
-"sub_title_setting" = "Upgrade Subscription plan";
-"sub_b_next" = "Next";
-"sub_b_upgrade" = "Upgrade";
-"sub_b_support" = "Support Soapbx";
-"sub_msg" = "Please select subscription plan";
-"sub_item_blog" = "Blog and Report";
-"sub_item_conduct" = "Conduct Polls";
-"sub_item_priority" = "Priority Support";
-"sub_item_choose" = "Choose Trends";
-"sub_item_soapbx" = "Soapbx Initiatives";
-"sub_item_feature" = "Featured Member";
-"sub_item_reward" = "Rewards";
-"sub_item_invite" = "Invite Friends";
-"sub_item_f_blog" = "Featured Blog";
-"sub_item_f_poll" = "Featured Poll";
+// SUSCRIBIRSE
+"sub_title" = "Suscríbete en Soapbx";
+"sub_title_setting" = "Actualizar Plan de Suscripción";
+"sub_b_next" = "Siguiente";
+"sub_b_upgrade" = "Actualizar";
+"sub_b_support" = "Apoyar a Soapbx";
+"sub_msg" = "Por favor, selecciona el plan de suscripción";
+"sub_item_blog" = "Blogs e Informes";
+"sub_item_conduct" = "Realizar Encuestas";
+"sub_item_priority" = "Soporte Prioritario";
+"sub_item_choose" = "Elegir Tendencias";
+"sub_item_soapbx" = "Iniciativas de Soapbx";
+"sub_item_feature" = "Miembro Destacado";
+"sub_item_reward" = "Recompensas";
+"sub_item_invite" = "Invitar a Amigos";
+"sub_item_f_blog" = "Blog Destacado";
+"sub_item_f_poll" = "Encuesta Destacada";
 
-// YOU INTREST
-"y_title" = "What are you interested in?";
-"y_title_2" = "Choose Relevant Trends";
-"y_next" = "Next";
-"y_msg" = "Please select atleast one trend";
+// TUS INTERESES
+"y_title" = "¿En qué estás interesado?";
+"y_title_2" = "Elige Tendencias Relevantes";
+"y_next" = "Siguiente";
+"y_msg" = "Por favor, selecciona al menos una tendencia";
 
-// SETTINGS
-"setting_title" = "Settings";
-"setting_i_invite" = "Invite Friends";
-"setting_i_manage" = "Manage Your Trends";
-"setting_i_saved" = "Saved Post";
-"setting_i_suggest" = "Suggest a Feature";
-"setting_i_notification" = "Notification";
-"setting_i_feedback" = "Feedback";
-"setting_i_cpassword" = "Change Password";
-"setting_i_payment" = "Payment Details";
-"setting_i_clanguage" = "Change Language";
+// CONFIGURACIONES
+"setting_title" = "Configuraciones";
+"setting_i_invite" = "Invitar a Amigos";
+"setting_i_manage" = "Administrar Tus Tendencias";
+"setting_i_saved" = "Publicaciones Guardadas";
+"setting_i_suggest" = "Sugerir una Función";
+"setting_i_notification" = "Notificación";
+"setting_i_feedback" = "Comentarios";
+"setting_i_cpassword" = "Cambiar Contraseña";
+"setting_i_payment" = "Detalles de Pago";
+"setting_i_clanguage" = "Cambiar Idioma";
+

@@ -56,44 +56,44 @@ extension SettingVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch arrSettings[indexPath.row].title {
-            case "Invite Friends":
+            case LocalStrings.SETTING_I_INVITE.rawValue.addLocalizableString():
                 let vc = InviteFriendsVC()
                 navigationController?.pushViewController(vc, animated: true)
                 break
-            case "Manage Your Trends":
+            case LocalStrings.SETTING_I_MANAGE.rawValue.addLocalizableString():
                 let vc = YouInterestedVC()
                 vc.screenType = .fromSetting
                 navigationController?.pushViewController(vc, animated: true)
                 break
-            case "Saved Post":
+            case LocalStrings.SETTING_I_SAVED.rawValue.addLocalizableString():
                 let vc = SavedPostVC()
                 navigationController?.pushViewController(vc, animated: true)
                 break
-            case "Suggest a Feature":
+            case LocalStrings.SETTING_I_SUGGEST.rawValue.addLocalizableString():
                 let vc = SuggestFeatureVC()
                 navigationController?.pushViewController(vc, animated: true)
                 break
-            case "Notification":
+            case LocalStrings.SETTING_I_NOTIFICATION.rawValue.addLocalizableString():
                 let vc = NotificationSettingVC()
                 navigationController?.pushViewController(vc, animated: true)
                 break
-            case "Feedback":
+            case LocalStrings.SETTING_I_FEEDBACK.rawValue.addLocalizableString():
                 let vc = SuggestFeatureVC()
                 vc.screenType = .feedback
                 navigationController?.pushViewController(vc, animated: true)
                 break
-            case "Change Password":
+            case LocalStrings.SETTING_I_CPASSWORD.rawValue.addLocalizableString():
                 let vc = ChangePasswordVC()
                 navigationController?.pushViewController(vc, animated: true)
                 break
-            case "Payment Details":
+            case LocalStrings.SETTING_I_PAYMENT.rawValue.addLocalizableString():
                 let vc = PaymentDetailsVC()
                 navigationController?.pushViewController(vc, animated: true)
                 break
-        case "Change Language":
-            let vc = ChangeLanguageVC()
-            navigationController?.pushViewController(vc, animated: true)
-            break
+            case LocalStrings.SETTING_I_CLANGUAGE.rawValue.addLocalizableString():
+                let vc = ChangeLanguageVC()
+                navigationController?.pushViewController(vc, animated: true)
+                break
             default:
                 break
         }

@@ -18,11 +18,13 @@ class MessageListVC: UIViewController {
     @IBOutlet private weak var btnMessageRequest: OTLTextButton!
     @IBOutlet private weak var tblList: UITableView!
     @IBOutlet private weak var lblNoData: UILabel!
+    private let vmObject = MessageViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupUI()
+        getChatUserList()
     }
 
     private func setupUI() {
@@ -37,22 +39,76 @@ class MessageListVC: UIViewController {
         
         btnMessageRequest.setTheme(LocalStrings.CHAT_REQUEST.rawValue.addLocalizableString(), color: .primaryBlue, size: 10)
         
-//        tblList.register(["SearchItemCell"], delegate: self, dataSource: self)
+        tblList.register(["MessageListCell"], delegate: self, dataSource: self)
         lblNoData.noDataTitle(LocalStrings.CHAT_NO_DATA.rawValue.addLocalizableString())
     }
 
+    func getChatUserList() {
+        showLoader()
+        vmObject.getUserChatList() { [self] result in
+            hideLoader()
+            if result.status {
+                DispatchQueue.main.async {
+                    if self.vmObject.arrList.count > 0 {
+                        self.lblNoData.isHidden = true
+                        self.tblList.reloadData {
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
     //
     @IBAction private func click_messageRequest() {
         
     }
+    
+    private func message(rName: String, rId: Int) {
+        showLoader()
+        vmObject.message(user: rId) {[self] result in
+            hideLoader()
+            showToast(message: result.message)
+            if result.status {
+                let vc = ChatVC()
+                    vc.userName = rName
+                    vc.userId = rId
+                    vc.uniqueID = vmObject.uniqueId
+                    vc.relationID = vmObject.relationId
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        }
+    }
 }
+
+
+
 extension MessageListVC: UITableViewDataSource, UITableViewDelegate  {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return vmObject.arrList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let item: MessageModel = vmObject.arrList[indexPath.row] as! MessageModel
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MessageListCell") as! MessageListCell
+        cell.lblMessage.text = item.message
+        cell.vwMessage.roundedViewCorner(radius: 5)
+        cell.lblUName.text = item.rName
+        cell.imgUser.setImage(item.rImage)
+        cell.lblTime.setTheme(OTLDateConvert.instance.convert(date: item.created_at ?? "", set: .yyyyMMdd_T_HHmmssDotssZ, getFormat: .mmmDDyyyyAthhmma), size: 11)
+        return cell
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if (indexPath.row + 1) >= (vmObject.arrList.count - 3){
+            if vmObject.currentPage < vmObject.totalPage {
+                vmObject.currentPage = vmObject.currentPage + 1
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let item: MessageModel = vmObject.arrList[indexPath.row] as! MessageModel
+        message(rName: item.rName!, rId: item.receiver_id!)
+    }
 }

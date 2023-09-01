@@ -192,7 +192,8 @@ class ProfileVC: UIViewController {
             if result.status {
                 let vc = ChatVC()
                 if let obj = vmObject.userObj {
-                    vc.userObj = vmObject.userObj
+                    vc.userName = (vmObject.userObj?.fullName)!
+                    vc.userId = vmObject.userObj?.id
                     vc.uniqueID = vmObject.uniqueId
                     vc.relationID = vmObject.relationId
                 }

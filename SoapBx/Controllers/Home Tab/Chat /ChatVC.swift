@@ -36,7 +36,8 @@ class ChatVC: UIViewController , PusherDelegate{
     @IBOutlet private weak var btnAddMedia: OTLImageButton!
     @IBOutlet private weak var btnSendMessage: OTLImageButton!
     
-    var userObj: PostUser?
+    var userName: String = ""
+    var userId: Int?
     private let vmObject = ChatViewModel()
     
     override func viewDidLoad() {
@@ -86,9 +87,7 @@ class ChatVC: UIViewController , PusherDelegate{
     }
     
     private func setupUI() {
-        if let obj = userObj {
-            viewHeader.lblTitle.setHeader(obj.fullName ?? "")
-        }
+        viewHeader.lblTitle.setHeader(self.userName)
         
         btnDotMenu.image = UIImage(named: "ic_dots")
         btnDotMenu.height = 30
@@ -137,7 +136,7 @@ class ChatVC: UIViewController , PusherDelegate{
     
     @IBAction private func click_btnSendMessage() {
         if self.txtMessage.text?.count ?? 0 > 0 {
-            vmObject.sendMessage(relationId : relationID, sender: authUser?.user?.id ?? 0, receiver: userObj?.id ?? 0, message: self.txtMessage.text ?? "") { [self] result in
+            vmObject.sendMessage(relationId : relationID, sender: authUser?.user?.id ?? 0, receiver: self.userId ?? 0, message: self.txtMessage.text ?? "") { [self] result in
                 if result.status {
                     self.txtMessage.text = ""
                 }

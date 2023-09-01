@@ -221,13 +221,14 @@ enum Webservice
     }
     
     enum Chat: OTLRequestExecuter {
-        case startChat, userChat(String), sendMessage
+        case startChat, userChat(String), sendMessage, chatList
         
         var method: OTLHTTPMethod {
             switch self {
                 case .startChat:       return .get
                 case .userChat:       return .get
                 case .sendMessage:     return .get
+                case .chatList:          return .get
                 default: return .post
             }
         }
@@ -237,6 +238,7 @@ enum Webservice
                 case .startChat:                      return "startChat"
                 case .userChat(let id):          return "userChat/\(id)"
                 case .sendMessage:           return "sendMessage"
+                case .chatList:         return "chatList"
             }
         }
     }

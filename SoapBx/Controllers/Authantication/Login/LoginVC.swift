@@ -59,8 +59,8 @@ class LoginVC: UIViewController {
 //        txtEmail.text = "sumitk.iih@yopmail.com"
 //        txtPassword.text = "sumit@123"
         //LIVE
-//        txtEmail.text = "hemanshu.iihglobal@gmail.com"
-//        txtPassword.text = "Password@1"
+        txtEmail.text = "hemanshu.iihglobal@gmail.com"
+        txtPassword.text = "Password@1"
         
 //        txtEmail.text = "hindtom11@yopmail.com"
 //        txtPassword.text = "12345678"

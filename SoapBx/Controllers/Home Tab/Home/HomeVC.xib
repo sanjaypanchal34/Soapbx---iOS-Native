@@ -36,10 +36,10 @@
                             </constraints>
                         </imageView>
                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nNm-ot-epM">
-                            <rect key="frame" x="288" y="0.0" width="90" height="45"/>
+                            <rect key="frame" x="243" y="0.0" width="135" height="45"/>
                             <subviews>
-                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ejy-ee-XkT" customClass="OTLImageButton" customModule="OTLContaner">
-                                    <rect key="frame" x="-45" y="0.0" width="45" height="45"/>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ejy-ee-XkT" customClass="OTLImageButton" customModule="OTLContaner">
+                                    <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="ejy-ee-XkT" secondAttribute="height" multiplier="1:1" id="lru-r0-DkJ"/>
@@ -49,7 +49,7 @@
                                     </connections>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T7a-yc-9ki" customClass="OTLImageButton" customModule="OTLContaner">
-                                    <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
+                                    <rect key="frame" x="45" y="0.0" width="45" height="45"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="T7a-yc-9ki" secondAttribute="height" multiplier="1:1" id="6ej-d1-Cph"/>
@@ -59,7 +59,7 @@
                                     </connections>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vSu-SM-RFS" customClass="OTLImageButton" customModule="OTLContaner">
-                                    <rect key="frame" x="45" y="0.0" width="45" height="45"/>
+                                    <rect key="frame" x="90" y="0.0" width="45" height="45"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="vSu-SM-RFS" secondAttribute="height" multiplier="1:1" id="m5M-C8-cgV"/>

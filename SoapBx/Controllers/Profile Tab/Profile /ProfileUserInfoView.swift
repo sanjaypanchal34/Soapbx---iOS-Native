@@ -157,21 +157,21 @@ class ProfileUserInfoView: UIView {
     
     @IBAction private func click_btnFollowers(){
         if let user = userObj {
-            let vc = FollowFolloingVC()
+            let vc = FollowFollowingVC()
             vc.navigate(user, tab: .followers, screenType: screenType)
             rootViewController.pushViewController(vc, animated: true)
         }
     }
     @IBAction private func click_btnFollowing(){
         if let user = userObj {
-            let vc = FollowFolloingVC()
+            let vc = FollowFollowingVC()
             vc.navigate(user, tab: .following, screenType: screenType)
             rootViewController.pushViewController(vc, animated: true)
         }
     }
     @IBAction private func click_btnPoliticians(){
         if let user = userObj {
-            let vc = FollowFolloingVC()
+            let vc = FollowFollowingVC()
             vc.navigate(user, tab: .politicians, screenType: screenType)
             rootViewController.pushViewController(vc, animated: true)
         }

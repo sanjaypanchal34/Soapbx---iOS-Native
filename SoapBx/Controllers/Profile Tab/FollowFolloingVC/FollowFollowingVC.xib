@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FollowFolloingVC" customModule="SoapBx" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FollowFollowingVC" customModule="SoapBx" customModuleProvider="target">
             <connections>
                 <outlet property="btnFollowers" destination="oZz-MA-3C7" id="G59-dR-LdO"/>
                 <outlet property="btnFollowing" destination="Mvn-NU-B1J" id="JOf-we-Rwo"/>

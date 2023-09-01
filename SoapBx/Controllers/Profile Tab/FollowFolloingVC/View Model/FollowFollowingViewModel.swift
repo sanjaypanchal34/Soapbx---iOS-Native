@@ -1,5 +1,5 @@
 //
-//  FollowFolloingViewModel.swift
+//  FollowFollowingViewModel.swift
 //  Operators Techno Lab, Ahmedabad
 //
 //  Developed by Harsh Kadiya
@@ -9,7 +9,7 @@
 
 import Foundation
 
-class FollowFolloingViewModel {
+class FollowFollowingViewModel {
     
     var currentTabIndex = FollowFolloingType.followers {
         didSet {

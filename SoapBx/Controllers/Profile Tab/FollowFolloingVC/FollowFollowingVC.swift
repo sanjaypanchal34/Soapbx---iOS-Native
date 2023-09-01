@@ -12,7 +12,7 @@ enum FollowFolloingType {
     case followers, following, politicians
 }
 
-class FollowFolloingVC: UIViewController {
+class FollowFollowingVC: UIViewController {
     
     @IBOutlet private weak var viewHeader: OTLHeader!
     
@@ -25,7 +25,7 @@ class FollowFolloingVC: UIViewController {
     @IBOutlet private weak var lblNodata: UILabel!
     
     private var refreshControl:UIRefreshControl!
-    private let vmObject = FollowFolloingViewModel()
+    private let vmObject = FollowFollowingViewModel()
     private let vmProfile = ProfileViewModel()
     private var screenType = ProfileScreenType.profileTab
     override func viewDidLoad() {
@@ -160,7 +160,7 @@ class FollowFolloingVC: UIViewController {
         }
     }
 }
-extension FollowFolloingVC: UITableViewDataSource, UITableViewDelegate {
+extension FollowFollowingVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.vmObject.arrList.count
     }
@@ -199,7 +199,7 @@ extension FollowFolloingVC: UITableViewDataSource, UITableViewDelegate {
         }
     }
 }
-extension FollowFolloingVC: PublicFiguresItemDelegate {
+extension FollowFollowingVC: PublicFiguresItemDelegate {
     func publicFigures(_ cell: PublicFiguresItemCell, didSelectActionButton object: PostUser) {
         if vmObject.currentTabIndex == .followers {
             if object.statusUser == 0 {
@@ -222,7 +222,7 @@ extension FollowFolloingVC: PublicFiguresItemDelegate {
         }
     }
 }
-extension FollowFolloingVC: PoliticianProfileDelegate {
+extension FollowFollowingVC: PoliticianProfileDelegate {
     func politicianProfile(didUpadate user: PostUser, at indexPath: IndexPath) {
         
     }

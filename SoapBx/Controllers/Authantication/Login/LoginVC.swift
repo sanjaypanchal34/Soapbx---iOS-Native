@@ -18,7 +18,7 @@ class LoginVC: UIViewController {
     
     @IBOutlet private weak var imgRemamberMe: UIImageView!
     @IBOutlet private weak var lblRemamberMe: UILabel!
-    @IBOutlet private weak var btnForgotPasswrod: UIButton!
+    @IBOutlet private weak var btnForgotPasswrod: OTLTextButton!
     
     @IBOutlet private weak var btnSignin: OTLTextButton!
     
@@ -49,6 +49,7 @@ class LoginVC: UIViewController {
         lblRemamberMe.setTheme(LocalStrings.BTN_REMEMBER.rawValue.addLocalizableString())
         
         btnForgotPasswrod.setTheme(LocalStrings.BTN_FORGOT_PASS.rawValue.addLocalizableString(), color: .titleRed)
+        btnForgotPasswrod.addTarget(self, action: #selector(click_ForgotPassword), for: .touchUpInside)
         
         btnSignin.appButton(LocalStrings.BTN_SIGNIN.rawValue.addLocalizableString())
         

@@ -10,8 +10,8 @@
 		040759C02A55D35F00318462 /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040759BE2A55D35F00318462 /* SignupVC.swift */; };
 		040759C12A55D35F00318462 /* SignupVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 040759BF2A55D35F00318462 /* SignupVC.xib */; };
 		042925982A55DF8E00EE3B8D /* global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042925972A55DF8E00EE3B8D /* global.swift */; };
-		042A6A9B2A5F1C9500BB1D71 /* FollowFolloingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A6A992A5F1C9500BB1D71 /* FollowFolloingVC.swift */; };
-		042A6A9C2A5F1C9500BB1D71 /* FollowFolloingVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 042A6A9A2A5F1C9500BB1D71 /* FollowFolloingVC.xib */; };
+		042A6A9B2A5F1C9500BB1D71 /* FollowFollowingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A6A992A5F1C9500BB1D71 /* FollowFollowingVC.swift */; };
+		042A6A9C2A5F1C9500BB1D71 /* FollowFollowingVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 042A6A9A2A5F1C9500BB1D71 /* FollowFollowingVC.xib */; };
 		0439B7412A60612100B74568 /* CommentItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0439B73F2A60612100B74568 /* CommentItemCell.swift */; };
 		0439B7422A60612100B74568 /* CommentItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0439B7402A60612100B74568 /* CommentItemCell.xib */; };
 		043E26632A5C5EDE00695C2D /* PublicFiguresVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E26612A5C5EDE00695C2D /* PublicFiguresVC.swift */; };
@@ -167,7 +167,7 @@
 		84A2A5212A86929900387118 /* ViewBasicDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A5202A86929900387118 /* ViewBasicDetails.swift */; };
 		84A2A5232A86952500387118 /* ViewPoliticianScorecard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A5222A86952500387118 /* ViewPoliticianScorecard.swift */; };
 		84A2A5332A869B7A00387118 /* ViewContactFollow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A5322A869B7A00387118 /* ViewContactFollow.swift */; };
-		84A2A5362A87E81500387118 /* FollowFolloingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A5352A87E81500387118 /* FollowFolloingViewModel.swift */; };
+		84A2A5362A87E81500387118 /* FollowFollowingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A5352A87E81500387118 /* FollowFollowingViewModel.swift */; };
 		84A2A5392A893E1100387118 /* ConnectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A5382A893E1100387118 /* ConnectionViewModel.swift */; };
 		84A2A5962A8E7DD400387118 /* PollsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A5952A8E7DD400387118 /* PollsModel.swift */; };
 		84A2A5992A8E7F1A00387118 /* PollsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A5982A8E7F1A00387118 /* PollsListViewModel.swift */; };
@@ -223,8 +223,8 @@
 		040759BE2A55D35F00318462 /* SignupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
 		040759BF2A55D35F00318462 /* SignupVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignupVC.xib; sourceTree = "<group>"; };
 		042925972A55DF8E00EE3B8D /* global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = global.swift; sourceTree = "<group>"; };
-		042A6A992A5F1C9500BB1D71 /* FollowFolloingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowFolloingVC.swift; sourceTree = "<group>"; };
-		042A6A9A2A5F1C9500BB1D71 /* FollowFolloingVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FollowFolloingVC.xib; sourceTree = "<group>"; };
+		042A6A992A5F1C9500BB1D71 /* FollowFollowingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowFollowingVC.swift; sourceTree = "<group>"; };
+		042A6A9A2A5F1C9500BB1D71 /* FollowFollowingVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FollowFollowingVC.xib; sourceTree = "<group>"; };
 		0439B73F2A60612100B74568 /* CommentItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentItemCell.swift; sourceTree = "<group>"; };
 		0439B7402A60612100B74568 /* CommentItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentItemCell.xib; sourceTree = "<group>"; };
 		043E26612A5C5EDE00695C2D /* PublicFiguresVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicFiguresVC.swift; sourceTree = "<group>"; };
@@ -388,7 +388,7 @@
 		84A2A5202A86929900387118 /* ViewBasicDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewBasicDetails.swift; sourceTree = "<group>"; };
 		84A2A5222A86952500387118 /* ViewPoliticianScorecard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPoliticianScorecard.swift; sourceTree = "<group>"; };
 		84A2A5322A869B7A00387118 /* ViewContactFollow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewContactFollow.swift; sourceTree = "<group>"; };
-		84A2A5352A87E81500387118 /* FollowFolloingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowFolloingViewModel.swift; sourceTree = "<group>"; };
+		84A2A5352A87E81500387118 /* FollowFollowingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowFollowingViewModel.swift; sourceTree = "<group>"; };
 		84A2A5382A893E1100387118 /* ConnectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionViewModel.swift; sourceTree = "<group>"; };
 		84A2A5952A8E7DD400387118 /* PollsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollsModel.swift; sourceTree = "<group>"; };
 		84A2A5982A8E7F1A00387118 /* PollsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollsListViewModel.swift; sourceTree = "<group>"; };
@@ -454,8 +454,8 @@
 			isa = PBXGroup;
 			children = (
 				84A2A5342A87E80200387118 /* View Model */,
-				042A6A992A5F1C9500BB1D71 /* FollowFolloingVC.swift */,
-				042A6A9A2A5F1C9500BB1D71 /* FollowFolloingVC.xib */,
+				042A6A992A5F1C9500BB1D71 /* FollowFollowingVC.swift */,
+				042A6A9A2A5F1C9500BB1D71 /* FollowFollowingVC.xib */,
 			);
 			path = FollowFolloingVC;
 			sourceTree = "<group>";
@@ -1315,7 +1315,7 @@
 		84A2A5342A87E80200387118 /* View Model */ = {
 			isa = PBXGroup;
 			children = (
-				84A2A5352A87E81500387118 /* FollowFolloingViewModel.swift */,
+				84A2A5352A87E81500387118 /* FollowFollowingViewModel.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -1669,7 +1669,7 @@
 				046D86AF2A65B51500D0312B /* SideMenu.xib in Resources */,
 				04749C2F2A6989DD00A67A96 /* ConnectionVC.xib in Resources */,
 				049B09F62A717F42008ADEF2 /* LocationSearchVC.xib in Resources */,
-				042A6A9C2A5F1C9500BB1D71 /* FollowFolloingVC.xib in Resources */,
+				042A6A9C2A5F1C9500BB1D71 /* FollowFollowingVC.xib in Resources */,
 				04DA4A5B2A67E15B00AF540B /* ChangePasswordVC.xib in Resources */,
 				044C01C52A6BF42C00E79AD2 /* PollsListVC.xib in Resources */,
 				049A0A3C2A5C53CA008A4CAF /* TrendsItemCell.xib in Resources */,
@@ -1803,7 +1803,7 @@
 				049AE1A52A6C28A8001FAA65 /* NotificationListItemCell.swift in Sources */,
 				1F280DC32A8CD99200273DD2 /* ChatViewModel.swift in Sources */,
 				0459B5942A680DFA0096802C /* NotificationSettingModel.swift in Sources */,
-				84A2A5362A87E81500387118 /* FollowFolloingViewModel.swift in Sources */,
+				84A2A5362A87E81500387118 /* FollowFollowingViewModel.swift in Sources */,
 				046D86AB2A65ADF400D0312B /* MenuModel.swift in Sources */,
 				047E11942A59808800B7CC05 /* SubscriptionItemCell.swift in Sources */,
 				04C17CB42A5478220034450A /* Extantion.swift in Sources */,
@@ -1830,7 +1830,7 @@
 				049618DC2A54123E0037001B /* Configration.swift in Sources */,
 				84A2A5962A8E7DD400387118 /* PollsModel.swift in Sources */,
 				04CA0E052A6406550043C530 /* ThreeDotItemModel.swift in Sources */,
-				042A6A9B2A5F1C9500BB1D71 /* FollowFolloingVC.swift in Sources */,
+				042A6A9B2A5F1C9500BB1D71 /* FollowFollowingVC.swift in Sources */,
 				84B1D5462A75329E0051558B /* TradPostModels.swift in Sources */,
 				84CC5AA02A7F735500B88B0A /* ProfileViewModel.swift in Sources */,
 				84B1D54B2A76882D0051558B /* CommentViewModel.swift in Sources */,
@@ -2036,13 +2036,14 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = S6US2VPAH9;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SoapBx/Framework",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SoapBx/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SoapBx;
 				INFOPLIST_KEY_NSCameraUsageDescription = "SoapBx would like to access camera for upload profile and post";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "SoapBx would like to access location for show post near by your location ";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "SoapBx would like to access location for show post near by your location ";
@@ -2081,13 +2082,14 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = S6US2VPAH9;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SoapBx/Framework",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SoapBx/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SoapBx;
 				INFOPLIST_KEY_NSCameraUsageDescription = "SoapBx would like to access camera for upload profile and post";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "SoapBx would like to access location for show post near by your location ";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "SoapBx would like to access location for show post near by your location ";

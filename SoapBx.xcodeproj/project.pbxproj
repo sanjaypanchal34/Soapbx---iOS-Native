@@ -154,6 +154,9 @@
 		1FB870DC2A97B88B0021F08F /* ChangeLangModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB870DB2A97B88A0021F08F /* ChangeLangModel.swift */; };
 		1FBADD4D2AA0A598001A2EC0 /* NotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBADD4C2AA0A598001A2EC0 /* NotificationViewModel.swift */; };
 		1FBADD4F2AA0A5E8001A2EC0 /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBADD4E2AA0A5E8001A2EC0 /* NotificationModel.swift */; };
+		1FBADD522AA1B0D5001A2EC0 /* PaymentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBADD512AA1B0D5001A2EC0 /* PaymentModel.swift */; };
+		1FBADD562AA1B55A001A2EC0 /* PaymentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBADD542AA1B55A001A2EC0 /* PaymentCell.swift */; };
+		1FBADD572AA1B55A001A2EC0 /* PaymentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FBADD552AA1B55A001A2EC0 /* PaymentCell.xib */; };
 		84255FE02A84EC5700D6170A /* PublicFiguresViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84255FDF2A84EC5700D6170A /* PublicFiguresViewModel.swift */; };
 		84A2A51D2A866F0F00387118 /* PoliticianProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A51B2A866F0F00387118 /* PoliticianProfileVC.swift */; };
 		84A2A51E2A866F0F00387118 /* PoliticianProfileVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A2A51C2A866F0F00387118 /* PoliticianProfileVC.xib */; };
@@ -367,6 +370,9 @@
 		1FBADD4A2AA09831001A2EC0 /* SoapBx.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SoapBx.entitlements; sourceTree = "<group>"; };
 		1FBADD4C2AA0A598001A2EC0 /* NotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewModel.swift; sourceTree = "<group>"; };
 		1FBADD4E2AA0A5E8001A2EC0 /* NotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
+		1FBADD512AA1B0D5001A2EC0 /* PaymentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentModel.swift; sourceTree = "<group>"; };
+		1FBADD542AA1B55A001A2EC0 /* PaymentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCell.swift; sourceTree = "<group>"; };
+		1FBADD552AA1B55A001A2EC0 /* PaymentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentCell.xib; sourceTree = "<group>"; };
 		6606E9F1F3155B6AB15CD78B /* Pods-SoapBx.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoapBx.release.xcconfig"; path = "Target Support Files/Pods-SoapBx/Pods-SoapBx.release.xcconfig"; sourceTree = "<group>"; };
 		84255FDF2A84EC5700D6170A /* PublicFiguresViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicFiguresViewModel.swift; sourceTree = "<group>"; };
 		84A2A51B2A866F0F00387118 /* PoliticianProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoliticianProfileVC.swift; sourceTree = "<group>"; };
@@ -1225,6 +1231,23 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		1FBADD502AA1B0B1001A2EC0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1FBADD512AA1B0D5001A2EC0 /* PaymentModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1FBADD532AA1B544001A2EC0 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				1FBADD542AA1B55A001A2EC0 /* PaymentCell.swift */,
+				1FBADD552AA1B55A001A2EC0 /* PaymentCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		84255FDE2A84EC4500D6170A /* View Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1299,6 +1322,8 @@
 		84A2A61D2A96700A00387118 /* Payment Details */ = {
 			isa = PBXGroup;
 			children = (
+				1FBADD532AA1B544001A2EC0 /* Cell */,
+				1FBADD502AA1B0B1001A2EC0 /* Model */,
 				84A2A6222A9670EE00387118 /* View Model */,
 				84A2A61E2A96701F00387118 /* PaymentDetailsVC.swift */,
 				84A2A61F2A96701F00387118 /* PaymentDetailsVC.xib */,
@@ -1602,6 +1627,7 @@
 				049D88A62A52D9A800876D27 /* SFProDisplay-Semibold.ttf in Resources */,
 				84A2A59D2A8E810000387118 /* PollsListItemCell.xib in Resources */,
 				047CACC52A56843900A64779 /* ForgotPasswrodVC.xib in Resources */,
+				1FBADD572AA1B55A001A2EC0 /* PaymentCell.xib in Resources */,
 				049D88AC2A52DA4B00876D27 /* Localizable.strings in Resources */,
 				046D86AF2A65B51500D0312B /* SideMenu.xib in Resources */,
 				04749C2F2A6989DD00A67A96 /* ConnectionVC.xib in Resources */,
@@ -1777,6 +1803,7 @@
 				047DB07C2A595FED003DFE41 /* YouInterestedVC.swift in Sources */,
 				1F280DCE2A8D3DE100273DD2 /* ChatRCell.swift in Sources */,
 				04DA4A312A67B1E100AF540B /* SettingModel.swift in Sources */,
+				1FBADD562AA1B55A001A2EC0 /* PaymentCell.swift in Sources */,
 				043E266A2A5C64E300695C2D /* PublicFiguresItemCell.swift in Sources */,
 				84A2A6242A96710600387118 /* PaymentDetailsVIewModel.swift in Sources */,
 				1FB870D42A97B7A80021F08F /* ChangeLanguageVC.swift in Sources */,
@@ -1803,6 +1830,7 @@
 				84A2A6202A96701F00387118 /* PaymentDetailsVC.swift in Sources */,
 				049D774E2A71384500A848F9 /* OTLConfiguration.swift in Sources */,
 				047DB0772A5950D3003DFE41 /* VerificationCodeVC.swift in Sources */,
+				1FBADD522AA1B0D5001A2EC0 /* PaymentModel.swift in Sources */,
 				04DA4A422A67BF5C00AF540B /* InviteFriendsVC.swift in Sources */,
 				049D77522A71384500A848F9 /* OTLWebservice.swift in Sources */,
 			);

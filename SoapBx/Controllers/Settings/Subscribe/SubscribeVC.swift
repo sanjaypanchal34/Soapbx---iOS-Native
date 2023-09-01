@@ -115,14 +115,11 @@ class SubscribeVC: UIViewController {
                 productId = "premium_12_month"
             }
             showLoader()
-            SwiftyStoreKit.purchaseProduct(productId, quantity: 1, atomically: false) { result in
+            SwiftyStoreKit.purchaseProduct(productId, quantity: 1, atomically: true, applicationUsername: (authUser?.user!.uuid)!) { result in
                 hideLoader()
                 switch result {
-                case .success(let product):
-                    if product.needsFinishTransaction {
-                        SwiftyStoreKit.finishTransaction(product.transaction)
-                    }
-                    print("Purchase Success: \(product.productId)")
+                case .success(let purchase):
+                    print("Purchase Success: \(purchase.productId)")
                     if self.screenType == .fromRegister {
                         let vc = EnableLocationVC()
                         self.navigationController?.pushViewController(vc, animated: true)

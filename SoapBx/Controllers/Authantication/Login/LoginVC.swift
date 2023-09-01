@@ -62,6 +62,9 @@ class LoginVC: UIViewController {
 //        txtEmail.text = "hemanshu.iihglobal@gmail.com"
 //        txtPassword.text = "Password@1"
         
+//        txtEmail.text = "hindtom11@yopmail.com"
+//        txtPassword.text = "12345678"
+        
         if let remembe = AuthorizedUser.rememberMe() {
             txtEmail.text = remembe.email
             txtPassword.text = remembe.password

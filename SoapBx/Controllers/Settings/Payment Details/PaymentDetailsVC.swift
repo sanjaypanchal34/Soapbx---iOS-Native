@@ -25,7 +25,7 @@ class PaymentDetailsVC: UIViewController {
         super.viewDidLoad()
         
         setupUI()
-        getPolls()
+        getTransaction()
     }
     
     private func setupUI() {
@@ -40,7 +40,7 @@ class PaymentDetailsVC: UIViewController {
         tblList.refreshControl = refreshControl
         
         tblList.backgroundColor = .lightGrey
-        tblList.register(["PollsListItemCell"], delegate: self, dataSource: self)
+        tblList.register(["PaymentCell"], delegate: self, dataSource: self)
         updateList()
     }
     
@@ -63,7 +63,7 @@ class PaymentDetailsVC: UIViewController {
     }
     
         //API Calls
-    private func getPolls() {
+    private func getTransaction() {
         showLoader()
         vmObject.getTransactions {[self] result in
             hideLoader()
@@ -75,15 +75,17 @@ class PaymentDetailsVC: UIViewController {
 }
 extension PaymentDetailsVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return vmObject.arrList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        if let cell = tableView.dequeueReusableCell(withIdentifier: "PollsListItemCell") as? PollsListItemCell {
-//            cell.indexPath = indexPath
-//            cell.setData(vmObject.arrList[indexPath.row], date: currentDate, delegate: self)
-//            return cell
-//        }
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "PaymentCell") as? PaymentCell {
+            let item: PaymentModel = vmObject.arrList[indexPath.row] as! PaymentModel
+            cell.lblTitle.text = String(format: "Subscription (%@)", item.duration!)
+            cell.lblAmount.text = String(format: "%.2f USD", item.amount ?? 0.0)
+            cell.lblTime.setTheme(OTLDateConvert.instance.convert(date: item.created_at ?? "", set: .yyyyMMdd_T_HHmmssDotssZ, getFormat: .mmmDDyyyyAthhmma), color: UIColor.lightGray, size: 11)
+            return cell
+        }
         return UITableViewCell()
     }
     

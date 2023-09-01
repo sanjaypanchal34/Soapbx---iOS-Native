@@ -12,7 +12,7 @@ import Foundation
 class PaymentDetailsVIewModel {
     
     var updateViewComplition:(()->Void)?
-    var arrList:[PollModel] = []
+    var arrList:[PaymentModel] = []
     private var isDataLoading: Bool = false
     private var intPage = 1 {
         didSet {
@@ -66,9 +66,21 @@ class PaymentDetailsVIewModel {
                             if let polls = data["data"] as? JSONArray {
                                 for poll in polls {
                                     do {
-                                        let pollData = try JSONSerialization.data(withJSONObject: poll)
-                                        let pollModel = try JSONDecoder().decode(PollModel.self, from: pollData)
-                                        self.arrList.append(pollModel)
+                                        var order_id = ""
+                                        var amount = 0.0
+                                        var duration = ""
+                                        var created = ""
+                                        
+                                        if let mData = poll as? JSON {
+                                            order_id = (mData["order_id"] as? String)!
+                                            amount = (mData["amount"] as? Double)!
+                                            if let sub = mData["subscription"] as? JSON {
+                                                duration = (sub["duration"] as? String)!
+                                                created = (sub["created_at"] as? String)!
+                                            }
+                                        }
+                                        let model: PaymentModel = .init(order_id: order_id, duration: duration, created_at: created, amount: amount)
+                                        self.arrList.append(model)
                                     } catch{
                                         print("[TradPostListViewModel] getHomePost response posts try Catch : \(error)")
                                     }

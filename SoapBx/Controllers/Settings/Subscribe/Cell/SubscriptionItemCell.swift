@@ -22,12 +22,19 @@ class SubscriptionItemCell: AppTableViewCell {
         viewItem.layer.cornerRadius = 5
     }
 
-    func setData(_ data:SubscribeModel) {
+    func setData(_ data:SubscribeModel, _subscription_Id: Int) {
         lblTitle.text = data.name
         lblSubtitle.text = data.description
-        lblTitle.textColor = data.isSelected ? UIColor.appYellow : UIColor.titleBlack
-        lblSubtitle.textColor = data.isSelected ? UIColor.white : UIColor.titleBlack
-        viewItem.backgroundColor = data.isSelected ? UIColor.primaryBlue : UIColor.titleGray
+        if data.id == _subscription_Id {
+            lblTitle.textColor = UIColor.appYellow
+            lblSubtitle.textColor = UIColor.white
+            viewItem.backgroundColor = UIColor.primaryBlue
+        } else {
+            lblTitle.textColor = UIColor.titleBlack
+            lblSubtitle.textColor = UIColor.titleBlack
+            viewItem.backgroundColor = UIColor.titleGray
+        }
+        
     }
     
 }

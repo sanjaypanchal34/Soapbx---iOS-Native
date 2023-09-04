@@ -36,6 +36,8 @@ class MessageListVC: UIViewController {
         searchView.imageView?.image = UIImage(named: "ic_search")?.withRenderingMode(.alwaysTemplate)
         searchView.imageView?.tintColor = .titleBlack
         txtSearch.font = AppFont.regular.font(size: 16)
+        txtSearch.addTarget(self, action: #selector(searchEditingChanged(_:)), for: .editingChanged)
+        txtSearch.addTarget(self, action: #selector(searchEditingDidBegin(_:)), for: .editingDidBegin)
         
         btnMessageRequest.setTheme(LocalStrings.CHAT_REQUEST.rawValue.addLocalizableString(), color: .primaryBlue, size: 10)
         
@@ -43,6 +45,34 @@ class MessageListVC: UIViewController {
         lblNoData.noDataTitle(LocalStrings.CHAT_NO_DATA.rawValue.addLocalizableString())
     }
 
+    @objc private func searchEditingChanged(_ textField: UITextField) {
+        filterData(search: textField.text ?? "")
+    }
+    
+    @objc private func searchEditingDidBegin(_ textField: UITextField) {
+        filterData(search: "")
+    }
+    
+    func filterData(search: String) {
+        if search.count == 0 {
+            vmObject.tempArrList = []
+            vmObject.tempArrList.append(contentsOf: vmObject.arrList)
+            DispatchQueue.main.async {
+                self.tblList.reloadData {
+                }
+            }
+            return
+        }
+        vmObject.tempArrList = []
+        vmObject.tempArrList = vmObject.arrList.filter{ $0.rName!.lowercased().contains(search.lowercased()) }
+        print(vmObject.tempArrList.count)
+        DispatchQueue.main.async {
+            self.tblList.reloadData {
+                
+            }
+        }
+    }
+    
     func getChatUserList() {
         showLoader()
         vmObject.getUserChatList() { [self] result in
@@ -51,7 +81,9 @@ class MessageListVC: UIViewController {
                 DispatchQueue.main.async {
                     if self.vmObject.arrList.count > 0 {
                         self.lblNoData.isHidden = true
+                        self.filterData(search: "")
                         self.tblList.reloadData {
+                            
                         }
                     }
                 }
@@ -64,32 +96,18 @@ class MessageListVC: UIViewController {
         
     }
     
-    private func message(rName: String, rId: Int) {
-        showLoader()
-        vmObject.message(user: rId) {[self] result in
-            hideLoader()
-            showToast(message: result.message)
-            if result.status {
-                let vc = ChatVC()
-                    vc.userName = rName
-                    vc.userId = rId
-                    vc.uniqueID = vmObject.uniqueId
-                    vc.relationID = vmObject.relationId
-                self.navigationController?.pushViewController(vc, animated: true)
-            }
-        }
-    }
+        
 }
 
 
 
 extension MessageListVC: UITableViewDataSource, UITableViewDelegate  {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return vmObject.arrList.count
+        return vmObject.tempArrList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let item: MessageModel = vmObject.arrList[indexPath.row] as! MessageModel
+        let item: MessageModel = vmObject.tempArrList[indexPath.row] as! MessageModel
         let cell = tableView.dequeueReusableCell(withIdentifier: "MessageListCell") as! MessageListCell
         cell.lblMessage.text = item.message
         cell.vwMessage.roundedViewCorner(radius: 5)
@@ -108,7 +126,12 @@ extension MessageListVC: UITableViewDataSource, UITableViewDelegate  {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item: MessageModel = vmObject.arrList[indexPath.row] as! MessageModel
-        message(rName: item.rName!, rId: item.receiver_id!)
+        let item: MessageModel = vmObject.tempArrList[indexPath.row] as! MessageModel
+        let vc = ChatVC()
+        vc.userName = item.rName ?? ""
+            vc.userId = item.receiver_id!
+        vc.uniqueID = item.chat_relation_id
+            vc.relationID = item.chat_relation_id
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

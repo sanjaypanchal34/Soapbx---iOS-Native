@@ -26,7 +26,8 @@ class SubscriptionViewModel {
     
     var arrSubsciption: [SubscribeModel] = []
     var isFreemiumSelected = true
-    
+    var subscription_id = 1
+    var tempSubscription_id = 1
     func getSubscriptionPlans( complition: @escaping (ResponseCallBack)) {
         let para: JSON = [:]
         
@@ -48,6 +49,15 @@ class SubscriptionViewModel {
                                 } catch{
                                     print("[SubscriptionViewModel] getSubscriptionPlans response try Catch : \(error)")
                                 }
+                            }
+                        }
+                        if let data = data.body?["subscription_id"] as? Int {
+                            self.subscription_id = data
+                            self.tempSubscription_id = data
+                            if data != 1 {
+                                self.isFreemiumSelected = false
+                            } else {
+                                self.isFreemiumSelected = true
                             }
                         }
                         complition(CompanComplition(message: data.message, code: data.code, status: true))

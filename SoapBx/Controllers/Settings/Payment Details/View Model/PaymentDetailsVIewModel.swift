@@ -72,11 +72,11 @@ class PaymentDetailsVIewModel {
                                         var created = ""
                                         
                                         if let mData = poll as? JSON {
-                                            order_id = (mData["order_id"] as? String)!
-                                            amount = (mData["amount"] as? Double)!
+                                            order_id = (mData["order_id"] as? String ?? "")
+                                            amount = (mData["amount"] as? Double ?? 0.0)
                                             if let sub = mData["subscription"] as? JSON {
-                                                duration = (sub["duration"] as? String)!
-                                                created = (sub["created_at"] as? String)!
+                                                duration = (sub["duration"] as? String ?? "")
+                                                created = (sub["created_at"] as? String ?? "")
                                             }
                                         }
                                         let model: PaymentModel = .init(order_id: order_id, duration: duration, created_at: created, amount: amount)

@@ -12,9 +12,8 @@ import Foundation
 class MessageViewModel {
     var updateViewComplition:(()->Void)?
     var arrList:[MessageModel] = []
+    var tempArrList:[MessageModel] = []
     var totalPage: Int = 0
-    var uniqueId: Int = 0
-    var relationId: Int = 0
     
     private var isDataLoading: Bool = false
     var currentPage = 1 {
@@ -77,6 +76,7 @@ class MessageViewModel {
                                             
                                             if let mObj = mData["message"] as? JSON {
                                                 chat_relation_id = (mObj["chat_relation_id"] as? Int)!
+                                                uniqueId = (mObj["chat_relation_id"] as? Int)!
                                                 message = (mObj["message"] as? String)!
                                                 created_at = (mObj["created_at"] as? String)!
                                             }
@@ -110,31 +110,6 @@ class MessageViewModel {
                         }
                         self.isDataLoading = false
                         complition?(CompanComplition(message: data.message, code: data.code, status: false))
-                    }
-            }
-        }
-    }
-    
-    func message(user id: Int, complition: @escaping (ResponseCallBack)) {
-        let para: JSON = ["user_id": id, "status_user" : "1"]
-        Webservice.Chat.startChat.requestWith(parameter: para) { result in
-            switch result {
-                case .fail(let message,let code,_):
-                    complition(CompanComplition(message: message, code: code ?? 111, status: false))
-                case .success(let data):
-                    if data.code == 200 {
-                        if let data = data.body?["data"] as? JSON {
-                            if let uID = data["unique"] as? Int {
-                                self.uniqueId = uID
-                            }
-                            
-                            if let rID = data["id"] as? Int {
-                                self.relationId = rID
-                            }
-                        }
-                        complition(CompanComplition(message: data.message, code: data.code, status: true))
-                    } else {
-                        complition(CompanComplition(message: data.message, code: data.code, status: false))
                     }
             }
         }

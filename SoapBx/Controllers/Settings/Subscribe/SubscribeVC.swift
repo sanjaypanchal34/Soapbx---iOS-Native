@@ -100,10 +100,14 @@ class SubscribeVC: UIViewController {
         let type: Int = (object.first?.type)!
         var productId: String = ""
         if type == 2 {
-            if object.count > 0 {
-                updateSubscriptionPlans()
+            if vmObject.subscription_id != 1 {
+                showToast(message: "You have already pucchased paid plan.")
             } else {
-                showToast(message: LocalStrings.SUB_MSG.rawValue.addLocalizableString())
+                if object.count > 0 {
+                    updateSubscriptionPlans()
+                } else {
+                    showToast(message: LocalStrings.SUB_MSG.rawValue.addLocalizableString())
+                }
             }
         } else {
             let sId: Int = (object.first?.id)!
@@ -204,7 +208,7 @@ extension SubscribeVC: UITableViewDataSource {
             return cell
         } else if indexPath.section == 1,
                   let cell = tableView.dequeueReusableCell(withIdentifier: "SubscriptionItemCell") as? SubscriptionItemCell {
-            cell.setData(vmObject.arrSubsciption[indexPath.row])
+            cell.setData(vmObject.arrSubsciption[indexPath.row], _subscription_Id: vmObject.tempSubscription_id)
             return cell
                 }
         return UITableViewCell()
@@ -241,6 +245,7 @@ extension SubscribeVC: UITableViewDelegate {
                 vmObject.arrSubsciption[index].isSelected = false
             }
             vmObject.arrSubsciption[indexPath.row].isSelected = true
+            vmObject.tempSubscription_id = vmObject.arrSubsciption[indexPath.row].id ?? 1
             tableView.reloadData()
         }
     }

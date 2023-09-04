@@ -137,9 +137,9 @@ class EditProfileVC: UIViewController {
     @IBAction private func click_btnProfile() {
         PHPhotoLibrary.execute(controller: self, onAccessHasBeenGranted: {
             DispatchQueue.main.async {
-                let camera = OTLAlertModel(title: "Camera", id: 0)
-                let gallary = OTLAlertModel(title: "Gallary", id: 1)
-                let cancel = OTLAlertModel(title: "Cancel", id: 2, style: .destructive)
+                let camera = OTLAlertModel(title: LocalStrings.C_CAMERA.rawValue.addLocalizableString(), id: 0)
+                let gallary = OTLAlertModel(title: LocalStrings.C_GALLERY.rawValue.addLocalizableString(), id: 1)
+                let cancel = OTLAlertModel(title: LocalStrings.C_CANCEL.rawValue.addLocalizableString(), id: 2, style: .destructive)
                 
                 showAlert(title: "Media Type", message: "", buttons: [camera, gallary, cancel]) { alert in
                     self.isProfile = true
@@ -156,9 +156,9 @@ class EditProfileVC: UIViewController {
     @IBAction private func click_btnCover() {
         PHPhotoLibrary.execute(controller: self, onAccessHasBeenGranted: {
             DispatchQueue.main.async {
-                let camera = OTLAlertModel(title: "Camera", id: 0)
-                let gallary = OTLAlertModel(title: "Gallary", id: 1)
-                let cancel = OTLAlertModel(title: "Cancel", id: 2, style: .destructive)
+                let camera = OTLAlertModel(title: LocalStrings.C_CAMERA.rawValue.addLocalizableString(), id: 0)
+                let gallary = OTLAlertModel(title: LocalStrings.C_GALLERY.rawValue.addLocalizableString(), id: 1)
+                let cancel = OTLAlertModel(title: LocalStrings.C_CANCEL.rawValue.addLocalizableString(), id: 2, style: .destructive)
                 
                 showAlert(title: "Media Type", message: "", buttons: [camera, gallary, cancel]) { alert in
                     self.isProfile = false

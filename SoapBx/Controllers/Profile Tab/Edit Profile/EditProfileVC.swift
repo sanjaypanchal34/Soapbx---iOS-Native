@@ -141,7 +141,7 @@ class EditProfileVC: UIViewController {
                 let gallary = OTLAlertModel(title: LocalStrings.C_GALLERY.rawValue.addLocalizableString(), id: 1)
                 let cancel = OTLAlertModel(title: LocalStrings.C_CANCEL.rawValue.addLocalizableString(), id: 2, style: .destructive)
                 
-                showAlert(title: "Media Type", message: "", buttons: [camera, gallary, cancel]) { alert in
+                showAlert(title: LocalStrings.C_MEDIA_TYPE.rawValue.addLocalizableString(), message: "", buttons: [camera, gallary, cancel]) { alert in
                     self.isProfile = true
                     if alert.id == 0 {
                         self.openCamera()
@@ -160,7 +160,7 @@ class EditProfileVC: UIViewController {
                 let gallary = OTLAlertModel(title: LocalStrings.C_GALLERY.rawValue.addLocalizableString(), id: 1)
                 let cancel = OTLAlertModel(title: LocalStrings.C_CANCEL.rawValue.addLocalizableString(), id: 2, style: .destructive)
                 
-                showAlert(title: "Media Type", message: "", buttons: [camera, gallary, cancel]) { alert in
+                showAlert(title: LocalStrings.C_MEDIA_TYPE.rawValue.addLocalizableString(), message: "", buttons: [camera, gallary, cancel]) { alert in
                     self.isProfile = false
                     if alert.id == 0 {
                         self.openCamera()

@@ -96,10 +96,10 @@
                                     <rect key="frame" x="20" y="659" width="353" height="45"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y02-ny-Cr3" customClass="OTLImageButton" customModule="OTLContaner">
-                                            <rect key="frame" x="5" y="2.6666666666666288" width="40" height="40"/>
+                                            <rect key="frame" x="5" y="22.666666666666629" width="0.0" height="0.0"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="40" id="bVU-13-7vp"/>
+                                                <constraint firstAttribute="height" id="bVU-13-7vp"/>
                                                 <constraint firstAttribute="width" secondItem="y02-ny-Cr3" secondAttribute="height" multiplier="1:1" id="dyd-qT-eeu"/>
                                             </constraints>
                                             <connections>
@@ -107,7 +107,7 @@
                                             </connections>
                                         </view>
                                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type your message..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wP3-Ht-jRX">
-                                            <rect key="frame" x="50" y="0.0" width="253" height="45"/>
+                                            <rect key="frame" x="10" y="0.0" width="293" height="45"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>

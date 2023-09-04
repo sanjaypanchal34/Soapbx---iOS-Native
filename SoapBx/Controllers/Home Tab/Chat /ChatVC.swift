@@ -91,6 +91,7 @@ class ChatVC: UIViewController , PusherDelegate{
         
         btnDotMenu.image = UIImage(named: "ic_dots")
         btnDotMenu.height = 30
+        btnDotMenu.isHidden = true
         
         tblList.register(["ChatRCell"], delegate: self, dataSource: self)
         tblList.register(["ChatSCell"], delegate: self, dataSource: self)
@@ -105,6 +106,7 @@ class ChatVC: UIViewController , PusherDelegate{
         btnAddMedia.image = UIImage(named: "ic_paymentAdd")
         btnAddMedia.height = 25
         btnAddMedia.backgroundColor = .clear
+        btnDotMenu.isHidden = true
         
         txtMessage.font = AppFont.regular.font(size: 16)
         txtMessage.backgroundColor = .clear

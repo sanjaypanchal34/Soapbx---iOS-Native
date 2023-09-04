@@ -105,7 +105,6 @@ class ChatVC: UIViewController , PusherDelegate{
         btnAddMedia.image = UIImage(named: "ic_paymentAdd")
         btnAddMedia.height = 25
         btnAddMedia.backgroundColor = .clear
-        btnAddMedia.isHidden = true
         
         txtMessage.font = AppFont.regular.font(size: 16)
         txtMessage.backgroundColor = .clear
@@ -136,6 +135,7 @@ class ChatVC: UIViewController , PusherDelegate{
     
     @IBAction private func click_btnSendMessage() {
         if self.txtMessage.text?.count ?? 0 > 0 {
+            showLoader()
             vmObject.sendMessage(relationId : relationID, sender: authUser?.user?.id ?? 0, receiver: self.userId ?? 0, message: self.txtMessage.text ?? "") { [self] result in
                 if result.status {
                     self.txtMessage.text = ""
@@ -204,6 +204,7 @@ extension ChatVC: UITableViewDataSource, UITableViewDelegate  {
             
             eventName = channel.bind(eventName:kPusherNotifEventMessage, callback: { data -> Void in
                 print("notif_comment message received: \(data ?? "")")
+                hideLoader()
                 if let d = data as? JSON {
                     let chat_relation_id: String = d["chat_relation_id"] as! String
                     let id: Int = d["id"] as! Int

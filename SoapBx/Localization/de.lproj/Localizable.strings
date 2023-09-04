@@ -1,4 +1,3 @@
-
 /*
   Localizable.strings
   SoapBx
@@ -38,6 +37,7 @@
 "a_delete_account" = "Sind Sie sicher, dass Sie dieses Konto löschen möchten?";
 "a_delete_post" = "Sind Sie sicher, dass Sie diesen Beitrag löschen möchten?";
 "a_change_lang" = "Sind Sie sicher, dass Sie die Sprache ändern möchten?";
+"a_plan_purchase" = "You have already purchased paid plan.";
 
 // SEITENMENÜ
 "s_support" = "Unterstützen Sie Soapbx";

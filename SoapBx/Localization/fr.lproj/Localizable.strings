@@ -37,6 +37,7 @@
 "a_delete_account" = "Êtes-vous sûr de vouloir supprimer ce compte ?";
 "a_delete_post" = "Êtes-vous sûr de vouloir supprimer cette publication ?";
 "a_change_lang" = "Êtes-vous sûr de vouloir changer de langue ?";
+"a_plan_purchase" = "You have already purchased paid plan.";
 
 // MENU LATÉRAL
 "s_support" = "Soutenir Soapbx";

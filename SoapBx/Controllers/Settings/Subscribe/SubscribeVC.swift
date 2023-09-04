@@ -101,7 +101,7 @@ class SubscribeVC: UIViewController {
         var productId: String = ""
         if type == 2 {
             if vmObject.subscription_id != 1 {
-                showToast(message: "You have already pucchased paid plan.")
+                showToast(message: LocalStrings.A_PLAN_PURCHASE.rawValue.addLocalizableString())
             } else {
                 if object.count > 0 {
                     updateSubscriptionPlans()

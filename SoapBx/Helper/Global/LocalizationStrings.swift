@@ -39,6 +39,7 @@ enum LocalStrings: String {
     case A_DELETE_ACCOUNT = "a_delete_account"
     case A_DELETE_POST = "a_delete_post"
     case A_CHANGE_LANG = "a_change_lang"
+    case A_PLAN_PURCHASE = "a_plan_purchase"
     
     //SIDE MENU
     case S_SUPPORT = "s_support"

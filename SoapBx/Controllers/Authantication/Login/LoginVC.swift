@@ -32,6 +32,20 @@ class LoginVC: UIViewController {
         super.viewDidLoad()
 
         setupUI()
+        
+        let locale = Locale.preferredLanguages[0]
+        var selectedLang : String = "en"
+        if locale == "es" {
+            selectedLang = locale
+        } else if locale == "fr" {
+            selectedLang = locale
+        } else if locale == "de" {
+            selectedLang = locale
+        } else if locale == "pt-PT" {
+            selectedLang = locale
+        }
+        UserDefaults.standard.set(selectedLang, forKey: OTLAppKey.Language)
+          UserDefaults.standard.synchronize()
     }
     
     private func setupUI() {

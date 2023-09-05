@@ -41,6 +41,9 @@ class SplashVC: UIViewController {
         firstStar.center.x = self.view.bounds.midX
         secondStar.center.x = self.view.bounds.midX
         thirdStar.center.x = self.view.bounds.midX
+        firstStar.center.y = self.view.bounds.midY - 60
+        secondStar.center.y = self.view.bounds.midY - 60
+        thirdStar.center.y = self.view.bounds.midY - 60
         
 //        smallBlueBalloon.center.y -= view.bounds.height
 //        smallRedBalloon.center.y -= view.bounds.height
@@ -68,6 +71,8 @@ class SplashVC: UIViewController {
             self.redBalloon.center.x = self.view.bounds.midX }, completion: nil)
         UIView.animate(withDuration: 1.0, delay: 1.0, options: UIView.AnimationOptions(), animations: {
             self.blueBalloon.center.x = self.view.bounds.midX }, completion: nil)
+        UIView.animate(withDuration: 1.0, delay: 1.0, options: UIView.AnimationOptions(), animations: {
+            self.blueBalloon.center.y = self.view.bounds.midY - 60 }, completion: nil)
         UIView.animate(withDuration: 2.0, delay: 1.0, options: UIView.AnimationOptions(), animations: {
             self.greenBalloon.center.y = self.view.bounds.midY-120 }, completion: nil)
         

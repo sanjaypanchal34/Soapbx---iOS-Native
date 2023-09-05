@@ -34,6 +34,10 @@ class VerificationCodeVC: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    @IBAction private func click_back() {
+        self.navigationController?.popToRootViewController(animated: true)
+    }
+    
     func navigate(_ data: SignupRequestModel) {
         screenType = .fromSignup
         vmObject.signupJson = data

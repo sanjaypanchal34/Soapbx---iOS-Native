@@ -12,6 +12,7 @@ class SignupVC: UIViewController {
     @IBOutlet private weak var btnBack: UIButton!
     @IBOutlet private weak var lblTitle: UILabel!
     @IBOutlet private weak var lblSubtitle: UILabel!
+    @IBOutlet private weak var lblTerms: UILabel!
     
     @IBOutlet private weak var txtFirstName: OTLTextField!
     @IBOutlet private weak var txtLastName: OTLTextField!
@@ -45,9 +46,18 @@ class SignupVC: UIViewController {
         setupUI()
     }
     
+    @objc
+    private func handleTapped(_ recognizer: UITapGestureRecognizer) {
+        let vc = CMSPageVC()
+        vc.screenType = .termsCondition
+        self.navigationController!.pushViewController(vc, animated: true)
+    }
+    
     private func setupUI() {
         btnBack.emptyTitle()
-        
+        lblTerms.text = LocalStrings.S_TERMS.rawValue.addLocalizableString()
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapped(_:)))
+        lblTerms.addGestureRecognizer(recognizer)
         lblTitle.setTheme(LocalStrings.SIGNUP_TITLE.rawValue.addLocalizableString(),
                           font: .bold,
                           size: 38)

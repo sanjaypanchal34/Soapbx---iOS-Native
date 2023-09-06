@@ -512,6 +512,10 @@ public protocol OTLBottomTabBarDelegate {
     get
     set
   }
+  @_Concurrency.MainActor(unsafe) public var tintColorAddPost: UIKit.UIColor? {
+    get
+    set
+  }
   @_Concurrency.MainActor(unsafe) public var imageSearch: UIKit.UIImage {
     get
     set

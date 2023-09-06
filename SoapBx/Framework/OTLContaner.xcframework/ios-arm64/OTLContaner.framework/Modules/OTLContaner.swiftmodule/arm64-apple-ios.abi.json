@@ -21662,6 +21662,121 @@
           },
           {
             "kind": "Var",
+            "name": "tintColorAddPost",
+            "printedName": "tintColorAddPost",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UIColor?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIColor",
+                    "printedName": "UIKit.UIColor",
+                    "usr": "c:objc(cs)UIColor"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11OTLContaner15OTLBottomTabBarC16tintColorAddPostSo7UIColorCSgvp",
+            "mangledName": "$s11OTLContaner15OTLBottomTabBarC16tintColorAddPostSo7UIColorCSgvp",
+            "moduleName": "OTLContaner",
+            "isOpen": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Custom",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "UIKit.UIColor?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIColor",
+                        "printedName": "UIKit.UIColor",
+                        "usr": "c:objc(cs)UIColor"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11OTLContaner15OTLBottomTabBarC16tintColorAddPostSo7UIColorCSgvg",
+                "mangledName": "$s11OTLContaner15OTLBottomTabBarC16tintColorAddPostSo7UIColorCSgvg",
+                "moduleName": "OTLContaner",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "UIKit.UIColor?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIColor",
+                        "printedName": "UIKit.UIColor",
+                        "usr": "c:objc(cs)UIColor"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11OTLContaner15OTLBottomTabBarC16tintColorAddPostSo7UIColorCSgvs",
+                "mangledName": "$s11OTLContaner15OTLBottomTabBarC16tintColorAddPostSo7UIColorCSgvs",
+                "moduleName": "OTLContaner",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11OTLContaner15OTLBottomTabBarC16tintColorAddPostSo7UIColorCSgvM",
+                "mangledName": "$s11OTLContaner15OTLBottomTabBarC16tintColorAddPostSo7UIColorCSgvM",
+                "moduleName": "OTLContaner",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
             "name": "imageSearch",
             "printedName": "imageSearch",
             "children": [
@@ -49494,85 +49609,85 @@
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLBottomTabBar.swift",
-      "kind": "FloatLiteral",
-      "offset": 2403,
-      "length": 3,
-      "value": "0.5"
-    },
-    {
-      "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLBottomTabBar.swift",
       "kind": "IntegerLiteral",
-      "offset": 2443,
+      "offset": 2404,
       "length": 1,
-      "value": "8"
+      "value": "0"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLBottomTabBar.swift",
       "kind": "IntegerLiteral",
-      "offset": 2469,
+      "offset": 2442,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLBottomTabBar.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2468,
       "length": 2,
-      "value": "20"
+      "value": "30"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLBottomTabBar.swift",
       "kind": "BooleanLiteral",
-      "offset": 2610,
+      "offset": 2609,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLBottomTabBar.swift",
       "kind": "IntegerLiteral",
-      "offset": 2799,
+      "offset": 2798,
       "length": 2,
       "value": "20"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLBottomTabBar.swift",
       "kind": "BooleanLiteral",
-      "offset": 2939,
+      "offset": 2938,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLBottomTabBar.swift",
       "kind": "IntegerLiteral",
-      "offset": 3130,
+      "offset": 3129,
       "length": 2,
       "value": "20"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLBottomTabBar.swift",
       "kind": "BooleanLiteral",
-      "offset": 3271,
+      "offset": 3270,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLBottomTabBar.swift",
       "kind": "IntegerLiteral",
-      "offset": 4881,
+      "offset": 5026,
       "length": 2,
       "value": "55"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLBottomTabBar.swift",
       "kind": "IntegerLiteral",
-      "offset": 5141,
+      "offset": 5286,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLBottomTabBar.swift",
       "kind": "BooleanLiteral",
-      "offset": 5181,
+      "offset": 5326,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/admin\/Harsh\/pans1\/Development\/Codebase\/OTLContaner\/OTLContaner\/Controllers\/OTLBottomTabBar.swift",
       "kind": "BooleanLiteral",
-      "offset": 5292,
+      "offset": 5437,
       "length": 5,
       "value": "false"
     },

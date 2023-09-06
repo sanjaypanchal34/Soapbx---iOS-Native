@@ -162,6 +162,8 @@
 		1FBADD562AA1B55A001A2EC0 /* PaymentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBADD542AA1B55A001A2EC0 /* PaymentCell.swift */; };
 		1FBADD572AA1B55A001A2EC0 /* PaymentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FBADD552AA1B55A001A2EC0 /* PaymentCell.xib */; };
 		84255FE02A84EC5700D6170A /* PublicFiguresViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84255FDF2A84EC5700D6170A /* PublicFiguresViewModel.swift */; };
+		84A008102AA86389006319D2 /* OTLContaner.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A0080E2AA8637D006319D2 /* OTLContaner.xcframework */; };
+		84A008112AA86389006319D2 /* OTLContaner.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84A0080E2AA8637D006319D2 /* OTLContaner.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		84A2A51D2A866F0F00387118 /* PoliticianProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A51B2A866F0F00387118 /* PoliticianProfileVC.swift */; };
 		84A2A51E2A866F0F00387118 /* PoliticianProfileVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A2A51C2A866F0F00387118 /* PoliticianProfileVC.xib */; };
 		84A2A5212A86929900387118 /* ViewBasicDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A5202A86929900387118 /* ViewBasicDetails.swift */; };
@@ -193,8 +195,6 @@
 		84B1D59B2A7815F80051558B /* LikeDislikeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B1D59A2A7815F80051558B /* LikeDislikeViewModel.swift */; };
 		84B1D5E02A79782B0051558B /* SavedPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B1D5DF2A79782B0051558B /* SavedPostViewModel.swift */; };
 		84B4881C2A98AA6F00B5FFD4 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
-		84B488312A98FF8500B5FFD4 /* OTLContaner.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B4882F2A98FF7F00B5FFD4 /* OTLContaner.xcframework */; };
-		84B488322A98FF8500B5FFD4 /* OTLContaner.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84B4882F2A98FF7F00B5FFD4 /* OTLContaner.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		84C67FBA2A816033000B7503 /* UserNotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C67FB92A816033000B7503 /* UserNotificationModel.swift */; };
 		84C67FC12A840BD3000B7503 /* PollsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C67FC02A840BD3000B7503 /* PollsViewModel.swift */; };
 		84CC5AA02A7F735500B88B0A /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CC5A9F2A7F735500B88B0A /* ProfileViewModel.swift */; };
@@ -212,7 +212,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				84B488322A98FF8500B5FFD4 /* OTLContaner.xcframework in Embed Frameworks */,
+				84A008112AA86389006319D2 /* OTLContaner.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -383,6 +383,7 @@
 		1FBADD552AA1B55A001A2EC0 /* PaymentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentCell.xib; sourceTree = "<group>"; };
 		6606E9F1F3155B6AB15CD78B /* Pods-SoapBx.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoapBx.release.xcconfig"; path = "Target Support Files/Pods-SoapBx/Pods-SoapBx.release.xcconfig"; sourceTree = "<group>"; };
 		84255FDF2A84EC5700D6170A /* PublicFiguresViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicFiguresViewModel.swift; sourceTree = "<group>"; };
+		84A0080E2AA8637D006319D2 /* OTLContaner.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = OTLContaner.xcframework; sourceTree = "<group>"; };
 		84A2A51B2A866F0F00387118 /* PoliticianProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoliticianProfileVC.swift; sourceTree = "<group>"; };
 		84A2A51C2A866F0F00387118 /* PoliticianProfileVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PoliticianProfileVC.xib; sourceTree = "<group>"; };
 		84A2A5202A86929900387118 /* ViewBasicDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewBasicDetails.swift; sourceTree = "<group>"; };
@@ -413,7 +414,6 @@
 		84B1D5962A780E750051558B /* ReportView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReportView.xib; sourceTree = "<group>"; };
 		84B1D59A2A7815F80051558B /* LikeDislikeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeDislikeViewModel.swift; sourceTree = "<group>"; };
 		84B1D5DF2A79782B0051558B /* SavedPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedPostViewModel.swift; sourceTree = "<group>"; };
-		84B4882F2A98FF7F00B5FFD4 /* OTLContaner.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = OTLContaner.xcframework; sourceTree = "<group>"; };
 		84C67FB92A816033000B7503 /* UserNotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationModel.swift; sourceTree = "<group>"; };
 		84C67FC02A840BD3000B7503 /* PollsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollsViewModel.swift; sourceTree = "<group>"; };
 		84CC5A9F2A7F735500B88B0A /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
@@ -431,7 +431,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A2AF6D6F88FA4790A2B1DBB1 /* Pods_SoapBx.framework in Frameworks */,
-				84B488312A98FF8500B5FFD4 /* OTLContaner.xcframework in Frameworks */,
+				84A008102AA86389006319D2 /* OTLContaner.xcframework in Frameworks */,
 				84B4881C2A98AA6F00B5FFD4 /* (null) in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1028,7 +1028,7 @@
 		049D88AF2A52DD2800876D27 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
-				84B4882F2A98FF7F00B5FFD4 /* OTLContaner.xcframework */,
+				84A0080E2AA8637D006319D2 /* OTLContaner.xcframework */,
 			);
 			path = Framework;
 			sourceTree = "<group>";

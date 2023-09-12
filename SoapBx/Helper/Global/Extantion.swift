@@ -208,8 +208,7 @@ extension OTLBottomTabBar {
     func setTabTheme() {
         imageHome = UIImage(named: "ic_home")!
         imagePublicFigures = UIImage(named: "ic_speech")!
-        imageAddPost = UIImage(named: "ic_paymentAdd")!.withRenderingMode(.alwaysOriginal)
-        tintColorAddPost = .primaryBlue
+        imageAddPost = UIImage(named: "ic_plus")!
         imageSearch = UIImage(named: "ic_search")!
         imageProfile = UIImage(named: "ic_user")!
         backgroundColor = .white
